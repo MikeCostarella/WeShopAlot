@@ -1,0 +1,31 @@
+﻿using MeShopAlot.Data.Model.Base;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using MeShopAlot.Shared.Enumerations.Counties;
+
+namespace MeShopAlot.Data.Models
+{
+    public class County : BasePersistentObject
+    {
+        #region Physical Properties
+
+        [Required]
+        [StringLength(300)]
+        public OhioCountyEnum Name { get; set; }
+
+        [Required]
+        [ForeignKey("StateId")]
+        public int StateId { get; set; }
+        public State State { get; set; }
+
+        #endregion Physical Properties
+
+        #region Child List Properties
+
+        public List<MunicipalityCounty> Municipalities { get; set; }
+
+        public List<Township> Townships { get; set; }
+
+        #endregion Child List Properties
+    }
+}
