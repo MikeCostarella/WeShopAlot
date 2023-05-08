@@ -74,9 +74,9 @@ namespace MeShopAlot.Data.Repositories.Base
             throw new NotImplementedException();
         }
 
-        public Task<List<T>> ListAllAsync()
+        public async Task<List<T>> ListAllAsync()
         {
-            throw new NotImplementedException();
+            return await dbContext.Set<T>().Where(x => !x.IsDeleted).ToListAsync().ConfigureAwait(false);
         }
 
         public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
@@ -89,13 +89,17 @@ namespace MeShopAlot.Data.Repositories.Base
             await dbContext.SaveChangesAsync();
         }
 
-        public Task UpdateAsync(T entity)
+        public async Task UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            var EntityEntry = dbContext.Set<T>().Attach(entity);
+            EntityEntry.State = EntityState.Modified;
+            await dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public Task UpdateAsync(T obj, params Expression<Func<T, object>>[] propertiesToUpdate)
         {
+            //var EntityEntry = dbContext.Set<T>().Attach(obj);
+            //var members = propertiesToUpdate.SelectMany(selector => selector.GetPropertyAccesses());
             throw new NotImplementedException();
         }
 
