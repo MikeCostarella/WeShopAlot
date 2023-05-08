@@ -4,8 +4,8 @@ namespace MeShopAlot.WebAPI.Controllers
 {
     [Route("api/[controller]/[action]")]
     [ApiController]
-    [Produces("application/json")]
-    public class AddressController : ControllerBase
+    //[Produces("application/json")]
+    public class AddressController : BaseApiController
     {
 
     }

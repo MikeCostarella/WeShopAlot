@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using MeShopAlot.Data.Model.Base;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeShopAlot.Data.Models
 {
-    public class Product
+    public class Product : BasePersistentObject
     {
         #region Physical Properties
 

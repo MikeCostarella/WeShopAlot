@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MeShopAlot.Data.Model.Base;
 using System.Linq.Expressions;
+using MeShopAlot.Data.Specifications.Base;
+using MeShopAlot.Data.Utilities.Specifications;
 
 namespace MeShopAlot.Data.Repositories.Base
 {
@@ -33,6 +35,11 @@ namespace MeShopAlot.Data.Repositories.Base
             throw new NotImplementedException();
         }
 
+        public async Task<int> CountAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).CountAsync();
+        }
+
         public Task CountByIdAsync()
         {
             throw new NotImplementedException();
@@ -57,6 +64,11 @@ namespace MeShopAlot.Data.Repositories.Base
             return await dbContext.Set<T>().Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
+        public async Task<T> GetEntityWithSpec(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).FirstOrDefaultAsync();
+        }
+
         public virtual async Task<bool> IsExistByIdAsync(int id)
         {
             throw new NotImplementedException();
@@ -65,6 +77,11 @@ namespace MeShopAlot.Data.Repositories.Base
         public Task<List<T>> ListAllAsync()
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
+        {
+            return await ApplySpecification(spec).ToListAsync();
         }
 
         public virtual async Task SaveChangesAsync()
@@ -88,5 +105,14 @@ namespace MeShopAlot.Data.Repositories.Base
         }
 
         #endregion Public Methods
+
+        #region Private Methods
+
+        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator<T>.GetQuery(dbContext.Set<T>().AsQueryable(), spec);
+        }
+
+        #endregion Private Methods
     }
 }
