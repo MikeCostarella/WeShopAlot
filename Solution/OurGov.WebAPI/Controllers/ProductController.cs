@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Repositories;
 using MeShopAlot.Data.Repositories.Interfaces;
 using MeShopAlot.Data.Specifications;
 using MeShopAlot.WebAPI.Dtos;
