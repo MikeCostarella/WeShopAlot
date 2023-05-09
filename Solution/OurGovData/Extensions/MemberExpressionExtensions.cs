@@ -15,7 +15,7 @@ namespace MeShopAlot.Data.Extensions
 
     internal class MemberAccesses : ExpressionVisitor
     {
-        private ParameterExpression parameter;
+        private readonly ParameterExpression parameter;
         public HashSet<MemberExpression> Members { get; private set; }
         public MemberAccesses(ParameterExpression parameter)
         {

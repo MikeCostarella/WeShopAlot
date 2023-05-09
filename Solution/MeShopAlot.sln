@@ -21,6 +21,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{CD240354-E75
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{DA49ED75-57A7-41E3-A984-11E70A476822}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{BD647F45-6867-472C-9996-37C37ED90DE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MeShopAlot.Infrastructure.Services", "MeShopAlot.Infrastructure.Services\MeShopAlot.Infrastructure.Services.csproj", "{B82461B0-F12A-4A6B-9B3F-D89060C72F66}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,10 @@ Global
 		{3DAA7233-596B-46F4-B08B-DEAE508326D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3DAA7233-596B-46F4-B08B-DEAE508326D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3DAA7233-596B-46F4-B08B-DEAE508326D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82461B0-F12A-4A6B-9B3F-D89060C72F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82461B0-F12A-4A6B-9B3F-D89060C72F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82461B0-F12A-4A6B-9B3F-D89060C72F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82461B0-F12A-4A6B-9B3F-D89060C72F66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +70,7 @@ Global
 		{1BEC2256-948E-4833-860E-37CE36F2CCC3} = {DA49ED75-57A7-41E3-A984-11E70A476822}
 		{90131746-A7C3-4AAE-9648-9914C043B547} = {CD240354-E754-4DA2-8989-4990DB0E98D3}
 		{3DAA7233-596B-46F4-B08B-DEAE508326D6} = {4C982EF3-840F-43A2-946A-0DD480E1D45E}
+		{B82461B0-F12A-4A6B-9B3F-D89060C72F66} = {BD647F45-6867-472C-9996-37C37ED90DE4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {661D00F8-52B7-40A2-98D0-43F82D970D28}
