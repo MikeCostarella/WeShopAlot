@@ -55,14 +55,11 @@ namespace MeShopAlot.WebAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UserDto>> Login(LoginDto loginDto)
         {
+            var parameterLoginDto = loginDto ?? throw new ArgumentNullException(nameof(loginDto));
             var user = await userManager.FindByEmailAsync(loginDto.Email);
-
             if (user == null) return Unauthorized(new ApiResponse(401));
-
             var result = await signInManager.CheckPasswordSignInAsync(user, loginDto.Password, false);
-
             if (!result.Succeeded) return Unauthorized(new ApiResponse(401));
-
             return new UserDto
             {
                 Email = user.Email,
@@ -79,18 +76,14 @@ namespace MeShopAlot.WebAPI.Controllers
                 return new BadRequestObjectResult(new ApiValidationErrorResponse
                 { Errors = new[] { "Email address is in use" } });
             }
-
             var user = new AppUser
             {
                 DisplayName = registerDto.DisplayName,
                 Email = registerDto.Email,
                 UserName = registerDto.Email
             };
-
             var result = await userManager.CreateAsync(user, registerDto.Password);
-
             if (!result.Succeeded) return BadRequest(new ApiResponse(400));
-
             return new UserDto
             {
                 DisplayName = user.DisplayName,

@@ -2,9 +2,12 @@
 
 namespace MeShopAlot.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class FallbackController : BaseApiController
+    public class FallbackController : Controller
     {
+        public IActionResult Index()
+        {
+            return PhysicalFile(Path.Combine(Directory.GetCurrentDirectory(),
+                "wwwroot", "index.html"), "text/HTML");
+        }
     }
 }

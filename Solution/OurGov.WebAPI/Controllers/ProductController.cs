@@ -15,16 +15,16 @@ namespace MeShopAlot.WebAPI.Controllers
     {
         private readonly IProductBrandRepository productBrandRepository;
         private readonly IProductTypeRepository productTypeRepository;
-        private readonly IProductRepository productsRepository;
+        private readonly IProductRepository productRepository;
         private readonly IMapper mapper;
 
-        public ProductController(IProductRepository productsRepository,
+        public ProductController(IProductRepository productRepository,
             IProductTypeRepository productTypeRepoitory,
             IProductBrandRepository productBrandRepoitory
             , IMapper mapper)
         {
             this.mapper = mapper;
-            this.productsRepository = productsRepository;
+            this.productRepository = productRepository;
             this.productTypeRepository = productTypeRepoitory;
             this.productBrandRepository = productBrandRepoitory;
         }
@@ -37,8 +37,8 @@ namespace MeShopAlot.WebAPI.Controllers
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
             var countSpec = new ProductsWithFiltersForCountSpecification(productParams);
 
-            var totalItems = await productsRepository.CountAsync(countSpec);
-            var products = await productsRepository.ListAsync(spec);
+            var totalItems = await productRepository.CountAsync(countSpec);
+            var products = await productRepository.ListAsync(spec);
 
             var data = mapper.Map<IReadOnlyList<ProductToReturnDto>>(products);
 
@@ -54,7 +54,7 @@ namespace MeShopAlot.WebAPI.Controllers
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(id);
 
-            var product = await productsRepository.GetEntityWithSpec(spec);
+            var product = await productRepository.GetEntityWithSpec(spec);
 
             if (product == null) return NotFound(new ApiResponse(404));
 

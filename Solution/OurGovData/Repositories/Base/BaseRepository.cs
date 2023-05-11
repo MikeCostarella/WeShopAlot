@@ -3,6 +3,7 @@ using MeShopAlot.Data.Model.Base;
 using System.Linq.Expressions;
 using MeShopAlot.Data.Specifications.Base;
 using MeShopAlot.Data.Utilities.Specifications;
+using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
 namespace MeShopAlot.Data.Repositories.Base
 {
@@ -24,6 +25,11 @@ namespace MeShopAlot.Data.Repositories.Base
         #endregion Constructors
 
         #region Public Methods
+
+        public void Add(T entity)
+        {
+            dbContext.Set<T>().Add(entity);
+        }
 
         public Task<T> AddAsync(T entity)
         {
@@ -89,16 +95,22 @@ namespace MeShopAlot.Data.Repositories.Base
             await dbContext.SaveChangesAsync();
         }
 
+        public void Update(T entity)
+        {
+            dbContext.Set<T>().Attach(entity);
+            dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
         public async Task UpdateAsync(T entity)
         {
             var EntityEntry = dbContext.Set<T>().Attach(entity);
-            EntityEntry.State = EntityState.Modified;
+            EntityEntry.State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             await dbContext.SaveChangesAsync().ConfigureAwait(false);
         }
 
         public Task UpdateAsync(T obj, params Expression<Func<T, object>>[] propertiesToUpdate)
         {
-            //var EntityEntry = dbContext.Set<T>().Attach(obj);
+            var EntityEntry = dbContext.Set<T>().Attach(obj);
             //var members = propertiesToUpdate.SelectMany(selector => selector.GetPropertyAccesses());
             throw new NotImplementedException();
         }

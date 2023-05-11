@@ -6,6 +6,8 @@ namespace MeShopAlot.Data.Repositories.Base
 {
     public interface IAsyncRepository<T> where T : BasePersistentObject
     {
+        void Add(T entity);
+
         Task<T> AddAsync(T entity);
 
         Task<T> AddRangeAsync(List<T> entities);
@@ -25,6 +27,8 @@ namespace MeShopAlot.Data.Repositories.Base
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
 
         Task<List<T>> ListAllAsync();
+
+        void Update(T entity);
 
         Task UpdateAsync(T entity);
 
