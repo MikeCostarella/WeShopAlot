@@ -11,6 +11,14 @@ namespace MeShopAlot.Data
 {
     public class MeShopAlotContext : DbContext
     {
+        #region Constructors
+
+        public MeShopAlotContext(DbContextOptions<MeShopAlotContext> options) : base(options)
+        {
+        }
+
+        #endregion Constructors
+
         #region DBSets
 
         public DbSet<Address> Addresses { get; set; }
