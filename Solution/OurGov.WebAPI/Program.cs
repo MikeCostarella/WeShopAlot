@@ -47,7 +47,7 @@ var userManager = services.GetRequiredService<UserManager<AppUser>>();
 var logger = services.GetRequiredService<ILogger<Program>>();
 try
 {
-    await context.Database.MigrateAsync();
+    //await context.Database.MigrateAsync();
     //await identityContext.Database.MigrateAsync();
     //await StoreContextSeed.SeedAsync(context);
     //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
