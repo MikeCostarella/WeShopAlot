@@ -1,4 +1,6 @@
 using MeShopAlot.WebAPI.Extensions;
+using MeShopAlot.WebAPI.Middleware;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,13 +13,21 @@ builder.Services.AddSwaggerDocumentation();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseMiddleware<ExceptionMiddleware>();
 
-//app.UseHttpsRedirection();
+app.UseStatusCodePagesWithReExecute("/errors/{0}");
+
+app.UseSwaggerDocumentation();
+
+app.UseStaticFiles();
+//app.UseStaticFiles(new StaticFileOptions
+//{
+//    FileProvider = new PhysicalFileProvider(
+//        Path.Combine(Directory.GetCurrentDirectory(), "Content")),
+//    RequestPath = "/Content"
+//});
+
+app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
