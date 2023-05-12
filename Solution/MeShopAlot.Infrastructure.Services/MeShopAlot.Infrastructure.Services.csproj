@@ -18,4 +18,8 @@
     <ProjectReference Include="..\OurGovData\MeShopAlot.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\Config\" />
+  </ItemGroup>
+
 </Project>
