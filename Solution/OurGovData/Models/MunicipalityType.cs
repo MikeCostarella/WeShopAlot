@@ -10,6 +10,10 @@ namespace MeShopAlot.Data.Models
 
         [Required]
         [StringLength(20)]
+        public string Description { get; set; }
+
+        [Required]
+        [StringLength(20)]
         public MunicipalityTypeEnum Name { get; set; }
 
         #endregion Physical Properties

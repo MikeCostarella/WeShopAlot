@@ -7,8 +7,11 @@ namespace MeShopAlot.Data.Seed
     {
         public static List<TResult> SeedEnumValues<TEnum, TResult>() where TEnum : System.Enum
         {
-            var enumInfos = Enum.GetValues(typeof(TEnum)).Cast<int>()
-                .Zip(Enum.GetNames(typeof(TEnum)), (i, s) => (Value: i, Name: s));
+            var typeOfEnum = typeof(TEnum);
+            var enumValues = Enum.GetValues(typeOfEnum);
+            var enumValuesCastInt = enumValues.Cast<int>();
+            var enumNames = Enum.GetNames(typeof(TEnum));
+            var enumInfos = enumValuesCastInt.Zip(enumNames, (i, s) => (Value: i, Name: s));
             var modelObject = typeof(TResult);
             var modelObjectProertyId = modelObject.GetProperty("Id");
             var modelObjectPropertyName = modelObject.GetProperty("Name");
