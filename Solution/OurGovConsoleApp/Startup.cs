@@ -32,7 +32,7 @@ namespace MeShopAlot.Data.ConsoleApp
                 .AddUserSecrets<Startup>()
                 .AddEnvironmentVariables()
                 .Build();
-            string connectionstring = configuration.GetConnectionString("MeShopAlot");
+            string connectionstring = configuration.GetConnectionString("MeShopAlotConnection");
             if (string.IsNullOrEmpty(connectionstring))
             {
                 throw new InvalidOperationException("No db connection specified");

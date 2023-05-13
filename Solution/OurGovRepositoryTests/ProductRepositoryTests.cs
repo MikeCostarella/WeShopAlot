@@ -1,7 +1,7 @@
 namespace OurGovRepositoryTests
 {
     [TestClass]
-    public class UnitTest1
+    public class ProductRepositoryTests
     {
         [TestMethod]
         public void TestMethod1()
