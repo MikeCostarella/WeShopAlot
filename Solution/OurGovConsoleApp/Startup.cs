@@ -2,9 +2,6 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Logging;
 
 namespace MeShopAlot.Data.ConsoleApp
 {
@@ -45,7 +42,7 @@ namespace MeShopAlot.Data.ConsoleApp
         public void Configure(IApplicationBuilder app)
         {
             app.MigrateDatabase();
-            CancellationToken cancellationToken = new CancellationToken();
+            //CancellationToken cancellationToken = new CancellationToken();
             //hostLifetime.StopAsync(cancellationToken);
         }
 
