@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OurGov.Shared\MeShopAlot.Data.Shared.csproj" />
+    <ProjectReference Include="..\MeShopAlot.Data.Shared\MeShopAlot.Data.Shared.csproj" />
   </ItemGroup>
 
 </Project>

@@ -15,11 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OurGovData\MeShopAlot.Data.csproj" />
+    <Folder Include="Data\Config\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Config\" />
+    <ProjectReference Include="..\MeShopAlot.Data\MeShopAlot.Data.csproj" />
   </ItemGroup>
 
 </Project>

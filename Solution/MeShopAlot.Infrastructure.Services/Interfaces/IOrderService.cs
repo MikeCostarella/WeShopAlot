@@ -1,4 +1,5 @@
-﻿using MeShopAlot.Data.Models;
+﻿
+using MeShopAlot.Data.Models;
 
 namespace MeShopAlot.Infrastructure.Services.Interfaces
 {

@@ -38,11 +38,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\OurGovData\MeShopAlot.Data.csproj" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Scripts\" />
+    <ProjectReference Include="..\MeShopAlot.Data\MeShopAlot.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
