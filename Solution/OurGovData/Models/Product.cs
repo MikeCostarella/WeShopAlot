@@ -19,6 +19,7 @@ namespace MeShopAlot.Data.Models
         public string PictureUrl { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal (5,2)")]
         public decimal Price { get; set; }
 
         [Required]

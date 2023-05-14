@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MeShopAlot.Data.Migrations
 {
     [DbContext(typeof(MeShopAlotContext))]
-    [Migration("20230514121226_SQLServer_Initial")]
+    [Migration("20230514123758_SQLServer_Initial")]
     partial class SQLServer_Initial
     {
         /// <inheritdoc />
@@ -151,7 +151,7 @@ namespace MeShopAlot.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (5,2)");
 
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
@@ -273,7 +273,7 @@ namespace MeShopAlot.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("ShippingPrice")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (5,2)");
 
                     b.HasKey("Id");
 
@@ -298,7 +298,7 @@ namespace MeShopAlot.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (5,2)");
 
                     b.Property<string>("ShortName")
                         .HasColumnType("nvarchar(max)");
@@ -468,7 +468,7 @@ namespace MeShopAlot.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Subtotal")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (5,2)");
 
                     b.HasKey("Id");
 
@@ -499,7 +499,7 @@ namespace MeShopAlot.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (5,2)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -564,7 +564,7 @@ namespace MeShopAlot.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                        .HasColumnType("decimal (5,2)");
 
                     b.Property<int>("ProductBrandId")
                         .HasColumnType("int");
@@ -768,7 +768,7 @@ namespace MeShopAlot.Data.Migrations
                     b.HasOne("MeShopAlot.Data.Models.State", "State")
                         .WithMany("Counties")
                         .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("State");

@@ -73,6 +73,8 @@ namespace MeShopAlot.Data
             #endregion Enum Initialization
             #region Object Relationships
 
+            modelBuilder.Entity<County>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.State).WithMany(a => a.Counties).HasForeignKey(b => b.StateId).OnDelete(DeleteBehavior.NoAction);
+
             modelBuilder.Entity<Municipality>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.MunicipalityType).WithMany().HasForeignKey("MunicipalityTypeId").OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Municipality>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.State).WithMany(a => a.Municipalities).HasForeignKey(b => b.StateId).OnDelete(DeleteBehavior.NoAction);
 

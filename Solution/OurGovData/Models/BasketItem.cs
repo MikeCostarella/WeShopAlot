@@ -1,4 +1,5 @@
 ﻿using MeShopAlot.Data.Model.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeShopAlot.Data.Models
 {
@@ -6,12 +7,11 @@ namespace MeShopAlot.Data.Models
     {
         #region Physical Properties
 
-        public int Id { get; set; }
-
         public string Brand { get; set; }
 
         public string PictureUrl { get; set; }
 
+        [Column(TypeName = "decimal (5,2)")]
         public decimal Price { get; set; }
 
         public string ProductName { get; set; }

@@ -29,6 +29,7 @@ namespace MeShopAlot.Data.Models
         public int StatusId { get; set; }
         public OrderStatus Status { get; set; }
 
+        [Column(TypeName = "decimal (5,2)")]
         public decimal Subtotal { get; set; }
 
         #endregion Physical Properties

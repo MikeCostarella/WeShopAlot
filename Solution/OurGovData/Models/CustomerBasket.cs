@@ -1,4 +1,6 @@
 ﻿using MeShopAlot.Data.Model.Base;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeShopAlot.Data.Models
 {
@@ -12,6 +14,7 @@ namespace MeShopAlot.Data.Models
 
         public string PaymentIntentId { get; set; }
 
+        [Column(TypeName = "decimal (5,2)")]
         public decimal ShippingPrice { get; set; }
 
         #endregion Physical Properties

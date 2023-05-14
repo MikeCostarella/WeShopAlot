@@ -1,4 +1,6 @@
 ﻿using MeShopAlot.Data.Model.Base;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MeShopAlot.Data.Models
 {
@@ -10,6 +12,7 @@ namespace MeShopAlot.Data.Models
 
         public string Description { get; set; }
 
+        [Column(TypeName = "decimal (5,2)")]
         public decimal Price { get; set; }
 
         public string ShortName { get; set; }
