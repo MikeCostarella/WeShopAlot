@@ -11,21 +11,21 @@ SELECT
 	--,CONCAT(county.Id + '-' + township.Id) AS SomeNumberAsString
 	--,(SELECT FORMAT (county.DateFounded, 'yyyy-MM-dd hh:mm:ss')) AS DateFounded
 	,(SELECT COUNT(DISTINCT township.Id)
-		FROM OG.Township
+		FROM MSA.Township
 		WHERE
 			township.CountyId = county.Id
 	) AS TownshipCount
 	,(STUFF((
 		SELECT ',' + township.Name
 		FROM
-			OG.Township township
+			MSA.Township township
 		WHERE
 			township.CountyId = county.Id
 		GROUP BY township.Name
 		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 2, '')
 		) AS Townships			
 INTO #T1
-FROM OG.County county
+FROM MSA.County county
 
 SELECT * FROM #T1
 WHERE

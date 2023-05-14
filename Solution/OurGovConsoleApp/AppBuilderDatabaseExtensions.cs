@@ -12,6 +12,8 @@ namespace MeShopAlot.Data.ConsoleApp
                 var dir = AppDomain.CurrentDomain.BaseDirectory;
                 var context = servicedScope.ServiceProvider.GetRequiredService<MeShopAlotContext>();
                 context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropDatabase.sql"));
+                //context.Database.EnsureDeleted();
+                //context.Database.EnsureCreated();
                 context.Database.Migrate();
             }
         }

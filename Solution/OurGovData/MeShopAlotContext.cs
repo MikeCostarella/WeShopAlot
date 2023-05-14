@@ -6,6 +6,7 @@ using MeShopAlot.Data.Seed;
 using MeShopAlot.Data.Seed.Common;
 using MeShopAlot.Shared.Enumerations;
 using MeShopAlot.Data.Shared.Enumerations;
+using System.Configuration;
 
 namespace MeShopAlot.Data
 {
@@ -48,14 +49,9 @@ namespace MeShopAlot.Data
 
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddDbContext<MeShopAlotContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("MeShopAlotDb")));
+            services.AddDbContext<MeShopAlotContext>(options =>
+                options.UseSqlServer(ConfigurationManager.ConnectionStrings["MeShopAlotConnection"].ConnectionString));
         }
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["MeShopAlotDb"].ConnectionString);
-        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
