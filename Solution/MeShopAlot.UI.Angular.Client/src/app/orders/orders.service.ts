@@ -12,9 +12,9 @@ export class OrdersService {
   constructor(private http: HttpClient) { }
   
   getOrdersForUser() {
-    return this.http.get<Order[]>(this.baseUrl + 'orders');
+    return this.http.get<Order[]>(this.baseUrl + 'order');
   }
   getOrderDetailed(id: number) {
-    return this.http.get<Order>(this.baseUrl + 'orders/' + id);
+    return this.http.get<Order>(this.baseUrl + 'order/' + id);
   }
 }

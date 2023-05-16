@@ -42,7 +42,7 @@ export class ShopService {
     params = params.append('pageSize', this.shopParams.pageSize);
     if (this.shopParams.search) params = params.append('search', this.shopParams.search);
 
-    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'products', {params}).pipe(
+    return this.http.get<Pagination<Product[]>>(this.baseUrl + 'product', {params}).pipe(
       map(response => {
         this.productCache.set(Object.values(this.shopParams).join('-'), response)
         this.pagination = response;
@@ -67,13 +67,13 @@ export class ShopService {
 
     if (Object.keys(product).length !== 0) return of(product);
 
-    return this.http.get<Product>(this.baseUrl + 'products/' + id);
+    return this.http.get<Product>(this.baseUrl + 'product/' + id);
   }
 
   getBrands() {
     if (this.brands.length > 0) return of(this.brands);
 
-    return this.http.get<Brand[]>(this.baseUrl + 'products/brands').pipe(
+    return this.http.get<Brand[]>(this.baseUrl + 'product/brands').pipe(
       map(brands => this.brands = brands)
     );
   }
@@ -81,7 +81,7 @@ export class ShopService {
   getTypes() {
     if (this.types.length > 0) return of(this.types);
 
-    return this.http.get<Type[]>(this.baseUrl + 'products/types').pipe(
+    return this.http.get<Type[]>(this.baseUrl + 'product/types').pipe(
       map(types => this.types = types)
     );
   }
