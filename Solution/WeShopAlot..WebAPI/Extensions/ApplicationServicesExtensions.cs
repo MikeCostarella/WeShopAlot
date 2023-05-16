@@ -20,7 +20,7 @@ namespace WeShopAlot.WebAPI.Extensions
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             services.AddDbContext<WeShopAlotContext>(opt =>
             {
-                opt.UseSqlServer(config.GetConnectionString("MeShopAlotConnection"));
+                opt.UseSqlServer(config.GetConnectionString("WeShopAlotConnection"));
             });
             services.AddSingleton<IConnectionMultiplexer>(c =>
             {
