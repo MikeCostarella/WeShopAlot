@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MeShopAlot.Infrastructure.Services\WeShopAlot.Infrastructure.Services.csproj" />
     <ProjectReference Include="..\WeShopAlot.Data\WeShopAlot.Data.csproj" />
+    <ProjectReference Include="..\WeShopAlot.Infrastructure.Services\WeShopAlot.Infrastructure.Services.csproj" />
   </ItemGroup>
 
 </Project>
