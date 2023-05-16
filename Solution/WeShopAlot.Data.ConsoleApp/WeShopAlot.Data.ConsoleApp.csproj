@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MeShopAlot.Data\MeShopAlot.Data.csproj" />
+    <ProjectReference Include="..\MeShopAlot.Data\WeShopAlot.Data.csproj" />
   </ItemGroup>
 
   <ItemGroup>
