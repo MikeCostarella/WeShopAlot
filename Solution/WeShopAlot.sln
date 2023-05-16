@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{DA49ED75-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{BD647F45-6867-472C-9996-37C37ED90DE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.WebApis", "MeShopAlot.Testing.WebApis\MeShopAlot.Testing.WebApis.csproj", "{64142820-A021-4050-94C0-237B0682A1B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Testing.WebApis", "MeShopAlot.Testing.WebApis\WeShopAlot.Testing.WebApis.csproj", "{64142820-A021-4050-94C0-237B0682A1B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.Services", "MeShopAlot.Testing.Services\MeShopAlot.Testing.Services.csproj", "{3F160BE1-2C68-4726-B8FE-7F03E6D02614}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Testing.Services", "MeShopAlot.Testing.Services\WeShopAlot.Testing.Services.csproj", "{3F160BE1-2C68-4726-B8FE-7F03E6D02614}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.Repositories", "MeShopAlot.Testing.Repositories\MeShopAlot.Testing.Repositories.csproj", "{B07D23A6-3C6E-4929-B6C1-DB65321B07DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Testing.Repositories", "MeShopAlot.Testing.Repositories\WeShopAlot.Testing.Repositories.csproj", "{B07D23A6-3C6E-4929-B6C1-DB65321B07DA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.Shared", "MeShopAlot.Testing.Shared\MeShopAlot.Testing.Shared.csproj", "{E5FD1FA2-C296-4691-86D5-0582953F00E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Testing.Shared", "MeShopAlot.Testing.Shared\WeShopAlot.Testing.Shared.csproj", "{E5FD1FA2-C296-4691-86D5-0582953F00E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.WebAPI", "WeShopAlot..WebAPI\WeShopAlot.WebAPI.csproj", "{FA229A17-DDF8-4926-AA6B-B78E0619BD2B}"
 EndProject
