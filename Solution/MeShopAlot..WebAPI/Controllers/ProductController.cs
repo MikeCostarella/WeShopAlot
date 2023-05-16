@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Repositories.Interfaces;
-using MeShopAlot.Data.Specifications;
-using MeShopAlot.WebAPI.Dtos;
-using MeShopAlot.WebAPI.Errors;
-using MeShopAlot.WebAPI.Helpers;
+using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Repositories.Interfaces;
+using WeShopAlot.Data.Specifications;
+using WeShopAlot.WebAPI.Dtos;
+using WeShopAlot.WebAPI.Errors;
+using WeShopAlot.WebAPI.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MeShopAlot.WebAPI.Controllers
+namespace WeShopAlot.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

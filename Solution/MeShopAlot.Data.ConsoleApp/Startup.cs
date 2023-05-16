@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeShopAlot.Data.ConsoleApp
+namespace WeShopAlot.Data.ConsoleApp
 {
     public class Startup
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace MeShopAlot.Data.Specifications.Base
+namespace WeShopAlot.Data.Specifications.Base
 {
     public interface ISpecification<T>
     {

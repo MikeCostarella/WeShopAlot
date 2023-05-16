@@ -1,4 +1,4 @@
-﻿namespace MeShopAlot.Shared.Models
+﻿namespace WeShopAlot.Shared.Models
 {
     public class GetAddressRequest
     {

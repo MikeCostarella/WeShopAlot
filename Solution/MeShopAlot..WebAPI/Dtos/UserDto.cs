@@ -1,4 +1,4 @@
-namespace MeShopAlot.WebAPI.Dtos
+namespace WeShopAlot.WebAPI.Dtos
 {
     public class UserDto
     {

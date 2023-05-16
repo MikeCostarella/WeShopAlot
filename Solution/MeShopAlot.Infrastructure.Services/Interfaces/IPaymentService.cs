@@ -1,6 +1,6 @@
-﻿using MeShopAlot.Data.Models;
+﻿using WeShopAlot.Data.Models;
 
-namespace MeShopAlot.Infrastructure.Services.Interfaces
+namespace WeShopAlot.Infrastructure.Services.Interfaces
 {
     public interface IPaymentService
     {

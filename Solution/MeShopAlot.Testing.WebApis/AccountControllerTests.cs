@@ -1,4 +1,4 @@
-namespace MeShopAlot.Testing.WebApis
+namespace WeShopAlot.Testing.WebApis
 {
     [TestClass]
     public class AccountControllerTests

@@ -1,6 +1,6 @@
-﻿using MeShopAlot.WebAPI.Services.Base;
+﻿using WeShopAlot.WebAPI.Services.Base;
 
-namespace MeShopAlot.WebAPI.Services
+namespace WeShopAlot.WebAPI.Services
 {
     public class AddressService : BaseService
     {

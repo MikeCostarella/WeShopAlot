@@ -1,5 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
-using MeShopAlot.Data;
+using WeShopAlot.Data;
 
 namespace OurGov.Testing.Shared.Base
 {

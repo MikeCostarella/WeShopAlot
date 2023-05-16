@@ -1,10 +1,10 @@
-﻿using MeShopAlot.Data;
-using MeShopAlot.Data.Model.Base;
-using MeShopAlot.Data.Repositories.Base;
-using MeShopAlot.Infrastructure.Services.Interfaces;
+﻿using WeShopAlot.Data;
+using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Repositories.Base;
+using WeShopAlot.Infrastructure.Services.Interfaces;
 using System.Collections;
 
-namespace MeShopAlot.Infrastructure.Services
+namespace WeShopAlot.Infrastructure.Services
 {
     public class UnitOfWork : IUnitOfWork
     {

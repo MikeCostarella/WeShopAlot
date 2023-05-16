@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace MeShopAlot.WebAPI.Extensions
+namespace WeShopAlot.WebAPI.Extensions
 {
     public static class SwaggerServiceExtensions
     {

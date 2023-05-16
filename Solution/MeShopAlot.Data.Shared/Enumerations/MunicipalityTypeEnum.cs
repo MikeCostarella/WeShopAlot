@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MeShopAlot.Shared.Enumerations
+namespace WeShopAlot.Shared.Enumerations
 {
     public enum MunicipalityTypeEnum
     {

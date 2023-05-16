@@ -1,7 +1,7 @@
-﻿using MeShopAlot.Data.Model.Base;
-using MeShopAlot.Data.Repositories.Base;
+﻿using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Repositories.Base;
 
-namespace MeShopAlot.Infrastructure.Services.Interfaces
+namespace WeShopAlot.Infrastructure.Services.Interfaces
 {
     public interface IUnitOfWork
     {

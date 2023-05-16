@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Data.Interfaces;
+﻿using WeShopAlot.Data.Interfaces;
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace MeShopAlot.Infrastructure.Services
+namespace WeShopAlot.Infrastructure.Services
 {
     public class ResponseCacheService : IResponseCacheService
     {

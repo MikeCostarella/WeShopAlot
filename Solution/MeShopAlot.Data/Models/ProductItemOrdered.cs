@@ -1,6 +1,6 @@
-﻿using MeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Model.Base;
 
-namespace MeShopAlot.Data.Models
+namespace WeShopAlot.Data.Models
 {
     public class ProductItemOrdered : BasePersistentObject
     {

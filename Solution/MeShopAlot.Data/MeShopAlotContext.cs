@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Migrations;
-using MeShopAlot.Data.Seed;
-using MeShopAlot.Data.Seed.Common;
-using MeShopAlot.Shared.Enumerations;
-using MeShopAlot.Data.Shared.Enumerations;
+using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Migrations;
+using WeShopAlot.Data.Seed;
+using WeShopAlot.Data.Seed.Common;
+using WeShopAlot.Shared.Enumerations;
+using WeShopAlot.Data.Shared.Enumerations;
 using System.Configuration;
 
-namespace MeShopAlot.Data
+namespace WeShopAlot.Data
 {
     public class MeShopAlotContext : DbContext
     {

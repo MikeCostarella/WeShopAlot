@@ -1,4 +1,4 @@
-namespace MeShopAlot.WebAPI.Errors
+namespace WeShopAlot.WebAPI.Errors
 {
     public class ApiValidationErrorResponse : ApiResponse
     {

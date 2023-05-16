@@ -1,7 +1,7 @@
-﻿using MeShopAlot.WebAPI.Errors;
+﻿using WeShopAlot.WebAPI.Errors;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MeShopAlot.WebAPI.Controllers
+namespace WeShopAlot.WebAPI.Controllers
 {
     [Route("errors/{code}")]
     [ApiExplorerSettings(IgnoreApi = true)]

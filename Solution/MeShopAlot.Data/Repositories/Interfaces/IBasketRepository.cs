@@ -1,6 +1,6 @@
-﻿using MeShopAlot.Data.Models;
+﻿using WeShopAlot.Data.Models;
 
-namespace MeShopAlot.Data.Repositories.Interfaces
+namespace WeShopAlot.Data.Repositories.Interfaces
 {
     public interface IBasketRepository
     {

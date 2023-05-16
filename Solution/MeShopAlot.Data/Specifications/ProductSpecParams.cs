@@ -1,4 +1,4 @@
-﻿namespace MeShopAlot.Data.Specifications
+﻿namespace WeShopAlot.Data.Specifications
 {
     public class ProductSpecParams
     {

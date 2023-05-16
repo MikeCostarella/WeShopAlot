@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Data.Models;
+﻿using WeShopAlot.Data.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeShopAlot.Infrastructure.Services.Identity
+namespace WeShopAlot.Infrastructure.Services.Identity
 {
     public class AppIdentityDbContext : IdentityDbContext<AppUser>
     {

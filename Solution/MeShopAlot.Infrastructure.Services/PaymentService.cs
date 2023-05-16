@@ -1,13 +1,13 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Repositories.Interfaces;
-using MeShopAlot.Data.Shared.Enumerations;
-using MeShopAlot.Data.Specifications;
-using MeShopAlot.Infrastructure.Services.Interfaces;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Repositories.Interfaces;
+using WeShopAlot.Data.Shared.Enumerations;
+using WeShopAlot.Data.Specifications;
+using WeShopAlot.Infrastructure.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Stripe;
-using Product = MeShopAlot.Data.Models.Product;
+using Product = WeShopAlot.Data.Models.Product;
 
-namespace MeShopAlot.Infrastructure.Services
+namespace WeShopAlot.Infrastructure.Services
 {
     public class PaymentService : IPaymentService
     {

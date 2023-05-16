@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace MeShopAlot.Data.Migrations
+namespace WeShopAlot.Data.Migrations
 {
     public static partial class DbInitializer
     {

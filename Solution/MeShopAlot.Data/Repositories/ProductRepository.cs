@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Repositories.Base;
-using MeShopAlot.Data.Repositories.Interfaces;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Repositories.Base;
+using WeShopAlot.Data.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeShopAlot.Data.Repositories
+namespace WeShopAlot.Data.Repositories
 {
     public class ProductRepository : BaseRepository<Product>, IProductRepository
     {

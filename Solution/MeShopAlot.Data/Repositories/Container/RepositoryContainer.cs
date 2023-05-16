@@ -1,4 +1,4 @@
-﻿namespace MeShopAlot.Data.Repositories.Container
+﻿namespace WeShopAlot.Data.Repositories.Container
 {
     public class RepositoryContainer
     {

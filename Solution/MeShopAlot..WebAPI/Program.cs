@@ -1,8 +1,8 @@
-using MeShopAlot.Data;
-using MeShopAlot.Data.Models;
-using MeShopAlot.Infrastructure.Services.Identity;
-using MeShopAlot.WebAPI.Extensions;
-using MeShopAlot.WebAPI.Middleware;
+using WeShopAlot.Data;
+using WeShopAlot.Data.Models;
+using WeShopAlot.Infrastructure.Services.Identity;
+using WeShopAlot.WebAPI.Extensions;
+using WeShopAlot.WebAPI.Middleware;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
 

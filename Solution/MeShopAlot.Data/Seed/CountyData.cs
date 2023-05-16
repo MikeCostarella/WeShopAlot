@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MeShopAlot.Data.Models;
-using MeShopAlot.Shared.Enumerations;
-using MeShopAlot.Shared.Enumerations.Counties;
+using WeShopAlot.Data.Models;
+using WeShopAlot.Shared.Enumerations;
+using WeShopAlot.Shared.Enumerations.Counties;
 
-namespace MeShopAlot.Data.Seed
+namespace WeShopAlot.Data.Seed
 {
     public static partial class Seeding
     {

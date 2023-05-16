@@ -1,4 +1,4 @@
-namespace MeShopAlot.Testing.Services
+namespace WeShopAlot.Testing.Services
 {
     [TestClass]
     public class AccountServiceTests

@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using MeShopAlot.Shared.Enumerations.Counties;
+using WeShopAlot.Shared.Enumerations.Counties;
 
-namespace MeShopAlot.Data.Models
+namespace WeShopAlot.Data.Models
 {
     public class County : BasePersistentObject
     {

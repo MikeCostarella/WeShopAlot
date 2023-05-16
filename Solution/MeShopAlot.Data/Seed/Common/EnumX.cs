@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System.ComponentModel;
 
-namespace MeShopAlot.Data.Seed.Common
+namespace WeShopAlot.Data.Seed.Common
 {
     public static class EnumX
     {

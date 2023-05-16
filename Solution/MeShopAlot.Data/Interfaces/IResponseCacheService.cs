@@ -1,4 +1,4 @@
-﻿namespace MeShopAlot.Data.Interfaces
+﻿namespace WeShopAlot.Data.Interfaces
 {
     public interface IResponseCacheService
     {

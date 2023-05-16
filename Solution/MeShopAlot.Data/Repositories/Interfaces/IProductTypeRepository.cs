@@ -1,7 +1,7 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Repositories.Base;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Repositories.Base;
 
-namespace MeShopAlot.Data.Repositories.Interfaces
+namespace WeShopAlot.Data.Repositories.Interfaces
 {
     public interface IProductTypeRepository : IAsyncRepository<Product>
     {

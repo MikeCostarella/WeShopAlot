@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Model.Base;
 using System.Linq.Expressions;
-using MeShopAlot.Data.Specifications.Base;
-using MeShopAlot.Data.Utilities.Specifications;
+using WeShopAlot.Data.Specifications.Base;
+using WeShopAlot.Data.Utilities.Specifications;
 using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
-namespace MeShopAlot.Data.Repositories.Base
+namespace WeShopAlot.Data.Repositories.Base
 {
     public class BaseRepository<T> : IAsyncRepository<T> where T : BasePersistentObject
     {

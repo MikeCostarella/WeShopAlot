@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data.Interfaces;
+﻿using WeShopAlot.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using System.Text;
 
-namespace MeShopAlot.WebAPI.Helpers
+namespace WeShopAlot.WebAPI.Helpers
 {
     public class CachedAttribute : Attribute, IAsyncActionFilter
     {

@@ -1,12 +1,12 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Infrastructure.Services.Identity;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Infrastructure.Services.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace MeShopAlot.WebAPI.Extensions
+namespace WeShopAlot.WebAPI.Extensions
 {
     public static class IdentityServiceExtensions
     {

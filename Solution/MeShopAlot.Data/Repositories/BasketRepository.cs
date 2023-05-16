@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Repositories.Interfaces;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Repositories.Interfaces;
 using StackExchange.Redis;
 using System.Text.Json;
 
-namespace MeShopAlot.Data.Repositories
+namespace WeShopAlot.Data.Repositories
 {
     public class BasketRepository : IBasketRepository
     {

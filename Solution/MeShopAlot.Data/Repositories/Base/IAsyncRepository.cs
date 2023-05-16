@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Data.Model.Base;
-using MeShopAlot.Data.Specifications.Base;
+﻿using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Specifications.Base;
 using System.Linq.Expressions;
 
-namespace MeShopAlot.Data.Repositories.Base
+namespace WeShopAlot.Data.Repositories.Base
 {
     public interface IAsyncRepository<T> where T : BasePersistentObject
     {

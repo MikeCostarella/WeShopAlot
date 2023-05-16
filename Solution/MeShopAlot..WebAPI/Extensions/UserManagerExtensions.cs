@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data.Models;
+﻿using WeShopAlot.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
-namespace MeShopAlot.WebAPI.Extensions
+namespace WeShopAlot.WebAPI.Extensions
 {
     public static class UserManagerExtensions
     {

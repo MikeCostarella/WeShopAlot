@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data;
-using MeShopAlot.WebAPI.Errors;
+﻿using WeShopAlot.Data;
+using WeShopAlot.WebAPI.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace MeShopAlot.WebAPI.Controllers
+namespace WeShopAlot.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

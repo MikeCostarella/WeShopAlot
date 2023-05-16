@@ -1,7 +1,7 @@
-﻿using MeShopAlot.Data.Seed.Common;
-using MeShopAlot.Shared.Extensions;
+﻿using WeShopAlot.Data.Seed.Common;
+using WeShopAlot.Shared.Extensions;
 
-namespace MeShopAlot.Data.Seed
+namespace WeShopAlot.Data.Seed
 {
     public class EnumSeedingExtension
     {

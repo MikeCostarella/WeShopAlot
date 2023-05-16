@@ -1,12 +1,12 @@
-﻿using MeShopAlot.Data.Interfaces;
-using MeShopAlot.Data.Models;
+﻿using WeShopAlot.Data.Interfaces;
+using WeShopAlot.Data.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 
-namespace MeShopAlot.Infrastructure.Services
+namespace WeShopAlot.Infrastructure.Services
 {
     public class TokenService : ITokenService
     {

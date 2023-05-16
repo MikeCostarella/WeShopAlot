@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Shared.Enumerations;
-using MeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Shared.Enumerations;
+using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations;
 
-namespace MeShopAlot.Data.Models
+namespace WeShopAlot.Data.Models
 {
     public class MunicipalityType : BasePersistentObject
     {

@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Data.Model.Base;
-using MeShopAlot.Data.Specifications.Base;
+﻿using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Specifications.Base;
 using Microsoft.EntityFrameworkCore;
 
-namespace MeShopAlot.Data.Utilities.Specifications
+namespace WeShopAlot.Data.Utilities.Specifications
 {
     public class SpecificationEvaluator<TEntity> where TEntity : BasePersistentObject
     {

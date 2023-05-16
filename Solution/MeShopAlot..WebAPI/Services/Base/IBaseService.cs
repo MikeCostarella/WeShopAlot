@@ -1,4 +1,4 @@
-﻿namespace MeShopAlot.WebAPI.Services.Base
+﻿namespace WeShopAlot.WebAPI.Services.Base
 {
     public interface IBaseService
     {

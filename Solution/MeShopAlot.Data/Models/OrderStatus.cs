@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations;
-using MeShopAlot.Data.Shared.Enumerations;
+using WeShopAlot.Data.Shared.Enumerations;
 
-namespace MeShopAlot.Data.Models
+namespace WeShopAlot.Data.Models
 {
     public class OrderStatus : BasePersistentObject
     {

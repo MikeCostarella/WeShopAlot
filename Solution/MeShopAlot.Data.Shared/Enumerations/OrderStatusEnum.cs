@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace MeShopAlot.Data.Shared.Enumerations
+namespace WeShopAlot.Data.Shared.Enumerations
 {
     public enum OrderStatusEnum
     {

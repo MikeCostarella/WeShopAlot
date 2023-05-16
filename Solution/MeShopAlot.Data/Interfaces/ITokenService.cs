@@ -1,6 +1,6 @@
-﻿using MeShopAlot.Data.Models;
+﻿using WeShopAlot.Data.Models;
 
-namespace MeShopAlot.Data.Interfaces
+namespace WeShopAlot.Data.Interfaces
 {
     public interface ITokenService
     {

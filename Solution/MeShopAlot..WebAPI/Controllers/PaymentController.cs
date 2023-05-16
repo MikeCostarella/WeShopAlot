@@ -1,11 +1,11 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Infrastructure.Services.Interfaces;
-using MeShopAlot.WebAPI.Errors;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Infrastructure.Services.Interfaces;
+using WeShopAlot.WebAPI.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stripe;
 
-namespace MeShopAlot.WebAPI.Controllers
+namespace WeShopAlot.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

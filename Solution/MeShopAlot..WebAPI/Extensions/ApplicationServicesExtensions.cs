@@ -1,16 +1,16 @@
-﻿using MeShopAlot.Data.Interfaces;
-using MeShopAlot.Data.Repositories.Interfaces;
-using MeShopAlot.Data.Repositories;
+﻿using WeShopAlot.Data.Interfaces;
+using WeShopAlot.Data.Repositories.Interfaces;
+using WeShopAlot.Data.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using MeShopAlot.Infrastructure.Services;
-using MeShopAlot.Data;
+using WeShopAlot.Infrastructure.Services;
+using WeShopAlot.Data;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
-using MeShopAlot.Infrastructure.Services.Interfaces;
-using MeShopAlot.Data.Repositories.Base;
-using MeShopAlot.WebAPI.Errors;
+using WeShopAlot.Infrastructure.Services.Interfaces;
+using WeShopAlot.Data.Repositories.Base;
+using WeShopAlot.WebAPI.Errors;
 
-namespace MeShopAlot.WebAPI.Extensions
+namespace WeShopAlot.WebAPI.Extensions
 {
     public static class ApplicationServicesExtensions
     {

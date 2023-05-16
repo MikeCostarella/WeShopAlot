@@ -1,4 +1,4 @@
-﻿namespace MeShopAlot.WebAPI.Helpers
+﻿namespace WeShopAlot.WebAPI.Helpers
 {
     public class Pagination<T> where T : class
     {

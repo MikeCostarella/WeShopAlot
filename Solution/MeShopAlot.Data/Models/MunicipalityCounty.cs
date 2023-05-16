@@ -1,8 +1,8 @@
-﻿using MeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MeShopAlot.Data.Models
+namespace WeShopAlot.Data.Models
 {
     public class MunicipalityCounty : BasePersistentObject
     {

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 
-namespace MeShopAlot.Data.Extensions
+namespace WeShopAlot.Data.Extensions
 {
     public static class MemberExpressionExtensions
     {

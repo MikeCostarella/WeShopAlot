@@ -1,6 +1,6 @@
-using MeShopAlot.Data.Models;
+using WeShopAlot.Data.Models;
 
-namespace MeShopAlot.WebAPI.Dtos
+namespace WeShopAlot.WebAPI.Dtos
 {
     public class OrderToReturnDto
     {

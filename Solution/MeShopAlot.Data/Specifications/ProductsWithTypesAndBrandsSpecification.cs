@@ -1,7 +1,7 @@
-﻿using MeShopAlot.Data.Models;
-using MeShopAlot.Data.Specifications.Base;
+﻿using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Specifications.Base;
 
-namespace MeShopAlot.Data.Specifications
+namespace WeShopAlot.Data.Specifications
 {
     public class ProductsWithTypesAndBrandsSpecification : BaseSpecification<Product>
     {

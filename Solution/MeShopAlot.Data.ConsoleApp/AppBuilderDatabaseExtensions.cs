@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace MeShopAlot.Data.ConsoleApp
+namespace WeShopAlot.Data.ConsoleApp
 {
     public static class AppBuilderDatabaseExtensions
     {

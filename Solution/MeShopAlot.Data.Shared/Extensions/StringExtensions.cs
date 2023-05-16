@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace MeShopAlot.Shared.Extensions
+namespace WeShopAlot.Shared.Extensions
 {
     public static class StringExtensions
     {

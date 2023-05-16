@@ -1,9 +1,9 @@
-﻿using MeShopAlot.Data.Model.Base;
-using MeShopAlot.Shared.Enumerations;
+﻿using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Shared.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MeShopAlot.Data.Models
+namespace WeShopAlot.Data.Models
 {
     public class State : BasePersistentObject
     {

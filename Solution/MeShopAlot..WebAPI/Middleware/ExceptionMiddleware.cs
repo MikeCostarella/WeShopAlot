@@ -1,8 +1,8 @@
-﻿using MeShopAlot.WebAPI.Errors;
+﻿using WeShopAlot.WebAPI.Errors;
 using System.Net;
 using System.Text.Json;
 
-namespace MeShopAlot.WebAPI.Middleware
+namespace WeShopAlot.WebAPI.Middleware
 {
     public class ExceptionMiddleware
     {
