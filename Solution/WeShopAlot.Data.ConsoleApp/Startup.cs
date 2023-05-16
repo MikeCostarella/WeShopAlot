@@ -36,7 +36,7 @@ namespace WeShopAlot.Data.ConsoleApp
             {
                 throw new InvalidOperationException("No db connection specified");
             }
-            services.AddDbContext<MeShopAlotContext>(options => options.UseSqlServer(connectionstring));
+            services.AddDbContext<WeShopAlotContext>(options => options.UseSqlServer(connectionstring));
         }
 
         public void Configure(IApplicationBuilder app)

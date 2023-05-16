@@ -3,11 +3,11 @@ using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Data.Repositories
 {
-    public class ProductTypeRepository : BaseRepository<ProductType>
+    public class AddressRepository : BaseRepository<Address>
     {
         #region Constructors
 
-        public ProductTypeRepository(MeShopAlotContext context) : base(context) { }
+        public AddressRepository(WeShopAlotContext context) : base(context) { }
 
         #endregion Constructors
     }

@@ -9,7 +9,7 @@ namespace WeShopAlot.Data.Repositories
     {
         #region Constructors
 
-        public ProductRepository(MeShopAlotContext context) : base(context) { }
+        public ProductRepository(WeShopAlotContext context) : base(context) { }
 
         #endregion Constructors
 

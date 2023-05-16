@@ -4,19 +4,16 @@ using WeShopAlot.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
 namespace WeShopAlot.Data.Migrations
 {
-    [DbContext(typeof(MeShopAlotContext))]
-    [Migration("20230514123758_SQLServer_Initial")]
-    partial class SQLServer_Initial
+    [DbContext(typeof(WeShopAlotContext))]
+    partial class MeShopAlotContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

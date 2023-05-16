@@ -8,7 +8,7 @@ namespace OurGov.Testing.Shared.Base
         #region Member Variables
 
         protected IConfiguration configuration;
-        protected MeShopAlotContext dbContext;
+        protected WeShopAlotContext dbContext;
 
         #endregion Member Variables
 

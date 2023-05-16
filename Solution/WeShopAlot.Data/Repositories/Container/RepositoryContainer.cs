@@ -4,7 +4,7 @@
     {
         #region Member Variables
 
-        protected MeShopAlotContext dbContext;
+        protected WeShopAlotContext dbContext;
 
         #endregion Member Variables
 
@@ -16,7 +16,7 @@
 
         #region Constructors
 
-        public RepositoryContainer(MeShopAlotContext dbContext)
+        public RepositoryContainer(WeShopAlotContext dbContext)
         {
             this.dbContext = dbContext;
             InitializeRepositories();

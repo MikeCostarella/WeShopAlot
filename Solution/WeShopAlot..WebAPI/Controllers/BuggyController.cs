@@ -9,8 +9,8 @@ namespace WeShopAlot.WebAPI.Controllers
     [ApiController]
     public class BuggyController : BaseApiController
     {
-        private readonly MeShopAlotContext _context;
-        public BuggyController(MeShopAlotContext context)
+        private readonly WeShopAlotContext _context;
+        public BuggyController(WeShopAlotContext context)
         {
             _context = context;
         }

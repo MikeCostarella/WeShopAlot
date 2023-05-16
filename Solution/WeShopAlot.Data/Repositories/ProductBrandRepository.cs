@@ -7,7 +7,7 @@ namespace WeShopAlot.Data.Repositories
     {
         #region Constructors
 
-        public ProductBrandRepository(MeShopAlotContext context) : base(context) { }
+        public ProductBrandRepository(WeShopAlotContext context) : base(context) { }
 
         #endregion Constructors
     }

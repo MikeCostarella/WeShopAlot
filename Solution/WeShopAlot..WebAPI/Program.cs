@@ -40,7 +40,7 @@ app.MapFallbackToController("Index", "Fallback");
 
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
-var context = services.GetRequiredService<MeShopAlotContext>();
+var context = services.GetRequiredService<WeShopAlotContext>();
 var identityContext = services.GetRequiredService<AppIdentityDbContext>();
 var userManager = services.GetRequiredService<UserManager<AppUser>>();
 var logger = services.GetRequiredService<ILogger<Program>>();

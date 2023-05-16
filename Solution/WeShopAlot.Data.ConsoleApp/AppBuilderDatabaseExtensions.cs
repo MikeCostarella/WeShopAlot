@@ -10,7 +10,7 @@ namespace WeShopAlot.Data.ConsoleApp
         {
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope()) {
                 var dir = AppDomain.CurrentDomain.BaseDirectory;
-                var context = servicedScope.ServiceProvider.GetRequiredService<MeShopAlotContext>();
+                var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
                 context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropDatabase.sql"));
                 //context.Database.EnsureDeleted();
                 //context.Database.EnsureCreated();

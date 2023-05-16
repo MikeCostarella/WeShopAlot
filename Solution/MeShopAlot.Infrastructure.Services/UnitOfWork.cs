@@ -8,9 +8,9 @@ namespace WeShopAlot.Infrastructure.Services
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly MeShopAlotContext _context;
+        private readonly WeShopAlotContext _context;
         private Hashtable _repositories;
-        public UnitOfWork(MeShopAlotContext context)
+        public UnitOfWork(WeShopAlotContext context)
         {
             _context = context;
         }

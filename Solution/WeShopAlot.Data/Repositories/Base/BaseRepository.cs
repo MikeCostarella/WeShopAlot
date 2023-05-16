@@ -11,13 +11,13 @@ namespace WeShopAlot.Data.Repositories.Base
     {
         #region Member Variables
 
-        protected readonly MeShopAlotContext dbContext;
+        protected readonly WeShopAlotContext dbContext;
 
         #endregion Member Variables
 
         #region Constructors
 
-        public BaseRepository(MeShopAlotContext dbContext)
+        public BaseRepository(WeShopAlotContext dbContext)
         {
             this.dbContext = dbContext;
         }

@@ -18,7 +18,7 @@ namespace WeShopAlot.WebAPI.Extensions
             IConfiguration config)
         {
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
-            services.AddDbContext<MeShopAlotContext>(opt =>
+            services.AddDbContext<WeShopAlotContext>(opt =>
             {
                 opt.UseSqlServer(config.GetConnectionString("MeShopAlotConnection"));
             });

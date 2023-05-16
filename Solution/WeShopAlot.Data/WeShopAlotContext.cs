@@ -10,11 +10,11 @@ using System.Configuration;
 
 namespace WeShopAlot.Data
 {
-    public class MeShopAlotContext : DbContext
+    public class WeShopAlotContext : DbContext
     {
         #region Constructors
 
-        public MeShopAlotContext(DbContextOptions<MeShopAlotContext> options) : base(options)
+        public WeShopAlotContext(DbContextOptions<WeShopAlotContext> options) : base(options)
         {
         }
 
@@ -49,7 +49,7 @@ namespace WeShopAlot.Data
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<MeShopAlotContext>(options =>
+            services.AddDbContext<WeShopAlotContext>(options =>
                 options.UseSqlServer(ConfigurationManager.ConnectionStrings["MeShopAlotConnection"].ConnectionString));
         }
 
