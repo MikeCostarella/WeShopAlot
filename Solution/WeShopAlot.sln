@@ -11,7 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{DA49ED75-5
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{BD647F45-6867-472C-9996-37C37ED90DE4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Infrastructure.Services", "MeShopAlot.Infrastructure.Services\MeShopAlot.Infrastructure.Services.csproj", "{B82461B0-F12A-4A6B-9B3F-D89060C72F66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Infrastructure.Services", "MeShopAlot.Infrastructure.Services\WeShopAlot.Infrastructure.Services.csproj", "{B82461B0-F12A-4A6B-9B3F-D89060C72F66}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.WebApis", "MeShopAlot.Testing.WebApis\MeShopAlot.Testing.WebApis.csproj", "{64142820-A021-4050-94C0-237B0682A1B7}"
 EndProject
