@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MeShopAlot.Data.Shared\WeShopAlot.Data.Shared.csproj" />
+    <ProjectReference Include="..\WeShopAlot.Data.Shared\WeShopAlot.Data.Shared.csproj" />
   </ItemGroup>
 
 </Project>
