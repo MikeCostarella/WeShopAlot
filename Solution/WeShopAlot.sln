@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.Services
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Data", "MeShopAlot.Data\MeShopAlot.Data.csproj", "{C026EAEB-7CA1-4901-9C6D-F5436178192B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Data.Shared", "MeShopAlot.Data.Shared\MeShopAlot.Data.Shared.csproj", "{FE0683A5-A0E7-4226-8CC5-4249B1075693}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Data.Shared", "MeShopAlot.Data.Shared\WeShopAlot.Data.Shared.csproj", "{FE0683A5-A0E7-4226-8CC5-4249B1075693}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MeShopAlot.Testing.Repositories", "MeShopAlot.Testing.Repositories\MeShopAlot.Testing.Repositories.csproj", "{B07D23A6-3C6E-4929-B6C1-DB65321B07DA}"
 EndProject
