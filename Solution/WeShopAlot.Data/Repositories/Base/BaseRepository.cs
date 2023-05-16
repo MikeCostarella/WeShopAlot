@@ -61,7 +61,8 @@ namespace WeShopAlot.Data.Repositories.Base
             throw new NotImplementedException();
         }
 
-        public virtual T GetById(int id) {
+        public virtual T GetById(int id)
+        {
             return dbContext.Set<T>().FirstOrDefault(x => !x.IsDeleted && x.Id == id);
         }
 
@@ -77,6 +78,7 @@ namespace WeShopAlot.Data.Repositories.Base
 
         public virtual async Task<bool> IsExistByIdAsync(int id)
         {
+            await Task.Delay(0);
             throw new NotImplementedException();
         }
 
