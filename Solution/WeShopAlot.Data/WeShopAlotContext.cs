@@ -4,7 +4,7 @@ using WeShopAlot.Data.Models;
 using WeShopAlot.Data.Migrations;
 using WeShopAlot.Data.Seed;
 using System.Configuration;
-using WeShopAlot.Data.Extensions;
+using WeShopAlot.Data.Extensions.ModelBuilderFunctionality;
 
 namespace WeShopAlot.Data
 {
@@ -34,6 +34,7 @@ namespace WeShopAlot.Data
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
+        public DbSet<Precinct> Precincts { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductItemOrdered> ProductItemsOrdered { get; set; }

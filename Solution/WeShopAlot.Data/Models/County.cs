@@ -23,7 +23,7 @@ namespace WeShopAlot.Data.Models
         #region Child List Properties
 
         public List<MunicipalityCounty> Municipalities { get; set; }
-
+        public List<Precinct> Precincts { get; set; }
         public List<Township> Townships { get; set; }
 
         #endregion Child List Properties

@@ -20,7 +20,7 @@ namespace WeShopAlot.Data.Extensions
         public MemberAccesses(ParameterExpression parameter)
         {
             this.parameter = parameter;
-            this.Members = new HashSet<MemberExpression>();
+            Members = new HashSet<MemberExpression>();
         }
 
         protected override Expression VisitMember(MemberExpression node)
