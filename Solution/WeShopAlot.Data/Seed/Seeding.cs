@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WeShopAlot.Shared.Enumerations;
 using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Shared.Enumerations;
 
 namespace WeShopAlot.Data.Seed
 {
@@ -12,6 +13,7 @@ namespace WeShopAlot.Data.Seed
             StateData(modelBuilder);
             CountyData(modelBuilder);
             modelBuilder.Entity<MunicipalityType>().HasData(EnumSeedingExtension.SeedEnumValues<MunicipalityTypeEnum, MunicipalityType>());
+            modelBuilder.Entity<OrderStatus>().HasData(EnumSeedingExtension.SeedEnumValues<OrderStatusEnum, OrderStatus>());
         }
     }
 }
