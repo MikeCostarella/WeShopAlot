@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Shared.Enumerations.OhioSpecific;
 using WeShopAlot.Shared.Enumerations;
-using WeShopAlot.Shared.Enumerations.Counties;
 
 namespace WeShopAlot.Data.Seed
 {

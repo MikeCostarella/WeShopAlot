@@ -1,7 +1,7 @@
 ﻿using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using WeShopAlot.Shared.Enumerations.Counties;
+using WeShopAlot.Data.Shared.Enumerations.OhioSpecific;
 
 namespace WeShopAlot.Data.Models
 {

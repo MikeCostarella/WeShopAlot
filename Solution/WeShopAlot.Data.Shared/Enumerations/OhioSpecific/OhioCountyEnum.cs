@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace WeShopAlot.Shared.Enumerations.Counties
+namespace WeShopAlot.Data.Shared.Enumerations.OhioSpecific
 {
     public enum OhioCountyEnum
     {

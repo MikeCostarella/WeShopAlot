@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace WeShopAlot.Shared.Enumerations
+namespace WeShopAlot.Data.Shared.Enumerations.OhioSpecific
 {
-    public enum TownshipEnum
+    public enum OhioTownshipEnum
     {
         [Description("Adams - Manchester")]
         Adams_Manchester = 1,
