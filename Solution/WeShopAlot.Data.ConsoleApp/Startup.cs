@@ -44,6 +44,8 @@ namespace WeShopAlot.Data.ConsoleApp
         public void Configure(IApplicationBuilder app)
         {
             app.MigrateDatabase();
+            app.LoadProductTypes();
+            app.LoadProductBrands();
             app.LoadProducts();
             //CancellationToken cancellationToken = new CancellationToken();
             //hostLifetime.StopAsync(cancellationToken);
