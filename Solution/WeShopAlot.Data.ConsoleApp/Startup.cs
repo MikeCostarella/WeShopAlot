@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using WeShopAlot.Data.ConsoleApp.Extensions;
+using WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific;
 
 namespace WeShopAlot.Data.ConsoleApp
 {
@@ -43,7 +44,7 @@ namespace WeShopAlot.Data.ConsoleApp
         public void Configure(IApplicationBuilder app)
         {
             app.MigrateDatabase();
-            app.LoadProductData();
+            app.LoadProducts();
             //CancellationToken cancellationToken = new CancellationToken();
             //hostLifetime.StopAsync(cancellationToken);
         }
