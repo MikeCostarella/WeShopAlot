@@ -1,12 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 using WeShopAlot.Data.Import.Models;
 using WeShopAlot.Data.Models;
 using WeShopAlot.Data.Repositories;
@@ -30,7 +25,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                         var stateRepository = new StateRepository(context);
                         var usCountiesData = File.ReadAllText(path + @"/Content/data/json/USA-counties.json");
                         var importedCounties = JsonSerializer.Deserialize<List<ImportedCounty>>(usCountiesData);
-                        foreach (var importedCounty in importedCounties)
+                         foreach (var importedCounty in importedCounties)
                         {
                             var state = stateRepository.Get(country, importedCounty.State);
                             var county = new County
