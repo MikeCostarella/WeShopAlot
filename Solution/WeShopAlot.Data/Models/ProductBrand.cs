@@ -7,6 +7,8 @@ namespace WeShopAlot.Data.Models
     {
         #region Physical Properties
 
+        public int InternalId { get; set; }
+
         [Required]
         [StringLength(100)]
         public string Name { get; set; }

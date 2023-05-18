@@ -5,5 +5,6 @@ namespace WeShopAlot.Data.Repositories.Interfaces
 {
     public interface IProductBrandRepository : IAsyncRepository<ProductBrand>
     {
+        ProductBrand GetByInternalId(int internalId);
     }
 }

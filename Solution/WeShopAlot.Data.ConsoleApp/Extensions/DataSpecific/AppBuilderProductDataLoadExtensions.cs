@@ -15,6 +15,8 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
+                var productBrandRepository = new ProductBrandRepository(context);
+                var productTypeRepository = new ProductTypeRepository(context);
                 try
                 {
                     var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
@@ -24,13 +26,15 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                         var importedProducts = JsonSerializer.Deserialize<List<ImportedProduct>>(productsData);
                         foreach (var importedProduct in importedProducts)
                         {
+                            var productBrand = productBrandRepository.GetByInternalId(importedProduct.ProductBrandId);
+                            var productType = productTypeRepository.GetByInternalId(importedProduct.ProductTypeId);
                             var product = new Product
                             {
                                 Name = importedProduct.Name,
                                 PictureUrl = importedProduct.PictureUrl,
                                 Price = importedProduct.Price,
-                                ProductBrandId = importedProduct.ProductBrandId,
-                                ProductTypeId = importedProduct.ProductTypeId
+                                ProductBrandId = productBrand.Id,
+                                ProductTypeId = productType.Id
                             };
                             context.Products.Add(product);
                         }

@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using System.Text.Json;
+using WeShopAlot.Data.Import.Models;
 using WeShopAlot.Data.Models;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
@@ -19,8 +20,16 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                     if (!context.ProductTypes.Any())
                     {
                         var productTypesData = File.ReadAllText(path + @"/Content/data/json/producttypes.json");
-                        var productTypes = JsonSerializer.Deserialize<List<ProductType>>(productTypesData);
-                        context.ProductTypes.AddRange(productTypes);
+                        var importedProductTypes = JsonSerializer.Deserialize<List<ImportedProductType>>(productTypesData);
+                        foreach ( var importedProductType in importedProductTypes )
+                        {
+                            var productType = new ProductType
+                            {
+                                InternalId = importedProductType.Id,
+                                Name = importedProductType.Name
+                            };
+                            context.ProductTypes.Add(productType);
+                        }
                     }
                     if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                 }
