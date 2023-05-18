@@ -44,6 +44,7 @@ namespace WeShopAlot.Data.ConsoleApp
         public void Configure(IApplicationBuilder app)
         {
             app.MigrateDatabase();
+            app.LoadCountries();
             app.LoadProductTypes();
             app.LoadProductBrands();
             app.LoadProducts();

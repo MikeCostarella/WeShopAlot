@@ -1,5 +1,4 @@
-﻿using WeShopAlot.Shared.Enumerations;
-using WeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations;
 
 namespace WeShopAlot.Data.Models
@@ -13,8 +12,8 @@ namespace WeShopAlot.Data.Models
         public string Abbreviation { get; set; }
 
         [Required]
-        [StringLength(300)]
-        public CountryEnum Name { get; set; }
+        [StringLength(200)]
+        public string Name { get; set; }
 
         #endregion Physical Properties
 

@@ -10,10 +10,8 @@ namespace WeShopAlot.Data.Extensions.ModelBuilderFunctionality
     {
         public static void InitializeWeShopAlotEnumerations(this ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Country>().Property(e => e.Name).HasConversion(EnumX.Converter<CountryEnum>());
             modelBuilder.Entity<MunicipalityType>().Property(e => e.Name).HasConversion(EnumX.Converter<MunicipalityTypeEnum>());
             modelBuilder.Entity<OrderStatus>().Property(e => e.Name).HasConversion(EnumX.Converter<OrderStatusEnum>());
-            modelBuilder.Entity<State>().Property(e => e.Name).HasConversion(EnumX.Converter<StateEnum>());
         }
     }
 }

@@ -184,28 +184,12 @@ namespace WeShopAlot.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Country", "WSA");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Abbreviation = "CAN",
-                            IsDeleted = false,
-                            Name = "Canada"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Abbreviation = "USA",
-                            IsDeleted = false,
-                            Name = "United States"
-                        });
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.County", b =>
@@ -219,9 +203,10 @@ namespace WeShopAlot.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Name")
-                        .HasMaxLength(300)
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<int>("StateId")
                         .HasColumnType("int");
@@ -231,22 +216,6 @@ namespace WeShopAlot.Data.Migrations
                     b.HasIndex("StateId");
 
                     b.ToTable("County", "WSA");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            IsDeleted = false,
-                            Name = 1,
-                            StateId = 36
-                        },
-                        new
-                        {
-                            Id = 2,
-                            IsDeleted = false,
-                            Name = 2,
-                            StateId = 36
-                        });
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.CustomerBasket", b =>
@@ -646,6 +615,9 @@ namespace WeShopAlot.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("InternalId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -692,6 +664,9 @@ namespace WeShopAlot.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("InternalId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -726,40 +701,14 @@ namespace WeShopAlot.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CountryId");
 
                     b.ToTable("State", "WSA");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Abbreviation = "AL",
-                            CountryId = 2,
-                            IsDeleted = false,
-                            Name = "Alabama"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Abbreviation = "AK",
-                            CountryId = 2,
-                            IsDeleted = false,
-                            Name = "Alaska"
-                        },
-                        new
-                        {
-                            Id = 36,
-                            Abbreviation = "OH",
-                            CountryId = 2,
-                            IsDeleted = false,
-                            Name = "Ohio"
-                        });
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.Township", b =>

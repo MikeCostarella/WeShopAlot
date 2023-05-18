@@ -24,7 +24,7 @@ namespace WeShopAlot.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Abbreviation = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -125,6 +125,7 @@ namespace WeShopAlot.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    InternalId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -157,6 +158,7 @@ namespace WeShopAlot.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    InternalId = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -174,7 +176,7 @@ namespace WeShopAlot.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Abbreviation = table.Column<string>(type: "nvarchar(2)", maxLength: 2, nullable: false),
                     CountryId = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -256,7 +258,7 @@ namespace WeShopAlot.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<int>(type: "int", maxLength: 300, nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     StateId = table.Column<int>(type: "int", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
@@ -516,16 +518,6 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.InsertData(
                 schema: "WSA",
-                table: "Country",
-                columns: new[] { "Id", "Abbreviation", "IsDeleted", "Name" },
-                values: new object[,]
-                {
-                    { 1, "CAN", false, "Canada" },
-                    { 2, "USA", false, "United States" }
-                });
-
-            migrationBuilder.InsertData(
-                schema: "WSA",
                 table: "MunicipalityType",
                 columns: new[] { "Id", "Description", "IsDeleted", "Name" },
                 values: new object[,]
@@ -543,27 +535,6 @@ namespace WeShopAlot.Data.Migrations
                     { 1, "Payment Failed", false, "Payment Failed" },
                     { 2, "Payment Received", false, "Payment Received" },
                     { 3, "Pending", false, "Pending" }
-                });
-
-            migrationBuilder.InsertData(
-                schema: "WSA",
-                table: "State",
-                columns: new[] { "Id", "Abbreviation", "CountryId", "IsDeleted", "Name" },
-                values: new object[,]
-                {
-                    { 1, "AL", 2, false, "Alabama" },
-                    { 2, "AK", 2, false, "Alaska" },
-                    { 36, "OH", 2, false, "Ohio" }
-                });
-
-            migrationBuilder.InsertData(
-                schema: "WSA",
-                table: "County",
-                columns: new[] { "Id", "IsDeleted", "Name", "StateId" },
-                values: new object[,]
-                {
-                    { 1, false, 1, 36 },
-                    { 2, false, 2, 36 }
                 });
 
             migrationBuilder.CreateIndex(

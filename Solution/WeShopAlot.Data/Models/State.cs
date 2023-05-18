@@ -1,5 +1,4 @@
 ﻿using WeShopAlot.Data.Model.Base;
-using WeShopAlot.Shared.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -19,8 +18,8 @@ namespace WeShopAlot.Data.Models
         public Country Country { get; set; }
 
         [Required]
-        [StringLength(300)]
-        public StateEnum Name { get; set; }
+        [StringLength(200)]
+        public string Name { get; set; }
 
         #endregion Physical Properties
 

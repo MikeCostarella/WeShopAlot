@@ -1,7 +1,6 @@
 ﻿using WeShopAlot.Data.Model.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using WeShopAlot.Data.Shared.Enumerations.OhioSpecific;
 
 namespace WeShopAlot.Data.Models
 {
@@ -10,8 +9,8 @@ namespace WeShopAlot.Data.Models
         #region Physical Properties
 
         [Required]
-        [StringLength(300)]
-        public OhioCountyEnum Name { get; set; }
+        [StringLength(200)]
+        public string Name { get; set; }
 
         [Required]
         [ForeignKey("StateId")]
