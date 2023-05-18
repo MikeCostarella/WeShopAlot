@@ -4,12 +4,13 @@ using System.Reflection;
 using System.Text.Json;
 using WeShopAlot.Data.Import.Models;
 using WeShopAlot.Data.Models;
+using WeShopAlot.Data.Repositories;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
-    public static class AppBuilderCountryLoadExtensions
+    public static class AppBuilderStateLoadExtensions
     {
-        public static void LoadCountries(this IApplicationBuilder app)
+        public static void LoadUSStates(this IApplicationBuilder app)
         {
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
@@ -17,18 +18,21 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                 try
                 {
                     var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    if (!context.Countries.Any())
+                    if (!context.States.Any())
                     {
-                        var countriesData = File.ReadAllText(path + @"/Content/data/json/countries.json");
-                        var importedCountries = JsonSerializer.Deserialize<List<ImportedCountry>>(countriesData);
-                        foreach (var importedCountry in importedCountries)
+                        var countryRepository = new CountryRepository(context);
+                        var country = countryRepository.GetByAbbreviation("US");
+                        var usStatesData = File.ReadAllText(path + @"/Content/data/json/USA-states.json");
+                        var importedStates = JsonSerializer.Deserialize<List<ImportedState>>(usStatesData);
+                        foreach (var importedState in importedStates)
                         {
-                            var country = new Country
+                            var state = new State
                             {
-                                Abbreviation = importedCountry.code,
-                                Name = importedCountry.name
+                                Abbreviation = importedState.code,
+                                CountryId = country.Id,
+                                Name = importedState.name
                             };
-                            context.Countries.Add(country);
+                            context.States.Add(state);
                         }
                     }
                     if (context.ChangeTracker.HasChanges()) context.SaveChanges();
