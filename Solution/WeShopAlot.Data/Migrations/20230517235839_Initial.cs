@@ -8,17 +8,17 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace WeShopAlot.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class SQLServer_Initial : Migration
+    public partial class Initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.EnsureSchema(
-                name: "MSA");
+                name: "WSA");
 
             migrationBuilder.CreateTable(
                 name: "Country",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,7 +34,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "CustomerBasket",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -52,7 +52,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "DeliveryMethod",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -70,7 +70,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "Individual",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -88,7 +88,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "MunicipalityType",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -104,7 +104,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "OrderStatus",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -120,7 +120,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ProductBrand",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -135,7 +135,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ProductItemOrdered",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -152,7 +152,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "ProductType",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -167,7 +167,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "State",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -183,14 +183,14 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_State_Country_CountryId",
                         column: x => x.CountryId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "Country",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "BasketItem",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -210,14 +210,14 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_BasketItem_CustomerBasket_CustomerBasketId",
                         column: x => x.CustomerBasketId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "CustomerBasket",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Product",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -236,14 +236,14 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Product_ProductBrand_ProductBrandId",
                         column: x => x.ProductBrandId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "ProductBrand",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Product_ProductType_ProductTypeId",
                         column: x => x.ProductTypeId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "ProductType",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -251,7 +251,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "County",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -266,14 +266,14 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_County_State_StateId",
                         column: x => x.StateId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "State",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Municipality",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -289,20 +289,20 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Municipality_MunicipalityType_MunicipalityTypeId",
                         column: x => x.MunicipalityTypeId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "MunicipalityType",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Municipality_State_StateId",
                         column: x => x.StateId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "State",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Address",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -321,21 +321,46 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Address_Country_CountryId",
                         column: x => x.CountryId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "Country",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Address_County_CountyId",
                         column: x => x.CountyId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
+                        principalTable: "County",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Precinct",
+                schema: "WSA",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(3)", maxLength: 3, nullable: true),
+                    CountyId = table.Column<int>(type: "int", nullable: true),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    MediaMarket = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    Region = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Precinct", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Precinct_County_CountyId",
+                        column: x => x.CountyId,
+                        principalSchema: "WSA",
                         principalTable: "County",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Township",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -350,14 +375,14 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Township_County_CountyId",
                         column: x => x.CountyId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "County",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "MunicipalityCounty",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -372,20 +397,20 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_MunicipalityCounty_County_CountyId",
                         column: x => x.CountyId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "County",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_MunicipalityCounty_Municipality_MunicipalityId",
                         column: x => x.MunicipalityId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "Municipality",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "AppUser",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -412,14 +437,14 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_AppUser_Address_AddressId",
                         column: x => x.AddressId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "Address",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "Order",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -439,21 +464,21 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_Order_Address_ShipToAddressId",
                         column: x => x.ShipToAddressId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "Address",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Order_DeliveryMethod_DeliveryMethodId",
                         column: x => x.DeliveryMethodId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "DeliveryMethod",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Order_OrderStatus_StatusId",
                         column: x => x.StatusId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "OrderStatus",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -461,7 +486,7 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateTable(
                 name: "OrderItem",
-                schema: "MSA",
+                schema: "WSA",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -478,19 +503,19 @@ namespace WeShopAlot.Data.Migrations
                     table.ForeignKey(
                         name: "FK_OrderItem_Order_OrderId",
                         column: x => x.OrderId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "Order",
                         principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_OrderItem_ProductItemOrdered_ItemOrderedId",
                         column: x => x.ItemOrderedId,
-                        principalSchema: "MSA",
+                        principalSchema: "WSA",
                         principalTable: "ProductItemOrdered",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.InsertData(
-                schema: "MSA",
+                schema: "WSA",
                 table: "Country",
                 columns: new[] { "Id", "Abbreviation", "IsDeleted", "Name" },
                 values: new object[,]
@@ -500,7 +525,7 @@ namespace WeShopAlot.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "MSA",
+                schema: "WSA",
                 table: "MunicipalityType",
                 columns: new[] { "Id", "Description", "IsDeleted", "Name" },
                 values: new object[,]
@@ -510,7 +535,18 @@ namespace WeShopAlot.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "MSA",
+                schema: "WSA",
+                table: "OrderStatus",
+                columns: new[] { "Id", "Description", "IsDeleted", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Payment Failed", false, "Payment Failed" },
+                    { 2, "Payment Received", false, "Payment Received" },
+                    { 3, "Pending", false, "Pending" }
+                });
+
+            migrationBuilder.InsertData(
+                schema: "WSA",
                 table: "State",
                 columns: new[] { "Id", "Abbreviation", "CountryId", "IsDeleted", "Name" },
                 values: new object[,]
@@ -521,7 +557,7 @@ namespace WeShopAlot.Data.Migrations
                 });
 
             migrationBuilder.InsertData(
-                schema: "MSA",
+                schema: "WSA",
                 table: "County",
                 columns: new[] { "Id", "IsDeleted", "Name", "StateId" },
                 values: new object[,]
@@ -532,109 +568,115 @@ namespace WeShopAlot.Data.Migrations
 
             migrationBuilder.CreateIndex(
                 name: "IX_Address_CountryId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Address",
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Address_CountyId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Address",
                 column: "CountyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AppUser_AddressId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "AppUser",
                 column: "AddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BasketItem_CustomerBasketId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "BasketItem",
                 column: "CustomerBasketId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_County_StateId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "County",
                 column: "StateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Municipality_MunicipalityTypeId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Municipality",
                 column: "MunicipalityTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Municipality_StateId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Municipality",
                 column: "StateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MunicipalityCounty_CountyId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "MunicipalityCounty",
                 column: "CountyId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MunicipalityCounty_MunicipalityId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "MunicipalityCounty",
                 column: "MunicipalityId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_DeliveryMethodId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Order",
                 column: "DeliveryMethodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_ShipToAddressId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Order",
                 column: "ShipToAddressId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Order_StatusId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Order",
                 column: "StatusId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItem_ItemOrderedId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "OrderItem",
                 column: "ItemOrderedId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_OrderItem_OrderId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "OrderItem",
                 column: "OrderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Precinct_CountyId",
+                schema: "WSA",
+                table: "Precinct",
+                column: "CountyId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Product_ProductBrandId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Product",
                 column: "ProductBrandId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Product_ProductTypeId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Product",
                 column: "ProductTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_State_CountryId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "State",
                 column: "CountryId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Township_CountyId",
-                schema: "MSA",
+                schema: "WSA",
                 table: "Township",
                 column: "CountyId");
         }
@@ -644,83 +686,87 @@ namespace WeShopAlot.Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "AppUser",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "BasketItem",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Individual",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "MunicipalityCounty",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "OrderItem",
-                schema: "MSA");
+                schema: "WSA");
+
+            migrationBuilder.DropTable(
+                name: "Precinct",
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Product",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Township",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "CustomerBasket",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Municipality",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Order",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "ProductItemOrdered",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "ProductBrand",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "ProductType",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "MunicipalityType",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Address",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "DeliveryMethod",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "OrderStatus",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "County",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "State",
-                schema: "MSA");
+                schema: "WSA");
 
             migrationBuilder.DropTable(
                 name: "Country",
-                schema: "MSA");
+                schema: "WSA");
         }
     }
 }

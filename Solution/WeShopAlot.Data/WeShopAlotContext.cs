@@ -55,7 +55,7 @@ namespace WeShopAlot.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.HasDefaultSchema("MSA");
+            modelBuilder.HasDefaultSchema("WSA");
             modelBuilder.RemovePluralizingTableNameConvention();
             Seeding.SeedMasterData(modelBuilder);
             modelBuilder.InitializeWeShopAlotEnumerations();
