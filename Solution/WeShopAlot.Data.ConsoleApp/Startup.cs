@@ -46,10 +46,10 @@ namespace WeShopAlot.Data.ConsoleApp
             app.MigrateDatabase();
             app.LoadCountries();
             app.LoadUSStates();
-            app.LoadUSCounties();
+            //app.LoadUSCounties();
             app.LoadProductTypes();
             app.LoadProductBrands();
-            app.LoadProducts();
+            //app.LoadProducts();
             //CancellationToken cancellationToken = new CancellationToken();
             //hostLifetime.StopAsync(cancellationToken);
         }
