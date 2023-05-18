@@ -8,7 +8,7 @@ using WeShopAlot.Data.Repositories;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
-    public static class AppBuilderProductDataLoadExtensions
+    public static class AppBuilderProductLoadExtensions
     {
         public static void LoadProducts(this IApplicationBuilder app)
         {

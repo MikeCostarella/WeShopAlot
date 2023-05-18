@@ -7,7 +7,7 @@ using WeShopAlot.Data.Models;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
-    public static class AppBuilderProductBrandDataLoadExtensions
+    public static class AppBuilderProductBrandLoadExtensions
     {
         public static void LoadProductBrands(this IApplicationBuilder app)
         {
