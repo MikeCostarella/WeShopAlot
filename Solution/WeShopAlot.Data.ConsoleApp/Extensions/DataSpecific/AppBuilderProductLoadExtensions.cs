@@ -30,6 +30,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                             var productType = productTypeRepository.GetByInternalId(importedProduct.ProductTypeId);
                             var product = new Product
                             {
+                                Description = importedProduct.Description,
                                 Name = importedProduct.Name,
                                 PictureUrl = importedProduct.PictureUrl,
                                 Price = importedProduct.Price,
