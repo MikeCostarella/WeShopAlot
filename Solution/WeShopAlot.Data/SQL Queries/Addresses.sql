@@ -11,7 +11,7 @@ SELECT
 	,address.AddressLine2
 	,address.City
 INTO #T1
-FROM Address address
+FROM WSA.Address address
 
 SELECT * FROM #T1
 WHERE
