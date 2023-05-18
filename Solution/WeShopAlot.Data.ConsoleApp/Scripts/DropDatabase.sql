@@ -1,7 +1,7 @@
 declare @constraint [nvarchar](1000)
 declare DROPCONSTRAINT cursor for
 
-SELECT 'ALTER TABLE[WSA].[' + OBJECT_NAME(parent_object_id) + '] DROP CONSTRAINT' + name AS DROPCONSTRAINT
+SELECT 'ALTER TABLE[WSA].[' + OBJECT_NAME(parent_object_id) + '] DROP CONSTRAINT ' + name AS DROPCONSTRAINT
 FROM sys.foreign_keys
 open DROPCONSTRAINT
 Fetch next from DROPCONSTRAINT into @CONSTRAINT
