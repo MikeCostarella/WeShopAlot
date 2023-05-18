@@ -42,6 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\WeShopAlot.Data.Import\WeShopAlot.Data.Import.csproj" />
     <ProjectReference Include="..\WeShopAlot.Data\WeShopAlot.Data.csproj" />
   </ItemGroup>
 
