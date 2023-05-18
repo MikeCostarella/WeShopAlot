@@ -46,6 +46,7 @@ namespace WeShopAlot.Data.ConsoleApp
             app.MigrateDatabase();
             app.LoadCountries();
             app.LoadUSStates();
+            app.LoadUSCounties();
             app.LoadProductTypes();
             app.LoadProductBrands();
             app.LoadProducts();
