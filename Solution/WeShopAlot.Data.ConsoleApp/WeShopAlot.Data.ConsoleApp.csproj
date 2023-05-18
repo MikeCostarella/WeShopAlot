@@ -48,6 +48,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Content\data\json\Canada-provinces.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Content\data\json\countries.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

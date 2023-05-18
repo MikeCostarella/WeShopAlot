@@ -8,29 +8,29 @@ using WeShopAlot.Data.Repositories;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
-    public static class AppBuilderStateLoadExtensions
+    public static class AppBuilderCanadianProvincesLoadExtensions
     {
-        public static void LoadUSStates(this IApplicationBuilder app)
+        public static void LoadCanadianProvinces(this IApplicationBuilder app)
         {
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
                 var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
                 try
                 {
-                    var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    if (!context.States.Any())
+                    var countryRepository = new CountryRepository(context);
+                    var country = countryRepository.GetByAbbreviation("CA");
+                    if (!context.States.Any(x => x.CountryId == country.Id))
                     {
-                        var countryRepository = new CountryRepository(context);
-                        var country = countryRepository.GetByAbbreviation("US");
-                        var usStatesData = File.ReadAllText(path + @"/Content/data/json/USA-states.json");
-                        var importedStates = JsonSerializer.Deserialize<List<ImportedState>>(usStatesData);
-                        foreach (var importedState in importedStates)
+                        var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                        var canadianProvincesData = File.ReadAllText(path + @"/Content/data/json/Canada-provinces.json");
+                        var importedCanadianProvinces = JsonSerializer.Deserialize<List<ImportedCanadianProvince>>(canadianProvincesData);
+                        foreach (var importedCanadianProvince in importedCanadianProvinces)
                         {
                             var state = new State
                             {
-                                Abbreviation = importedState.code,
+                                Abbreviation = importedCanadianProvince.abbreviation,
                                 CountryId = country.Id,
-                                Name = importedState.name
+                                Name = importedCanadianProvince.name
                             };
                             context.States.Add(state);
                         }
