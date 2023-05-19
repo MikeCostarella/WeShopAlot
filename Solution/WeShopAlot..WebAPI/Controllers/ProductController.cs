@@ -13,10 +13,16 @@ namespace WeShopAlot.WebAPI.Controllers
     [ApiController]
     public class ProductController : BaseApiController
     {
+        #region Member Variables
+
         private readonly IProductBrandRepository productBrandRepository;
         private readonly IProductTypeRepository productTypeRepository;
         private readonly IProductRepository productRepository;
         private readonly IMapper mapper;
+
+        #endregion Member Variables
+
+        #region Constructors
 
         public ProductController(IProductRepository productRepository,
             IProductTypeRepository productTypeRepoitory,
@@ -29,6 +35,10 @@ namespace WeShopAlot.WebAPI.Controllers
             this.productBrandRepository = productBrandRepoitory;
         }
 
+        #endregion Constructors
+
+        #region Actions
+
         [Cached(600)]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts(
@@ -36,14 +46,10 @@ namespace WeShopAlot.WebAPI.Controllers
         {
             var spec = new ProductsWithTypesAndBrandsSpecification(productParams);
             var countSpec = new ProductsWithFiltersForCountSpecification(productParams);
-
             var totalItems = await productRepository.CountAsync(countSpec);
             var products = await productRepository.ListAsync(spec);
-
             var data = mapper.Map<IReadOnlyList<ProductToReturnDto>>(products);
-
-            return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex,
-                productParams.PageSize, totalItems, data));
+            return Ok(new Pagination<ProductToReturnDto>(productParams.PageIndex, productParams.PageSize, totalItems, data));
         }
 
         [Cached(600)]
@@ -74,5 +80,7 @@ namespace WeShopAlot.WebAPI.Controllers
         {
             return Ok(await productTypeRepository.ListAllAsync());
         }
+
+        #endregion Actions
     }
 }
