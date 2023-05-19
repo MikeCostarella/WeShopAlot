@@ -31,7 +31,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                             var county = new County
                             {
                                 Name = importedCounty.County,
-                                StateId = state.Id
+                                StateProvinceId = state.Id
                             };
                             context.Counties.Add(county);
                         }

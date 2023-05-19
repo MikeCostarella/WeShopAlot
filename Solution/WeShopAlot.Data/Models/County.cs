@@ -13,9 +13,9 @@ namespace WeShopAlot.Data.Models
         public string Name { get; set; }
 
         [Required]
-        [ForeignKey("StateId")]
-        public int StateId { get; set; }
-        public StateProvince State { get; set; }
+        [ForeignKey("StateProvinceId")]
+        public int StateProvinceId { get; set; }
+        public StateProvince StateProvince { get; set; }
 
         #endregion Physical Properties
 
