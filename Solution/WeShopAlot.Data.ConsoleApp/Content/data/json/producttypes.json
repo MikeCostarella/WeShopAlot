@@ -1,18 +1,18 @@
 [
   {
     "Id": 1,
-    "Name": "Boards"
+    "Name": "Acoustic Guitars"
   },
   {
     "Id": 2,
-    "Name": "Hats"
+    "Name": "Bass Guitars"
   },
   {
     "Id": 3,
-    "Name": "Boots"
+    "Name": "Electric Guitars"
   },
   {
     "Id": 4,
-    "Name": "Gloves"
+    "Name": "Cigar Box Guitars"
   }
 ]
