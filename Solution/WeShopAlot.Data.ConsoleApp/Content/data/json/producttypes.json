@@ -1,18 +1,26 @@
 [
   {
     "Id": 1,
-    "Name": "Acoustic Guitars"
+    "Name": "Acoustic Guitar"
   },
   {
     "Id": 2,
-    "Name": "Bass Guitars"
+    "Name": "Bass Guitar"
   },
   {
     "Id": 3,
-    "Name": "Electric Guitars"
+    "Name": "Electric Guitar"
   },
   {
     "Id": 4,
-    "Name": "Cigar Box Guitars"
+    "Name": "Cigar Box Guitar"
+  },
+  {
+    "Id": 5,
+    "Name": "12 String Acoustic Guitar"
+  },
+  {
+    "Id": 6,
+    "Name": "Ukelele"
   }
 ]

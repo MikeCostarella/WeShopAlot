@@ -1,19 +1,19 @@
 [
   {
-    "Name": "Angular Speedster Board 2000",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 200,
+    "Name": "Blondie",
+    "Description": "Eastern Hard Rock Maple, Double Humbucker, Stereo, Electric Guitar",
+    "Price": 500,
     "PictureUrl": "images/products/sb-ang1.png",
-    "ProductTypeId": 1,
+    "ProductTypeId": 3,
     "ProductBrandId": 1
   },
   {
-    "Name": "Green Angular Board 3000",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Name": "Dawggy",
+    "Description": "Strat, Bright orange SSS Electric Guitar",
     "Price": 150,
     "PictureUrl": "images/products/sb-ang2.png",
-    "ProductTypeId": 1,
-    "ProductBrandId": 1
+    "ProductTypeId": 3,
+    "ProductBrandId": 4
   },
   {
     "Name": "Core Board Speed Rush 3",
