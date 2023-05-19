@@ -10,6 +10,7 @@ SELECT
 	--,country.Id AS CountryId
 	,country.Name AS CountryName
 	,stateProvince.Name AS StateName
+	,stateProvince.Abbreviation AS StateAbbreviation
 INTO #T1
 FROM WSA.StateProvince stateProvince
 	LEFT JOIN WSA.Country country ON stateProvince.CountryId = country.Id
