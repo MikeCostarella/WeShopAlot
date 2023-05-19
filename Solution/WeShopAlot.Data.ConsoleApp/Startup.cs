@@ -50,6 +50,7 @@ namespace WeShopAlot.Data.ConsoleApp
             //app.LoadUSCounties(); // ToDo: See why context.States is empty even though the US states are in the db
             app.LoadProductTypes();
             app.LoadProductBrands();
+            app.LoadDeliveryMethods();
             app.LoadProducts();
             //CancellationToken cancellationToken = new CancellationToken();  // ToDo: figure out how to stop the console app in .Net 7
             //hostLifetime.StopAsync(cancellationToken);

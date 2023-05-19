@@ -12,6 +12,8 @@ namespace WeShopAlot.Data.Models
 
         public string Description { get; set; }
 
+        public int InternalId { get; set; }
+
         [Column(TypeName = "decimal (5,2)")]
         public decimal Price { get; set; }
 
