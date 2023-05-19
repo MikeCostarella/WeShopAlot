@@ -13,20 +13,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A1",
@@ -51,24 +37,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A1 Application",
-          "Description": "Review New A1 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A1 Application",
-          "Description": "Review Renewal of A1 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -103,20 +71,6 @@
       "StartServingMinute": 30,
       "StopServingHour": 2,
       "StopServingMinute": 30,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A1A",
@@ -141,24 +95,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A1A Application",
-          "Description": "Review New A1A Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A1A Application",
-          "Description": "Review Renewal of A1A Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -193,20 +129,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A1C",
@@ -233,26 +155,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A1C Application",
-          "Description": "Review New A1C Application",
-          "Type": "Review New Permit Application",
-          "IsQuotaBased": false,
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A1C Application",
-          "Description": "Review Renewal of A1C Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "IsQuotaBased": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -282,20 +184,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A1A",
@@ -320,24 +208,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A1A Application",
-          "Description": "Review New A1A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A1A Application",
-          "Description": "Review Renewal of A1A Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -363,20 +233,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A1A",
@@ -401,24 +257,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A1A Application",
-          "Description": "Review New A1A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A1A Application",
-          "Description": "Review Renewal of A1A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -448,20 +286,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A3",
@@ -486,24 +310,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A3 Application",
-          "Description": "Review New A3 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A3 Application",
-          "Description": "Review Renewal of A3 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -536,20 +342,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A3A",
@@ -574,24 +366,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A3A Application",
-          "Description": "Review New A3A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A3A Application",
-          "Description": "Review Renewal of A3A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -616,20 +390,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A4",
@@ -654,24 +414,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New A4 Application",
-          "Description": "Review New A4 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A4 Application",
-          "Description": "Review Renewal of A4 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -694,20 +436,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New A5",
@@ -722,24 +450,6 @@
           "Name": "Apply For Renewal of A5",
           "Description": "Apply For Renewal of A5",
           "Type": "Renew Permit",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New A5 Application",
-          "Description": "Review New A5 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of A5 Application",
-          "Description": "Review Renewal of A5 Application",
-          "Type": "Review Permit Renewal Application",
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Documents": [],
@@ -767,20 +477,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New B1",
@@ -822,24 +518,6 @@
           "RequiresUniqueWorkflow": false,
           "Documents": [],
           "Fees": []
-        },
-        {
-          "Name": "Review New B1 Application",
-          "Description": "Review New B1 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of B1 Application",
-          "Description": "Review Renewal of B1 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -869,20 +547,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New B2",
@@ -924,24 +588,6 @@
           "RequiresUniqueWorkflow": false,
           "Documents": [],
           "Fees": []
-        },
-        {
-          "Name": "Review New B2 Application",
-          "Description": "Review New B2 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of B2 Application",
-          "Description": "Review Renewal of B2 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -972,20 +618,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New B2A",
@@ -1001,24 +633,6 @@
           "Name": "Apply For Renewal of B2A",
           "Description": "Apply For Renewal of B2A",
           "Type": "Renew Permit",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New B2A Application",
-          "Description": "Review New B2A Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of B3 Application",
-          "Description": "Review Renewal of B3 Application",
-          "Type": "Review Permit Renewal Application",
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Documents": [],
@@ -1048,20 +662,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New B3",
@@ -1103,24 +703,6 @@
           "RequiresUniqueWorkflow": false,
           "Documents": [],
           "Fees": []
-        },
-        {
-          "Name": "Review New B3 Application",
-          "Description": "Review New B3 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of B3 Application",
-          "Description": "Review Renewal of B3 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -1144,20 +726,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New B4",
@@ -1199,24 +767,6 @@
           "RequiresUniqueWorkflow": false,
           "Documents": [],
           "Fees": []
-        },
-        {
-          "Name": "Review New B4 Application",
-          "Description": "Review New B4 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of B4 Application",
-          "Description": "Review Renewal of B4 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -1240,20 +790,6 @@
       "PermitType": "Non-Retail Permit",
       "IsRenewable": true,
       "QuotaRatioDivisor": null,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New B5",
@@ -1295,24 +831,6 @@
           "RequiresUniqueWorkflow": false,
           "Documents": [],
           "Fees": []
-        },
-        {
-          "Name": "Review New B5 Application",
-          "Description": "Review New B5 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of B5 Application",
-          "Description": "Review Renewal of B5 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -1348,20 +866,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New C1",
@@ -1399,24 +903,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New C1 Application",
-          "Description": "Review New C1 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of C1 Application",
-          "Description": "Review Renewal of C1 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -1450,20 +936,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New C2",
@@ -1503,24 +975,6 @@
               "Type": "Class"
             }
           ]
-        },
-        {
-          "Name": "Review New C2 Application",
-          "Description": "Review New C2 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of C2 Application",
-          "Description": "Review Renewal of C2 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -1559,20 +1013,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New C2X",
@@ -1587,24 +1027,6 @@
           "Name": "Apply For Renewal of C2X",
           "Description": "Apply For Renewal of C2X",
           "Type": "Renew Permit",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New C2X Application",
-          "Description": "Review New C2X Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of C2X Application",
-          "Description": "Review Renewal of C2X Application",
-          "Type": "Review Permit Renewal Application",
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Documents": [],
@@ -1643,20 +1065,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New D1",
@@ -1677,24 +1085,6 @@
           "Name": "Apply For Renewal of D1",
           "Description": "Apply For Renewal of D1",
           "Type": "Renew Permit",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New D1 Application",
-          "Description": "Review New D1 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D1 Application",
-          "Description": "Review Renewal of D1 Application",
-          "Type": "Review Permit Renewal Application",
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Documents": [],
@@ -1775,24 +1165,6 @@
           "RequiresUniqueWorkflow": false,
           "Documents": [],
           "Fees": []
-        },
-        {
-          "Name": "Review New D2 Application",
-          "Description": "Review New D2 Application",
-          "Type": "Review New Permit Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D2 Application",
-          "Description": "Review Renewal of D2 Application",
-          "Type": "Review Permit Renewal Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Documents": [],
-          "Fees": []
         }
       ],
       "Tags": [
@@ -1832,20 +1204,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New D2X",
@@ -1862,24 +1220,6 @@
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Type": "Renew Permit",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New D2X Application",
-          "Description": "Review New D2X Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D2X Application",
-          "Description": "Review Renewal of D2X Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
           "Documents": [],
           "Fees": []
         }
@@ -1924,20 +1264,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New D3",
@@ -1960,24 +1286,6 @@
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Type": "Renew Permit",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New D3 Application",
-          "Description": "Review New D3 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D3 Application",
-          "Description": "Review Renewal of D3 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
           "Documents": [],
           "Fees": []
         }
@@ -2020,20 +1328,6 @@
       "StartServingMinute": 30,
       "StopServingHour": 2,
       "StopServingMinute": 30,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New D3A",
@@ -2056,24 +1350,6 @@
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Type": "Renew Permit",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New D3A Application",
-          "Description": "Review New D3A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D3A Application",
-          "Description": "Review Renewal of D3A Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
           "Documents": [],
           "Fees": []
         }
@@ -2115,20 +1391,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New D3X",
@@ -2145,24 +1407,6 @@
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Type": "Renew Permit",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New D3X Application",
-          "Description": "Review New D3X Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D3X Application",
-          "Description": "Review Renewal of D3X Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
           "Documents": [],
           "Fees": []
         }
@@ -2200,20 +1444,6 @@
       "StartServingHour": 5,
       "StartServingMinute": 30,
       "StopServingHour": 1,
-      "ReviewDefinitions": [
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Initial"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Final"
-        },
-        {
-          "IsActive": true,
-          "ReviewDefinition": "Supervisor"
-        }
-      ],
       "Actions": [
         {
           "Name": "Apply For New D4",
@@ -2230,24 +1460,6 @@
           "RequiresEntityInformation": false,
           "RequiresUniqueWorkflow": false,
           "Type": "Renew Permit",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review New D4 Application",
-          "Description": "Review New D4 Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review New Permit Application",
-          "Documents": [],
-          "Fees": []
-        },
-        {
-          "Name": "Review Renewal of D4 Application",
-          "Description": "Review Renewal of D3X Application",
-          "RequiresEntityInformation": false,
-          "RequiresUniqueWorkflow": false,
-          "Type": "Review Permit Renewal Application",
           "Documents": [],
           "Fees": []
         }

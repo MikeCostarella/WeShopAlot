@@ -57,7 +57,7 @@
     <None Update="Content\data\json\deliveryMethods.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Content\data\json\permitclasses.json">
+    <None Update="Content\data\json\permitmetadata.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Content\data\json\productbrands.json">
