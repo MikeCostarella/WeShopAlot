@@ -19,7 +19,7 @@ namespace WeShopAlot.Data.Models
 
         #region Child List Properties
 
-        public List<State> States { get; set; }
+        public List<StateProvince> StateProvinces { get; set; }
 
         #endregion Child List Properties
     }

@@ -3,8 +3,8 @@ using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Data.Repositories.Interfaces
 {
-    public interface IStateRepository : IAsyncRepository<State>
+    public interface IStateProvinceRepository : IAsyncRepository<StateProvince>
     {
-        State Get(Country country, string name);
+        StateProvince Get(Country country, string name);
     }
 }

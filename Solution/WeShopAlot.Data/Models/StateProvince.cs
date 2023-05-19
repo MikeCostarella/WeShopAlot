@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeShopAlot.Data.Models
 {
-    public class State : BasePersistentObject
+    public class StateProvince : BasePersistentObject
     {
         #region Physical Properties
 

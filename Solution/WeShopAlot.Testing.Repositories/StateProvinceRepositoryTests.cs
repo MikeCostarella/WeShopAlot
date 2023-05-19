@@ -5,7 +5,7 @@ using WeShopAlot.Data.Repositories;
 namespace WeShopAlot.Testing.Repositories
 {
     [TestClass]
-    public class StateRepositoryTests
+    public class StateProvinceRepositoryTests
     {
         [TestMethod]
         public void TestGetStateOfCountry()
@@ -15,7 +15,7 @@ namespace WeShopAlot.Testing.Repositories
             var dbContext = new WeShopAlotContext(dbContextOptionsBuilder.Options);
             var countryRepository = new CountryRepository(dbContext);
             var country = countryRepository.GetByAbbreviation("CA");
-            var stateRepository = new StateRepository(dbContext);
+            var stateRepository = new StateProvinceRepository(dbContext);
             var state = stateRepository.Get(country, "Alberta");
             Assert.IsTrue(state != null);
         }

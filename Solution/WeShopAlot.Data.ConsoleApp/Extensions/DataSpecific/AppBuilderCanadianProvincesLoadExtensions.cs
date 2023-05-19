@@ -19,20 +19,20 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                 {
                     var countryRepository = new CountryRepository(context);
                     var country = countryRepository.GetByAbbreviation("CA");
-                    if (!context.States.Any(x => x.CountryId == country.Id))
+                    if (!context.StateProvinces.Any(x => x.CountryId == country.Id))
                     {
                         var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                         var canadianProvincesData = File.ReadAllText(path + @"/Content/data/json/Canada-provinces.json");
                         var importedCanadianProvinces = JsonSerializer.Deserialize<List<ImportedCanadianProvince>>(canadianProvincesData);
                         foreach (var importedCanadianProvince in importedCanadianProvinces)
                         {
-                            var state = new State
+                            var stateProvince = new StateProvince
                             {
                                 Abbreviation = importedCanadianProvince.abbreviation,
                                 CountryId = country.Id,
                                 Name = importedCanadianProvince.name
                             };
-                            context.States.Add(state);
+                            context.StateProvinces.Add(stateProvince);
                         }
                     }
                     if (context.ChangeTracker.HasChanges()) context.SaveChanges();

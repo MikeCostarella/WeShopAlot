@@ -14,7 +14,7 @@ namespace WeShopAlot.Data.Extensions.ModelBuilderFunctionality
             modelBuilder.Entity<MunicipalityCounty>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Municipalities).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MunicipalityCounty>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.Municipality).WithMany(a => a.Counties).HasForeignKey(b => b.MunicipalityId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Precinct>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Precincts).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);
-            modelBuilder.Entity<State>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.Country).WithMany(a => a.States).HasForeignKey(b => b.CountryId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<StateProvince>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.Country).WithMany(a => a.StateProvinces).HasForeignKey(b => b.CountryId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Township>().HasQueryFilter(b => b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Townships).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);
         }
     }

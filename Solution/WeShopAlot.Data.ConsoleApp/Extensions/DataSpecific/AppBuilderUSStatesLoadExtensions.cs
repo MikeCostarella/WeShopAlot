@@ -19,20 +19,20 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                 {
                     var countryRepository = new CountryRepository(context);
                     var country = countryRepository.GetByAbbreviation("US");
-                    if (!context.States.Any(x => x.CountryId == country.Id))
+                    if (!context.StateProvinces.Any(x => x.CountryId == country.Id))
                     {
                         var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
                         var usStatesData = File.ReadAllText(path + @"/Content/data/json/USA-states.json");
                         var importedStates = JsonSerializer.Deserialize<List<ImportedState>>(usStatesData);
                         foreach (var importedState in importedStates)
                         {
-                            var state = new State
+                            var state = new StateProvince
                             {
                                 Abbreviation = importedState.code,
                                 CountryId = country.Id,
                                 Name = importedState.name
                             };
-                            context.States.Add(state);
+                            context.StateProvinces.Add(state);
                         }
                     }
                     if (context.ChangeTracker.HasChanges()) context.SaveChanges();

@@ -39,7 +39,7 @@ namespace WeShopAlot.Data
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductItemOrdered> ProductItemsOrdered { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
-        public DbSet<State> States { get; set; }
+        public DbSet<StateProvince> StateProvinces { get; set; }
         public DbSet<Township> Townships { get; set; }
 
         #endregion DbSets

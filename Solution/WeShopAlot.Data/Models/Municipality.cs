@@ -20,7 +20,7 @@ namespace WeShopAlot.Data.Models
         [Required]
         [ForeignKey("StateId")]
         public int StateId { get; set; }
-        public State State { get; set; }
+        public StateProvince State { get; set; }
 
         #endregion Physical Properties
 

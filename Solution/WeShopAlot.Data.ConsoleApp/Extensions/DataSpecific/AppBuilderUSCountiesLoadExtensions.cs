@@ -22,7 +22,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                     {
                         var countryRepository = new CountryRepository(context);
                         var country = countryRepository.GetByAbbreviation("US");
-                        var stateRepository = new StateRepository(context);
+                        var stateRepository = new StateProvinceRepository(context);
                         var usCountiesData = File.ReadAllText(path + @"/Content/data/json/USA-counties.json");
                         var importedCounties = JsonSerializer.Deserialize<List<ImportedCounty>>(usCountiesData);
                          foreach (var importedCounty in importedCounties)

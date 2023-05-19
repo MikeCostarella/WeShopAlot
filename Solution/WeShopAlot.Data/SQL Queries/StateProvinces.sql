@@ -5,14 +5,14 @@
 DROP TABLE IF EXISTS #T1
 
 SELECT
-	aState.Id
-	,(CASE WHEN aState.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
+	stateProvince.Id
+	,(CASE WHEN stateProvince.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
 	--,country.Id AS CountryId
 	,country.Name AS CountryName
-	,aState.Name AS StateName
+	,stateProvince.Name AS StateName
 INTO #T1
-FROM WSA.[State] aState
-	LEFT JOIN WSA.Country country ON aState.CountryId = country.Id
+FROM WSA.StateProvince stateProvince
+	LEFT JOIN WSA.Country country ON stateProvince.CountryId = country.Id
 
 SELECT * FROM #T1
 WHERE
