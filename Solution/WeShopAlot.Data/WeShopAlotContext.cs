@@ -27,6 +27,7 @@ namespace WeShopAlot.Data
         public DbSet<County> Counties { get; set; }
         public DbSet<CustomerBasket> CustomerBaskets { get; set; }
         public DbSet<DeliveryMethod> DeliveryMethods { get; set; }
+        public DbSet<GovernmentScope> GovernmentScopes { get; set; }
         public DbSet<Individual> Individuals { get; set; }
         public DbSet<Municipality> Municipalities { get; set; }
         public DbSet<MunicipalityCounty> MunicipalityCounties { get; set; }

@@ -8173,11 +8173,16 @@
   },
   {
     "County": "Adams County",
-    "State": "Ohio"
+    "Seat": "West Union",
+    "State": "Ohio",
+    "Website": "https://www.adamscountytravel.org/"
   },
   {
     "County": "Allen County",
-    "State": "Ohio"
+    "Seat": "Lima",
+    "State": "Ohio",
+    "Website": "https://www.allencountyohio.com/"
+
   },
   {
     "County": "Ashland County",
