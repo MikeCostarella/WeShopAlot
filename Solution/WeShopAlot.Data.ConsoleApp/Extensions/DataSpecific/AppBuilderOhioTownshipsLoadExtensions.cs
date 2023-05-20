@@ -32,7 +32,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                             var county = countyRepository.Get(state, importedTownship.County + " County");
                             var township = new Township
                             {
-                                Name = importedTownship.County,
+                                Name = importedTownship.Name,
                                 CountyId = county.Id
                             };
                             context.Townships.Add(township);
