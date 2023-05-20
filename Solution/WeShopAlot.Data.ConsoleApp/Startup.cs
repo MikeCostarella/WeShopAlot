@@ -47,7 +47,7 @@ namespace WeShopAlot.Data.ConsoleApp
             app.LoadCountries();
             app.LoadUSStates();
             app.LoadCanadianProvinces();
-            //app.LoadUSCounties(); // ToDo: See why context.States is empty even though the US states are in the db
+            app.LoadUSCounties();
             app.LoadProductTypes();
             app.LoadProductBrands();
             app.LoadDeliveryMethods();
