@@ -26,11 +26,12 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                         var importedProducts = JsonSerializer.Deserialize<List<ImportedProduct>>(productsData);
                         foreach (var importedProduct in importedProducts)
                         {
-                            var productBrand = productBrandRepository.GetByInternalId(importedProduct.ProductBrandId);
-                            var productType = productTypeRepository.GetByInternalId(importedProduct.ProductTypeId);
+                            var productBrand = productBrandRepository.GetByName(importedProduct.ProductBrand);
+                            var productType = productTypeRepository.GetByName(importedProduct.ProductType);
                             var product = new Product
                             {
                                 Description = importedProduct.Description,
+                                InternalId = importedProduct.InternalId,
                                 Name = importedProduct.Name,
                                 PictureUrl = importedProduct.PictureUrl,
                                 Price = importedProduct.Price,
