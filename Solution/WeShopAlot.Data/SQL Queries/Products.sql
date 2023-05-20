@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS #T1
 
 SELECT
 	product.Id
+	,product.InternalId
 	,(CASE WHEN product.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
     ,product.Name AS ProductName
     ,product.Description
