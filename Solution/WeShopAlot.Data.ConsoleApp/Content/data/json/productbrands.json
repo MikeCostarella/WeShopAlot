@@ -9,18 +9,26 @@
   },
   {
     "Id": 3,
-    "Name": "Mitchell"
+    "Name": "Makala"
   },
   {
     "Id": 4,
-    "Name": "Squire"
+    "Name": "Mitchell"
   },
   {
     "Id": 5,
-    "Name": "Taylor"
+    "Name": "Squire"
   },
   {
     "Id": 6,
+    "Name": "Sterling"
+  },
+  {
+    "Id": 7,
+    "Name": "Taylor"
+  },
+  {
+    "Id": 8,
     "Name": "Yamaha"
   }
 ]

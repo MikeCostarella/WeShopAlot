@@ -4,7 +4,7 @@
     "Name": "Blondie",
     "Description": "Eastern Hard Rock Maple, Double Humbucker, Stereo, Electric Guitar",
     "Price": 500,
-    "PictureUrl": "images/products/sb-ang1.png",
+    "PictureUrl": "images/products/00000001-001.png",
     "ProductType": "Electric Guitar",
     "ProductBrand": "Carvin"
   },
@@ -13,18 +13,18 @@
     "Name": "Dawggy",
     "Description": "Strat, Bright orange SSS Electric Guitar",
     "Price": 150,
-    "PictureUrl": "images/products/sb-ang2.png",
+    "PictureUrl": "images/products/00000002-001.png",
     "ProductType": "Electric Guitar",
     "ProductBrand": "Squire"
   },
   {
     "InternalId": 3,
-    "Name": "Core Board Speed Rush 3",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
+    "Name": "Stingray",
+    "Description": "Coral blue electric bass guitar.",
     "Price": 180,
-    "PictureUrl": "images/products/sb-core1.png",
-    "ProductType": "Acoustic Guitar",
-    "ProductBrand": "Fender"
+    "PictureUrl": "images/products/00000003-001.png",
+    "ProductType": "Bass Guitar",
+    "ProductBrand": "Sterling"
   },
   {
     "InternalId": 4,
