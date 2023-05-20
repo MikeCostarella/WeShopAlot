@@ -6,5 +6,7 @@ namespace WeShopAlot.Data.Repositories.Interfaces
     public interface IProductTypeRepository : IAsyncRepository<ProductType>
     {
         ProductType GetByInternalId(int internalId);
+
+        ProductType GetByName(string name);
     }
 }

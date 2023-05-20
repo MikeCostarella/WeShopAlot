@@ -19,6 +19,11 @@ namespace WeShopAlot.Data.Repositories
             return dbContext.ProductBrands.FirstOrDefault(x => x.InternalId == internalId);
         }
 
+        public ProductBrand GetByName(string name)
+        {
+            return dbContext.ProductBrands.FirstOrDefault(x => x.Name.Trim() == name.Trim());
+        }
+
         #endregion Interface
     }
 }
