@@ -10,12 +10,12 @@ SELECT
 	,(CASE WHEN product.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
     ,product.Name AS ProductName
     ,product.Description
-    ,product.PictureUrl
-    ,product.Price
-    ,product.ProductBrandId
+    --,product.ProductBrandId
 	,productBrand.Name AS ProductBrandName
-    ,product.ProductTypeId
+    --,product.ProductTypeId
 	,productType.Name AS ProductTypeName
+    ,product.Price
+    ,product.PictureUrl
 FROM
 	WSA.Product product
 	LEFT JOIN WSA.ProductBrand productBrand ON product.ProductBrandId = productBrand.Id

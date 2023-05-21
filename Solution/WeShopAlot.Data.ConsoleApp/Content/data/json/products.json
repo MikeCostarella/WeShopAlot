@@ -28,137 +28,101 @@
   },
   {
     "InternalId": 4,
-    "Name": "Net Core Super Board",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
+    "Name": "Layla",
+    "Description": "Starburst Lespaul style guitar",
     "Price": 300,
-    "PictureUrl": "images/products/sb-core2.png",
-    "ProductType": "Acoustic Guitar",
-    "ProductBrand": "Fender"
+    "PictureUrl": "images/products/00000004-001.png",
+    "ProductType": "Electric Guitar",
+    "ProductBrand": "Mitchell"
   },
   {
     "InternalId": 5,
-    "Name": "React Board Super Whizzy Fast",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
+    "Name": "Mary",
+    "Description": "Stratocaster",
     "Price": 250,
-    "PictureUrl": "images/products/sb-react1.png",
-    "ProductType": "Acoustic Guitar",
+    "PictureUrl": "images/products/00000005-001.png",
+    "ProductType": "Electric Guitar",
     "ProductBrand": "Squire"
   },
   {
     "InternalId": 6,
-    "Name": "Typescript Entry Board",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 120,
-    "PictureUrl": "images/products/sb-ts1.png",
-    "ProductType": "Acoustic Guitar",
-    "ProductBrand": "Taylor"
+    "Name": "Stringray",
+    "Description": "High End Squire Bass",
+    "Price": 600,
+    "PictureUrl": "images/products/00000006-001.png",
+    "ProductType": "Bass Guitar",
+    "ProductBrand": "Squire"
   },
   {
     "InternalId": 7,
-    "Name": "Core Blue Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 10,
-    "PictureUrl": "images/products/hat-core1.png",
-    "ProductType": "Bass Guitar",
-    "ProductBrand": "Fender"
+    "Name": "Fuente",
+    "Description": "Derek Rose orginal cigar box electric guitar",
+    "Price": 300,
+    "PictureUrl": "images/products/00000007-001.png",
+    "ProductType": "Cigar Box Guitar",
+    "ProductBrand": "Derek Rose"
   },
   {
     "InternalId": 8,
-    "Name": "Green React Woolen Hat",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 8,
-    "PictureUrl": "images/products/hat-react1.png",
+    "Name": "Jaguar Bass",
+    "Description": "Single pickup electric bass",
+    "Price": 200,
+    "PictureUrl": "images/products/00000008-001.png",
     "ProductType": "Bass Guitar",
     "ProductBrand": "Squire"
   },
   {
     "InternalId": 9,
-    "Name": "Purple React Woolen Hat",
-    "Description": "Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 15,
-    "PictureUrl": "images/products/hat-react2.png",
-    "ProductType": "Bass Guitar",
-    "ProductBrand": "Squire"
+    "Name": "Isabel",
+    "Description": "Acoustic-Electric Classical Guitar",
+    "Price": 300,
+    "PictureUrl": "images/products/00000009-001.png",
+    "ProductType": "Classical Guitar",
+    "ProductBrand": "Cordoba"
   },
   {
     "InternalId": 10,
-    "Name": "Blue Code Gloves",
-    "Description": "Nunc viverra imperdiet enim. Fusce est. Vivamus a tellus.",
+    "Name": "Woodchopper",
+    "Description": "12-String Acoustic-Electric Guitar",
     "Price": 18,
-    "PictureUrl": "images/products/glove-code1.png",
-    "ProductType": "Cigar Box Guitar",
-    "ProductBrand": "Mitchell"
-  },
-  {
-    "InternalId": 11,
-    "Name": "Green Code Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 15,
-    "PictureUrl": "images/products/glove-code2.png",
-    "ProductType": "Cigar Box Guitar",
-    "ProductBrand": "Mitchell"
-  },
-  {
-    "InternalId": 12,
-    "Name": "Purple React Gloves",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.",
-    "Price": 16,
-    "PictureUrl": "images/products/glove-react1.png",
-    "ProductType": "Cigar Box Guitar",
-    "ProductBrand": "Squire"
-  },
-  {
-    "InternalId": 13,
-    "Name": "Green React Gloves",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 14,
-    "PictureUrl": "images/products/glove-react2.png",
-    "ProductType": "Cigar Box Guitar",
-    "ProductBrand": "Squire"
-  },
-  {
-    "InternalId": 14,
-    "Name": "Redis Red Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 250,
-    "PictureUrl": "images/products/boot-redis1.png",
-    "ProductType": "Electric Guitar",
+    "PictureUrl": "images/products/00000010-001.png",
+    "ProductType": "12 String Acoustic Guitar",
     "ProductBrand": "Yamaha"
   },
   {
-    "InternalId": 15,
-    "Name": "Core Red Boots",
-    "Description": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa. Fusce posuere, magna sed pulvinar ultricies, purus lectus malesuada libero, sit amet commodo magna eros quis urna.",
-    "Price": 189.99,
-    "PictureUrl": "images/products/boot-core2.png",
-    "ProductType": "Electric Guitar",
-    "ProductBrand": "Fender"
+    "InternalId": 11,
+    "Name": "12-String Cutaway",
+    "Description": "12-String Acoustic-Electrict Cutaway Guitar",
+    "Price": 800,
+    "PictureUrl": "images/products/00000011-001.png",
+    "ProductType": "12 String Acoustic Guitar",
+    "ProductBrand": "Taylor"
   },
   {
-    "InternalId": 16,
-    "Name": "Core Purple Boots",
-    "Description": "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Proin pharetra nonummy pede. Mauris et orci.",
-    "Price": 199.99,
-    "PictureUrl": "images/products/boot-core1.png",
-    "ProductType": "Electric Guitar",
-    "ProductBrand": "Fender"
+    "InternalId": 12,
+    "Name": "6-String Cutaway",
+    "Description": "6-String Acoustic-Electric Cutaway",
+    "Price": 800,
+    "PictureUrl": "images/products/00000012-001.png",
+    "ProductType": "Acoustic Guitar",
+    "ProductBrand": "Taylor"
   },
   {
-    "InternalId": 17,
-    "Name": "Angular Purple Boots",
-    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
-    "Price": 150,
-    "PictureUrl": "images/products/boot-ang2.png",
-    "ProductType": "Electric Guitar",
-    "ProductBrand": "Carvin"
+    "InternalId": 13,
+    "Name": "Mini GS",
+    "Description": "Taylor Mini Acoustic-Electric",
+    "Price": 800,
+    "PictureUrl": "images/products/00000013-001.png",
+    "ProductType": "Acoustic Guitar",
+    "ProductBrand": "Taylor"
   },
   {
-    "InternalId": 18,
-    "Name": "Angular Blue Boots",
-    "Description": "Suspendisse dui purus, scelerisque at, vulputate vitae, pretium mattis, nunc. Mauris eget neque at sem venenatis eleifend. Ut nonummy.",
-    "Price": 180,
-    "PictureUrl": "images/products/boot-ang1.png",
-    "ProductType": "Electric Guitar",
-    "ProductBrand": "Carvin"
+    "InternalId": 14,
+    "Name": "Uke",
+    "Description": "Ukulele",
+    "Price": 70,
+    "PictureUrl": "images/products/00000014-001.png",
+    "ProductType": "Ukulele",
+    "ProductBrand": "Makala"
   }
 ]

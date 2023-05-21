@@ -9,18 +9,22 @@
   },
   {
     "Id": 3,
-    "Name": "Electric Guitar"
+    "Name": "Classical Guitar"
   },
   {
     "Id": 4,
-    "Name": "Cigar Box Guitar"
+    "Name": "Electric Guitar"
   },
   {
     "Id": 5,
-    "Name": "12 String Acoustic Guitar"
+    "Name": "Cigar Box Guitar"
   },
   {
     "Id": 6,
+    "Name": "12 String Acoustic Guitar"
+  },
+  {
+    "Id": 7,
     "Name": "Ukelele"
   }
 ]
