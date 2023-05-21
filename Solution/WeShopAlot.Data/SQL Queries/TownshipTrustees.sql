@@ -1,21 +1,27 @@
 -------------------------------------------------------------------------------------------
--- Townships
+-- TownshipTrustees   -- hh:mm:ss
 -------------------------------------------------------------------------------------------
 
 DROP TABLE IF EXISTS #T1
 
 SELECT
-	township.Id
-	,(CASE WHEN township.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
-	--,country.Id As Country_Id
+	townshipTrustee.Id
+	,(CASE WHEN townshipTrustee.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
 	,country.Name AS Country_Name
 	,stateProvince.Name AS StateProvince_Name
     --,township.CountyId AS County_Id
 	,county.Name AS County_Name
+    ,townshipTrustee.TownshipId
     ,township.Name AS Township_Name
-	,township.WebSiteUrl
+    ,townshipTrustee.FirstName
+    ,townshipTrustee.LastName
+    ,townshipTrustee.MiddleName
+	,(SELECT FORMAT (townshipTrustee.TermEndDate, 'yyyy-MM-dd')) AS TermEndDate
+	,(SELECT FORMAT (townshipTrustee.TermStartDate, 'yyyy-MM-dd')) AS TermStartDate
 INTO #T1
-FROM WSA.Township township
+FROM
+	WSA.TownshipTrustee townshipTrustee
+	LEFT JOIN WSA.Township township ON townshipTrustee.TownshipId = township.Id
 	LEFT JOIN WSA.County county ON township.CountyId = county.Id
 	LEFT JOIN WSA.StateProvince stateProvince ON county.StateProvinceId = stateProvince.Id
 	LEFT JOIN WSA.Country country ON stateProvince.CountryId = country.Id
