@@ -22,5 +22,7 @@ LEFT JOIN WSA.Country country ON stateProvince.CountryId = country.Id
 SELECT * FROM #T1
 WHERE
 	1 = 1
+	--AND Township_Name = 'NewCastle'
+	--AND County_Name = 'Greene County'
 ORDER BY
 	Country_Name, StateProvince_Name, County_Name, Township_Name

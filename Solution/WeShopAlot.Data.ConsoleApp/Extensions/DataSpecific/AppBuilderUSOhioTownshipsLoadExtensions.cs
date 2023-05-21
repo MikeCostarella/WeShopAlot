@@ -8,7 +8,7 @@ using WeShopAlot.Data.Repositories;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
-    public static class AppBuilderOhioTownshipsLoadExtensions
+    public static class AppBuilderUSOhioTownshipsLoadExtensions
     {
         public static void LoadUSOhioTownships(this IApplicationBuilder app)
         {
@@ -37,8 +37,19 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                             };
                             context.Townships.Add(township);
                         }
+                        if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                        // Load township officials for this year (currently 2022-2023)
+                        var townshipRepository = new TownshipRepository(context);
+                        var usOhioTownshipOfficialsData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-Township-Officials-2022-2023.json");
+                        var importedTownshipOfficalsInfos = JsonSerializer.Deserialize<List<ImportedTownshipOfficialsInfo>>(usOhioTownshipOfficialsData);
+                        foreach(var importedTownshipOfficalsInfo in importedTownshipOfficalsInfos)
+                        {
+                            var county = countyRepository.Get(state, importedTownshipOfficalsInfo.CountyName + " County");
+                            var township = townshipRepository.Get(county, importedTownshipOfficalsInfo.TownshipName);
+                            township.WebSiteUrl = importedTownshipOfficalsInfo.Website;
+                        }
+                        if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                     }
-                    if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                 }
                 catch (Exception ex)
                 {
