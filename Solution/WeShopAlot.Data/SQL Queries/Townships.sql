@@ -13,6 +13,7 @@ SELECT
     --,township.CountyId AS County_Id
 	,county.Name AS County_Name
     ,township.Name AS Township_Name
+	,township.WebSiteUrl
 INTO #T1
 FROM WSA.Township township
 LEFT JOIN WSA.County county ON township.CountyId = county.Id
@@ -23,6 +24,6 @@ SELECT * FROM #T1
 WHERE
 	1 = 1
 	--AND Township_Name = 'NewCastle'
-	--AND County_Name = 'Greene County'
+	--AND County_Name = 'Hardin County'
 ORDER BY
 	Country_Name, StateProvince_Name, County_Name, Township_Name
