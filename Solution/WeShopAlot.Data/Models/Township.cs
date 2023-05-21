@@ -19,5 +19,11 @@ namespace WeShopAlot.Data.Models
         public string WebSiteUrl { get; set; }
 
         #endregion Physical Properties
+
+        #region Child List Properties
+
+        public List<TownshipTrustee> Trustees { get; set; }
+
+        #endregion Child List Properties
     }
 }

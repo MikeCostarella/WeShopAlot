@@ -16,6 +16,7 @@ namespace WeShopAlot.Data.Extensions.ModelBuilderFunctionality
             modelBuilder.Entity<Precinct>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Precincts).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<StateProvince>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.Country).WithMany(a => a.StateProvinces).HasForeignKey(b => b.CountryId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Township>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Townships).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<TownshipTrustee>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.Township).WithMany(a => a.Trustees).HasForeignKey(b => b.TownshipId).OnDelete(DeleteBehavior.NoAction);
         }
     }
 }
