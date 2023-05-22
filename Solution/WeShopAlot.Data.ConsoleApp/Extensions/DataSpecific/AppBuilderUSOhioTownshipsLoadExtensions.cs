@@ -5,6 +5,7 @@ using System.Text.Json;
 using WeShopAlot.Data.Import.Models;
 using WeShopAlot.Data.Models;
 using WeShopAlot.Data.Repositories;
+using WeShopAlot.Shared.Extensions;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
@@ -46,6 +47,10 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                         {
                             var county = countyRepository.Get(state, importedTownshipOfficalsInfo.CountyName + " County");
                             var township = townshipRepository.Get(county, importedTownshipOfficalsInfo.TownshipName);
+                            township.MailingAddressCity = importedTownshipOfficalsInfo.City;
+                            township.MailingAddressLine1 = importedTownshipOfficalsInfo.MailingAddressLine1;
+                            township.MailingAddressLine2 = importedTownshipOfficalsInfo.MailingAddressLine2;
+                            township.MailingAddressZIPCode = importedTownshipOfficalsInfo.ZIPCode;
                             township.WebSiteUrl = importedTownshipOfficalsInfo.Website;
                             var townshipFiscalOfficer = new TownshipFiscalOfficer
                             {

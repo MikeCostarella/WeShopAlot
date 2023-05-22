@@ -13,6 +13,18 @@ namespace WeShopAlot.Data.Models
         public County County { get; set; }
 
         [StringLength(50)]
+        public string MailingAddressLine1 { get; set; }
+
+        [StringLength(50)]
+        public string MailingAddressLine2 { get; set; }
+
+        [StringLength(50)]
+        public string MailingAddressCity { get; set; }
+
+        [StringLength(50)]
+        public string MailingAddressZIPCode { get; set; }
+
+        [StringLength(50)]
         public string Name { get; set; }
 
         [StringLength(500)]

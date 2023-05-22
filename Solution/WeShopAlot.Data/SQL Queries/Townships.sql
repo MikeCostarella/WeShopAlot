@@ -13,6 +13,10 @@ SELECT
     --,township.CountyId AS County_Id
 	,county.Name AS County_Name
     ,township.Name AS Township_Name
+	,township.MailingAddressLine1
+	,township.MailingAddressLine2
+	,township.MailingAddressCity
+	,township.MailingAddressZIPCode
 	,township.WebSiteUrl
 	--,(SELECT COUNT(DISTINCT townshipFiscalOfficer.Id)
 	--	FROM WSA.TownshipFiscalOfficer townshipFiscalOfficer
