@@ -52,7 +52,7 @@ namespace WeShopAlot.Data
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<WeShopAlotContext>(options =>
-                options.UseSqlServer(ConfigurationManager.ConnectionStrings["WeShopAlotConnection"].ConnectionString));
+                options.UseSqlServer(ConfigurationManager.ConnectionStrings["WeShopAlotSQLConnection"].ConnectionString));
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

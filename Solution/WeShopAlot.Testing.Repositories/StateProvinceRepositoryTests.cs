@@ -15,7 +15,7 @@ namespace WeShopAlot.Testing.Repositories
             var builder = new ConfigurationBuilder()
                 .AddUserSecrets<StateProvinceRepositoryTests>();
             Configuration = builder.Build();
-            connectionString = Configuration.GetConnectionString("WeShopAlotConnection");
+            connectionString = Configuration.GetConnectionString("WeShopAlotSQLConnection");
         }
 
         [TestMethod]

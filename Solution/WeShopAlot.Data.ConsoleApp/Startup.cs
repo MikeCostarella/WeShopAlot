@@ -33,7 +33,7 @@ namespace WeShopAlot.Data.ConsoleApp
                 .AddUserSecrets<Startup>()
                 .AddEnvironmentVariables()
                 .Build();
-            string connectionstring = configuration.GetConnectionString("WeShopAlotConnection");
+            string connectionstring = configuration.GetConnectionString("WeShopAlotSQLConnection");
             if (string.IsNullOrEmpty(connectionstring))
             {
                 throw new InvalidOperationException("No db connection specified");
