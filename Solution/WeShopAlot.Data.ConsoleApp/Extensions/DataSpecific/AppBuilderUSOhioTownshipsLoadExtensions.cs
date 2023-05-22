@@ -5,7 +5,6 @@ using System.Text.Json;
 using WeShopAlot.Data.Import.Models;
 using WeShopAlot.Data.Models;
 using WeShopAlot.Data.Repositories;
-using WeShopAlot.Shared.Extensions;
 
 namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {

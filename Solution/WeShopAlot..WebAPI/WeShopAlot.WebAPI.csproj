@@ -23,4 +23,8 @@
     <ProjectReference Include="..\WeShopAlot.Infrastructure.Services\WeShopAlot.Infrastructure.Services.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>
