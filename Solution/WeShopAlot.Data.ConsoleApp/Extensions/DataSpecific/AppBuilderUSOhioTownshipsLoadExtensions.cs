@@ -47,6 +47,36 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                             var county = countyRepository.Get(state, importedTownshipOfficalsInfo.CountyName + " County");
                             var township = townshipRepository.Get(county, importedTownshipOfficalsInfo.TownshipName);
                             township.WebSiteUrl = importedTownshipOfficalsInfo.Website;
+                            var townshipTrustee = new TownshipTrustee
+                            {
+                                FirstName = importedTownshipOfficalsInfo.Trustee1FirstName,
+                                MiddleName = importedTownshipOfficalsInfo.Trustee1MiddleName,
+                                LastName = importedTownshipOfficalsInfo.Trustee1LastName,
+                                TermEndDate = DateTime.Parse(importedTownshipOfficalsInfo.Trustee1TermEnding),
+                                TermStartDate = DateTime.Parse(importedTownshipOfficalsInfo.Trustee1TermEnding).AddYears(-4),
+                                TownshipId = township.Id
+                            };
+                            context.TownshipTrustees.Add(townshipTrustee);
+                            townshipTrustee = new TownshipTrustee
+                            {
+                                FirstName = importedTownshipOfficalsInfo.Trustee2FirstName,
+                                MiddleName = importedTownshipOfficalsInfo.Trustee2MiddleName,
+                                LastName = importedTownshipOfficalsInfo.Trustee2LastName,
+                                TermEndDate = DateTime.Parse(importedTownshipOfficalsInfo.Trustee2TermEnding),
+                                TermStartDate = DateTime.Parse(importedTownshipOfficalsInfo.Trustee2TermEnding).AddYears(-4),
+                                TownshipId = township.Id
+                            };
+                            context.TownshipTrustees.Add(townshipTrustee);
+                            townshipTrustee = new TownshipTrustee
+                            {
+                                FirstName = importedTownshipOfficalsInfo.Trustee3FirstName,
+                                MiddleName = importedTownshipOfficalsInfo.Trustee3MiddleName,
+                                LastName = importedTownshipOfficalsInfo.Trustee3LastName,
+                                TermEndDate = DateTime.Parse(importedTownshipOfficalsInfo.Trustee3TermEnding),
+                                TermStartDate = DateTime.Parse(importedTownshipOfficalsInfo.Trustee3TermEnding).AddYears(-4),
+                                TownshipId = township.Id
+                            };
+                            context.TownshipTrustees.Add(townshipTrustee);
                         }
                         if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                     }

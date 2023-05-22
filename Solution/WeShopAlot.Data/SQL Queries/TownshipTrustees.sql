@@ -11,13 +11,13 @@ SELECT
 	,stateProvince.Name AS StateProvince_Name
     --,township.CountyId AS County_Id
 	,county.Name AS County_Name
-    ,townshipTrustee.TownshipId
+    --,townshipTrustee.TownshipId
     ,township.Name AS Township_Name
     ,townshipTrustee.FirstName
     ,townshipTrustee.LastName
     ,townshipTrustee.MiddleName
-	,(SELECT FORMAT (townshipTrustee.TermEndDate, 'yyyy-MM-dd')) AS TermEndDate
 	,(SELECT FORMAT (townshipTrustee.TermStartDate, 'yyyy-MM-dd')) AS TermStartDate
+	,(SELECT FORMAT (townshipTrustee.TermEndDate, 'yyyy-MM-dd')) AS TermEndDate
 INTO #T1
 FROM
 	WSA.TownshipTrustee townshipTrustee
@@ -32,4 +32,4 @@ WHERE
 	--AND Township_Name = 'NewCastle'
 	--AND County_Name = 'Hardin County'
 ORDER BY
-	Country_Name, StateProvince_Name, County_Name, Township_Name
+	Country_Name, StateProvince_Name, County_Name, Township_Name, LastName, FirstName, MiddleName

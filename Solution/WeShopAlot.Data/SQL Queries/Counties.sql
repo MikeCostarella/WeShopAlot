@@ -34,5 +34,6 @@ LEFT JOIN WSA.Country country ON stateProvince.CountryId = country.Id
 SELECT * FROM #T1
 WHERE
 	1 = 1
+	AND StateName = 'Ohio'
 ORDER BY
 	CountryName, StateName, CountyName

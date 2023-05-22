@@ -14,6 +14,19 @@ SELECT
 	,county.Name AS County_Name
     ,township.Name AS Township_Name
 	,township.WebSiteUrl
+	,(SELECT COUNT(DISTINCT townshipTrustee.Id)
+		FROM WSA.TownshipTrustee townshipTrustee
+		WHERE
+			townshipTrustee.TownshipId = township.Id
+	) AS TrusteeCount
+	,(STUFF((
+		SELECT ',' + townshipTrustee.FirstName + ' ' + townshipTrustee.LastName 
+		FROM WSA.TownshipTrustee townshipTrustee
+		WHERE
+			townshipTrustee.TownshipId = township.Id
+		GROUP BY townshipTrustee.FirstName, townshipTrustee.LastName
+		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 1, '')
+		) AS Trustees			
 INTO #T1
 FROM WSA.Township township
 	LEFT JOIN WSA.County county ON township.CountyId = county.Id
