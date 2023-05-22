@@ -14,6 +14,19 @@ SELECT
 	,county.Name AS County_Name
     ,township.Name AS Township_Name
 	,township.WebSiteUrl
+	--,(SELECT COUNT(DISTINCT townshipFiscalOfficer.Id)
+	--	FROM WSA.TownshipFiscalOfficer townshipFiscalOfficer
+	--	WHERE
+	--		townshipFiscalOfficer.TownshipId = township.Id
+	--) AS FiscalOfficerCount
+	,(STUFF((
+		SELECT ',' + townshipFiscalOfficer.FirstName + ' ' + townshipFiscalOfficer.LastName 
+		FROM WSA.TownshipFiscalOfficer townshipFiscalOfficer
+		WHERE
+			townshipFiscalOfficer.TownshipId = township.Id
+		GROUP BY townshipFiscalOfficer.FirstName, townshipFiscalOfficer.LastName
+		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 1, '')
+	) AS FiscalOfficer			
 	,(SELECT COUNT(DISTINCT townshipTrustee.Id)
 		FROM WSA.TownshipTrustee townshipTrustee
 		WHERE
@@ -26,7 +39,7 @@ SELECT
 			townshipTrustee.TownshipId = township.Id
 		GROUP BY townshipTrustee.FirstName, townshipTrustee.LastName
 		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 1, '')
-		) AS Trustees			
+	) AS Trustees			
 INTO #T1
 FROM WSA.Township township
 	LEFT JOIN WSA.County county ON township.CountyId = county.Id

@@ -39,7 +39,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                         }
                         if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                         // Load township officials for this year (currently 2022-2023)
-                        var townshipRepository = new TownshipRepository(context);
+                        var townshipRepository = new TownshipRepository(context); 
                         var usOhioTownshipOfficialsData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-Township-Officials-2022-2023.json");
                         var importedTownshipOfficalsInfos = JsonSerializer.Deserialize<List<ImportedTownshipOfficialsInfo>>(usOhioTownshipOfficialsData);
                         foreach(var importedTownshipOfficalsInfo in importedTownshipOfficalsInfos)
@@ -47,6 +47,16 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                             var county = countyRepository.Get(state, importedTownshipOfficalsInfo.CountyName + " County");
                             var township = townshipRepository.Get(county, importedTownshipOfficalsInfo.TownshipName);
                             township.WebSiteUrl = importedTownshipOfficalsInfo.Website;
+                            var townshipFiscalOfficer = new TownshipFiscalOfficer
+                            {
+                                FirstName = importedTownshipOfficalsInfo.FiscalOfficerFirstName,
+                                MiddleName = importedTownshipOfficalsInfo.FiscalOfficerMiddleName,
+                                LastName = importedTownshipOfficalsInfo.FiscalOfficerLastName,
+                                TermEndDate = DateTime.Parse(importedTownshipOfficalsInfo.FiscalOfficerTermEnding),
+                                TermStartDate = DateTime.Parse(importedTownshipOfficalsInfo.FiscalOfficerTermEnding).AddYears(-4),
+                                TownshipId = township.Id
+                            };
+                            context.TownshipFiscalOfficers.Add(townshipFiscalOfficer);
                             var townshipTrustee = new TownshipTrustee
                             {
                                 FirstName = importedTownshipOfficalsInfo.Trustee1FirstName,

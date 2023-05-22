@@ -22,6 +22,8 @@ namespace WeShopAlot.Data.Models
 
         #region Child List Properties
 
+        public List<TownshipFiscalOfficer> FiscalOfficers { get; set; }
+
         public List<TownshipTrustee> Trustees { get; set; }
 
         #endregion Child List Properties

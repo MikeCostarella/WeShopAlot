@@ -42,6 +42,7 @@ namespace WeShopAlot.Data
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<StateProvince> StateProvinces { get; set; }
         public DbSet<Township> Townships { get; set; }
+        public DbSet<TownshipFiscalOfficer> TownshipFiscalOfficers { get; set; }
         public DbSet<TownshipTrustee> TownshipTrustees { get; set; }
 
         #endregion DbSets
