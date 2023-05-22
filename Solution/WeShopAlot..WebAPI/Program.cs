@@ -44,16 +44,5 @@ var context = services.GetRequiredService<WeShopAlotContext>();
 var identityContext = services.GetRequiredService<AppIdentityDbContext>();
 var userManager = services.GetRequiredService<UserManager<AppUser>>();
 var logger = services.GetRequiredService<ILogger<Program>>();
-try
-{
-    //await context.Database.MigrateAsync();
-    //await identityContext.Database.MigrateAsync();
-    //await StoreContextSeed.SeedAsync(context);
-    //await AppIdentityDbContextSeed.SeedUsersAsync(userManager);
-}
-catch (Exception ex)
-{
-    logger.LogError(ex, "An error occured during migration");
-}
 
 app.Run();

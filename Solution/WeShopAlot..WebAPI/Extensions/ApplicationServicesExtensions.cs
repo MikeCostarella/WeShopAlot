@@ -9,6 +9,7 @@ using StackExchange.Redis;
 using WeShopAlot.Infrastructure.Services.Interfaces;
 using WeShopAlot.Data.Repositories.Base;
 using WeShopAlot.WebAPI.Errors;
+using WeShopAlot.Data.Extensions;
 
 namespace WeShopAlot.WebAPI.Extensions
 {
@@ -20,7 +21,7 @@ namespace WeShopAlot.WebAPI.Extensions
             services.AddSingleton<IResponseCacheService, ResponseCacheService>();
             services.AddDbContext<WeShopAlotContext>(opt =>
             {
-                opt.UseSqlServer(config.GetConnectionString("WeShopAlotSQLConnection"));
+                opt.UseSelectedDatabaseServer(config);
             });
 
             services.AddSingleton<IConnectionMultiplexer>(c =>

@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
 using WeShopAlot.Data.ConsoleApp.Extensions;
 using WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific;
+using WeShopAlot.Data.Extensions;
 
 namespace WeShopAlot.Data.ConsoleApp
 {
@@ -33,12 +33,7 @@ namespace WeShopAlot.Data.ConsoleApp
                 .AddUserSecrets<Startup>()
                 .AddEnvironmentVariables()
                 .Build();
-            string connectionstring = configuration.GetConnectionString("WeShopAlotSQLConnection");
-            if (string.IsNullOrEmpty(connectionstring))
-            {
-                throw new InvalidOperationException("No db connection specified");
-            }
-            services.AddDbContext<WeShopAlotContext>(options => options.UseSqlServer(connectionstring));
+            services.AddDbContext<WeShopAlotContext>(options => options.UseSelectedDatabaseServer(configuration));
         }
 
         public void Configure(IApplicationBuilder app)
