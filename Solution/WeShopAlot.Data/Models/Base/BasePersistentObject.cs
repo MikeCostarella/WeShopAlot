@@ -1,4 +1,4 @@
-﻿namespace WeShopAlot.Data.Model.Base
+﻿namespace WeShopAlot.Data.Models.Base
 {
     public class BasePersistentObject
     {

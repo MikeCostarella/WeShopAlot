@@ -1,4 +1,4 @@
-﻿using WeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Models.Base;
 using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Infrastructure.Services.Interfaces

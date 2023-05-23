@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Models.Base;
 using System.Linq.Expressions;
 using WeShopAlot.Data.Specifications.Base;
 using WeShopAlot.Data.Utilities.Specifications;

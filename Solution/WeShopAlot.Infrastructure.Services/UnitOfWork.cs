@@ -1,5 +1,5 @@
 ﻿using WeShopAlot.Data;
-using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Models.Base;
 using WeShopAlot.Data.Repositories.Base;
 using WeShopAlot.Infrastructure.Services.Interfaces;
 using System.Collections;

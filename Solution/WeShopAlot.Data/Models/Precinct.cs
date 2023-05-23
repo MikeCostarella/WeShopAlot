@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
-using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Models.Base;
 
 namespace WeShopAlot.Data.Models
 {

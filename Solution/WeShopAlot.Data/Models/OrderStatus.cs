@@ -1,4 +1,4 @@
-﻿using WeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Models.Base;
 using System.ComponentModel.DataAnnotations;
 using WeShopAlot.Data.Shared.Enumerations;
 

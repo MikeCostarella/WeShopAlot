@@ -1,4 +1,4 @@
-﻿using WeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Models.Base;
 using WeShopAlot.Data.Specifications.Base;
 using System.Linq.Expressions;
 

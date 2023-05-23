@@ -1,4 +1,4 @@
-﻿using WeShopAlot.Data.Model.Base;
+﻿using WeShopAlot.Data.Models.Base;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.ComponentModel.DataAnnotations.Schema;
 

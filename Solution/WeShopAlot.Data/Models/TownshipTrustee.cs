@@ -1,25 +1,12 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Models.Base;
 
 namespace WeShopAlot.Data.Models
 {
-    public class TownshipTrustee : BasePersistentObject
+    public class TownshipTrustee : BasePersistentOfficeHolder
     {
         #region Physical Properties
-
-        [StringLength(50)]
-        public string FirstName { get; set; }
-
-        [StringLength(50)]
-        public string LastName { get; set; }
-
-        [StringLength(50)]
-        public string MiddleName { get; set; }
-
-        public DateTime TermEndDate { get; set; }
-
-        public DateTime? TermStartDate { get; set; }
 
         [Required]
         [ForeignKey("TownshipId")]

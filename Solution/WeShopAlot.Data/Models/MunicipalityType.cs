@@ -1,5 +1,5 @@
 ﻿using WeShopAlot.Shared.Enumerations;
-using WeShopAlot.Data.Model.Base;
+using WeShopAlot.Data.Models.Base;
 using System.ComponentModel.DataAnnotations;
 
 namespace WeShopAlot.Data.Models

@@ -18,11 +18,6 @@ SELECT
 	,township.MailingAddressCity
 	,township.MailingAddressZIPCode
 	,township.WebSiteUrl
-	--,(SELECT COUNT(DISTINCT townshipFiscalOfficer.Id)
-	--	FROM WSA.TownshipFiscalOfficer townshipFiscalOfficer
-	--	WHERE
-	--		townshipFiscalOfficer.TownshipId = township.Id
-	--) AS FiscalOfficerCount
 	,(STUFF((
 		SELECT ',' + townshipFiscalOfficer.FirstName + ' ' + townshipFiscalOfficer.LastName 
 		FROM WSA.TownshipFiscalOfficer townshipFiscalOfficer
