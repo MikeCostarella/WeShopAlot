@@ -52,6 +52,8 @@ namespace WeShopAlot.Data.Models
 
         public List<MunicipalAuditor> Auditors { get; set; }
 
+        public List<MunicipalCouncilMember> CouncilMembers { get; set; }
+
         public List<MunicipalCouncilPresident> CouncilPresidents { get; set; }
 
         public List<MunicipalityCounty> Counties { get; set; }

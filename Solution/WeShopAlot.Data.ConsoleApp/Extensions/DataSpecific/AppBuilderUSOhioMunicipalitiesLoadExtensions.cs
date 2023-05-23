@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using System.Reflection;
 using System.Text.Json;
 using WeShopAlot.Data.Import.Models;
@@ -132,6 +133,234 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                                     municipalCouncilPresident.TermStartDate = termEndDate.AddYears(-4);
                                 }
                                 context.MunicipalCouncilPresidents.Add(municipalCouncilPresident);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember01Title))
+                            {
+                                var municipalCouncilMember01 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember01FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember01MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember01LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember01Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember01TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember01.TermEndDate = termEndDate;
+                                    municipalCouncilMember01.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember01);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember02Title))
+                            {
+                                var municipalCouncilMember02 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember02FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember02MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember02LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember02Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember02TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember02.TermEndDate = termEndDate;
+                                    municipalCouncilMember02.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember02);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember03Title))
+                            {
+                                var municipalCouncilMember03 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember03FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember03MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember03LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember03Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember03TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember03.TermEndDate = termEndDate;
+                                    municipalCouncilMember03.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember03);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember04Title))
+                            {
+                                var municipalCouncilMember04 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember04FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember04MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember04LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember04Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember04TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember04.TermEndDate = termEndDate;
+                                    municipalCouncilMember04.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember04);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember05Title))
+                            {
+                                var municipalCouncilMember05 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember05FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember05MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember05LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember05Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember05TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember05.TermEndDate = termEndDate;
+                                    municipalCouncilMember05.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember05);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember06Title))
+                            {
+                                var municipalCouncilMember06 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember06FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember06MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember06LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember06Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember06TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember06.TermEndDate = termEndDate;
+                                    municipalCouncilMember06.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember06);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember07Title))
+                            {
+                                var municipalCouncilMember07 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember07FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember07MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember07LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember07Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember07TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember07.TermEndDate = termEndDate;
+                                    municipalCouncilMember07.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember07);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember08Title))
+                            {
+                                var municipalCouncilMember08 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember08FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember08MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember08LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember08Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember08TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember08.TermEndDate = termEndDate;
+                                    municipalCouncilMember08.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember08);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember09Title))
+                            {
+                                var municipalCouncilMember09 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember09FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember09MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember09LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember09Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember09TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember09.TermEndDate = termEndDate;
+                                    municipalCouncilMember09.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember09);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember10Title))
+                            {
+                                var municipalCouncilMember10 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember10FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember10MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember10LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember10Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember10TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember10.TermEndDate = termEndDate;
+                                    municipalCouncilMember10.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember10);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember11Title))
+                            {
+                                var municipalCouncilMember11 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember11FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember11MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember11LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember11Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember11TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember11.TermEndDate = termEndDate;
+                                    municipalCouncilMember11.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember11);
+                                if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                            }
+                            if (!string.IsNullOrEmpty(importedUSOhioCity.CouncilMember12Title))
+                            {
+                                var municipalCouncilMember12 = new MunicipalCouncilMember
+                                {
+                                    FirstName = importedUSOhioCity.CouncilMember12FirstName,
+                                    MiddleName = importedUSOhioCity.CouncilMember12MiddleName,
+                                    LastName = importedUSOhioCity.CouncilMember12LastName,
+                                    MunicipalityId = city.Id,
+                                    Title = importedUSOhioCity.CouncilMember12Title
+                                };
+                                termEndDate = DateTime.MinValue;
+                                if (DateTime.TryParse(importedUSOhioCity.CouncilMember12TermEndDate, out termEndDate))
+                                {
+                                    municipalCouncilMember12.TermEndDate = termEndDate;
+                                    municipalCouncilMember12.TermStartDate = termEndDate.AddYears(-4);
+                                }
+                                context.MunicipalCouncilMembers.Add(municipalCouncilMember12);
                                 if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                             }
                         }

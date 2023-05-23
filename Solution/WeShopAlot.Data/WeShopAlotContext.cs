@@ -31,6 +31,7 @@ namespace WeShopAlot.Data
         public DbSet<Individual> Individuals { get; set; }
         public DbSet<Mayor> Mayors { get; set; }
         public DbSet<MunicipalAuditor> MunicipalAuditors { get; set; }
+        public DbSet<MunicipalCouncilMember> MunicipalCouncilMembers { get; set; }
         public DbSet<MunicipalCouncilPresident> MunicipalCouncilPresidents { get; set; }
         public DbSet<MunicipalLawDirector> MunicipalLawDirectors { get; set; }
         public DbSet<MunicipalTreasurer> MunicipalTreasurers { get; set; }

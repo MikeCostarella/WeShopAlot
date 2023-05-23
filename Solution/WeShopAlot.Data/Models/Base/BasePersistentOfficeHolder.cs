@@ -19,6 +19,9 @@ namespace WeShopAlot.Data.Models.Base
 
         public DateTime? TermStartDate { get; set; }
 
+        [StringLength(100)]
+        public string Title { get; set; }
+
         #endregion Physical Properties
     }
 }

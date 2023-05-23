@@ -61,7 +61,20 @@ SELECT
 			municipalTreasurer.MunicipalityId = municipality.Id
 		GROUP BY municipalTreasurer.FirstName, municipalTreasurer.LastName
 		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 1, '')
-	) AS Treasurer			
+	) AS Treasurer
+	,(SELECT COUNT(DISTINCT municipalCouncilMember.Id)
+		FROM WSA.MunicipalCouncilMember municipalCouncilMember
+		WHERE
+			municipalCouncilMember.MunicipalityId = municipality.Id
+	) AS CouncilMemberCount
+	,(STUFF((
+		SELECT ',' + municipalCouncilMember.FirstName + ' ' + municipalCouncilMember.LastName 
+		FROM WSA.MunicipalCouncilMember municipalCouncilMember
+		WHERE
+			municipalCouncilMember.MunicipalityId = municipality.Id
+		GROUP BY municipalCouncilMember.FirstName, municipalCouncilMember.LastName
+		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 1, '')
+	) AS CouncilMembers			
 INTO #T1
 FROM
 	WSA.Municipality municipality
