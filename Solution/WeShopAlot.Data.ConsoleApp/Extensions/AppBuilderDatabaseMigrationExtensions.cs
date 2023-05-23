@@ -18,7 +18,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions
                     {
                         context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropSQLServerDatabase.sql"));
                     }
-                    if (context.Database.ProviderName != "Npgsql.EntityFrameworkCore.PostgreSQL")
+                    if (context.Database.ProviderName == "Npgsql.EntityFrameworkCore.PostgreSQL")
                     {
                         // ToDo: write a script to delete all tables from postgres db
                     }
