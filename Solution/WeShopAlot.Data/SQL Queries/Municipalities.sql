@@ -12,6 +12,11 @@ SELECT
     ,municipality.Name
     --,municipality.MunicipalityTypeId
 	,municipalityType.Name AS Type
+	,municipality.Telephone
+	,municipality.MailingAddressLine1
+	,municipality.MailingAddressLine2
+	,municipality.ZIPCode
+	,municipality.Website
 INTO #T1
 FROM
 	WSA.Municipality municipality

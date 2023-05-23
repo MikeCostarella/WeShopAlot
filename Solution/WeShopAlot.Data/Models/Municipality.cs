@@ -50,9 +50,17 @@ namespace WeShopAlot.Data.Models
 
         #region Child List Properties
 
+        public List<MunicipalAuditor> Auditors { get; set; }
+
+        public List<MunicipalCouncilPresident> CouncilPresidents { get; set; }
+
         public List<MunicipalityCounty> Counties { get; set; }
 
+        public List<MunicipalLawDirector> LawDirectors { get; set; }
+
         public List<Mayor> Mayors { get; set; }
+
+        public List<MunicipalTreasurer> Treasurers { get; set; }
 
         #endregion Child List Properties
     }
