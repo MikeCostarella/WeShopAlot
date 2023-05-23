@@ -9,6 +9,7 @@ namespace WeShopAlot.Data.Extensions.ModelBuilderFunctionality
         public static void InitializeWeShopAlotObjectForeignKeys(this ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<County>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.StateProvince).WithMany(a => a.Counties).HasForeignKey(b => b.StateProvinceId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Mayor>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.Municipality).WithMany(a => a.Mayors).HasForeignKey(b => b.MunicipalityId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Municipality>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.MunicipalityType).WithMany().HasForeignKey("MunicipalityTypeId").OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Municipality>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.State).WithMany(a => a.Municipalities).HasForeignKey(b => b.StateId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MunicipalityCounty>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Municipalities).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);

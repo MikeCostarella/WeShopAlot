@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WeShopAlot.Data;
 
@@ -11,9 +12,11 @@ using WeShopAlot.Data;
 namespace WeShopAlot.Data.Migrations
 {
     [DbContext(typeof(WeShopAlotContext))]
-    partial class WeShopAlotContextModelSnapshot : ModelSnapshot
+    [Migration("20230523043941_Initial-013")]
+    partial class Initial013
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -403,6 +406,9 @@ namespace WeShopAlot.Data.Migrations
                     b.Property<DateTime?>("TermStartDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("ZIPCode")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("MunicipalityId");
@@ -461,9 +467,6 @@ namespace WeShopAlot.Data.Migrations
                         .HasColumnType("nvarchar(250)");
 
                     b.Property<int>("YearIncorporated")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ZIPCode")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
