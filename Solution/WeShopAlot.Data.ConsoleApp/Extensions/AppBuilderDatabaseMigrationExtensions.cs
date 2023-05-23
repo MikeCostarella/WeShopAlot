@@ -14,7 +14,14 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions
                 var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
                 try
                 {
-                    context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropSQLServerDatabase.sql"));
+                    if (context.Database.ProviderName == "Microsoft.EntityFrameworkCore.SqlServer")
+                    {
+                        context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropSQLServerDatabase.sql"));
+                    }
+                    if (context.Database.ProviderName != "Npgsql.EntityFrameworkCore.PostgreSQL")
+                    {
+                        // ToDo: write a script to delete all tables from postgres db
+                    }
                 }
                 catch (Exception ex)
                 {
