@@ -39,10 +39,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Scripts\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\WeShopAlot.Data.Import\WeShopAlot.Data.Import.csproj" />
     <ProjectReference Include="..\WeShopAlot.Data\WeShopAlot.Data.csproj" />
   </ItemGroup>
@@ -123,7 +119,7 @@
     <None Update="Content\images\products\00000014-001.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Update="Scripts\DropDatabase.sql">
+    <None Update="Scripts\DropSqlServerDatabase.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

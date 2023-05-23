@@ -14,7 +14,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions
                 var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
                 try
                 {
-                    context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropDatabase.sql"));
+                    context.Database.ExecuteSqlRaw(File.ReadAllText(dir + @"\Scripts\DropSQLServerDatabase.sql"));
                 }
                 catch (Exception ex)
                 {
