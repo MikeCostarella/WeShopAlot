@@ -9,6 +9,7 @@ SELECT
 	,(CASE WHEN municipalIncomeTaxRate.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
 	,country.Name AS Country_Name
 	,stateProvince.Name AS StateProvince_Name
+	,municipalityType.Name AS Municipality_Type
 	,municipality.Name AS Municipality_Name
     ,municipalIncomeTaxRate.MunicipalityId
 	--,municipalityType.Name AS Municipality_Type

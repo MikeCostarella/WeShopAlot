@@ -9,8 +9,8 @@ SELECT
 	,(CASE WHEN municipality.IsDeleted = 1 THEN 'Yes' ELSE 'No' END) AS Deleted
     --,municipality.StateId
 	,stateProvince.Name AS State_Name
-	,municipalityType.Name AS Type
-    ,municipality.Name
+	,municipalityType.Name AS Municipality_Type
+    ,municipality.Name AS Municipality_Name
     --,municipality.MunicipalityTypeId
 	,municipality.Telephone
 	,municipality.MailingAddressLine1
@@ -94,4 +94,4 @@ SELECT * FROM #T1
 WHERE
 	1 = 1
 ORDER BY
-	State_Name, Name
+	State_Name, Municipality_Name
