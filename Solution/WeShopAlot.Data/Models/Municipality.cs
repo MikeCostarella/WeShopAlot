@@ -58,6 +58,8 @@ namespace WeShopAlot.Data.Models
 
         public List<MunicipalityCounty> Counties { get; set; }
 
+        public List<MunicipalIncomeTaxRate> IncomeTaxRates { get; set; }
+
         public List<MunicipalLawDirector> LawDirectors { get; set; }
 
         public List<Mayor> Mayors { get; set; }

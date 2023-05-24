@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
+using System.Globalization;
 using System.Reflection;
 using System.Text.Json;
 using WeShopAlot.Data.Import.Models;
@@ -364,6 +364,62 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                                 if (context.ChangeTracker.HasChanges()) context.SaveChanges();
                             }
                         }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
+        public static void LoadUSOhioMunicipalTaxRates(this IApplicationBuilder app)
+        {
+            using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
+                try
+                {
+                    var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    var municipalTaxRatesData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-MunicipalTaxRates-2023-05-24.json");
+                    var importedMunicipalTaxRates = JsonSerializer.Deserialize<List<ImportedMunicipalTaxRate>>(municipalTaxRatesData);
+                    if (importedMunicipalTaxRates == null) return;
+                    if (importedMunicipalTaxRates.Count == 0) return;
+                    var countryRepository = new CountryRepository(context);
+                    var country = countryRepository.GetByAbbreviation("US");
+                    var stateRepository = new StateProvinceRepository(context);
+                    var state = stateRepository.Get(country, "Ohio");
+                    var municipalalityRepository = new MunicipalityRepository(context);
+                    var unknownMunicipalities = new List<string>();
+                    foreach (var importedMunicipalTaxRate in importedMunicipalTaxRates)
+                    {
+                        var municipality = municipalalityRepository.Get(state, importedMunicipalTaxRate.MunicipalityName);
+                        if (municipality == null)
+                        {
+                            unknownMunicipalities.Add(importedMunicipalTaxRate.MunicipalityName);
+                            continue;
+                        }
+                        var municipalIncomeTaxRate = new MunicipalIncomeTaxRate
+                        {
+                            MunicipalityId = municipality.Id,
+                            Rate = importedMunicipalTaxRate.TaxRate,
+                            StartDate = DateTime.ParseExact(importedMunicipalTaxRate.StartDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture)
+                        };
+                        var endDateAsString = importedMunicipalTaxRate.EndDate.ToString();
+                        if (!endDateAsString.StartsWith("9999"))
+                        {
+                            DateTime endDate = DateTime.MinValue;
+                            if (DateTime.TryParseExact(importedMunicipalTaxRate.EndDate.ToString(), "yyyyMMdd", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate))
+                            {
+                                municipalIncomeTaxRate.EndDate = endDate;
+                            }
+                        }
+                        context.MunicipalIncomeTaxRates.Add(municipalIncomeTaxRate);
+                    }
+                    if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                    if (unknownMunicipalities.Count > 0)
+                    {
+
                     }
                 }
                 catch (Exception ex)

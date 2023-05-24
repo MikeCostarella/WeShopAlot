@@ -71,6 +71,9 @@
     <None Update="Content\data\json\USA-Ohio-City-Officials-2022-2023.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Content\data\json\USA-Ohio-MunicipalTaxRates-2023-05-24.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Content\data\json\USA-Ohio-Township-Officials-2022-2023.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

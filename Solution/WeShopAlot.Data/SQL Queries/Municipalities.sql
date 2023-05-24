@@ -23,6 +23,15 @@ SELECT
 	,FORMAT(municipality.Census2020, N'N0') AS Census2020
 	,municipality.YearIncorporated
 	,(STUFF((
+		SELECT ',' + str(municipalIncomeTaxRate.Rate,8,3)
+		FROM WSA.MunicipalIncomeTaxRate municipalIncomeTaxRate
+		WHERE
+			municipalIncomeTaxRate.MunicipalityId = municipality.Id
+			AND municipalIncomeTaxRate.EndDate IS NULL
+		GROUP BY str(municipalIncomeTaxRate.Rate,8,3)
+		FOR XML PATH(''), TYPE).value('.', 'VARCHAR(MAX)'), 1, 1, '')
+	) AS IncomeTaxRate			
+	,(STUFF((
 		SELECT ',' + mayor.FirstName + ' ' + mayor.LastName 
 		FROM WSA.Mayor mayor
 		WHERE
