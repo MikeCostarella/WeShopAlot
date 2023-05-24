@@ -1,0 +1,727 @@
+[
+  { "MunicipalityName": "Aberdeen" },
+  { "MunicipalityName": "Ada" },
+  { "MunicipalityName": "Addyston" },
+  { "MunicipalityName": "Adelphi" },
+  { "MunicipalityName": "Alexandria" },
+  { "MunicipalityName": "Alger" },
+  { "MunicipalityName": "Amanda" },
+  { "MunicipalityName": "Amelia" },
+  { "MunicipalityName": "Amsterdam" },
+  { "MunicipalityName": "Andover" },
+  { "MunicipalityName": "Antwerp" },
+  { "MunicipalityName": "Arlington Heights" },
+  { "MunicipalityName": "Ashley" },
+      { "MunicipalityName": "Ashville" },
+      { "MunicipalityName": "Aurora" },
+      { "MunicipalityName": "Avon" },
+      { "MunicipalityName": "Avon Lake" },
+      { "MunicipalityName": "Baltic" },
+      { "MunicipalityName": "Baltimore" },
+      { "MunicipalityName": "Barberton" },
+      { "MunicipalityName": "Barnesville" },
+      { "MunicipalityName": "Batavia" },
+      { "MunicipalityName": "Bay Village" },
+
+      { "MunicipalityName": "Beachwood" },
+
+      { "MunicipalityName": "Beaverdam" },
+
+      { "MunicipalityName": "Bedford" },
+
+      { "MunicipalityName": "Bedford Heights" },
+
+      { "MunicipalityName": "Belle Center" },
+
+      { "MunicipalityName": "Bellefontaine" },
+
+      { "MunicipalityName": "Bellevue" },
+
+      { "MunicipalityName": "Bellville" },
+
+      { "MunicipalityName": "Belpre" },
+
+      { "MunicipalityName": "Bentleyville" },
+
+      { "MunicipalityName": "Berea" },
+
+      { "MunicipalityName": "Bethel" },
+
+      { "MunicipalityName": "Bettsville" },
+
+      { "MunicipalityName": "Bexley" },
+
+      { "MunicipalityName": "Bloomdale" },
+
+      { "MunicipalityName": "Bloomingdale" },
+
+      { "MunicipalityName": "Bloomville" },
+
+      { "MunicipalityName": "Boston Heights" },
+
+      { "MunicipalityName": "Bratenahl" },
+
+      { "MunicipalityName": "Brecksville" },
+
+      { "MunicipalityName": "Bremen" },
+
+      { "MunicipalityName": "Brice" },
+
+      { "MunicipalityName": "Bridgeport" },
+
+      { "MunicipalityName": "Broadview Heights" },
+
+      { "MunicipalityName": "Brooklyn" },
+
+      { "MunicipalityName": "Brooklyn Heights" },
+
+      { "MunicipalityName": "Bryan" },
+
+      { "MunicipalityName": "Buckland" },
+
+      { "MunicipalityName": "Burbank" },
+
+      { "MunicipalityName": "Butler" },
+
+      { "MunicipalityName": "Cairo" },
+
+      { "MunicipalityName": "Caldwell" },
+
+      { "MunicipalityName": "Camden" },
+
+      { "MunicipalityName": "Campbell" },
+
+      { "MunicipalityName": "Canal Winchester" },
+
+      { "MunicipalityName": "Cardington" },
+
+      { "MunicipalityName": "Carroll" },
+
+      { "MunicipalityName": "Carrollton" },
+
+      { "MunicipalityName": "Catawba" },
+
+      { "MunicipalityName": "Cecil" },
+
+      { "MunicipalityName": "Cedarville" },
+
+      { "MunicipalityName": "Centerburg" },
+
+      { "MunicipalityName": "Chagrin Falls" },
+
+      { "MunicipalityName": "Chardon" },
+
+      { "MunicipalityName": "Chesterville" },
+
+      { "MunicipalityName": "Circleville" },
+
+      { "MunicipalityName": "Clarksville" },
+
+      { "MunicipalityName": "Cleveland Heights" },
+
+      { "MunicipalityName": "Clinton" },
+
+      { "MunicipalityName": "Columbiana" },
+
+      { "MunicipalityName": "Commercial Point" },
+
+      { "MunicipalityName": "Conesville" },
+
+      { "MunicipalityName": "Continental" },
+
+      { "MunicipalityName": "Corwin" },
+
+      { "MunicipalityName": "Crestline" },
+
+      { "MunicipalityName": "Crooksville" },
+
+      { "MunicipalityName": "Cuyahoga Falls" },
+
+      { "MunicipalityName": "Cuyahoga Heights" },
+
+      { "MunicipalityName": "Danville" },
+
+      { "MunicipalityName": "Darbyville" },
+
+      { "MunicipalityName": "DeGraff" },
+
+      { "MunicipalityName": "Dennison" },
+
+      { "MunicipalityName": "Doylestown" },
+
+      { "MunicipalityName": "Dunkirk" },
+
+      { "MunicipalityName": "East Cleveland" },
+
+      { "MunicipalityName": "East Palestine" },
+
+      { "MunicipalityName": "Eastlake" },
+
+      { "MunicipalityName": "Eaton" },
+
+      { "MunicipalityName": "Edgerton" },
+
+      { "MunicipalityName": "Edison" },
+
+      { "MunicipalityName": "Elmore" },
+
+      { "MunicipalityName": "Elmwood Place" },
+
+      { "MunicipalityName": "Elyria" },
+
+      { "MunicipalityName": "Empire" },
+
+      { "MunicipalityName": "Euclid" },
+
+      { "MunicipalityName": "Fairborn" },
+
+      { "MunicipalityName": "Fairport Harbor" },
+
+      { "MunicipalityName": "Fairview Park" },
+
+      { "MunicipalityName": "Fayette" },
+
+      { "MunicipalityName": "Fayetteville" },
+
+      { "MunicipalityName": "Felicity" },
+
+      { "MunicipalityName": "Forest" },
+
+      { "MunicipalityName": "Fort Jennings" },
+
+      { "MunicipalityName": "Fostoria" },
+
+      { "MunicipalityName": "Frazeysburg" },
+
+      { "MunicipalityName": "Fredericktown" },
+
+      { "MunicipalityName": "Fremont" },
+
+      { "MunicipalityName": "Fulton" },
+
+      { "MunicipalityName": "Gahanna" },
+
+      { "MunicipalityName": "Galena" },
+
+      { "MunicipalityName": "Galion" },
+
+      { "MunicipalityName": "Garfield Heights" },
+
+      { "MunicipalityName": "Gates Mills" },
+
+      { "MunicipalityName": "Genoa" },
+
+      { "MunicipalityName": "Gettysburg" },
+
+      { "MunicipalityName": "Gibsonburg" },
+
+      { "MunicipalityName": "Girard" },
+
+      { "MunicipalityName": "Glenwillow" },
+
+      { "MunicipalityName": "Golf Manor" },
+
+      { "MunicipalityName": "Grafton" },
+
+      { "MunicipalityName": "Grandview Heights" },
+
+      { "MunicipalityName": "Gratis" },
+
+      { "MunicipalityName": "Greenfield" },
+
+      { "MunicipalityName": "Greenhills" },
+
+      { "MunicipalityName": "Grove City" },
+
+      { "MunicipalityName": "Groveport" },
+
+      { "MunicipalityName": "Hamilton" },
+
+      { "MunicipalityName": "Hanover" },
+
+      { "MunicipalityName": "Harrisburg" },
+
+      { "MunicipalityName": "Harrison" },
+
+      { "MunicipalityName": "Harrod" },
+
+      { "MunicipalityName": "Haskins" },
+
+      { "MunicipalityName": "Helena" },
+
+      { "MunicipalityName": "Highland Heights" },
+
+      { "MunicipalityName": "Hilliard" },
+
+      { "MunicipalityName": "Hiram" },
+
+      { "MunicipalityName": "Holland" },
+
+      { "MunicipalityName": "Hopedale" },
+
+      { "MunicipalityName": "Hudson" },
+
+      { "MunicipalityName": "Hunting Valley" },
+
+      { "MunicipalityName": "Huron" },
+
+      { "MunicipalityName": "Independence" },
+
+      { "MunicipalityName": "Jackson" },
+
+      { "MunicipalityName": "Jackson Center" },
+
+      { "MunicipalityName": "Jeffersonville" },
+
+      { "MunicipalityName": "Jerry City" },
+
+      { "MunicipalityName": "Jewett" },
+
+      { "MunicipalityName": "Johnstown" },
+
+      { "MunicipalityName": "Kent" },
+
+      { "MunicipalityName": "Killbuck" },
+
+      { "MunicipalityName": "Kirkersville" },
+
+      { "MunicipalityName": "Kirtland" },
+
+      { "MunicipalityName": "LaGrange" },
+
+      { "MunicipalityName": "Lakeline" },
+
+      { "MunicipalityName": "Lakemore" },
+
+      { "MunicipalityName": "Latty" },
+
+      { "MunicipalityName": "Leesburg" },
+
+      { "MunicipalityName": "Leetonia" },
+
+      { "MunicipalityName": "Liberty Center" },
+
+      { "MunicipalityName": "Lincoln Heights" },
+
+      { "MunicipalityName": "Lithopolis" },
+
+      { "MunicipalityName": "Lockbourne" },
+
+      { "MunicipalityName": "Lockington" },
+
+      { "MunicipalityName": "Lockland" },
+
+      { "MunicipalityName": "Lodi" },
+
+      { "MunicipalityName": "Loveland" },
+
+      { "MunicipalityName": "Lowellville" },
+
+      { "MunicipalityName": "Lyndhurst" },
+
+      { "MunicipalityName": "Lyons" },
+
+      { "MunicipalityName": "Macedonia" },
+
+      { "MunicipalityName": "Madison Village" },
+
+      { "MunicipalityName": "Maineville" },
+
+      { "MunicipalityName": "Malinta" },
+
+      { "MunicipalityName": "Malvern" },
+
+      { "MunicipalityName": "Manchester" },
+
+      { "MunicipalityName": "Mantua Village" },
+
+      { "MunicipalityName": "Maple Heights" },
+
+      { "MunicipalityName": "Marengo" },
+
+      { "MunicipalityName": "Martins Ferry" },
+
+      { "MunicipalityName": "Mayfield Heights" },
+
+      { "MunicipalityName": "Mayfield Village" },
+
+      { "MunicipalityName": "McClure" },
+
+      { "MunicipalityName": "McDonald" },
+
+      { "MunicipalityName": "Mechanicsburg" },
+
+      { "MunicipalityName": "Medina" },
+
+      { "MunicipalityName": "Melrose" },
+
+      { "MunicipalityName": "Mentor" },
+
+      { "MunicipalityName": "Metamora" },
+
+      { "MunicipalityName": "Middle Point" },
+
+      { "MunicipalityName": "Middleburg Heights" },
+
+      { "MunicipalityName": "Middleport" },
+
+      { "MunicipalityName": "Midvale" },
+
+      { "MunicipalityName": "Mifflin" },
+
+      { "MunicipalityName": "Milan" },
+
+      { "MunicipalityName": "Milford" },
+
+      { "MunicipalityName": "Milford Center" },
+
+      { "MunicipalityName": "Miller City" },
+
+      { "MunicipalityName": "Millersport" },
+
+      { "MunicipalityName": "Mineral City" },
+
+      { "MunicipalityName": "Minerva" },
+
+      { "MunicipalityName": "Minerva Park" },
+
+      { "MunicipalityName": "Mingo Junction" },
+
+      { "MunicipalityName": "Mogadore" },
+
+      { "MunicipalityName": "Monroeville" },
+
+      { "MunicipalityName": "Moreland Hills" },
+
+      { "MunicipalityName": "Morral" },
+
+      { "MunicipalityName": "Moscow" },
+
+      { "MunicipalityName": "Mount Sterling" },
+
+      { "MunicipalityName": "Mount Victory" },
+
+      { "MunicipalityName": "Mt Healthy" },
+
+      { "MunicipalityName": "Napoleon" },
+
+      { "MunicipalityName": "Nashville" },
+
+      { "MunicipalityName": "Nelsonville" },
+
+      { "MunicipalityName": "New Albany" },
+
+      { "MunicipalityName": "New Bavaria" },
+
+      { "MunicipalityName": "New Bloomington" },
+
+      { "MunicipalityName": "New Franklin" },
+
+      { "MunicipalityName": "New Richmond" },
+
+      { "MunicipalityName": "New Riegel" },
+
+      { "MunicipalityName": "New Washington" },
+
+      { "MunicipalityName": "New Waterford" },
+
+      { "MunicipalityName": "Newburgh Heights" },
+
+      { "MunicipalityName": "Newcomerstown" },
+
+      { "MunicipalityName": "Newton Falls" },
+
+      { "MunicipalityName": "Newtown" },
+
+      { "MunicipalityName": "Ney" },
+
+      { "MunicipalityName": "Niles" },
+
+      { "MunicipalityName": "North Canton" },
+
+      { "MunicipalityName": "North College Hill" },
+
+      { "MunicipalityName": "North Lewisburg" },
+
+      { "MunicipalityName": "North Olmsted" },
+
+      { "MunicipalityName": "North Perry" },
+
+      { "MunicipalityName": "North Ridgeville" },
+
+      { "MunicipalityName": "North Robinson" },
+
+      { "MunicipalityName": "North Royalton" },
+
+      { "MunicipalityName": "Northfield Village" },
+
+      { "MunicipalityName": "Norton" },
+
+      { "MunicipalityName": "Norwalk" },
+
+      { "MunicipalityName": "Oak Harbor" },
+
+      { "MunicipalityName": "Oak Hill" },
+
+      { "MunicipalityName": "Oakwood (Cuyahoga)" },
+
+      { "MunicipalityName": "Oberlin" },
+
+      { "MunicipalityName": "Octa" },
+
+      { "MunicipalityName": "Olmsted Falls" },
+
+      { "MunicipalityName": "Orange" },
+
+      { "MunicipalityName": "Orrville" },
+
+      { "MunicipalityName": "Ostrander" },
+
+      { "MunicipalityName": "Ottawa" },
+
+      { "MunicipalityName": "Owensville" },
+
+      { "MunicipalityName": "Oxford" },
+
+      { "MunicipalityName": "Painesville" },
+
+      { "MunicipalityName": "Parma Heights" },
+
+      { "MunicipalityName": "Pataskala" },
+
+      { "MunicipalityName": "Patterson" },
+
+      { "MunicipalityName": "Payne" },
+
+      { "MunicipalityName": "Peninsula" },
+
+      { "MunicipalityName": "Pepper Pike" },
+
+      { "MunicipalityName": "Perry" },
+
+      { "MunicipalityName": "Piketon" },
+
+      { "MunicipalityName": "Piqua" },
+
+      { "MunicipalityName": "Pleasant Hill" },
+
+      { "MunicipalityName": "Pleasantville" },
+
+      { "MunicipalityName": "Pomeroy" },
+
+      { "MunicipalityName": "Portage (Wood)" },
+
+      { "MunicipalityName": "Powell" },
+
+      { "MunicipalityName": "Powhatan Point" },
+
+      { "MunicipalityName": "Quincy" },
+
+      { "MunicipalityName": "Ravenna" },
+
+      { "MunicipalityName": "Reminderville" },
+
+      { "MunicipalityName": "Reynoldsburg" },
+
+      { "MunicipalityName": "Richmond Heights" },
+
+      { "MunicipalityName": "Richwood" },
+
+      { "MunicipalityName": "Ridgeway" },
+
+      { "MunicipalityName": "Rio Grande" },
+
+      { "MunicipalityName": "Ripley" },
+
+      { "MunicipalityName": "Risingsun" },
+
+      { "MunicipalityName": "Rittman" },
+
+      { "MunicipalityName": "Rocky River" },
+
+      { "MunicipalityName": "Rossford" },
+
+      { "MunicipalityName": "Rutland" },
+
+      { "MunicipalityName": "Sabina" },
+
+      { "MunicipalityName": "Saint Clairsville" },
+
+      { "MunicipalityName": "Saint Paris" },
+
+      { "MunicipalityName": "Salem" },
+
+      { "MunicipalityName": "Salineville" },
+
+      { "MunicipalityName": "Sandusky" },
+
+      { "MunicipalityName": "Sardinia" },
+
+      { "MunicipalityName": "Sebring" },
+
+      { "MunicipalityName": "Seven Hills" },
+
+      { "MunicipalityName": "Shaker Heights" },
+
+      { "MunicipalityName": "Shawnee Hills" },
+
+      { "MunicipalityName": "Sheffield Lake" },
+
+      { "MunicipalityName": "Sheffield Village" },
+
+      { "MunicipalityName": "Silver Lake" },
+
+      { "MunicipalityName": "Silverton" },
+
+      { "MunicipalityName": "Smithville" },
+
+      { "MunicipalityName": "Solon" },
+
+      { "MunicipalityName": "South Amherst" },
+
+      { "MunicipalityName": "South Charleston" },
+
+      { "MunicipalityName": "South Euclid" },
+
+      { "MunicipalityName": "South Solon" },
+
+      { "MunicipalityName": "South Vienna" },
+
+      { "MunicipalityName": "Spencerville" },
+
+      { "MunicipalityName": "St. Louisville" },
+
+      { "MunicipalityName": "Steubenville" },
+
+      { "MunicipalityName": "Stone Creek" },
+
+      { "MunicipalityName": "Stoutsville" },
+
+      { "MunicipalityName": "Stratton" },
+
+      { "MunicipalityName": "Streetsboro" },
+
+      { "MunicipalityName": "Strongsville" },
+
+      { "MunicipalityName": "Sugar Grove" },
+
+      { "MunicipalityName": "Sugarcreek" },
+
+      { "MunicipalityName": "Sunbury" },
+
+      { "MunicipalityName": "Swanton" },
+
+      { "MunicipalityName": "Sycamore" },
+
+      { "MunicipalityName": "Tallmadge" },
+
+      { "MunicipalityName": "Thurston" },
+
+      { "MunicipalityName": "Timberlake" },
+
+      { "MunicipalityName": "Tiro" },
+
+      { "MunicipalityName": "Tontogany" },
+
+      { "MunicipalityName": "Toronto" },
+
+      { "MunicipalityName": "Tremont City" },
+
+      { "MunicipalityName": "Trimble" },
+
+      { "MunicipalityName": "Tuscarawas" },
+
+      { "MunicipalityName": "Twinsburg" },
+
+      { "MunicipalityName": "Uhrichsville" },
+
+      { "MunicipalityName": "University Heights" },
+
+      { "MunicipalityName": "Upper Arlington" },
+
+      { "MunicipalityName": "Urbancrest" },
+
+      { "MunicipalityName": "Utica" },
+
+      { "MunicipalityName": "Valley View (Cuyahoga)" },
+
+      { "MunicipalityName": "Valleyview (Franklin)" },
+
+      { "MunicipalityName": "Vermilion" },
+
+      { "MunicipalityName": "Wadsworth" },
+
+      { "MunicipalityName": "Wakeman" },
+
+      { "MunicipalityName": "Walton Hills" },
+
+      { "MunicipalityName": "Warrensville Heights" },
+
+      { "MunicipalityName": "Washingtonville" },
+
+      { "MunicipalityName": "Waterville" },
+
+      { "MunicipalityName": "Wayne Lakes" },
+
+      { "MunicipalityName": "Waynesville" },
+
+      { "MunicipalityName": "Wellington" },
+
+      { "MunicipalityName": "Wellston" },
+
+      { "MunicipalityName": "Wellsville" },
+
+      { "MunicipalityName": "West Alexandria" },
+
+      { "MunicipalityName": "West Elkton" },
+
+      { "MunicipalityName": "West Lafayette" },
+
+      { "MunicipalityName": "West Liberty" },
+
+      { "MunicipalityName": "West Mansfield" },
+
+      { "MunicipalityName": "West Salem" },
+
+      { "MunicipalityName": "West Unity" },
+
+      { "MunicipalityName": "Westlake" },
+
+      { "MunicipalityName": "Weston" },
+
+      { "MunicipalityName": "Whitehouse" },
+
+      { "MunicipalityName": "Wickliffe" },
+
+      { "MunicipalityName": "Williamsburg" },
+
+      { "MunicipalityName": "Williamsport" },
+
+      { "MunicipalityName": "Willoughby" },
+
+      { "MunicipalityName": "Willoughby Hills" },
+
+      { "MunicipalityName": "Willowick" },
+
+      { "MunicipalityName": "Willshire" },
+
+      { "MunicipalityName": "Windham" },
+
+      { "MunicipalityName": "Wintersville" },
+
+      { "MunicipalityName": "Woodlawn" },
+
+      { "MunicipalityName": "Woodmere" },
+
+      { "MunicipalityName": "Woodsfield" },
+
+      { "MunicipalityName": "Woodstock" },
+
+      { "MunicipalityName": "Worthington" },
+
+      { "MunicipalityName": "Xenia" },
+
+      { "MunicipalityName": "Yellow Springs" },
+
+  { "MunicipalityName": "Youngstown" }
+]
