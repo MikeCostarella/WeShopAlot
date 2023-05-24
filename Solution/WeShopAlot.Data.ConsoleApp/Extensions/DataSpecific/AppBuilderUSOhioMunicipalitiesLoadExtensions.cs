@@ -12,7 +12,7 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
     public static class AppBuilderUSOhioMunicipalitiesLoadExtensions
     {
-        public static void LoadUSOhioMunicipalities(this IApplicationBuilder app)
+        public static void LoadUSOhioCities(this IApplicationBuilder app)
         {
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
@@ -373,6 +373,52 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
             }
         }
 
+        public static void LoadUSOhioVillages(this IApplicationBuilder app)
+        {
+            using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
+                try
+                {
+                    var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    if (!context.Municipalities.Any(x => x.MunicipalityTypeId == (int)MunicipalityTypeEnum.Village))
+                    {
+                        var countryRepository = new CountryRepository(context);
+                        var country = countryRepository.GetByAbbreviation("US");
+                        var stateRepository = new StateProvinceRepository(context);
+                        var state = stateRepository.Get(country, "Ohio");
+                        var usOhioVillagesData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-Village-Officials-2022-2023.json");
+                        var importedUSOhioVillages = JsonSerializer.Deserialize<List<ImportedVillage>>(usOhioVillagesData);
+                        foreach (var importedVillage in importedUSOhioVillages)
+                        {
+                            var village = new Municipality
+                            {
+                                Census2000 = int.Parse(importedVillage.Census2000.Replace(",", string.Empty)),
+                                Census2010 = int.Parse(importedVillage.Census2010.Replace(",", string.Empty)),
+                                Census2020 = int.Parse(importedVillage.Census2020.Replace(",", string.Empty)),
+                                FormOfGovernment = importedVillage.FormOfGovernment,
+                                MailingAddressLine1 = importedVillage.Address1,
+                                MailingAddressLine2 = importedVillage.Address2,
+                                MunicipalityTypeId = (int)MunicipalityTypeEnum.Village,
+                                Name = importedVillage.VillageName,
+                                StateId = state.Id,
+                                Telephone = importedVillage.Telephone,
+                                Website = importedVillage.Website,
+                                YearIncorporated = importedVillage.YearIncorporated,
+                                ZIPCode = importedVillage.ZIPCode.GetValueOrDefault(),
+                            };
+                            context.Municipalities.Add(village);
+                            if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
         public static void LoadUSOhioMunicipalTaxRates(this IApplicationBuilder app)
         {
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
@@ -428,5 +474,6 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                 }
             }
         }
+
     }
 }

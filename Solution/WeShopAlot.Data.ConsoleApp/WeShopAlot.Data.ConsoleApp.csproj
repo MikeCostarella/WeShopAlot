@@ -80,6 +80,9 @@
     <None Update="Content\data\json\USA-Ohio-townships.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Content\data\json\USA-Ohio-Village-Officials-2022-2023.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Content\data\json\USA-states.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

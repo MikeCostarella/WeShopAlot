@@ -44,7 +44,8 @@ namespace WeShopAlot.Data.ConsoleApp
             app.LoadCanadianProvinces();
             app.LoadUSCounties();
             app.LoadUSOhioTownships();
-            app.LoadUSOhioMunicipalities();
+            app.LoadUSOhioCities();
+            app.LoadUSOhioVillages();
             app.LoadUSOhioMunicipalTaxRates();
             app.LoadProductTypes();
             app.LoadProductBrands();
