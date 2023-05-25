@@ -74,6 +74,9 @@
     <None Update="Content\data\json\USA-Ohio-MunicipalTaxRates-2023-05-24.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Content\data\json\USA-Ohio-MunicpalTaxCollectionAgencies.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Content\data\json\USA-Ohio-RITA-Municipalities.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -29,6 +29,10 @@ namespace WeShopAlot.Data.Models
         public int MunicipalityTypeId { get; set; }
         public MunicipalityType MunicipalityType { get; set; }
 
+        [ForeignKey("MunicipalIncomeTaxManagementAgencyId")]
+        public int? MunicipalIncomeTaxManagementAgencyId { get; set; }
+        public MunicipalIncomeTaxManagementAgency MunicipalIncomeTaxManagementAgency { get; set; }
+
         [Required]
         [StringLength(50)]
         public string Name { get; set; }

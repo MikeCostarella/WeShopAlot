@@ -39,6 +39,7 @@ namespace WeShopAlot.Data.ConsoleApp
         public void Configure(IApplicationBuilder app)
         {
             app.MigrateDatabase();
+            app.LoadMunicipalIncomeTaxAgencies();
             app.LoadCountries();
             app.LoadUSStates();
             app.LoadCanadianProvinces();

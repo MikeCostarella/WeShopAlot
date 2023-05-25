@@ -39,6 +39,7 @@ namespace WeShopAlot.Data
         public DbSet<Municipality> Municipalities { get; set; }
         public DbSet<MunicipalityCounty> MunicipalityCounties { get; set; }
         public DbSet<MunicipalityType> MunicipalityTypes { get; set; }
+        public DbSet<MunicipalIncomeTaxManagementAgency> MunicipalIncomeTaxManagementAgencies { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }

@@ -16,6 +16,7 @@ namespace WeShopAlot.Data.Extensions.ModelBuilderFunctionality
             modelBuilder.Entity<MunicipalIncomeTaxRate>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.Municipality).WithMany(a => a.IncomeTaxRates).HasForeignKey(b => b.MunicipalityId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MunicipalLawDirector>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.Municipality).WithMany(a => a.LawDirectors).HasForeignKey(b => b.MunicipalityId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MunicipalTreasurer>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.Municipality).WithMany(a => a.Treasurers).HasForeignKey(b => b.MunicipalityId).OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Municipality>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.MunicipalIncomeTaxManagementAgency).WithMany().HasForeignKey("MunicipalIncomeTaxManagementAgencyId").OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Municipality>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.MunicipalityType).WithMany().HasForeignKey("MunicipalityTypeId").OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<Municipality>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.State).WithMany(a => a.Municipalities).HasForeignKey(b => b.StateId).OnDelete(DeleteBehavior.NoAction);
             modelBuilder.Entity<MunicipalityCounty>().HasQueryFilter(b => !b.IsDeleted).HasOne(b => b.County).WithMany(a => a.Municipalities).HasForeignKey(b => b.CountyId).OnDelete(DeleteBehavior.NoAction);

@@ -12,6 +12,37 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
 {
     public static class AppBuilderUSOhioMunicipalitiesLoadExtensions
     {
+        public static void LoadMunicipalIncomeTaxAgencies(this IApplicationBuilder app)
+        {
+            using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
+                try
+                {
+                    var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    var jsonData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-MunicpalTaxCollectionAgencies.json");
+                    var importedObjects = JsonSerializer.Deserialize<List<ImportedMunicipalIncomeTaxManagementAgency>>(jsonData);
+                    if (importedObjects == null) return;
+                    if (importedObjects.Count == 0) return;
+                    foreach (var importedObject in importedObjects)
+                    {
+                        var municipalIncomeTaxManagementAgency = new MunicipalIncomeTaxManagementAgency
+                        {
+                            InternalId = importedObject.InternalId,
+                            Abbreviation = importedObject.Abbreviation,
+                            Name = importedObject.Name
+                        };
+                        context.MunicipalIncomeTaxManagementAgencies.Add(municipalIncomeTaxManagementAgency);
+                    }
+                    if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
+
         public static void LoadUSOhioCities(this IApplicationBuilder app)
         {
             using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
