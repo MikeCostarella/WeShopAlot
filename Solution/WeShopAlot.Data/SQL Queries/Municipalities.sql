@@ -12,6 +12,7 @@ SELECT
 	,municipalityType.Name AS Municipality_Type
     ,municipality.Name AS Municipality_Name
     --,municipality.MunicipalityTypeId
+	,(CASE WHEN municipality.IsCollectedByRITA = 1 THEN 'Yes' ELSE 'No' END) AS CollectedByRITA
 	,municipality.Telephone
 	,municipality.MailingAddressLine1
 	,municipality.MailingAddressLine2
@@ -93,5 +94,6 @@ FROM
 SELECT * FROM #T1
 WHERE
 	1 = 1
+	--AND CollectedByRITA = 'Yes'
 ORDER BY
 	State_Name, Municipality_Name

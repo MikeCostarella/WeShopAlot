@@ -475,5 +475,45 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
             }
         }
 
+        public static void IndicateMunicipalitiesCollectedByRITA(this IApplicationBuilder app)
+        {
+            using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
+                try
+                {
+                    var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                    var importedRITAMunicipalitiesData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-RITA-Municipalities.json");
+                    var importedRITAMunicipalities = JsonSerializer.Deserialize<List<ImportedRITAMunicipality>>(importedRITAMunicipalitiesData);
+                    if (importedRITAMunicipalities == null) return;
+                    if (importedRITAMunicipalities.Count == 0) return;
+                    var countryRepository = new CountryRepository(context);
+                    var country = countryRepository.GetByAbbreviation("US");
+                    var stateRepository = new StateProvinceRepository(context);
+                    var state = stateRepository.Get(country, "Ohio");
+                    var municipalalityRepository = new MunicipalityRepository(context);
+                    var unknownMunicipalities = new List<string>();
+                    foreach (var importedRITAMunicipality in importedRITAMunicipalities)
+                    {
+                        var municipality = municipalalityRepository.Get(state, importedRITAMunicipality.MunicipalityName);
+                        if (municipality == null)
+                        {
+                            unknownMunicipalities.Add(importedRITAMunicipality.MunicipalityName);
+                            continue;
+                        }
+                        municipality.IsCollectedByRITA = true;
+                    }
+                    if (context.ChangeTracker.HasChanges()) context.SaveChanges();
+                    if (unknownMunicipalities.Count > 0)
+                    {
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw;
+                }
+            }
+        }
     }
 }

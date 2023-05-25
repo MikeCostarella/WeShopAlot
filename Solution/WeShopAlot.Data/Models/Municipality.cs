@@ -16,6 +16,8 @@ namespace WeShopAlot.Data.Models
 
         public string FormOfGovernment { get; set; }
 
+        public bool IsCollectedByRITA { get; set; } = false;
+
         [StringLength(100)]
         public string MailingAddressLine1 { get; set; }
 
