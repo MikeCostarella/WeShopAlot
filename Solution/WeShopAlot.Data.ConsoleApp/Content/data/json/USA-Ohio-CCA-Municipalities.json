@@ -1,150 +1,250 @@
 [
   {
-    "MunipalityName": "BURTON",
+    "MunicipalityName": "AKRON",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "ALLIANCE",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "AMHERST",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "AMHERST",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "BURTON",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "CLAYTON",
+    "MunicipalityName": "CENTERVILLE",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "CHILLICOTHE",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "CLAYTON",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "CLEVELAND",
+    "MunicipalityName": "CLEVELAND",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "DALTON",
+    "MunicipalityName": "DALTON",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "ELIDA",
+    "MunicipalityName": "DAYTON",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "EAST LIVERPOOL",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "ELIDA",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "GENEVA-ON-THE-LAKE",
+    "MunicipalityName": "ENGLEWOOD",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "FRANKLIN",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "GENEVA-ON-THE-LAKE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "GERMANTOWN",
+    "MunicipalityName": "GERMANTOWN",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "GRAND RAPIDS",
+    "MunicipalityName": "GRAND RAPIDS",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "GRAND RIVER",
+    "MunicipalityName": "GRAND RIVER",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "HIGHLAND HILLS",
+    "MunicipalityName": "HARTVILLE",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "HIGHLAND HILLS",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "LINNDALE",
+    "MunicipalityName": "HUBER HEIGHTS",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "LAKEWOOD",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "LANCASTER",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "LONDON",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "LORAIN",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "LINNDALE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "MARBLE CLIFF",
+    "MunicipalityName": "MANSFIELD",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "MARBLE CLIFF",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "MENTOR-ON-THE-LAKE",
+    "MunicipalityName": "MENTOR-ON-THE-LAKE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "MONTPELIER",
+    "MunicipalityName": "MONTGOMERY",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "MONTPELIER",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "MUNROE FALLS",
+    "MunicipalityName": "MT. ORAB",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "MUNROE FALLS",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "NEW CARLISLE",
+    "MunicipalityName": "NEW CARLISLE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "NEW MADISON",
+    "MunicipalityName": "NEW MADISON",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "NEW MIAMI",
+    "MunicipalityName": "NEW MIAMI",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "NEW PARIS",
+    "MunicipalityName": "NEW PARIS",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "NORTH BALTIMORE",
+    "MunicipalityName": "NORTH BALTIMORE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "NORTH RANDALL",
+    "MunicipalityName": "NORTH RANDALL",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "VILLAGE OF OAKWOOD",
+    "MunicipalityName": "VILLAGE OF OAKWOOD",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "OBETZ",
+    "MunicipalityName": "OBETZ",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "ORWELL",
+    "MunicipalityName": "ORWELL",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "PAULDING",
+    "MunicipalityName": "PAULDING",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "PHILLIPSBURG",
+    "MunicipalityName": "PHILLIPSBURG",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "PITSBURG",
+    "MunicipalityName": "PITSBURG",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "RIVERSIDE",
+    "MunicipalityName": "RIVERSIDE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "ROCK CREEK",
+    "MunicipalityName": "ROCK CREEK",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "RUSSELLS POINT",
+    "MunicipalityName": "RUSSELLS POINT",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "SEVILLE",
+    "MunicipalityName": "SEVILLE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "SHREVE",
+    "MunicipalityName": "SHREVE",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "SOMERSET",
+    "MunicipalityName": "SOMERSET",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "SOUTH RUSSELL",
+    "MunicipalityName": "SOUTH RUSSELL",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "UNION",
+    "MunicipalityName": "SPRINGFIELD",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "STOW",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "TROTWOOD",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "TROY",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "UNION",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "WAYNESFIELD",
+    "MunicipalityName": "WARREN",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "WILMINGTON",
+    "MembershipType": "Special Member"
+  },
+  {
+    "MunicipalityName": "WAYNESFIELD",
     "MembershipType": "Full Member"
   },
   {
-    "MunipalityName": "WEST MILTON",
+    "MunicipalityName": "WEST MILTON",
     "MembershipType": "Full Member"
   }
 ]

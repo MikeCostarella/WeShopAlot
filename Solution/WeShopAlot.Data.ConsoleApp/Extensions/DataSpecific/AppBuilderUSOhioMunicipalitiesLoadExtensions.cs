@@ -514,22 +514,22 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
                 try
                 {
                     var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                    var importedRITAMunicipalitiesData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-RITA-Municipalities.json");
-                    var importedRITAMunicipalities = JsonSerializer.Deserialize<List<ImportedRITAMunicipality>>(importedRITAMunicipalitiesData);
-                    if (importedRITAMunicipalities == null) return;
-                    if (importedRITAMunicipalities.Count == 0) return;
+                    var importedData = File.ReadAllText(path + @"/Content/data/json/USA-Ohio-RITA-Municipalities.json");
+                    var importedTaxAgencyMunicipalities = JsonSerializer.Deserialize<List<ImportedTaxAgencyMunicipality>>(importedData);
+                    if (importedTaxAgencyMunicipalities == null) return;
+                    if (importedTaxAgencyMunicipalities.Count == 0) return;
                     var countryRepository = new CountryRepository(context);
                     var country = countryRepository.GetByAbbreviation("US");
                     var stateRepository = new StateProvinceRepository(context);
                     var state = stateRepository.Get(country, "Ohio");
                     var municipalalityRepository = new MunicipalityRepository(context);
                     var unknownMunicipalities = new List<string>();
-                    foreach (var importedRITAMunicipality in importedRITAMunicipalities)
+                    foreach (var importedTaxAgencyMunicipality in importedTaxAgencyMunicipalities)
                     {
-                        var municipality = municipalalityRepository.Get(state, importedRITAMunicipality.MunicipalityName);
+                        var municipality = municipalalityRepository.Get(state, importedTaxAgencyMunicipality.MunicipalityName);
                         if (municipality == null)
                         {
-                            unknownMunicipalities.Add(importedRITAMunicipality.MunicipalityName);
+                            unknownMunicipalities.Add(importedTaxAgencyMunicipality.MunicipalityName);
                             continue;
                         }
                         municipality.IsCollectedByRITA = true;
