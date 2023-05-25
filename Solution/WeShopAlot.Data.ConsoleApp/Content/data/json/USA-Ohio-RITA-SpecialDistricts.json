@@ -1,0 +1,243 @@
+[
+  {
+    "Id": "037",
+    "Partner01": "Bainbridge",
+    "Partner01GovernmentType": "Municipality",
+    "Partner02": "Solon",
+    "Partner02GovernmentType": "Municipality",
+    "AgreementType": "JEDD",
+    "SpecialName": ""
+  },
+  {
+    "Id": "061",
+    "Partner01": "Barnesville",
+    "Partner01GovernmentType": "Municipality",
+    "Partner02": "",
+    "Partner02GovernmentType": "",
+    "AgreementType": "JEDD",
+    "SpecialName": "I"
+  },
+  {
+    "Id": "062",
+    "Partner01": "Barnesville",
+    "Partner01GovernmentType": "Municipality",
+    "Partner02": "",
+    "Partner02GovernmentType": "",
+    "AgreementType": "JEDD",
+    "SpecialName": "II"
+  },
+  {
+    "Id": "051",
+    "Partner01": "Beachwood",
+    "Partner01GovernmentType": "Municipality",
+    "Partner02": "",
+    "Partner02GovernmentType": "",
+    "AgreementType": "JEDD",
+    "SpecialName": "East"
+  },
+  {
+    "Partner01": "Beachwood",
+    "Partner01GovernmentType": "Municipality",
+    "Partner02": "",
+    "Partner02GovernmentType": "",
+    "AgreementType": "JEDD",
+    "SpecialName": "West"
+  },
+  {
+    "Partner01": "Boston",
+    "Partner01GovernmentType": "Township",
+    "Partner02": "Peninsula",
+    "Partner02GovernmentType": "Municipality",
+    "AgreementType": "JEDD",
+    "SpecialName": ""
+  },
+  {
+    "Id": "137",
+    "Partner01": "Brimfield",
+    "Partner01GovernmentType": "Township",
+    "Partner02": "Tallmadge",
+    "Partner02GovernmentType": "Municipality",
+    "AgreementType": "JEDD",
+    "SpecialName": ""
+  },
+  {
+    "Id": "091",
+    "Partner01": "Butler",
+    "Partner01GovernmentType": "County",
+    "Partner02": "",
+    "Partner02GovernmentType": "",
+    "AgreementType": "Annexation",
+    "SpecialName": ""
+  },
+
+  "href=\"/Municipalities/Home/MemberPage?id=151\">Circleville-Pickaway",
+  "Twp",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=293\">Clinton",
+  "Grandview",
+  "Heights",
+  "JEDZ</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=135\">Cuyahoga",
+  "Falls",
+  "Boston",
+  "Twp",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=141\">Dorr",
+  "Street",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=292\">Eaton",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=282\">Elyria",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=145\">Etna-Reynoldsburg",
+  "JEDD",
+  "1</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=146\">Etna-Reynoldsburg",
+  "JEDD",
+  "2</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=147\">Etna-Reynoldsburg",
+  "JEDD",
+  "3</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=144\">Etna-Reynoldsburg",
+  "JEDD",
+  "4</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=139\">Etna-Reynoldsburg",
+  "JEDD",
+  "7</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=142\">Evans",
+  "Farm",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=417\">Ham",
+  "Fair",
+  "Twp",
+  "JEDD",
+  "I</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=080\">Ham",
+  "Fair",
+  "TWP",
+  "JEDD",
+  "II</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=081\">Ham",
+  "Fair",
+  "TWP",
+  "JEDD",
+  "III</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=329\">Harrison",
+  "Twp",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=244\">Holland",
+  "Springfield",
+  "Twp",
+  "JEDZ</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=451\">Macedonia",
+  "Northfield",
+  "Center",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=149\">Medina",
+  "Montville",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=523\">Milford",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=613\">Milford",
+  "JEDD",
+  "II</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=622\">Milford",
+  "JEDD",
+  "III</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=623\">Milford",
+  "JEDD",
+  "IV</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=628\">Milford",
+  "JEDD",
+  "V</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=668\">Milford",
+  "JEDD",
+  "VI</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=686\">Milford",
+  "JEDD",
+  "VII</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=685\">Norton",
+  "Barberton",
+  "JEDZ</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=601\">Orange",
+  "Chagrin",
+  "Highland",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=581\">Painesville",
+  "Concord",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=664\">Perry",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=661\">Reminderville",
+  "Twinsburg",
+  "Twp",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=852\">Rush",
+  "Twp",
+  "Uhrichsville",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=716\">Scioto",
+  "Twp",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=723\">Shalersville",
+  "Twp",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=721\">Sharon",
+  "TWP",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=627\">Springfield",
+  "Twp",
+  "JEDZ",
+  "I</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=804\">Warrensville",
+  "Heights",
+  "JEDZ</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=865\">Williamsburg",
+  "JEDD</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=859\">Xenia",
+  "JEDD",
+  "1</a></li>",
+
+  "href=\"/Municipalities/Home/MemberPage?id=908\">Youngstown",
+  "Girard",
+  "JEDZ</a></li>"
+
+]
