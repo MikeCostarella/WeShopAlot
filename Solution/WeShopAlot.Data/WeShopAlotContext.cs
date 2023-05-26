@@ -38,6 +38,7 @@ namespace WeShopAlot.Data
         public DbSet<MunicipalTreasurer> MunicipalTreasurers { get; set; }
         public DbSet<Municipality> Municipalities { get; set; }
         public DbSet<MunicipalityCounty> MunicipalityCounties { get; set; }
+        public DbSet<MunicipalityTaxAgencyRelationship> MunicipalityTaxAgencyRelationships { get; set; }
         public DbSet<MunicipalityType> MunicipalityTypes { get; set; }
         public DbSet<MunicipalIncomeTaxManagementAgency> MunicipalIncomeTaxManagementAgencies { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
@@ -49,6 +50,7 @@ namespace WeShopAlot.Data
         public DbSet<ProductItemOrdered> ProductItemsOrdered { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }
         public DbSet<StateProvince> StateProvinces { get; set; }
+        public DbSet<TaxAgencyMembershipType> TaxAgencyMembershipTypes { get; set; }
         public DbSet<Township> Townships { get; set; }
         public DbSet<TownshipFiscalOfficer> TownshipFiscalOfficers { get; set; }
         public DbSet<TownshipTrustee> TownshipTrustees { get; set; }

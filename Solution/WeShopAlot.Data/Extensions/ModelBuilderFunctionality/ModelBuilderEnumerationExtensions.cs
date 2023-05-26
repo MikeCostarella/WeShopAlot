@@ -13,6 +13,7 @@ namespace WeShopAlot.Data.Extensions.ModelBuilderFunctionality
             modelBuilder.Entity<GovernmentScope>().Property(e => e.Name).HasConversion(EnumX.Converter<GovernmentScopeEnum>());
             modelBuilder.Entity<MunicipalityType>().Property(e => e.Name).HasConversion(EnumX.Converter<MunicipalityTypeEnum>());
             modelBuilder.Entity<OrderStatus>().Property(e => e.Name).HasConversion(EnumX.Converter<OrderStatusEnum>());
+            modelBuilder.Entity<TaxAgencyMembershipType>().Property(e => e.Name).HasConversion(EnumX.Converter<TaxAgencyMembershipTypeEnum>());
         }
     }
 }

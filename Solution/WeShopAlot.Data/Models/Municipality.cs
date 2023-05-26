@@ -70,6 +70,8 @@ namespace WeShopAlot.Data.Models
 
         public List<Mayor> Mayors { get; set; }
 
+        public List<MunicipalityTaxAgencyRelationship> TaxAgencyRelationships { get; set; }
+
         public List<MunicipalTreasurer> Treasurers { get; set; }
 
         #endregion Child List Properties
