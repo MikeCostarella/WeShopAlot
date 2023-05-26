@@ -1,7 +1,4 @@
-﻿using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace LL.Shared.Services.ServiceAPIClient
+﻿namespace LL.Shared.Services.ServiceAPIClient
 {
     public interface IServiceAPIClient
     {

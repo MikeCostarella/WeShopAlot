@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using WeShopAlot.Data.Models;
 using WeShopAlot.Data.Repositories.Interfaces;
-using WeShopAlot.WebAPI.Dtos;
+using WeShopAlot.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace WeShopAlot.WebAPI.Controllers

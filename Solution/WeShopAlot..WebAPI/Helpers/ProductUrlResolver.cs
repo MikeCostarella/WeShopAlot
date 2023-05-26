@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using WeShopAlot.Data.Models;
-using WeShopAlot.WebAPI.Dtos;
+using WeShopAlot.Shared.Dtos;
 
 namespace WeShopAlot.WebAPI.Helpers
 {

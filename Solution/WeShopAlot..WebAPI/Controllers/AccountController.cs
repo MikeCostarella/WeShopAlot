@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using WeShopAlot.Data.Interfaces;
 using WeShopAlot.Data.Models;
-using WeShopAlot.WebAPI.Dtos;
+using WeShopAlot.Shared.Dtos;
 using WeShopAlot.WebAPI.Errors;
 using WeShopAlot.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authorization;

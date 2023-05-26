@@ -2,7 +2,7 @@
 using WeShopAlot.Data.Models;
 using WeShopAlot.Data.Repositories.Interfaces;
 using WeShopAlot.Data.Specifications;
-using WeShopAlot.WebAPI.Dtos;
+using WeShopAlot.Shared.Dtos;
 using WeShopAlot.WebAPI.Errors;
 using WeShopAlot.WebAPI.Helpers;
 using Microsoft.AspNetCore.Mvc;

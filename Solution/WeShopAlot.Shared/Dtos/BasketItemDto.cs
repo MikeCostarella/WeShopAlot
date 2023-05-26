@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WeShopAlot.WebAPI.Dtos
+namespace WeShopAlot.Shared.Dtos
 {
     public class BasketItemDto
     {

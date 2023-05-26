@@ -1,4 +1,4 @@
-namespace WeShopAlot.WebAPI.Dtos
+namespace WeShopAlot.Shared.Dtos
 {
     public class LoginDto
     {
