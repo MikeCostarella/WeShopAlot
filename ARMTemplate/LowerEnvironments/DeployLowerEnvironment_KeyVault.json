@@ -1,0 +1,958 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "tenant": {
+            "defaultValue": "???",
+            "type": "string"
+        },
+        "agency": {
+            "defaultValue": "LatvianVillageCloudware",
+            "type": "string"
+        },
+        "project": {
+            "defaultValue": "WeShopAlot",
+            "type": "string"
+        },
+        "division": {
+            "defaultValue": "ECommerce",
+            "type": "string"
+        },
+        "environment": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "keyvault_name": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "api_principalId": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "external_portal_principalId": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "admin_portal_principalId": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "AzureMapsSubscriptionKey": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "BlobEndpoint": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "ConnectionStringsLLdb": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "ConnectionStringsCommerceETL": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "ConnectionStringsRedis": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "ConnectionStringsStorageAccount": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "IOPAuthority": {
+            "defaultValue": "https://ohid.ohio.gov/mga/sps/oauth/oauth20/metadata/OHID-AUTH",
+            "type": "string"
+        },
+        "IOPClientId": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "IOPClientSecret": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "IOPRedirect": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "IOPSignOut": {
+            "defaultValue": "https://ohid.ohio.gov/mga/sps/oauth/oauth20/logout",
+            "type": "string"
+        },
+      "IOPTokenEndpoint": {
+        "defaultValue": "https://ohid.ohio.gov/mga/sps/oauth/oauth20/token",
+        "type": "string"
+      },
+      "WorkforceIOPAuthority": {
+        "defaultValue": "https://ohid.ohio.gov/mga/sps/oauth/oauth20/metadata/OHID-AUTH",
+        "type": "string"
+      },
+        "WorkforceIOPClientId": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "WorkforceIOPClientSecret": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "WorkforceIOPRedirect": {
+            "defaultValue": null,
+            "type": "string"
+        },
+      "WorkforceIOPSignOut": {
+          "defaultValue": "https://ohid.ohio.gov/mga/sps/oauth/oauth20/logout",
+          "type": "string"
+      },
+      "WorkforceIOPTokenEndpoint": {
+          "defaultValue": "https://ohid.ohio.gov/mga/sps/oauth/oauth20/token",
+          "type": "string"
+      },
+        "jwtSecret": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "jwtIssuer": {
+            "defaultValue": null,
+            "type": "securestring"
+        },
+        "jwtAudience": {
+            "defaultValue": null,
+            "type": "string"
+        },
+        "jwtAccessExpiration": {
+            "defaultValue": "24",
+            "type": "string"
+        },
+        "jwtRefreshExpiration": {
+            "defaultValue": "1000",
+            "type": "string"
+        },
+        "rgLocation": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "Location for all resources."
+            }
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[parameters('keyvault_name')]",
+            "location": "[parameters('rgLocation')]",
+            "tags": {
+                "agency": "[parameters('agency')]",
+                "project": "[parameters('project')]",
+                "division": "[parameters('division')]",
+                "environment": "[parameters('environment')]"
+            },
+            "properties": {
+                "sku": {
+                    "family": "A",
+                    "name": "standard"
+                },
+                "tenantId": "[parameters('tenant')]",
+                "accessPolicies": [
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "[parameters('api_principalId')]",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "[parameters('external_portal_principalId')]",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "[parameters('admin_portal_principalId')]",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "2cbd7ae0-2196-435f-95ce-eb82d842931f",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "19593e4e-ea07-4d33-8439-288a399fb0f9",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "d4a58b93-686e-4bd0-83e2-b8cd0dc8ef9b",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "186c5fef-fa55-46f9-a4e4-f3263497cc53",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "bd363752-0481-41c9-aec5-258ee2c6a442",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "354b53b9-83db-427c-b19f-7181cd36fdc2",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    },
+                    {
+                        "tenantId": "[parameters('tenant')]",
+                        "objectId": "d8f834cf-0949-48ae-8368-c2cd7b0e2401",
+                        "permissions": {
+                            "keys": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "secrets": [
+                                "get",
+                                "list",
+                                "set",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore"
+                            ],
+                            "certificates": [
+                                "get",
+                                "list",
+                                "update",
+                                "create",
+                                "import",
+                                "delete",
+                                "recover",
+                                "backup",
+                                "restore",
+                                "managecontacts",
+                                "manageissuers",
+                                "getissuers",
+                                "listissuers",
+                                "setissuers",
+                                "deleteissuers"
+                            ]
+                        }
+                    }
+                ],
+                "enabledForDeployment": false,
+                "enabledForDiskEncryption": false,
+                "enabledForTemplateDeployment": false,
+                "enableSoftDelete": true,
+                "softDeleteRetentionInDays": 90,
+                "enableRbacAuthorization": false,
+                "vaultUri": "[concat('https://', parameters('keyvault_name'), '.vault.azure.net/')]",
+                "provisioningState": "Succeeded",
+                "publicNetworkAccess": "Enabled"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/azure-maps-subscription-key')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('AzureMapsSubscriptionKey')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/BlobEndpoint')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('BlobEndpoint')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/ConnectionStrings--CommerceETL')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('ConnectionStringsCommerceETL')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/ConnectionStrings--LLdb')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('ConnectionStringsLLdb')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/ConnectionStrings--Redis')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('ConnectionStringsRedis')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/IOP--Authority')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('IOPAuthority')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/IOP--ClientId')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('IOPClientId')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/IOP--ClientSecret')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('IOPClientId')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/IOP--Redirect')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('IOPRedirect')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/IOP--SignOut')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('IOPSignOut')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/IOP--TokenEndpoint')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('IOPTokenEndpoint')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/jwt--accessExpiration')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('jwtAccessExpiration')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/jwt--audience')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('jwtAudience')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/jwt--issuer')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('jwtIssuer')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/jwt--refreshExpiration')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('jwtRefreshExpiration')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/jwt--secret')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('jwtSecret')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/WorkforceIOP--Authority')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('WorkforceIOPAuthority')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/WorkforceIOP--ClientId')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('WorkforceIOPClientId')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/WorkforceIOP--ClientSecret')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('WorkforceIOPClientSecret')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/WorkforceIOP--Redirect')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('WorkforceIOPRedirect')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/WorkforceIOP--SignOut')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('WorkforceIOPSignOut')]"
+            }
+        },
+        {
+            "type": "Microsoft.KeyVault/vaults/secrets",
+            "apiVersion": "2021-06-01-preview",
+            "name": "[concat(parameters('keyvault_name'), '/WorkforceIOP--TokenEndpoint')]",
+            "location": "[parameters('rgLocation')]",
+            "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', parameters('keyvault_name'))]"
+            ],
+            "properties": {
+                "attributes": {
+                    "enabled": true
+                },
+                "contentType": "string",
+                "value": "[parameters('WorkforceIOPTokenEndpoint')]"
+            }
+        }
+    ]
+}
