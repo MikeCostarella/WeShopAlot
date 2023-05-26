@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.5.33530.505
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33529.622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{4C982EF3-840F-43A2-946A-0DD480E1D45E}"
 EndProject
@@ -37,11 +37,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration"
 EndProject
 Project("{C9674DCB-5085-4A16-B785-4C70DD1589BD}") = "WeShopAlot.Data.Integration.RITA.Municipalties", "WeShopAlot.Data.Integration.RITA.Municipalties\WeShopAlot.Data.Integration.RITA.Municipalties.dtproj", "{AB7532B4-41CD-4192-B051-F6351501C50F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeShopAlot.Testing.XSLT", "WeShopAlot.Testing.XSLT\WeShopAlot.Testing.XSLT.csproj", "{D782FE8F-11E1-42B7-B396-B4194DD14A79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Testing.XSLT", "WeShopAlot.Testing.XSLT\WeShopAlot.Testing.XSLT.csproj", "{D782FE8F-11E1-42B7-B396-B4194DD14A79}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{48F5F572-B577-4A0A-82B6-487EDAFF8BE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeShopAlot.UI.ClientMVC", "WeShopAlot.UI.ClientMVC\WeShopAlot.UI.ClientMVC.csproj", "{49B1F5A3-C63B-4968-B13A-1CEB6A99C7B7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.UI.ClientMVC", "WeShopAlot.UI.ClientMVC\WeShopAlot.UI.ClientMVC.csproj", "{49B1F5A3-C63B-4968-B13A-1CEB6A99C7B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

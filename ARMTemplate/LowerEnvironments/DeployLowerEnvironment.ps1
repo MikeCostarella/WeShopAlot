@@ -4,7 +4,7 @@ $rgLocation = "East US"
 #************************************************************************
 #******* MAKE SURE YOU ARE IN THE RIGHT RG BY SETTING ENVIRONMENT *******
 $environment = "ETL" ##Dev/QA/UAT/STAGE/ETL
-$rgName = "LL-${environment}"
+$rgName = "WSA-${environment}"
 #************************************************************************
 
 # Set which resources to deploy
