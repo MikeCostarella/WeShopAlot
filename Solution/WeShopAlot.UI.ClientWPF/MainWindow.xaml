@@ -8,6 +8,27 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <TabControl>
+            <TabItem Header="Shop">
+                <Grid Background="#FFE5E5E5">
+                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="20,42,20,50"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Ohio">
+                <Grid Background="#FFE5E5E5">
+                    <TextBlock Text="Ohio Data Lake" HorizontalAlignment="Center"/>
+                    <TabControl Margin="5,20,5,10">
+                        <TabItem Header="Counties">
+                            <DataGrid Name="dgCounties"></DataGrid>
+                        </TabItem>
+                        <TabItem Header="Municipalities">
+                            <DataGrid Name="dgMunicipalities"></DataGrid>
+                        </TabItem>
+                        <TabItem Header="Townships">
+                            <DataGrid Name="dgTownships"></DataGrid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
             <TabItem Header="Admin">
                 <Grid Background="#FFE5E5E5">
                     <DockPanel Margin="5,10,5,10">
@@ -19,14 +40,6 @@
                         <TextBox AcceptsReturn="True" />
                     </DockPanel>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Shop">
-                <Grid Background="#FFE5E5E5">
-                    <ListBox d:ItemsSource="{d:SampleData ItemCount=5}" Margin="20,42,20,50"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="Ohio">
-                <Grid Background="#FFE5E5E5" Height="406"/>
             </TabItem>
         </TabControl>
 
