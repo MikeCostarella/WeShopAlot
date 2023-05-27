@@ -19,6 +19,12 @@ namespace WeShopAlot.Data.Repositories
             return dbContext.Townships.FirstOrDefault(x => x.CountyId == county.Id && x.Name.Trim() == name.Trim());
         }
 
+        public List<Township> GetAll(StateProvince stateProvince)
+        {
+            // ToDo: need to join to county
+            return dbContext.Townships.ToList();
+        }
+
         #endregion Interface
     }
 }

@@ -6,5 +6,7 @@ namespace WeShopAlot.Data.Repositories.Interfaces
     public interface IMunicipalityRepository : IAsyncRepository<Municipality>
     {
         Municipality Get(StateProvince stateProvince, string name);
+
+        List<Municipality> GetAll(StateProvince stateProvince);
     }
 }

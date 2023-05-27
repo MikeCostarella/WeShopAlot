@@ -19,6 +19,11 @@ namespace WeShopAlot.Data.Repositories
             return dbContext.Counties.FirstOrDefault(x => x.StateProvinceId == stateProvince.Id && x.Name.Trim() == name.Trim());
         }
 
+        public List<County> GetAll(StateProvince stateProvince)
+        {
+            return dbContext.Counties.Where(x => x.StateProvinceId == stateProvince.Id).ToList();
+        }
+
         #endregion Interface
     }
 }

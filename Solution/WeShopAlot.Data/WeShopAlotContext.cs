@@ -18,6 +18,18 @@ namespace WeShopAlot.Data
 
         #endregion Constructors
 
+        #region Factory
+
+        public static WeShopAlotContext NewFromConnectionString(string connectionString)
+        {
+            var dbContextOptionsBuilder = new DbContextOptionsBuilder<WeShopAlotContext>();
+            dbContextOptionsBuilder.UseSqlServer(connectionString);
+            var dbContext = new WeShopAlotContext(dbContextOptionsBuilder.Options);
+            return dbContext;
+        }
+
+        #endregion Factory
+
         #region DBSets
 
         public DbSet<Address> Addresses { get; set; }

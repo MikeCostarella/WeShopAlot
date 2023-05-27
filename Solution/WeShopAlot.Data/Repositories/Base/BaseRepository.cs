@@ -82,6 +82,11 @@ namespace WeShopAlot.Data.Repositories.Base
             throw new NotImplementedException();
         }
 
+        public List<T> ListAll()
+        {
+            return dbContext.Set<T>().Where(x => !x.IsDeleted).ToList();
+        }
+
         public async Task<List<T>> ListAllAsync()
         {
             return await dbContext.Set<T>().Where(x => !x.IsDeleted).ToListAsync().ConfigureAwait(false);

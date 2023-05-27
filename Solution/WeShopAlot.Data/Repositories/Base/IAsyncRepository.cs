@@ -26,6 +26,8 @@ namespace WeShopAlot.Data.Repositories.Base
 
         Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
 
+        List<T> ListAll();
+
         Task<List<T>> ListAllAsync();
 
         void Update(T entity);

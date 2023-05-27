@@ -16,11 +16,11 @@
             <TabItem Header="Ohio">
                 <Grid Background="#FFE5E5E5">
                     <TextBlock Text="Ohio Data Lake" HorizontalAlignment="Center"/>
-                    <TabControl Margin="5,20,5,10">
+                    <TabControl Name="tcOhioDataLake" Margin="5,20,5,10" SelectionChanged="tcOhioDataLake_SelectionChanged">
                         <TabItem Header="Counties">
                             <DataGrid Name="dgCounties"></DataGrid>
                         </TabItem>
-                        <TabItem Header="Municipalities">
+                        <TabItem Header="Municipalities" >
                             <DataGrid Name="dgMunicipalities"></DataGrid>
                         </TabItem>
                         <TabItem Header="Townships">
