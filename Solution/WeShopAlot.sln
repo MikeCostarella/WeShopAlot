@@ -47,7 +47,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{913089
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.Shared", "WeShopAlot.Shared\WeShopAlot.Shared.csproj", "{96676B83-A2EE-437F-BE55-8C28F30D09AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeShopAlot.UI.ClientWPF", "WeShopAlot.UI.ClientWPF\WeShopAlot.UI.ClientWPF.csproj", "{C29BF8CA-760A-4C18-9D50-2993AC9284A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeShopAlot.UI.ClientWPF", "WeShopAlot.UI.ClientWPF\WeShopAlot.UI.ClientWPF.csproj", "{C29BF8CA-760A-4C18-9D50-2993AC9284A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeShopAlot.UI.ClientWinForms", "WeShopAlot.UI.ClientWinForms\WeShopAlot.UI.ClientWinForms.csproj", "{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -152,6 +154,12 @@ Global
 		{C29BF8CA-760A-4C18-9D50-2993AC9284A1}.Development|Any CPU.Build.0 = Debug|Any CPU
 		{C29BF8CA-760A-4C18-9D50-2993AC9284A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C29BF8CA-760A-4C18-9D50-2993AC9284A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}.Development|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}.Development|Any CPU.Build.0 = Debug|Any CPU
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -174,6 +182,7 @@ Global
 		{49B1F5A3-C63B-4968-B13A-1CEB6A99C7B7} = {48F5F572-B577-4A0A-82B6-487EDAFF8BE9}
 		{96676B83-A2EE-437F-BE55-8C28F30D09AB} = {91308915-931C-4E72-8259-7A04B2106C75}
 		{C29BF8CA-760A-4C18-9D50-2993AC9284A1} = {48F5F572-B577-4A0A-82B6-487EDAFF8BE9}
+		{4CCBB2A6-7209-417A-B656-AEC3CCE4604A} = {48F5F572-B577-4A0A-82B6-487EDAFF8BE9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {661D00F8-52B7-40A2-98D0-43F82D970D28}
