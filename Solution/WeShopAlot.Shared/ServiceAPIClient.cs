@@ -210,25 +210,24 @@ namespace LL.Shared.Services.ServiceAPIClient
             else
             {
                 string result = _response.Content.ReadAsStringAsync().Result;
+                if (string.IsNullOrEmpty(result))
+                {
+                    throw new HttpStatusCodeException(_response.StatusCode, "WebAPI client response return " +
+                        _response.StatusCode.GetDescription() + " Error. Please contact System adminiatrator for more details.");
+                }
 
-                //if (string.IsNullOrEmpty(result))
-                //{
-                //    throw new HttpStatusCodeException(_response.StatusCode, "WebAPI client response return " +
-                //        _response.StatusCode.GetDescription() + " Error. Please contact System adminiatrator for more details.");
-                //}
-
-                //var response = JsonSerializerExtension.DeserializeObject<BaseResponse>(result);
-                ////re-throw the exception from API project
-                //if (response.ValidationErrors != null)
-                //{
-                //    _logger.LogInformation("WebAPI client response validator errors found. Error: " + response.ValidationErrors.FirstOrDefault().Message);
-                //    throw new HttpStatusCodeException(response.StatusCode, response.ValidationErrors.FirstOrDefault().Message);
-                //}
-                //else
-                //{
-                //    _logger.LogInformation("No WebAPI client response validator errors found. Error message is found: " + response.Message);
-                //    throw new HttpStatusCodeException(response.StatusCode, response.Message);
-                //}
+                var response = JsonSerializerExtension.DeserializeObject<BaseResponse>(result);
+                //re-throw the exception from API project
+                if (response.ValidationErrors != null)
+                {
+                    _logger.LogInformation("WebAPI client response validator errors found. Error: " + response.ValidationErrors.FirstOrDefault().Message);
+                    throw new HttpStatusCodeException(response.StatusCode, response.ValidationErrors.FirstOrDefault().Message);
+                }
+                else
+                {
+                    _logger.LogInformation("No WebAPI client response validator errors found. Error message is found: " + response.Message);
+                    throw new HttpStatusCodeException(response.StatusCode, response.Message);
+                }
             }
         }
 
