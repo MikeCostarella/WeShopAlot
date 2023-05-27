@@ -12,36 +12,27 @@ namespace WeShopAlot.Data.ConsoleApp.Extensions.DataSpecific
     {
         public static void LoadCanadianProvinces(this IApplicationBuilder app)
         {
-            using (var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            using var servicedScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope();
+            var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
+            var countryRepository = new CountryRepository(context);
+            var country = countryRepository.GetByAbbreviation("CA");
+            if (!context.StateProvinces.Any(x => x.CountryId == country.Id))
             {
-                var context = servicedScope.ServiceProvider.GetRequiredService<WeShopAlotContext>();
-                try
+                var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                var canadianProvincesData = File.ReadAllText(path + @"/Content/data/json/Canada-provinces.json");
+                var importedCanadianProvinces = JsonSerializer.Deserialize<List<ImportedCanadianProvince>>(canadianProvincesData);
+                foreach (var importedCanadianProvince in importedCanadianProvinces)
                 {
-                    var countryRepository = new CountryRepository(context);
-                    var country = countryRepository.GetByAbbreviation("CA");
-                    if (!context.StateProvinces.Any(x => x.CountryId == country.Id))
+                    var stateProvince = new StateProvince
                     {
-                        var path = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-                        var canadianProvincesData = File.ReadAllText(path + @"/Content/data/json/Canada-provinces.json");
-                        var importedCanadianProvinces = JsonSerializer.Deserialize<List<ImportedCanadianProvince>>(canadianProvincesData);
-                        foreach (var importedCanadianProvince in importedCanadianProvinces)
-                        {
-                            var stateProvince = new StateProvince
-                            {
-                                Abbreviation = importedCanadianProvince.abbreviation,
-                                CountryId = country.Id,
-                                Name = importedCanadianProvince.name
-                            };
-                            context.StateProvinces.Add(stateProvince);
-                        }
-                    }
-                    if (context.ChangeTracker.HasChanges()) context.SaveChanges();
-                }
-                catch (Exception ex)
-                {
-                    throw;
+                        Abbreviation = importedCanadianProvince.abbreviation,
+                        CountryId = country.Id,
+                        Name = importedCanadianProvince.name
+                    };
+                    context.StateProvinces.Add(stateProvince);
                 }
             }
+            if (context.ChangeTracker.HasChanges()) context.SaveChanges();
         }
     }
 }
