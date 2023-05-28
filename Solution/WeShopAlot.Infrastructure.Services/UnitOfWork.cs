@@ -8,12 +8,23 @@ namespace WeShopAlot.Infrastructure.Services
 {
     public class UnitOfWork : IUnitOfWork
     {
+        #region Member Variables
+
         private readonly WeShopAlotContext _context;
         private Hashtable _repositories;
+
+        #endregion Member Variables
+
+        #region Constructors
+
         public UnitOfWork(WeShopAlotContext context)
         {
             _context = context;
         }
+
+        #endregion Constructors
+
+        #region Public Methods
 
         public async Task<int> Complete()
         {
@@ -37,5 +48,7 @@ namespace WeShopAlot.Infrastructure.Services
             }
             return (IAsyncRepository<TEntity>)_repositories[type];
         }
+
+        #endregion Public Methods
     }
 }
