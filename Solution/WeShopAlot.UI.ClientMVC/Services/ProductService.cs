@@ -1,10 +1,19 @@
-﻿using WeShopAlot.UI.ClientMVC.Models;
+﻿using AutoMapper;
+using WeShopAlot.Shared.Dtos;
+using WeShopAlot.Shared.Extensions;
+using WeShopAlot.Shared.Services.ServiceAPIClient;
+using WeShopAlot.UI.ClientMVC.Models;
 
 namespace WeShopAlot.UI.ClientMVC.Services
 {
     public class ProductService : IProductService
     {
-        public ProductService() {
+        private readonly IServiceAPIClient _apiClient;
+        private readonly IMapper _mapper;
+        public ProductService(IMapper mapper, IServiceAPIClient apiClient) 
+        {
+            _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+            _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
         }
 
         public List<ProductViewModel> GetProducts()
@@ -12,8 +21,8 @@ namespace WeShopAlot.UI.ClientMVC.Services
             string requestUri = Constants.WebAPI_Product_GetProducts;
             //var httpContent = JsonSerializerExtension.SerializeObjectToStringContent(applicationToSave);
             //var response = await _apiClient.GetAsync<ProductToReturnDto>(requestUri, httpContent).ConfigureAwait(false);
-            //return _mapper.Map<ProductViewModel>(response);
-            return new List<ProductViewModel>();
+            var response =  _apiClient.GetAsync<List<ProductToReturnDto>>(requestUri).ConfigureAwait(false);
+            return _mapper.Map <List<ProductViewModel>>(response);
         }
     }
 }

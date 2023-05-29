@@ -1,4 +1,7 @@
-﻿namespace LL.Shared.Services.ServiceAPIClient
+﻿using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace WeShopAlot.Shared.Services.ServiceAPIClient
 {
     public interface IServiceAPIClient
     {

@@ -1,29 +1,19 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-//using WeShopAlot.Shared.Exceptions;
-//using WeShopAlot.Shared.Extensions;
-//using WeShopAlot.Shared.Models;
-using System;
-using System.Linq;
-using System.Net.Http;
+using WeShopAlot.Shared.Exceptions;
+using WeShopAlot.Shared.Extensions;
+using WeShopAlot.Shared.Models;
 using System.Net.Http.Headers;
-using System.Threading.Tasks;
 
 namespace WeShopAlot.Shared.Services.ServiceAPIClient
 {
     public class ServiceAPIClient : IServiceAPIClient
     {
-        #region Member Variables
-
         private readonly IConfiguration _configuration;
         private readonly ILogger<ServiceAPIClient> _logger;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly HttpClient _httpClient;
-
-        #endregion Member Variables
-
-        #region Constructors
 
         public ServiceAPIClient(IConfiguration configuration,
             ILogger<ServiceAPIClient> logger,
@@ -33,16 +23,13 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
+
             var baseUrl = _configuration["ApiPath"];
             httpClient.BaseAddress = new Uri(baseUrl);
             httpClient.DefaultRequestHeaders.Clear();
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
             _httpClient = httpClient;
         }
-
-        #endregion Constructors
-
-        #region Actions
 
         /// <summary>
         /// Make a Get call to web api
@@ -139,6 +126,7 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
         private void AddJWTToAuthorizationHeader()
         {
             string token;
+
             //Ensure the HttpContext is not null
             if (_httpContextAccessor.HttpContext != null)
             {
@@ -150,6 +138,7 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
                 {
                     token = _httpContextAccessor.HttpContext.Session.GetString(Constants.JWT_Token_Name);
                 }
+
                 if (!string.IsNullOrEmpty(token))
                 {
                     _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
@@ -174,16 +163,19 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
                 {
                     response = JsonSerializerExtension.DeserializeOKResponse<T>(result);
                 }
+
                 return response;
             }
             else
             {
                 string result = _response.Content.ReadAsStringAsync().Result;
+
                 if (string.IsNullOrEmpty(result))
                 {
                     throw new HttpStatusCodeException(_response.StatusCode, "WebAPI client response return " +
                         _response.StatusCode.GetDescription() + " Error. Please contact System adminiatrator for more details.");
                 }
+
                 var response = JsonSerializerExtension.DeserializeObject<BaseResponse>(result);
                 //re-throw the exception from API project
                 if (response.ValidationErrors != null)
@@ -210,6 +202,7 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
             else
             {
                 string result = _response.Content.ReadAsStringAsync().Result;
+
                 if (string.IsNullOrEmpty(result))
                 {
                     throw new HttpStatusCodeException(_response.StatusCode, "WebAPI client response return " +
@@ -240,18 +233,20 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
                 string result = await _response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (!string.IsNullOrEmpty(result))
                 {
-                    //response = JsonSerializerExtension.DeserializeOKResponse<T>(result);
+                    response = JsonSerializerExtension.DeserializeOKResponse<T>(result);
                 }
                 return response;
             }
             else
             {
                 string result = _response.Content.ReadAsStringAsync().Result;
+
                 if (string.IsNullOrEmpty(result))
                 {
                     throw new HttpStatusCodeException(_response.StatusCode, "WebAPI client response return " +
                         _response.StatusCode.GetDescription() + " Error. Please contact System adminiatrator for more details.");
                 }
+
                 var response = JsonSerializerExtension.DeserializeObject<BaseResponse>(result);
                 //re-throw the exception from API project
                 if (response.ValidationErrors != null)
@@ -267,7 +262,5 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
             }
 
         }
-
-        #endregion Actions
     }
 }

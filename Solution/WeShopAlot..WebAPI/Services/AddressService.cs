@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using WeShopAlot.WebAPI.Services.Base;
-//using LL.Shared.Services.ServiceAPIClient;
+using WeShopAlot.Shared.Services.ServiceAPIClient;
 
 namespace WeShopAlot.WebAPI.Services
 {
