@@ -132,11 +132,11 @@ namespace WeShopAlot.Shared.Services.ServiceAPIClient
             {
                 if (_httpContextAccessor.HttpContext.User.Identity.IsAuthenticated)
                 {
-                    token = _httpContextAccessor.HttpContext.User.FindFirst(Constants.JWT_Token_Name)?.Value;
+                    token = _httpContextAccessor.HttpContext.User.FindFirst("jwt")?.Value;
                 }
                 else
                 {
-                    token = _httpContextAccessor.HttpContext.Session.GetString(Constants.JWT_Token_Name);
+                    token = _httpContextAccessor.HttpContext.Session.GetString("jwt");
                 }
 
                 if (!string.IsNullOrEmpty(token))
