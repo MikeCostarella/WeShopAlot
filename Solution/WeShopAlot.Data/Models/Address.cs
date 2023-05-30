@@ -21,13 +21,8 @@ namespace WeShopAlot.Data.Models
         [StringLength(50)]
         public string City { get; set; }
 
-        [ForeignKey("CountryId")]
-        public int CountryId { get; set; }
-        public Country Country { get; set; }
-
-        [ForeignKey("CountyId")]
-        public int? CountyId { get; set; }
-        public County County { get; set; }
+        [StringLength(2)]
+        public string State { get; set; }
 
         [StringLength(10)]
         public string ZipCode { get; set; }

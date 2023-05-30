@@ -39,22 +39,10 @@ namespace WeShopAlot.Data.ConsoleApp
         public void Configure(IApplicationBuilder app)
         {
             app.MigrateDatabase();
-            app.LoadMunicipalIncomeTaxAgencies();
-            app.LoadCountries();
-            app.LoadUSStates();
-            app.LoadCanadianProvinces();
-            app.LoadUSCounties();
-            app.LoadUSOhioTownships();
-            app.LoadUSOhioCities();
-            app.LoadUSOhioVillages();
-            app.LoadUSOhioMunicipalTaxRates();
-            app.IndicateMunicipalitiesCollectedByRITA();
             app.LoadProductTypes();
             app.LoadProductBrands();
             app.LoadDeliveryMethods();
             app.LoadProducts();
-            //CancellationToken cancellationToken = new CancellationToken();  // ToDo: figure out how to stop the console app in .Net 7
-            //hostLifetime.StopAsync(cancellationToken);
         }
 
         #endregion Initilization Methods
