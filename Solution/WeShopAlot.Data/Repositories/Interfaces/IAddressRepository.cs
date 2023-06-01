@@ -3,7 +3,7 @@ using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Data.Repositories.Interfaces
 {
-    public interface IAddressRepository : IAsyncRepository<Address>
+    public interface IAddressRepository : IGenericRepository<Address>
     {
     }
 }

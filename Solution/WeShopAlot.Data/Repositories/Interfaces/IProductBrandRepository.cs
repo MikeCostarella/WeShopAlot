@@ -3,7 +3,7 @@ using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Data.Repositories.Interfaces
 {
-    public interface IProductBrandRepository : IAsyncRepository<ProductBrand>
+    public interface IProductBrandRepository : IGenericRepository<ProductBrand>
     {
         ProductBrand GetByInternalId(int internalId);
 

@@ -5,7 +5,7 @@ namespace WeShopAlot.Infrastructure.Services.Interfaces
 {
     public interface IUnitOfWork
     {
-        IAsyncRepository<TEntity> Repository<TEntity>() where TEntity : BasePersistentObject;
+        IGenericRepository<TEntity> Repository<TEntity>() where TEntity : BasePersistentObject;
         Task<int> Complete();
     }
 }

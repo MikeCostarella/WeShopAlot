@@ -4,19 +4,22 @@ namespace WeShopAlot.Data.Specifications.Base
 {
     public class BaseSpecification<T> : ISpecification<T>
     {
-        public BaseSpecification()
-        {
-        }
+        #region Constructors
+
+        public BaseSpecification() { }
 
         public BaseSpecification(Expression<Func<T, bool>> criteria)
         {
             Criteria = criteria;
         }
 
+        #endregion Constructors
+
+        #region Public Methods
+
         public Expression<Func<T, bool>> Criteria { get; }
 
-        public List<Expression<Func<T, object>>> Includes { get; } =
-            new List<Expression<Func<T, object>>>();
+        public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
         public Expression<Func<T, object>> OrderBy { get; private set; }
 
@@ -27,6 +30,10 @@ namespace WeShopAlot.Data.Specifications.Base
         public int Skip { get; private set; }
 
         public bool IsPagingEnabled { get; private set; }
+
+        #endregion Public Methods
+
+        #region Utilities
 
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
@@ -49,5 +56,7 @@ namespace WeShopAlot.Data.Specifications.Base
             Take = take;
             IsPagingEnabled = true;
         }
+
+        #endregion Utilities
     }
 }

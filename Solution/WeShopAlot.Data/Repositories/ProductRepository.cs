@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WeShopAlot.Data.Repositories
 {
-    public class ProductRepository : BaseRepository<Product>, IProductRepository
+    public class ProductRepository : GenericRepository<Product>, IProductRepository
     {
         #region Constructors
 

@@ -3,7 +3,7 @@ using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Data.Repositories.Interfaces
 {
-    public interface IProductTypeRepository : IAsyncRepository<ProductType>
+    public interface IProductTypeRepository : IGenericRepository<ProductType>
     {
         ProductType GetByInternalId(int internalId);
 

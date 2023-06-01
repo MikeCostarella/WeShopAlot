@@ -6,34 +6,33 @@ namespace WeShopAlot.Data.Utilities.Specifications
 {
     public class SpecificationEvaluator<TEntity> where TEntity : BasePersistentObject
     {
-        public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> inputQuery,
-            ISpecification<TEntity> spec)
+        public static IQueryable<TEntity> GetQuery(IQueryable<TEntity> inputQuery, ISpecification<TEntity> specification)
         {
-            var query = inputQuery;
+            var queryable = inputQuery;
 
-            if (spec.Criteria != null)
+            if (specification.Criteria != null)
             {
-                query = query.Where(spec.Criteria);
+                queryable = queryable.Where(specification.Criteria);
             }
 
-            if (spec.OrderBy != null)
+            if (specification.OrderBy != null)
             {
-                query = query.OrderBy(spec.OrderBy);
+                queryable = queryable.OrderBy(specification.OrderBy);
             }
 
-            if (spec.OrderByDescending != null)
+            if (specification.OrderByDescending != null)
             {
-                query = query.OrderByDescending(spec.OrderByDescending);
+                queryable = queryable.OrderByDescending(specification.OrderByDescending);
             }
 
-            if (spec.IsPagingEnabled)
+            if (specification.IsPagingEnabled)
             {
-                query = query.Skip(spec.Skip).Take(spec.Take);
+                queryable = queryable.Skip(specification.Skip).Take(specification.Take);
             }
 
-            query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
+            queryable = specification.Includes.Aggregate(queryable, (current, include) => current.Include(include));
 
-            return query;
+            return queryable;
         }
     }
 }

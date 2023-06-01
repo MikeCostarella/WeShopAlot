@@ -4,7 +4,7 @@ using WeShopAlot.Data.Repositories.Interfaces;
 
 namespace WeShopAlot.Data.Repositories
 {
-    public class ProductBrandRepository : BaseRepository<ProductBrand>, IProductBrandRepository
+    public class ProductBrandRepository : GenericRepository<ProductBrand>, IProductBrandRepository
     {
         #region Constructors
 

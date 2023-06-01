@@ -7,7 +7,7 @@ using EntityState = Microsoft.EntityFrameworkCore.EntityState;
 
 namespace WeShopAlot.Data.Repositories.Base
 {
-    public class BaseRepository<T> : IAsyncRepository<T> where T : BasePersistentObject
+    public class GenericRepository<T> : IGenericRepository<T> where T : BasePersistentObject
     {
         #region Member Variables
 
@@ -17,7 +17,7 @@ namespace WeShopAlot.Data.Repositories.Base
 
         #region Constructors
 
-        public BaseRepository(WeShopAlotContext dbContext)
+        public GenericRepository(WeShopAlotContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -71,9 +71,9 @@ namespace WeShopAlot.Data.Repositories.Base
             return await dbContext.Set<T>().Where(x => !x.IsDeleted && x.Id == id).FirstOrDefaultAsync().ConfigureAwait(false);
         }
 
-        public async Task<T> GetEntityWithSpec(ISpecification<T> spec)
+        public async Task<T> GetEntityWithSpec(ISpecification<T> specification)
         {
-            return await ApplySpecification(spec).FirstOrDefaultAsync();
+            return await ApplySpecification(specification).FirstOrDefaultAsync();
         }
 
         public virtual async Task<bool> IsExistByIdAsync(int id)
@@ -92,9 +92,9 @@ namespace WeShopAlot.Data.Repositories.Base
             return await dbContext.Set<T>().Where(x => !x.IsDeleted).ToListAsync().ConfigureAwait(false);
         }
 
-        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec)
+        public async Task<IReadOnlyList<T>> ListAsync(ISpecification<T> specification)
         {
-            return await ApplySpecification(spec).ToListAsync();
+            return await ApplySpecification(specification).ToListAsync();
         }
 
         public virtual async Task SaveChangesAsync()
@@ -131,9 +131,9 @@ namespace WeShopAlot.Data.Repositories.Base
 
         #region Private Methods
 
-        private IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        private IQueryable<T> ApplySpecification(ISpecification<T> specification)
         {
-            return SpecificationEvaluator<T>.GetQuery(dbContext.Set<T>().AsQueryable(), spec);
+            return SpecificationEvaluator<T>.GetQuery(dbContext.Set<T>().AsQueryable(), specification);
         }
 
         #endregion Private Methods

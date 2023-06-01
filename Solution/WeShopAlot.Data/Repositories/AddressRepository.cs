@@ -3,7 +3,7 @@ using WeShopAlot.Data.Repositories.Base;
 
 namespace WeShopAlot.Data.Repositories
 {
-    public class AddressRepository : BaseRepository<Address>
+    public class AddressRepository : GenericRepository<Address>
     {
         #region Constructors
 
