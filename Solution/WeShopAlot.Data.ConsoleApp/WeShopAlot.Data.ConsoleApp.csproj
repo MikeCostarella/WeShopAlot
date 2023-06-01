@@ -79,6 +79,12 @@
     <None Update="Content\images\products\00000014-001.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Content\images\products\00000015-001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Content\images\products\00000016-001.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Scripts\DropSqlServerDatabase.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -133,5 +133,14 @@
     "PictureUrl": "images/products/00000015-001.png",
     "ProductType": "Bass Guitar",
     "ProductBrand": "Fender"
+  },
+  {
+    "InternalId": 16,
+    "Name": "Plane Jane",
+    "Description": "Acoustic 6 String Guitar",
+    "Price": 250,
+    "PictureUrl": "images/products/00000016-001.png",
+    "ProductType": "Acoustic Guitar",
+    "ProductBrand": "Yamaha"
   }
 ]
