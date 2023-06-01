@@ -124,5 +124,14 @@
     "PictureUrl": "images/products/00000014-001.png",
     "ProductType": "Ukulele",
     "ProductBrand": "Makala"
+  },
+  {
+    "InternalId": 15,
+    "Name": "Big Bopper",
+    "Description": "Acoustic Bass",
+    "Price": 450,
+    "PictureUrl": "images/products/00000015-001.png",
+    "ProductType": "Bass Guitar",
+    "ProductBrand": "Fender"
   }
 ]
