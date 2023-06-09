@@ -5,10 +5,14 @@ namespace WeShopAlot.Data.Models
 {
     public class AppUser : IdentityUser
     {
-        public string DisplayName { get; set; }
+        #region Physical Properties
 
         [ForeignKey("AddressId")]
         public int? AddressId { get; set; }
         public Address Address { get; set; }
+
+        public string DisplayName { get; set; }
+
+        #endregion Physical Properties
     }
 }

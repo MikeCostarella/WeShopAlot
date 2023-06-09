@@ -10,13 +10,24 @@ namespace WeShopAlot.Infrastructure.Services
 {
     public class TokenService : ITokenService
     {
+        #region Member Variables
+
         private readonly IConfiguration _config;
         private readonly SymmetricSecurityKey _key;
+
+        #endregion Member Variables
+
+        #region Constructors
+
         public TokenService(IConfiguration config)
         {
             _config = config;
             _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]));
         }
+
+        #endregion Constructors
+
+        #region Public Methods
 
         public string CreateToken(AppUser user)
         {
@@ -25,9 +36,7 @@ namespace WeShopAlot.Infrastructure.Services
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.GivenName, user.DisplayName)
             };
-
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
@@ -35,13 +44,11 @@ namespace WeShopAlot.Infrastructure.Services
                 SigningCredentials = creds,
                 Issuer = _config["Token:Issuer"]
             };
-
             var tokenHandler = new JwtSecurityTokenHandler();
-
             var token = tokenHandler.CreateToken(tokenDescriptor);
-
             return tokenHandler.WriteToken(token);
-
         }
+
+        #endregion Public Methods
     }
 }
