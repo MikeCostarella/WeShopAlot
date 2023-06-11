@@ -41,17 +41,28 @@ namespace WeShopAlot.WebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
+            string emailAddress;
             AppUser appUser = null;
-            await Task.Delay(0);
             var claimsPrincipal = httpContextAccessor.HttpContext.User;
-            var claim = claimsPrincipal.FindFirst(ClaimTypes.NameIdentifier);
-            if (claim != null)
+            try
             {
-                var userId = claim.Value;
-                if (!string.IsNullOrEmpty(userId))
+                emailAddress = claimsPrincipal.FindFirstValue(ClaimTypes.Email);
+                if (emailAddress == null)
                 {
-                    //appUser = appUserRepository.GetById(userId);
+                    return null;
                 }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            try
+            {
+                appUser = await appUserRepository.GetByEmailAddressAsync(emailAddress);
+            }
+            catch (Exception ex)
+            {
+                throw;
             }
             return new UserDto
             {
