@@ -12,8 +12,8 @@ using WeShopAlot.Data;
 namespace WeShopAlot.Data.Migrations
 {
     [DbContext(typeof(WeShopAlotContext))]
-    [Migration("20230520224640_Initial-006")]
-    partial class Initial006
+    [Migration("20230609214640_Initial-001")]
+    partial class Initial001
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,14 +48,12 @@ namespace WeShopAlot.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("CountyId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("State")
+                        .HasMaxLength(2)
+                        .HasColumnType("nvarchar(2)");
 
                     b.Property<string>("ZipCode")
                         .HasMaxLength(10)
@@ -63,64 +61,30 @@ namespace WeShopAlot.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CountryId");
-
-                    b.HasIndex("CountyId");
-
                     b.ToTable("Address", "WSA");
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.AppUser", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("AccessFailedCount")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("DisplayName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Email")
+                    b.Property<string>("EmailAddress")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("EmailConfirmed")
+                    b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("NormalizedEmail")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -167,58 +131,6 @@ namespace WeShopAlot.Data.Migrations
                     b.HasIndex("CustomerBasketId");
 
                     b.ToTable("BasketItem", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Country", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Abbreviation")
-                        .IsRequired()
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Country", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.County", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<int>("StateProvinceId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StateProvinceId");
-
-                    b.ToTable("County", "WSA");
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.CustomerBasket", b =>
@@ -278,199 +190,6 @@ namespace WeShopAlot.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("DeliveryMethod", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.GovernmentScope", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("GovernmentScope", "WSA");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "Federal",
-                            IsDeleted = false,
-                            Name = "Federal"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "State",
-                            IsDeleted = false,
-                            Name = "State"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Description = "County",
-                            IsDeleted = false,
-                            Name = "County"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Description = "Township",
-                            IsDeleted = false,
-                            Name = "Township"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Description = "Municipal",
-                            IsDeleted = false,
-                            Name = "Municipal"
-                        });
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Individual", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime?>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("FirstName")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.Property<string>("MiddleName")
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Individual", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Municipality", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MunicipalityTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("StateId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MunicipalityTypeId");
-
-                    b.HasIndex("StateId");
-
-                    b.ToTable("Municipality", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.MunicipalityCounty", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CountyId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("MunicipalityId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountyId");
-
-                    b.HasIndex("MunicipalityId");
-
-                    b.ToTable("MunicipalityCounty", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.MunicipalityType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("MunicipalityType", "WSA");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Description = "City",
-                            IsDeleted = false,
-                            Name = "City"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Description = "Village",
-                            IsDeleted = false,
-                            Name = "Village"
-                        });
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.Order", b =>
@@ -597,43 +316,6 @@ namespace WeShopAlot.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("WeShopAlot.Data.Models.Precinct", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Code")
-                        .HasMaxLength(3)
-                        .HasColumnType("nvarchar(3)");
-
-                    b.Property<int?>("CountyId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("MediaMarket")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("Region")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountyId");
-
-                    b.ToTable("Precinct", "WSA");
-                });
-
             modelBuilder.Entity("WeShopAlot.Data.Models.Product", b =>
                 {
                     b.Property<int>("Id")
@@ -752,79 +434,6 @@ namespace WeShopAlot.Data.Migrations
                     b.ToTable("ProductType", "WSA");
                 });
 
-            modelBuilder.Entity("WeShopAlot.Data.Models.StateProvince", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Abbreviation")
-                        .IsRequired()
-                        .HasMaxLength(2)
-                        .HasColumnType("nvarchar(2)");
-
-                    b.Property<int>("CountryId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountryId");
-
-                    b.ToTable("StateProvince", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Township", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int?>("CountyId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CountyId");
-
-                    b.ToTable("Township", "WSA");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Address", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.Country", "Country")
-                        .WithMany()
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("WeShopAlot.Data.Models.County", "County")
-                        .WithMany()
-                        .HasForeignKey("CountyId");
-
-                    b.Navigation("Country");
-
-                    b.Navigation("County");
-                });
-
             modelBuilder.Entity("WeShopAlot.Data.Models.AppUser", b =>
                 {
                     b.HasOne("WeShopAlot.Data.Models.Address", "Address")
@@ -839,55 +448,6 @@ namespace WeShopAlot.Data.Migrations
                     b.HasOne("WeShopAlot.Data.Models.CustomerBasket", null)
                         .WithMany("Items")
                         .HasForeignKey("CustomerBasketId");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.County", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.StateProvince", "StateProvince")
-                        .WithMany("Counties")
-                        .HasForeignKey("StateProvinceId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("StateProvince");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Municipality", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.MunicipalityType", "MunicipalityType")
-                        .WithMany()
-                        .HasForeignKey("MunicipalityTypeId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("WeShopAlot.Data.Models.StateProvince", "State")
-                        .WithMany("Municipalities")
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("MunicipalityType");
-
-                    b.Navigation("State");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.MunicipalityCounty", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.County", "County")
-                        .WithMany("Municipalities")
-                        .HasForeignKey("CountyId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.HasOne("WeShopAlot.Data.Models.Municipality", "Municipality")
-                        .WithMany("Counties")
-                        .HasForeignKey("MunicipalityId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("County");
-
-                    b.Navigation("Municipality");
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.Order", b =>
@@ -930,16 +490,6 @@ namespace WeShopAlot.Data.Migrations
                     b.Navigation("ItemOrdered");
                 });
 
-            modelBuilder.Entity("WeShopAlot.Data.Models.Precinct", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.County", "County")
-                        .WithMany("Precincts")
-                        .HasForeignKey("CountyId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("County");
-                });
-
             modelBuilder.Entity("WeShopAlot.Data.Models.Product", b =>
                 {
                     b.HasOne("WeShopAlot.Data.Models.ProductBrand", "ProductBrand")
@@ -959,49 +509,9 @@ namespace WeShopAlot.Data.Migrations
                     b.Navigation("ProductType");
                 });
 
-            modelBuilder.Entity("WeShopAlot.Data.Models.StateProvince", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.Country", "Country")
-                        .WithMany("StateProvinces")
-                        .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Township", b =>
-                {
-                    b.HasOne("WeShopAlot.Data.Models.County", "County")
-                        .WithMany("Townships")
-                        .HasForeignKey("CountyId")
-                        .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("County");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Country", b =>
-                {
-                    b.Navigation("StateProvinces");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.County", b =>
-                {
-                    b.Navigation("Municipalities");
-
-                    b.Navigation("Precincts");
-
-                    b.Navigation("Townships");
-                });
-
             modelBuilder.Entity("WeShopAlot.Data.Models.CustomerBasket", b =>
                 {
                     b.Navigation("Items");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.Municipality", b =>
-                {
-                    b.Navigation("Counties");
                 });
 
             modelBuilder.Entity("WeShopAlot.Data.Models.Order", b =>
@@ -1017,13 +527,6 @@ namespace WeShopAlot.Data.Migrations
             modelBuilder.Entity("WeShopAlot.Data.Models.ProductType", b =>
                 {
                     b.Navigation("Products");
-                });
-
-            modelBuilder.Entity("WeShopAlot.Data.Models.StateProvince", b =>
-                {
-                    b.Navigation("Counties");
-
-                    b.Navigation("Municipalities");
                 });
 #pragma warning restore 612, 618
         }

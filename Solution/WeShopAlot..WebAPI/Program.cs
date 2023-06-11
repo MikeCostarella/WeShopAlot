@@ -1,9 +1,6 @@
 using WeShopAlot.Data;
-using WeShopAlot.Data.Models;
-using WeShopAlot.Infrastructure.Services.Identity;
 using WeShopAlot.WebAPI.Extensions;
 using WeShopAlot.WebAPI.Middleware;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,8 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
-builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -41,8 +38,6 @@ app.MapFallbackToController("Index", "Fallback");
 using var scope = app.Services.CreateScope();
 var services = scope.ServiceProvider;
 var context = services.GetRequiredService<WeShopAlotContext>();
-var identityContext = services.GetRequiredService<AppIdentityDbContext>();
-var userManager = services.GetRequiredService<UserManager<AppUser>>();
 var logger = services.GetRequiredService<ILogger<Program>>();
 
 app.Run();

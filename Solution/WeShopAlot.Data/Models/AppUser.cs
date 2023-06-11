@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using WeShopAlot.Data.Models.Base;
 
 namespace WeShopAlot.Data.Models
 {
-    public class AppUser : IdentityUser
+    public class AppUser : BasePersistentObject
     {
         #region Physical Properties
 
@@ -12,6 +12,10 @@ namespace WeShopAlot.Data.Models
         public Address Address { get; set; }
 
         public string DisplayName { get; set; }
+
+        public string EmailAddress { get; set; }
+
+        public string PasswordHash { get; set; }
 
         #endregion Physical Properties
     }

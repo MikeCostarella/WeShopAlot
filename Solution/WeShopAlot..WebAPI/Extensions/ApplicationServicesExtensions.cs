@@ -11,64 +11,56 @@ using WeShopAlot.Data.Repositories.Base;
 using WeShopAlot.WebAPI.Errors;
 using WeShopAlot.Data.Extensions;
 
-namespace WeShopAlot.WebAPI.Extensions
+namespace WeShopAlot.WebAPI.Extensions;
+
+public static class ApplicationServicesExtensions
 {
-    public static class ApplicationServicesExtensions
+    public static IServiceCollection AddApplicationServices(this IServiceCollection services,
+        IConfiguration config)
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
-            IConfiguration config)
+        services.AddSingleton<IResponseCacheService, ResponseCacheService>();
+        services.AddDbContext<WeShopAlotContext>(opt =>
         {
-            services.AddSingleton<IResponseCacheService, ResponseCacheService>();
-            services.AddDbContext<WeShopAlotContext>(opt =>
+            opt.UseSelectedDatabaseServer(config);
+        });
+        services.AddSingleton<IConnectionMultiplexer>(c =>
+        {
+            var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+            return ConnectionMultiplexer.Connect(options);
+        });
+        services.AddScoped<IAppUserRepository, AppUserRepository>();
+        services.AddScoped<IBasketRepository, BasketRepository>();
+        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
+        services.AddScoped<IProductTypeRepository, ProductTypeRepository>();
+        services.AddScoped<IPaymentService, PaymentService>();
+        services.AddScoped<ITokenService, TokenService>();
+        services.AddScoped<IOrderService, OrderService>();
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        services.Configure<ApiBehaviorOptions>(options =>
+        {
+            options.InvalidModelStateResponseFactory = actionContext =>
             {
-                opt.UseSelectedDatabaseServer(config);
-            });
-
-            services.AddSingleton<IConnectionMultiplexer>(c =>
-            {
-                var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
-                return ConnectionMultiplexer.Connect(options);
-            });
-
-            services.AddScoped<IBasketRepository, BasketRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<IProductBrandRepository, ProductBrandRepository>();
-            services.AddScoped<IProductTypeRepository, ProductTypeRepository>();
-
-            services.AddScoped<IPaymentService, PaymentService>();
-            services.AddScoped<ITokenService, TokenService>();
-            services.AddScoped<IOrderService, OrderService>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.InvalidModelStateResponseFactory = actionContext =>
+                var errors = actionContext.ModelState
+                    .Where(e => e.Value.Errors.Count > 0)
+                    .SelectMany(x => x.Value.Errors)
+                    .Select(x => x.ErrorMessage).ToArray();
+                var errorResponse = new ApiValidationErrorResponse
                 {
-                    var errors = actionContext.ModelState
-                        .Where(e => e.Value.Errors.Count > 0)
-                        .SelectMany(x => x.Value.Errors)
-                        .Select(x => x.ErrorMessage).ToArray();
-
-                    var errorResponse = new ApiValidationErrorResponse
-                    {
-                        Errors = errors
-                    };
-
-                    return new BadRequestObjectResult(errorResponse);
+                    Errors = errors
                 };
-            });
-
-            services.AddCors(opt =>
+                return new BadRequestObjectResult(errorResponse);
+            };
+        });
+        services.AddCors(opt =>
+        {
+            opt.AddPolicy("CorsPolicy", policy =>
             {
-                opt.AddPolicy("CorsPolicy", policy =>
-                {
-                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
-                });
+                policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
             });
-
-            return services;
-        }
+        });
+        return services;
     }
 }

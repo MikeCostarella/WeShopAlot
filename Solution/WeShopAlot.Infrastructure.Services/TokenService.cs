@@ -12,17 +12,15 @@ namespace WeShopAlot.Infrastructure.Services
     {
         #region Member Variables
 
-        private readonly IConfiguration _config;
-        private readonly SymmetricSecurityKey _key;
+        private readonly IConfiguration configuration;
 
         #endregion Member Variables
 
         #region Constructors
 
-        public TokenService(IConfiguration config)
+        public TokenService(IConfiguration configuration)
         {
-            _config = config;
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Token:Key"]));
+            this.configuration = configuration;
         }
 
         #endregion Constructors
@@ -33,20 +31,28 @@ namespace WeShopAlot.Infrastructure.Services
         {
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, user.Email),
-                new Claim(ClaimTypes.GivenName, user.DisplayName)
+                new Claim(ClaimTypes.Name, user.DisplayName),
+                new Claim(ClaimTypes.Email, user.EmailAddress)
             };
-            var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            //var keyString = this.configuration["Token:Key"];
+            //var keyValue = this.configuration.GetSection("Token:Key").Value!;
+            var encodedKey = Encoding.UTF8.GetBytes(this.configuration["Token:Key"]);
+            var symmetricSecurityKey = new SymmetricSecurityKey(encodedKey);
+            var credentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha512Signature);
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials: credentials
+            );
+            try
             {
-                Subject = new ClaimsIdentity(claims),
-                Expires = DateTime.Now.AddDays(7),
-                SigningCredentials = creds,
-                Issuer = _config["Token:Issuer"]
-            };
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+                var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+                return jwt;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
 
         #endregion Public Methods
