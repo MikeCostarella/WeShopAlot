@@ -10,3 +10,4 @@ DROP TABLE IF EXISTS WSA.ProductType
 DROP TABLE IF EXISTS WSA.CustomerBasket
 DROP TABLE IF EXISTS WSA.DeliveryMethod
 DROP TABLE IF EXISTS WSA.OrderStatus
+DELETE FROM [dbo].[__EFMigrationsHistory]

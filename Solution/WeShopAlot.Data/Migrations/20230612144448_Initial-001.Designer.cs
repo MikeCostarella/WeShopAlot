@@ -12,7 +12,7 @@ using WeShopAlot.Data;
 namespace WeShopAlot.Data.Migrations
 {
     [DbContext(typeof(WeShopAlotContext))]
-    [Migration("20230609214640_Initial-001")]
+    [Migration("20230612144448_Initial-001")]
     partial class Initial001
     {
         /// <inheritdoc />
@@ -105,8 +105,8 @@ namespace WeShopAlot.Data.Migrations
                     b.Property<string>("Brand")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CustomerBasketId")
-                        .HasColumnType("int");
+                    b.Property<string>("CustomerBasketId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -135,20 +135,14 @@ namespace WeShopAlot.Data.Migrations
 
             modelBuilder.Entity("WeShopAlot.Data.Models.CustomerBasket", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ClientSecret")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("DeliveryMethodId")
                         .HasColumnType("int");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
 
                     b.Property<string>("PaymentIntentId")
                         .HasColumnType("nvarchar(max)");

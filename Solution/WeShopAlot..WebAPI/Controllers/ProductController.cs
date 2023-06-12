@@ -39,7 +39,7 @@ namespace WeShopAlot.WebAPI.Controllers
 
         #region Actions
 
-        //[Cached(600)]
+        [Cached(600)]
         [HttpGet]
         public async Task<ActionResult<Pagination<ProductToReturnDto>>> GetProducts([FromQuery] ProductSpecParams productParams)
         {
@@ -58,7 +58,7 @@ namespace WeShopAlot.WebAPI.Controllers
             }
         }
 
-        //[Cached(600)]
+        [Cached(600)]
         [HttpGet("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ApiResponse), StatusCodes.Status404NotFound)]
@@ -73,14 +73,14 @@ namespace WeShopAlot.WebAPI.Controllers
             return mapper.Map<Product, ProductToReturnDto>(product);
         }
 
-        //[Cached(600)]
+        [Cached(600)]
         [HttpGet("brands")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductBrands()
         {
             return Ok(await productBrandRepository.ListAllAsync());
         }
 
-        //[Cached(600)]
+        [Cached(600)]
         [HttpGet("types")]
         public async Task<ActionResult<IReadOnlyList<ProductBrand>>> GetProductTypes()
         {

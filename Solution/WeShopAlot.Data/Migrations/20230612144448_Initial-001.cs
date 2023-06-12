@@ -40,13 +40,11 @@ namespace WeShopAlot.Data.Migrations
                 schema: "WSA",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    DeliveryMethodId = table.Column<int>(type: "int", nullable: true),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ClientSecret = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DeliveryMethodId = table.Column<int>(type: "int", nullable: true),
                     PaymentIntentId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    ShippingPrice = table.Column<decimal>(type: "decimal (5,2)", nullable: false),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false)
+                    ShippingPrice = table.Column<decimal>(type: "decimal (5,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -174,7 +172,7 @@ namespace WeShopAlot.Data.Migrations
                     ProductName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Type = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CustomerBasketId = table.Column<int>(type: "int", nullable: true),
+                    CustomerBasketId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>

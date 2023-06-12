@@ -23,7 +23,7 @@ namespace WeShopAlot.WebAPI.Controllers
         {
             var basket = await _basketRepository.GetBasketAsync(id);
 
-            return Ok(basket ?? new CustomerBasket { Id = int.Parse(id) });
+            return Ok(basket ?? new CustomerBasket { Id = id });
         }
 
         [HttpPost]

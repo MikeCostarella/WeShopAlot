@@ -4,13 +4,15 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WeShopAlot.Data.Models
 {
-    public class CustomerBasket : BasePersistentObject
+    public class CustomerBasket
     {
         #region Physical Properties
 
+        public string ClientSecret { get; set; }
+
         public int? DeliveryMethodId { get; set; }
 
-        public string ClientSecret { get; set; }
+        public string Id { get; set; }
 
         public string PaymentIntentId { get; set; }
 
