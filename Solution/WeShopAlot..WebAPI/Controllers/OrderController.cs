@@ -38,13 +38,9 @@ namespace WeShopAlot.WebAPI.Controllers
         public async Task<ActionResult<Order>> CreateOrder(OrderDto orderDto)
         {
             var email = HttpContext.User.RetrieveEmailFromPrincipal();
-
             var address = _mapper.Map<AddressDto, Address>(orderDto.ShipToAddress);
-
             var order = await _orderService.CreateOrderAsync(email, orderDto.DeliveryMethodId, orderDto.BasketId, address);
-
             if (order == null) return BadRequest(new ApiResponse(400, "Problem creating order"));
-
             return Ok(order);
         }
 
@@ -52,9 +48,7 @@ namespace WeShopAlot.WebAPI.Controllers
         public async Task<ActionResult<IReadOnlyList<OrderToReturnDto>>> GetOrdersForUser()
         {
             var email = User.RetrieveEmailFromPrincipal();
-
             var orders = await _orderService.GetOrdersForUserAsync(email);
-
             return Ok(_mapper.Map<IReadOnlyList<OrderToReturnDto>>(orders));
         }
 
@@ -62,11 +56,8 @@ namespace WeShopAlot.WebAPI.Controllers
         public async Task<ActionResult<OrderToReturnDto>> GetOrderByIdForUser(int id)
         {
             var email = User.RetrieveEmailFromPrincipal();
-
             var order = await _orderService.GetOrderByIdAsync(id, email);
-
             if (order == null) return NotFound(new ApiResponse(404));
-
             return _mapper.Map<OrderToReturnDto>(order);
         }
 
