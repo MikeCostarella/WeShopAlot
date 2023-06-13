@@ -30,8 +30,4 @@
     <ProjectReference Include="..\WeShopAlot.Shared\WeShopAlot.Shared.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\" />
-  </ItemGroup>
-
 </Project>
