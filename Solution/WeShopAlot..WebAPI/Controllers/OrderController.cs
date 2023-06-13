@@ -5,9 +5,12 @@ using WeShopAlot.Shared.Dtos;
 using WeShopAlot.WebAPI.Errors;
 using WeShopAlot.WebAPI.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WeShopAlot.WebAPI.Controllers
 {
+
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OrderController : BaseApiController

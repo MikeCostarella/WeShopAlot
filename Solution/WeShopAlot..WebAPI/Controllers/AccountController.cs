@@ -124,24 +124,28 @@ namespace WeShopAlot.WebAPI.Controllers
             return await appUserRepository.EmailExistsAsync(email);
         }
 
-        //[Authorize]
-        //[HttpGet("address")]
-        //public async Task<ActionResult<AddressDto>> GetUserAddress()
-        //{
-        //    var user = await appUserRepository.FindByAddress(appUser.Address);
-        //    return mapper.Map<Address, AddressDto>(user.Address);
-        //}
+        [Authorize]
+        [HttpGet("address")]
+        public async Task<ActionResult<AddressDto>> GetUserAddress()
+        {
+            var claimsPrincipal = this.User;
+            var claims = ClaimsPrincipal.Current.Identities.First().Claims.ToList();
+            var emailAddress = claims?.FirstOrDefault(x => x.Type.Equals("Email", StringComparison.OrdinalIgnoreCase))?.Value;
+            var user = await appUserRepository.GetByEmailAddressAsync(emailAddress);
+            return mapper.Map<Address, AddressDto>(user.Address);
+        }
 
-        //[Authorize]
-        //[HttpPut("address")]
-        //public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
-        //{
-        //    var user = await appUserRepository.FindByAddress(appUser.Address);
-        //    user.Address = mapper.Map<AddressDto, Address>(address);
-        //    var result = await appUserRepository.UpdateAsync(user);
-        //    if (result.Succeeded) return Ok(mapper.Map<AddressDto>(user.Address));
-        //    return BadRequest("Problem updating the user");
-        //}
+        [Authorize]
+        [HttpPut("address")]
+        public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
+        {
+            var claims = ClaimsPrincipal.Current.Identities.First().Claims.ToList();
+            var emailAddress = claims?.FirstOrDefault(x => x.Type.Equals("Email", StringComparison.OrdinalIgnoreCase))?.Value;
+            var user = await appUserRepository.GetByEmailAddressAsync(emailAddress);
+            user.Address = mapper.Map<AddressDto, Address>(address);
+            await appUserRepository.UpdateAsync(user);
+            return Ok(mapper.Map<AddressDto>(user.Address));
+        }
 
         #endregion Actions
     }
