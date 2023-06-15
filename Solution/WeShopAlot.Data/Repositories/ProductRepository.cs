@@ -20,6 +20,22 @@ namespace WeShopAlot.Data.Repositories
             return await dbContext.ProductBrands.ToListAsync();
         }
 
+        public IReadOnlyList<Product> GetProducts()
+        {
+            return dbContext.Products
+                .Include(p => p.ProductType)
+                .Include(p => p.ProductBrand)
+                .ToList();
+        }
+
+        public Product GetProductById(int id)
+        {
+            return dbContext.Products
+                .Include(p => p.ProductType)
+                .Include(p => p.ProductBrand)
+                .FirstOrDefault(x => x.Id == id);
+        }
+
         public async Task<Product> GetProductByIdAsync(int id)
         {
             return await dbContext.Products

@@ -1,32 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
-using WeShopAlot.UI.ClientMVC.Models;
+using WeShopAlot.Data.Repositories.Interfaces;
 
-namespace WeShopAlot.UI.ClientMVC.Controllers
+namespace CoffeeShop.Controllers;
+
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    #region Member Variables
+
+    private IProductRepository productRepository;
+
+    #endregion Member Variables
+
+    #region #Constructors
+
+    public HomeController(IProductRepository productRepository)
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        this.productRepository = productRepository; 
     }
+
+    #endregion Constructors
+
+    #region Public Actions
+
+    public IActionResult Index()
+    {
+        return View(productRepository.GetTrendingProducts());
+    }
+
+    #endregion Constructors
 }
