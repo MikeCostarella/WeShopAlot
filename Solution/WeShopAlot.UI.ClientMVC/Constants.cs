@@ -6,6 +6,6 @@
 
         public const string WebAPI_Product_GetProductDetail = "api/Product/GetProduct/";
 
-        public const string WebAPI_Product_TrendingProducts = "api/Product/GetTrendingProducts/";
+        public const string WebAPI_Product_GetTrendingProducts = "api/Product/GetTrendingProducts/";
     }
 }

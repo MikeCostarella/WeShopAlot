@@ -4,42 +4,54 @@ using WeShopAlot.Data.Repositories.Interfaces;
 using WeShopAlot.Shared.Dtos;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WeShopAlot.WebAPI.Controllers
+namespace WeShopAlot.WebAPI.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class BasketController : BaseApiController
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BasketController : BaseApiController
+    #region Member Variables
+
+    private readonly IBasketRepository _basketRepository;
+    private readonly IMapper _mapper;
+
+    #endregion Member Variables
+
+    #region Constructors
+
+    public BasketController(IBasketRepository basketRepository, IMapper mapper)
     {
-        private readonly IBasketRepository _basketRepository;
-        private readonly IMapper _mapper;
-        public BasketController(IBasketRepository basketRepository, IMapper mapper)
-        {
-            _mapper = mapper;
-            _basketRepository = basketRepository;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
-        {
-            var basket = await _basketRepository.GetBasketAsync(id);
-
-            return Ok(basket ?? new CustomerBasket { Id = id });
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
-        {
-            var customerBasket = _mapper.Map<CustomerBasket>(basket);
-
-            var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
-
-            return Ok(updatedBasket);
-        }
-
-        [HttpDelete]
-        public async Task DeleteBasketAsync(string id)
-        {
-            await _basketRepository.DeleteBasketAsync(id);
-        }
+        _mapper = mapper;
+        _basketRepository = basketRepository;
     }
+
+    #endregion Constructors
+
+    #region Endpoints
+
+    [HttpDelete]
+    public async Task DeleteBasketAsync(string id)
+    {
+        await _basketRepository.DeleteBasketAsync(id);
+    }
+
+    [HttpGet]
+    public async Task<ActionResult<CustomerBasket>> GetBasketById(string id)
+    {
+        var basket = await _basketRepository.GetBasketAsync(id);
+
+        return Ok(basket ?? new CustomerBasket { Id = id });
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<CustomerBasket>> UpdateBasket(CustomerBasketDto basket)
+    {
+        var customerBasket = _mapper.Map<CustomerBasket>(basket);
+
+        var updatedBasket = await _basketRepository.UpdateBasketAsync(customerBasket);
+
+        return Ok(updatedBasket);
+    }
+
+    #endregion Endpoints
 }

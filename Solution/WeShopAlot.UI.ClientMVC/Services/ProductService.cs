@@ -32,7 +32,7 @@ namespace WeShopAlot.UI.ClientMVC.Services
         public List<ProductViewModel> GetTrendingProducts()
         {
             string requestUri = Constants.WebAPI_Product_GetTrendingProducts;
-            var response = _apiClient.GetAsync<List<ProductToReturnDto>>(requestUri).ConfigureAwait(false);
+            var response = _apiClient.GetAsync<List<ProductToReturnDto>>(requestUri).ConfigureAwait(false).GetAwaiter().GetResult();
             return _mapper.Map<List<ProductViewModel>>(response);
         }
 

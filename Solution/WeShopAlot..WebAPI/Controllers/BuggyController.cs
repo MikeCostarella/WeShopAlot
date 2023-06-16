@@ -9,11 +9,22 @@ namespace WeShopAlot.WebAPI.Controllers
     [ApiController]
     public class BuggyController : BaseApiController
     {
+        #region Member Variables
+
         private readonly WeShopAlotContext _context;
+
+        #endregion Member Variables
+
+        #region Constructors
+
         public BuggyController(WeShopAlotContext context)
         {
             _context = context;
         }
+
+        #endregion Constructors
+
+        #region Endpoints
 
         [HttpGet("testauth")]
         [Authorize]
@@ -53,5 +64,7 @@ namespace WeShopAlot.WebAPI.Controllers
         {
             return Ok();
         }
+
+        #endregion Endpoints
     }
 }

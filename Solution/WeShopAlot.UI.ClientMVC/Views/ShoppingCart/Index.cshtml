@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ShoppingCartItem>
+﻿@model IEnumerable<ShoppingCartItemViewModel>
 
 @if (Model.Count() > 0)
 {
@@ -16,33 +16,25 @@
                                         <h6 class="mb-0 text-muted">@Model.Count() items</h6>
                                     </div>
                                     <hr class="my-4">
-
                                     @foreach (var item in Model)
                                     {
                                         <div class="row mb-4 d-flex justify-content-between align-items-center">
                                             <div class="col-md-2 col-lg-2 col-xl-2">
-                                                <img src="@item.Product?.ImageUrl"
+                                                <img src="@item.Product?.PictureUrl"
                                                      class="img-fluid rounded-3">
                                             </div>
                                             <div class="col-md-3 col-lg-3 col-xl-3">
                                                 <h6 class="text-black mb-0">@item.Qty x @item.Product?.Name</h6>
                                             </div>
-
                                             <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                 <h6 class="mb-0">@(item.Qty * item.Product?.Price) $</h6>
                                             </div>
-
                                             <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                                                <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-pId="@item.Product?.Id" class="text-decoration-none"><h3>&#128465;</h3></a>
+                                                <a asp-controller="ShoppingCart" asp-action="RemoveFromShoppingCart" asp-route-pId="@item.Product?.InternalId" class="text-decoration-none"><h3>&#128465;</h3></a>
                                             </div>
-
                                         </div>
-
                                         <hr class="my-4">
                                     }
-
-
-
                                     <div class="pt-5">
                                         <h6 class="mb-0">
                                             <a asp-controller="Products" asp-action="Shop" class="text-body">
@@ -52,7 +44,6 @@
                                     </div>
                                 </div>
                             </div>
-
                             <div class="col-lg-5 bg-grey">
                                 <div class="p-5">
                                     <h4 class="fw-bold mb-5 mt-2 pt-1">Summary</h4>
@@ -61,7 +52,6 @@
                                         <h5 class="text-uppercase">Total price</h5>
                                         <h5>@ViewBag.CartTotal.ToString("c")</h5>
                                     </div>
-
                                     <a asp-controller="Orders" asp-action="Checkout">
                                         <button  type="button"
                                                 class="btn btn-primary w-100 text-center"
@@ -79,7 +69,6 @@
     </div>
     </section>
 }
-
 else
 {
     <div class="container">
@@ -96,4 +85,3 @@ else
         </div>
     </div>
 }
-
