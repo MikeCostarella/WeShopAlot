@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using WeShopAlot.Shared.Dtos;
-using WeShopAlot.Shared.Extensions;
 using WeShopAlot.Shared.Services.ServiceAPIClient;
 using WeShopAlot.UI.ClientMVC.Models;
 
@@ -19,10 +18,27 @@ namespace WeShopAlot.UI.ClientMVC.Services
         public List<ProductViewModel> GetProducts()
         {
             string requestUri = Constants.WebAPI_Product_GetProducts;
-            //var httpContent = JsonSerializerExtension.SerializeObjectToStringContent(applicationToSave);
-            //var response = await _apiClient.GetAsync<ProductToReturnDto>(requestUri, httpContent).ConfigureAwait(false);
             var response =  _apiClient.GetAsync<List<ProductToReturnDto>>(requestUri).ConfigureAwait(false);
             return _mapper.Map <List<ProductViewModel>>(response);
         }
+
+        public ProductViewModel GetProductDetail(int id)
+        {
+            string requestUri = Constants.WebAPI_Product_GetProductDetail;
+            var response = _apiClient.GetAsync<ProductToReturnDto>(requestUri + "?id=" + id).ConfigureAwait(false);
+            return _mapper.Map<ProductViewModel>(response);
+        }
+
+        public List<ProductViewModel> GetTrendingProducts()
+        {
+            string requestUri = Constants.WebAPI_Product_GetTrendingProducts;
+            var response = _apiClient.GetAsync<List<ProductToReturnDto>>(requestUri).ConfigureAwait(false);
+            return _mapper.Map<List<ProductViewModel>>(response);
+        }
+
+        //var httpContent = JsonSerializerExtension.SerializeObjectToStringContent(applicationToSave);
+        //var response = await _apiClient.GetAsync<ProductToReturnDto>(requestUri, httpContent).ConfigureAwait(false);
+
+
     }
 }

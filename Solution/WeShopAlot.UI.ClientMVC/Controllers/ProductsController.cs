@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WeShopAlot.Data.Repositories.Interfaces;
+using WeShopAlot.UI.ClientMVC.Services;
 
 namespace CoffeeShop.Controllers;
 
@@ -7,15 +7,15 @@ public class ProductsController : Controller
 {
     #region Member Variables
 
-    private IProductRepository productRepository;
+    private IProductService productService;
 
     #endregion Member Variables
 
     #region Constructors
 
-    public ProductsController(IProductRepository productRepository)
+    public ProductsController(IProductService productService)
     {
-        this.productRepository = productRepository;
+        this.productService = productService;
     }
 
     #endregion Constructors
@@ -24,12 +24,12 @@ public class ProductsController : Controller
 
     public IActionResult Shop()
     {
-        return View(productRepository.GetProducts());
+        return View(productService.GetProducts());
     }
 
     public IActionResult Detail(int id)
     {
-        var product = productRepository.GetProductDetail(id);
+        var product = productService.GetProductDetail(id);
         if(product == null)
         {
             return NotFound();

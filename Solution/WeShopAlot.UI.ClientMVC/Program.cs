@@ -1,7 +1,10 @@
+using WeShopAlot.UI.ClientMVC.Extensions;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddApplicationServices(builder.Configuration);
 
 // add services needed by this project to the IOC here
 
