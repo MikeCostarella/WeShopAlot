@@ -34,6 +34,7 @@ namespace WeShopAlot.WebAPI.Controllers
 
         [Authorize]
         [HttpPost("{basketId}")]
+        [AutoValidateAntiforgeryToken]
         public async Task<ActionResult<CustomerBasket>> CreateOrUpdatePaymentIntent(string basketId)
         {
             var basket = await _paymentService.CreateOrUpdatePaymentIntent(basketId);
@@ -42,6 +43,7 @@ namespace WeShopAlot.WebAPI.Controllers
         }
 
         [HttpPost("webhook")]
+        [AutoValidateAntiforgeryToken]
         public async Task<ActionResult> StripeWebhook()
         {
             var json = await new StreamReader(Request.Body).ReadToEndAsync();
