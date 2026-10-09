@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.VisualStudio.JavaScript.Sdk/1.0.6887863">
+  <!-- Lets Visual Studio treat the Angular client as a project, so it can start with the API
+       (Solution > Configure Startup Projects > Multiple startup projects). -->
+  <PropertyGroup>
+    <!-- F5 runs "npm start" (ng serve on https://localhost:4200) and opens the first launch.json entry. -->
+    <StartupCommand>npm start</StartupCommand>
+    <!-- Building the solution should not run npm install or ng build; use npm ci / ng build yourself. -->
+    <ShouldRunNpmInstall>false</ShouldRunNpmInstall>
+    <ShouldRunBuildScript>false</ShouldRunBuildScript>
+    <IsTestProject>false</IsTestProject>
+  </PropertyGroup>
+</Project>
