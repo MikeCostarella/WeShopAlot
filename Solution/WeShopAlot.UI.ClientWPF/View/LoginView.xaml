@@ -1,0 +1,22 @@
+<UserControl x:Class="WeShopAlot.UI.ClientWPF.View.LoginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <StackPanel Width="380" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Sign in" Style="{StaticResource PageTitleStyle}" HorizontalAlignment="Center"/>
+        <TextBlock Text="Email address" Style="{StaticResource FieldLabelStyle}"/>
+        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBlock Text="Password" Style="{StaticResource FieldLabelStyle}"/>
+        <!-- WPF can't bind a PasswordBox; the code-behind copies it to the view model -->
+        <PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged"/>
+        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" Margin="0 10 0 0"
+                   Visibility="{Binding ErrorMessage, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
+        <Button Content="Sign in" Style="{StaticResource PrimaryButtonStyle}" Margin="0 20 0 0" IsDefault="True"
+                Command="{Binding LoginCommand}"/>
+        <Button Content="Don't have an account? Sign up" Style="{StaticResource NavButtonStyle}" FontSize="14" Margin="0 10 0 0"
+                Command="{Binding RegisterCommand}"/>
+    </StackPanel>
+</UserControl>

@@ -9,7 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="View\" />
+    <!-- Hosts Stripe's card form (Stripe.js) for the checkout's Payment step -->
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.4191.47" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Pictures used as /Images/... in XAML must be compiled in as resources -->
+    <Resource Include="Images\*.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Payment\stripe-card.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,59 @@
+<UserControl x:Class="WeShopAlot.UI.ClientWPF.View.OrderDetailView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             d:DesignHeight="600" d:DesignWidth="1000">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Button Content="‹ Back to orders" Style="{StaticResource NavButtonStyle}" HorizontalAlignment="Left" Command="{Binding BackCommand}"/>
+        <TextBlock Grid.Row="1" Text="{Binding Heading}" Style="{StaticResource PageTitleStyle}" Margin="0 10 0 15"/>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid ItemsSource="{Binding Order.OrderItems}" AutoGenerateColumns="False" IsReadOnly="True"
+                      HeadersVisibility="Column" RowHeight="64" GridLinesVisibility="Horizontal">
+                <DataGrid.Columns>
+                    <DataGridTemplateColumn Header="Product" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Width="56" Height="56" Margin="0 0 10 0"/>
+                                    <TextBlock Text="{Binding ProductName}" VerticalAlignment="Center" FontWeight="SemiBold"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="90"/>
+                    <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="80"/>
+                    <DataGridTextColumn Header="Total" Binding="{Binding LineTotal, Mode=OneWay, StringFormat=C}" Width="100"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Margin="20 0 0 0">
+                <Border Background="{StaticResource PanelBrush}" Padding="15">
+                    <StackPanel>
+                        <TextBlock Text="Order summary" Style="{StaticResource SectionTitleStyle}" Margin="0 0 0 10"/>
+                        <TextBlock Text="{Binding Order.LocalOrderDate, Mode=OneWay, StringFormat='Placed {0:f}'}" Foreground="{StaticResource MutedBrush}" Margin="0 0 0 8"/>
+                        <DockPanel Margin="0 4"><TextBlock Text="{Binding Order.Subtotal, StringFormat=C}" DockPanel.Dock="Right"/><TextBlock Text="Order subtotal"/></DockPanel>
+                        <DockPanel Margin="0 4"><TextBlock Text="{Binding Order.ShippingPrice, StringFormat=C}" DockPanel.Dock="Right"/><TextBlock Text="{Binding Order.DeliveryMethod, StringFormat='Shipping ({0})'}"/></DockPanel>
+                        <DockPanel Margin="0 4"><TextBlock Text="{Binding Order.Total, StringFormat=C}" DockPanel.Dock="Right" FontWeight="Bold"/><TextBlock Text="Total" FontWeight="Bold"/></DockPanel>
+                    </StackPanel>
+                </Border>
+                <Border Background="{StaticResource PanelBrush}" Padding="15" Margin="0 15 0 0">
+                    <StackPanel>
+                        <TextBlock Text="Shipping to" Style="{StaticResource SectionTitleStyle}" Margin="0 0 0 6"/>
+                        <TextBlock Text="{Binding ShipToName}" FontWeight="SemiBold"/>
+                        <TextBlock Text="{Binding ShipToLines}" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

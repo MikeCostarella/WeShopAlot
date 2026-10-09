@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Card</title>
+  <!--
+    The Stripe card form for the WPF client, shown in a WebView2 (View/StripeCardControl).
+    Stripe.js sends the card details straight to Stripe, so they never reach the app or the WeShopAlot API;
+    this is the same stripe.confirmCardPayment(...) call Angular's checkout-payment component makes.
+    Messages to the app: ready | change {complete, error} | error {error} | result {ok, error}
+    Message from the app: pay {clientSecret, name}
+  -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    html, body { margin: 0; padding: 0; font-family: "Segoe UI", sans-serif; background: #fff; }
+    #card { padding: 12px 10px; border: 1px solid #ccc; border-radius: 4px; margin: 4px; }
+  </style>
+</head>
+<body>
+  <div id="card"></div>
+  <script>
+    const post = message => window.chrome.webview.postMessage(message);
+    const key = new URLSearchParams(location.search).get('pk');
+    let stripe, card;
+
+    try {
+      stripe = Stripe(key);
+      card = stripe.elements().create('card', {
+        hidePostalCode: true,
+        style: { base: { fontSize: '16px', color: '#222' } }
+      });
+      card.mount('#card');
+      card.on('ready', () => post({ type: 'ready' }));
+      card.on('change', e => post({ type: 'change', complete: e.complete, error: e.error ? e.error.message : null }));
+    } catch (e) {
+      post({ type: 'error', error: String(e) });
+    }
+
+    window.chrome.webview.addEventListener('message', async event => {
+      const message = event.data;
+      if (!message || message.type !== 'pay') return;
+      try {
+        const result = await stripe.confirmCardPayment(message.clientSecret, {
+          payment_method: { card: card, billing_details: { name: message.name } }
+        });
+        if (result.error) post({ type: 'result', ok: false, error: result.error.message });
+        else post({ type: 'result', ok: true, error: null });
+      } catch (e) {
+        post({ type: 'result', ok: false, error: String(e) });
+      }
+    });
+  </script>
+</body>
+</html>
