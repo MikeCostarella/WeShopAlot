@@ -21,6 +21,9 @@ namespace WeShopAlot.Data.Specifications.Base
 
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 
+        // Dotted paths such as "OrderItems.ItemOrdered" reach a second level (what ThenInclude does).
+        public List<string> IncludeStrings { get; } = new List<string>();
+
         public Expression<Func<T, object>> OrderBy { get; private set; }
 
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
@@ -38,6 +41,11 @@ namespace WeShopAlot.Data.Specifications.Base
         protected void AddInclude(Expression<Func<T, object>> includeExpression)
         {
             Includes.Add(includeExpression);
+        }
+
+        protected void AddInclude(string includePath)
+        {
+            IncludeStrings.Add(includePath);
         }
 
         protected void AddOrderBy(Expression<Func<T, object>> orderByExpression)

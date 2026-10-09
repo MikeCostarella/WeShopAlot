@@ -1,4 +1,4 @@
-﻿using Microsoft.OpenApi.Models;
+﻿using Microsoft.OpenApi;
 
 namespace WeShopAlot.WebAPI.Extensions
 {
@@ -10,30 +10,22 @@ namespace WeShopAlot.WebAPI.Extensions
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(c =>
             {
-                var securitySchema = new OpenApiSecurityScheme
+                // Swashbuckle 10 / Microsoft.OpenApi 2: define the scheme once, then
+                // reference it by name from the document-wide requirement.
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = "JWT Auth Bearer Scheme",
-                    Name = "Authorisation",
+                    Name = "Authorization",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.Http,
-                    Scheme = "Bearer",
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                };
+                    Scheme = "bearer",
+                    BearerFormat = "JWT"
+                });
 
-                c.AddSecurityDefinition("Bearer", securitySchema);
-
-                var securityRequirement = new OpenApiSecurityRequirement
+                c.AddSecurityRequirement(document => new OpenApiSecurityRequirement
                 {
-                    {
-                        securitySchema, new[] {"Bearer"}
-                    }
-                };
-
-                c.AddSecurityRequirement(securityRequirement);
+                    [new OpenApiSecuritySchemeReference("Bearer", document)] = []
+                });
 
             });
             return services;

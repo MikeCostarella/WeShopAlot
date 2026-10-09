@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Order } from '../shared/models/order';
 import { OrdersService } from './orders.service';
 
 @Component({
-  selector: 'app-orders',
-  templateUrl: './orders.component.html',
-  styleUrls: ['./orders.component.scss']
+    selector: 'app-orders',
+    templateUrl: './orders.component.html',
+    styleUrls: ['./orders.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrdersComponent implements OnInit {
   orders: Order[] = [];

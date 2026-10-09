@@ -32,9 +32,10 @@ namespace WeShopAlot.WebAPI.Controllers
 
         #region Public Actions
 
+        // No antiforgery attribute: this API authenticates with a bearer token, not a cookie, so CSRF
+        // does not apply, and AddControllers() never registers the antiforgery filter it needs (it was a 500).
         [Authorize]
         [HttpPost("{basketId}")]
-        [AutoValidateAntiforgeryToken]
         public async Task<ActionResult<CustomerBasket>> CreateOrUpdatePaymentIntent(string basketId)
         {
             var basket = await _paymentService.CreateOrUpdatePaymentIntent(basketId);
@@ -42,27 +43,36 @@ namespace WeShopAlot.WebAPI.Controllers
             return basket;
         }
 
+        // Stripe calls this endpoint; the Stripe-Signature header, checked against the webhook secret, is what proves it.
         [HttpPost("webhook")]
-        [AutoValidateAntiforgeryToken]
         public async Task<ActionResult> StripeWebhook()
         {
             var json = await new StreamReader(Request.Body).ReadToEndAsync();
-            var stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _whSecret);
+            Event stripeEvent;
+            try
+            {
+                stripeEvent = EventUtility.ConstructEvent(json, Request.Headers["Stripe-Signature"], _whSecret);
+            }
+            catch (StripeException ex)
+            {
+                _logger.LogWarning("Rejected webhook call: {Reason}", ex.Message);
+                return BadRequest(new ApiResponse(400, "Invalid Stripe signature"));
+            }
             PaymentIntent intent;
             Order order;
             switch (stripeEvent.Type)
             {
                 case "payment_intent.succeeded":
                     intent = (PaymentIntent)stripeEvent.Data.Object;
-                    _logger.LogInformation("Payment succeeded: ", intent.Id);
+                    _logger.LogInformation("Payment succeeded: {PaymentIntentId}", intent.Id);
                     order = await _paymentService.UpdateOrderPaymentSucceeded(intent.Id);
-                    _logger.LogInformation("Order updated to payment received: ", order.Id);
+                    _logger.LogInformation("Order updated to payment received: {OrderId}", order?.Id);
                     break;
                 case "payment_intent.payment_failed":
                     intent = (PaymentIntent)stripeEvent.Data.Object;
-                    _logger.LogInformation("Payment failed: ", intent.Id);
+                    _logger.LogInformation("Payment failed: {PaymentIntentId}", intent.Id);
                     order = await _paymentService.UpdateOrderPaymentFailed(intent.Id);
-                    _logger.LogInformation("Order updated to payment failed: ", order.Id);
+                    _logger.LogInformation("Order updated to payment failed: {OrderId}", order?.Id);
                     break;
             }
             return new EmptyResult();

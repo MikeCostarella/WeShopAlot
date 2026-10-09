@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AccountService } from '../account/account.service';
 import { BasketService } from '../basket/basket.service';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrls: ['./checkout.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class CheckoutComponent implements OnInit {
 
@@ -20,12 +22,13 @@ export class CheckoutComponent implements OnInit {
 
   checkoutForm = this.fb.group({
     addressForm: this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      street: ['', Validators.required],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zipcode: ['', Validators.required],
+      // Limits match the Address table (and AddressDto), so the API never has to reject what the form allowed.
+      firstName: ['', [Validators.required, Validators.maxLength(50)]],
+      lastName: ['', [Validators.required, Validators.maxLength(50)]],
+      street: ['', [Validators.required, Validators.maxLength(100)]],
+      city: ['', [Validators.required, Validators.maxLength(50)]],
+      state: ['', [Validators.required, Validators.pattern(/^[A-Za-z]{2}$/)]],
+      zipcode: ['', [Validators.required, Validators.pattern(/^\d{5}(-\d{4})?$/)]],
     }),
     deliveryForm: this.fb.group({
       deliveryMethod: ['', Validators.required]

@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
-import { BasketService } from 'src/app/basket/basket.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { BasketService } from '../../basket/basket.service';
 
 @Component({
-  selector: 'app-order-totals',
-  templateUrl: './order-totals.component.html',
-  styleUrls: ['./order-totals.component.scss']
+    selector: 'app-order-totals',
+    templateUrl: './order-totals.component.html',
+    styleUrls: ['./order-totals.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrderTotalsComponent {
 

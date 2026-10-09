@@ -1,6 +1,7 @@
 ﻿using WeShopAlot.Data.Models.Base;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using WeShopAlot.Data.Shared.Enumerations;
 
 namespace WeShopAlot.Data.Models
 {
@@ -26,10 +27,13 @@ namespace WeShopAlot.Data.Models
 
         [Required]
         [ForeignKey("StatusId")]
-        public int StatusId { get; set; }
+        // OrderStatus rows are seeded with Ids 1-3, so the old default of 0 broke the foreign key
+        // and every new order failed with "An error occurred while saving the entity changes".
+        public int StatusId { get; set; } = (int)OrderStatusEnum.Pending;
         public OrderStatus Status { get; set; }
 
-        [Column(TypeName = "decimal (5,2)")]
+        // decimal(5,2) topped out at 999.99, so any larger order failed to save.
+        [Column(TypeName = "decimal (18,2)")]
         public decimal Subtotal { get; set; }
 
         #endregion Physical Properties

@@ -24,11 +24,11 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    PaginationModule.forRoot(),
-    CarouselModule.forRoot(),
+    PaginationModule,
+    CarouselModule,
     ReactiveFormsModule,
     FormsModule,
-    BsDropdownModule.forRoot(),
+    BsDropdownModule,
     CdkStepperModule,
     RouterModule
   ],

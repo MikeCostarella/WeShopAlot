@@ -27,7 +27,7 @@ public class AppUserRepository : GenericRepository<AppUser>, IAppUserRepository
 
     public Task<AppUser> GetByEmailAddressAsync(string emailAddress)
     {
-        return dbContext.AppUsers.FirstOrDefaultAsync(x =>x.EmailAddress.Equals(emailAddress));
+        return dbContext.AppUsers.Include(x => x.Address).FirstOrDefaultAsync(x => x.EmailAddress.Equals(emailAddress));
     }
 
     public async Task<AppUser> InsertAsync(AppUser appUser)

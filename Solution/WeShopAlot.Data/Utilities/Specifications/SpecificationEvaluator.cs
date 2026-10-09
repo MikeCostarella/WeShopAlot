@@ -31,6 +31,7 @@ namespace WeShopAlot.Data.Utilities.Specifications
             }
 
             queryable = specification.Includes.Aggregate(queryable, (current, include) => current.Include(include));
+            queryable = specification.IncludeStrings.Aggregate(queryable, (current, include) => current.Include(include));
 
             return queryable;
         }

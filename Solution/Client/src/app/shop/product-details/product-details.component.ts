@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
-import { BasketService } from 'src/app/basket/basket.service';
-import { Product } from 'src/app/shared/models/product';
+import { BasketService } from '../../basket/basket.service';
+import { Product } from '../../shared/models/product';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { ShopService } from '../shop.service';
 
 @Component({
-  selector: 'app-product-details',
-  templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+    selector: 'app-product-details',
+    templateUrl: './product-details.component.html',
+    styleUrls: ['./product-details.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ProductDetailsComponent implements OnInit {
   product?: Product;

@@ -39,7 +39,9 @@ namespace WeShopAlot.Infrastructure.Services
             var encodedKey = Encoding.UTF8.GetBytes(this.configuration["Token:Key"]);
             var symmetricSecurityKey = new SymmetricSecurityKey(encodedKey);
             var credentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha512Signature);
+            // The API validates the issuer (Program.cs), so every token must carry it.
             var token = new JwtSecurityToken(
+                issuer: this.configuration["Token:Issuer"],
                 claims: claims,
                 expires: DateTime.Now.AddDays(1),
                 signingCredentials: credentials

@@ -3,6 +3,7 @@ using WeShopAlot.Data.Interfaces;
 using WeShopAlot.Data.Models;
 using WeShopAlot.Shared.Dtos;
 using WeShopAlot.WebAPI.Errors;
+using WeShopAlot.WebAPI.Extensions;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WeShopAlot.Data.Repositories.Interfaces;
@@ -128,10 +129,12 @@ namespace WeShopAlot.WebAPI.Controllers
         [HttpGet("address")]
         public async Task<ActionResult<AddressDto>> GetUserAddress()
         {
-            var claimsPrincipal = this.User;
-            var claims = ClaimsPrincipal.Current.Identities.First().Claims.ToList();
-            var emailAddress = claims?.FirstOrDefault(x => x.Type.Equals("Email", StringComparison.OrdinalIgnoreCase))?.Value;
-            var user = await appUserRepository.GetByEmailAddressAsync(emailAddress);
+            // ClaimsPrincipal.Current is never set in ASP.NET Core; read the signed-in user from User.
+            var user = await appUserRepository.GetByEmailAddressAsync(User.RetrieveEmailFromPrincipal());
+            if (user == null) return Unauthorized(new ApiResponse(401));
+            // No saved address yet is a normal state for a new user, not an error: 204 No Content.
+            // (A 404 here sent the Angular client to its Not Found page during checkout.)
+            if (user.Address == null) return NoContent();
             return mapper.Map<Address, AddressDto>(user.Address);
         }
 
@@ -139,9 +142,8 @@ namespace WeShopAlot.WebAPI.Controllers
         [HttpPut("address")]
         public async Task<ActionResult<AddressDto>> UpdateUserAddress(AddressDto address)
         {
-            var claims = ClaimsPrincipal.Current.Identities.First().Claims.ToList();
-            var emailAddress = claims?.FirstOrDefault(x => x.Type.Equals("Email", StringComparison.OrdinalIgnoreCase))?.Value;
-            var user = await appUserRepository.GetByEmailAddressAsync(emailAddress);
+            var user = await appUserRepository.GetByEmailAddressAsync(User.RetrieveEmailFromPrincipal());
+            if (user == null) return Unauthorized(new ApiResponse(401));
             user.Address = mapper.Map<AddressDto, Address>(address);
             await appUserRepository.UpdateAsync(user);
             return Ok(mapper.Map<AddressDto>(user.Address));

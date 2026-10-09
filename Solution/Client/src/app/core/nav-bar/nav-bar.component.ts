@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
-import { AccountService } from 'src/app/account/account.service';
-import { BasketService } from 'src/app/basket/basket.service';
-import { BasketItem } from 'src/app/shared/models/basket';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { AccountService } from '../../account/account.service';
+import { BasketService } from '../../basket/basket.service';
+import { BasketItem } from '../../shared/models/basket';
 
 @Component({
-  selector: 'app-nav-bar',
-  templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.scss']
+    selector: 'app-nav-bar',
+    templateUrl: './nav-bar.component.html',
+    styleUrls: ['./nav-bar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class NavBarComponent {
 

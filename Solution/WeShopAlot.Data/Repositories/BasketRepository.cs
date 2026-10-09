@@ -22,7 +22,7 @@ namespace WeShopAlot.Data.Repositories
         {
             var data = await _database.StringGetAsync(basketId);
 
-            return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data);
+            return data.IsNullOrEmpty ? null : JsonSerializer.Deserialize<CustomerBasket>(data.ToString());
         }
 
         // ToDo: change id back to int

@@ -7,6 +7,14 @@ namespace WeShopAlot.Data.Models
     {
         #region Physical Properties
 
+        // Who the package goes to. The checkout form always sent these, but until the AddressNames
+        // migration the table had no columns for them, so saved addresses and orders lost the name.
+        [StringLength(50)]
+        public string FirstName { get; set; }
+
+        [StringLength(50)]
+        public string LastName { get; set; }
+
         [Required]
         [Display(Name = "Address Line 1")]
         [StringLength(100)]

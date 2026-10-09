@@ -9,6 +9,7 @@ namespace WeShopAlot.Data.Specifications
         {
             AddInclude(o => o.OrderItems);
             AddInclude(o => o.DeliveryMethod);
+            AddIncludesForOrderDetails();
             AddOrderByDescending(o => o.OrderDate);
         }
 
@@ -17,6 +18,17 @@ namespace WeShopAlot.Data.Specifications
         {
             AddInclude(o => o.OrderItems);
             AddInclude(o => o.DeliveryMethod);
+            AddIncludesForOrderDetails();
+        }
+
+        // ItemOrdered, ShipToAddress and Status live in their own tables here (in the course this app is
+        // modeled on they were owned types that load automatically), so they must be included explicitly.
+        // Without them, mapping an order to OrderToReturnDto threw a NullReferenceException.
+        private void AddIncludesForOrderDetails()
+        {
+            AddInclude("OrderItems.ItemOrdered");
+            AddInclude(o => o.ShipToAddress);
+            AddInclude(o => o.Status);
         }
     }
 }

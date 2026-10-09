@@ -1,13 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Order } from 'src/app/shared/models/order';
+import { Order } from '../shared/models/order';
 import { BreadcrumbService } from 'xng-breadcrumb';
 import { OrdersService } from '../orders/orders.service';
 
 @Component({
-  selector: 'app-order-detailed',
-  templateUrl: './order-detailed.component.html',
-  styleUrls: ['./order-detailed.component.scss']
+    selector: 'app-order-detailed',
+    templateUrl: './order-detailed.component.html',
+    styleUrls: ['./order-detailed.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class OrderDetailedComponent implements OnInit {
   order?: Order;

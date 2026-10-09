@@ -1,19 +1,22 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { NavigationExtras, Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 import { loadStripe, Stripe, StripeCardCvcElement, StripeCardExpiryElement, StripeCardNumberElement } from '@stripe/stripe-js';
 import { ToastrService } from 'ngx-toastr';
 import { firstValueFrom } from 'rxjs';
-import { BasketService } from 'src/app/basket/basket.service';
-import { Basket } from 'src/app/shared/models/basket';
-import { OrderToCreate } from 'src/app/shared/models/order';
-import { Address } from 'src/app/shared/models/user';
+import { BasketService } from '../../basket/basket.service';
+import { Basket } from '../../shared/models/basket';
+import { OrderToCreate } from '../../shared/models/order';
+import { Address } from '../../shared/models/user';
 import { CheckoutService } from '../checkout.service';
 
 @Component({
-  selector: 'app-checkout-payment',
-  templateUrl: './checkout-payment.component.html',
-  styleUrls: ['./checkout-payment.component.scss']
+    selector: 'app-checkout-payment',
+    templateUrl: './checkout-payment.component.html',
+    styleUrls: ['./checkout-payment.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class CheckoutPaymentComponent implements OnInit {
   @Input() checkoutForm?: FormGroup;
@@ -34,7 +37,7 @@ export class CheckoutPaymentComponent implements OnInit {
       private toastr: ToastrService, private router: Router) {}
 
   ngOnInit(): void {
-    loadStripe('pk_test_2PZ84pFKu2MddUgGDG521v9m00SlLWySIR').then(stripe => {
+    loadStripe(environment.stripePublishableKey).then(stripe => {
       this.stripe = stripe;
       const elements = stripe?.elements();
       if (elements) {

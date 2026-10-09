@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { DeliveryMethod } from '../shared/models/deliveryMethod';
 import { Order, OrderToCreate } from '../shared/models/order';
 
@@ -14,11 +14,11 @@ export class CheckoutService {
   constructor(private http: HttpClient) { }
 
   createOrder(order: OrderToCreate) {
-    return this.http.post<Order>(this.baseUrl + 'orders', order);
+    return this.http.post<Order>(this.baseUrl + 'order', order);
   }
 
   getDeliveryMethods() {
-    return this.http.get<DeliveryMethod[]>(this.baseUrl + 'orders/deliveryMethods').pipe(
+    return this.http.get<DeliveryMethod[]>(this.baseUrl + 'order/deliveryMethods').pipe(
       map(dm => {
         return dm.sort((a, b) => b.price - a.price)
       })

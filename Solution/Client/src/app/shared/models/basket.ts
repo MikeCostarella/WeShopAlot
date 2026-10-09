@@ -1,4 +1,3 @@
-import * as cuid from 'cuid';
 
 export interface BasketItem {
     id: number;
@@ -20,7 +19,7 @@ export interface Basket {
 }
 
 export class Basket implements Basket {
-    id = cuid();
+    id: string = crypto.randomUUID();
     items: BasketItem[] = [];
     shippingPrice = 0;
 }

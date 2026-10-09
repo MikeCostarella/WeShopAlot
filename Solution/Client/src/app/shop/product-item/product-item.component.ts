@@ -1,11 +1,13 @@
-import { Component, Input } from '@angular/core';
-import { BasketService } from 'src/app/basket/basket.service';
-import { Product } from 'src/app/shared/models/product';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { BasketService } from '../../basket/basket.service';
+import { Product } from '../../shared/models/product';
 
 @Component({
-  selector: 'app-product-item',
-  templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.scss']
+    selector: 'app-product-item',
+    templateUrl: './product-item.component.html',
+    styleUrls: ['./product-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ProductItemComponent {
   @Input() product?: Product;

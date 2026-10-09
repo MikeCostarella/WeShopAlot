@@ -1,9 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-paging-header',
-  templateUrl: './paging-header.component.html',
-  styleUrls: ['./paging-header.component.scss']
+    selector: 'app-paging-header',
+    templateUrl: './paging-header.component.html',
+    styleUrls: ['./paging-header.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PagingHeaderComponent {
   @Input() pageNumber?: number;

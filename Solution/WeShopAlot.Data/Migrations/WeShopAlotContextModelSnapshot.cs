@@ -18,7 +18,7 @@ namespace WeShopAlot.Data.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasDefaultSchema("WSA")
-                .HasAnnotation("ProductVersion", "7.0.5")
+                .HasAnnotation("ProductVersion", "10.0.12")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -45,8 +45,16 @@ namespace WeShopAlot.Data.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
+                    b.Property<string>("FirstName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("State")
                         .HasMaxLength(2)
@@ -213,7 +221,7 @@ namespace WeShopAlot.Data.Migrations
                         .HasColumnType("int");
 
                     b.Property<decimal>("Subtotal")
-                        .HasColumnType("decimal (5,2)");
+                        .HasColumnType("decimal (18,2)");
 
                     b.HasKey("Id");
 

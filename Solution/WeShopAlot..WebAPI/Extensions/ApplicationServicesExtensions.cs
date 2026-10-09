@@ -38,7 +38,11 @@ public static class ApplicationServicesExtensions
         services.AddScoped<IOrderService, OrderService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        // AutoMapper 15+ is commercially licensed (free Community license for small orgs,
+        // nonprofits, and education). Put the key in user secrets as AutoMapper:LicenseKey;
+        // without one, AutoMapper still runs and logs a license warning.
+        services.AddAutoMapper(cfg => cfg.LicenseKey = config["AutoMapper:LicenseKey"],
+            AppDomain.CurrentDomain.GetAssemblies());
         services.Configure<ApiBehaviorOptions>(options =>
         {
             options.InvalidModelStateResponseFactory = actionContext =>

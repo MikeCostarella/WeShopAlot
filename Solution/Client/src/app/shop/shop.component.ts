@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Brand } from '../shared/models/brand';
 import { Product } from '../shared/models/product';
 import { ShopParams } from '../shared/models/shopParams';
@@ -6,9 +6,11 @@ import { Type } from '../shared/models/type';
 import { ShopService } from './shop.service';
 
 @Component({
-  selector: 'app-shop',
-  templateUrl: './shop.component.html',
-  styleUrls: ['./shop.component.scss']
+    selector: 'app-shop',
+    templateUrl: './shop.component.html',
+    styleUrls: ['./shop.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class ShopComponent implements OnInit {
   @ViewChild('search') searchTerm?: ElementRef;

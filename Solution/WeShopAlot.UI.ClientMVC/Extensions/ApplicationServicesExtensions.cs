@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using WeShopAlot.Shared.Services.ServiceAPIClient;
+﻿using WeShopAlot.Shared.Services.ServiceAPIClient;
 using WeShopAlot.UI.ClientMVC.Services;
 
 namespace WeShopAlot.UI.ClientMVC.Extensions
@@ -8,12 +7,12 @@ namespace WeShopAlot.UI.ClientMVC.Extensions
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
-            var mapperConfig = new MapperConfiguration(mc =>
+            // AutoMapper 15+: register through DI with the license key (see the WebAPI project).
+            services.AddAutoMapper(cfg =>
             {
-                mc.AddProfile(new MappingProfile());
+                cfg.LicenseKey = config["AutoMapper:LicenseKey"];
+                cfg.AddProfile<MappingProfile>();
             });
-            IMapper mapper = mapperConfig.CreateMapper();
-            services.AddSingleton(mapper);
             services.AddHttpContextAccessor();
             services.AddHttpClient();
             services.AddScoped<IServiceAPIClient, ServiceAPIClient>();

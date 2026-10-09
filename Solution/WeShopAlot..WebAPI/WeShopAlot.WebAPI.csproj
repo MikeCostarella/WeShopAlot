@@ -1,27 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>f280e200-3bf3-4776-ba45-11e29a5daf7f</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="13.0.1" />
-    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.5" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.5" />
-    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="7.5.2" />
-    <PackageReference Include="StackExchange.Redis" Version="2.7.33" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
-    <PackageReference Include="System.ServiceModel.Duplex" Version="6.0.0" />
-    <PackageReference Include="System.ServiceModel.Federation" Version="8.0.0" />
-    <PackageReference Include="System.ServiceModel.Http" Version="8.0.0" />
-    <PackageReference Include="System.ServiceModel.NetTcp" Version="8.0.0" />
-    <PackageReference Include="System.ServiceModel.Security" Version="6.0.0" />
+    <PackageReference Include="AutoMapper" Version="16.2.0" />
+    <PackageReference Include="BCrypt.Net-Next" Version="4.2.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.12" />
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.12" />
+    <!-- Lets the dotnet ef tool use this project as its startup project (connection string from user secrets). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.12" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.23.0" />
+    <PackageReference Include="StackExchange.Redis" Version="3.3.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="10.3.0" />
+    <PackageReference Include="System.ServiceModel.Federation" Version="10.0.652802" />
+    <PackageReference Include="System.ServiceModel.Http" Version="10.0.652802" />
+    <PackageReference Include="System.ServiceModel.NetTcp" Version="10.0.652802" />
   </ItemGroup>
 
   <ItemGroup>

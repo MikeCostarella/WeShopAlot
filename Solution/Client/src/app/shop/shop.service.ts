@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable, of } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { Brand } from '../shared/models/brand';
 import { Pagination } from '../shared/models/pagination';
 import { Product } from '../shared/models/product';

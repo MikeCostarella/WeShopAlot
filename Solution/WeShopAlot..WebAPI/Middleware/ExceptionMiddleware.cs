@@ -39,7 +39,11 @@ public class ExceptionMiddleware
             context.Response.ContentType = "application/json";
             context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
             var response = hostEnvironment.IsDevelopment()
-                ? new ApiException((int)HttpStatusCode.InternalServerError, ex.Message, ex.StackTrace.ToString())
+                // GetBaseException digs out the real cause (such as the SQL error behind an EF
+                // "See the inner exception for details" message) so it shows on the error page.
+                ? new ApiException((int)HttpStatusCode.InternalServerError,
+                    ex.GetBaseException() == ex ? ex.Message : $"{ex.Message} Cause: {ex.GetBaseException().Message}",
+                    ex.StackTrace?.ToString())
                 : new ApiException((int)HttpStatusCode.InternalServerError);
             var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
             var json = JsonSerializer.Serialize(response, options);

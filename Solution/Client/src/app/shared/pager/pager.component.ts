@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
-  selector: 'app-pager',
-  templateUrl: './pager.component.html',
-  styleUrls: ['./pager.component.scss']
+    selector: 'app-pager',
+    templateUrl: './pager.component.html',
+    styleUrls: ['./pager.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class PagerComponent {
   @Input() totalCount?: number;

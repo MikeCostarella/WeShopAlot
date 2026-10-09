@@ -1,13 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BasketService } from 'src/app/basket/basket.service';
-import { DeliveryMethod } from 'src/app/shared/models/deliveryMethod';
+import { BasketService } from '../../basket/basket.service';
+import { DeliveryMethod } from '../../shared/models/deliveryMethod';
 import { CheckoutService } from '../checkout.service';
 
 @Component({
-  selector: 'app-checkout-delivery',
-  templateUrl: './checkout-delivery.component.html',
-  styleUrls: ['./checkout-delivery.component.scss']
+    selector: 'app-checkout-delivery',
+    templateUrl: './checkout-delivery.component.html',
+    styleUrls: ['./checkout-delivery.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class CheckoutDeliveryComponent implements OnInit {
   @Input() checkoutForm?: FormGroup;

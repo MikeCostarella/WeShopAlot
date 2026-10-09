@@ -1,11 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { BasketService } from 'src/app/basket/basket.service';
+import { Component, EventEmitter, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { BasketService } from '../../basket/basket.service';
 import { BasketItem } from '../models/basket';
 
 @Component({
-  selector: 'app-basket-summary',
-  templateUrl: './basket-summary.component.html',
-  styleUrls: ['./basket-summary.component.scss']
+    selector: 'app-basket-summary',
+    templateUrl: './basket-summary.component.html',
+    styleUrls: ['./basket-summary.component.scss'],
+    changeDetection: ChangeDetectionStrategy.Eager,
+    standalone: false
 })
 export class BasketSummaryComponent {
   @Output() addItem = new EventEmitter<BasketItem>();

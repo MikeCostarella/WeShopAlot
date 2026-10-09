@@ -1,4 +1,3 @@
-using WeShopAlot.Data;
 using WeShopAlot.WebAPI.Extensions;
 using WeShopAlot.WebAPI.Middleware;
 using Microsoft.Extensions.FileProviders;
@@ -33,7 +32,7 @@ app.UseStaticFiles();
 app.UseStaticFiles(new StaticFileOptions
 {
     FileProvider = new PhysicalFileProvider(
-        Path.Combine(Directory.GetCurrentDirectory(), "Content")),
+        Path.Combine(builder.Environment.ContentRootPath, "Content")),
     RequestPath = "/Content"
 });
 app.UseCors("CorsPolicy");
@@ -41,8 +40,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
 app.MapFallbackToController("Index", "Fallback");
-using var scope = app.Services.CreateScope();
-var services = scope.ServiceProvider;
-var context = services.GetRequiredService<WeShopAlotContext>();
-var logger = services.GetRequiredService<ILogger<Program>>();
 app.Run();
+
+// Lets the integration tests (WebApplicationFactory<Program>) reach the app.
+public partial class Program { }
