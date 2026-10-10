@@ -12,7 +12,7 @@ A complete e-commerce reference application: an **ASP.NET Core Web API (.NET 10)
 | `WeShopAlot.Shared` | DTOs shared by the API and its .NET clients |
 | `WeShopAlot.Data.ConsoleApp` | Creates the database and loads the JSON seed data |
 | `Client` | The Angular client |
-| `WeShopAlot.UI.ClientMVC`, `WeShopAlot.UI.ClientWPF` | Two more clients of the same API |
+| `WeShopAlot.UI.ClientWPF` | A WPF desktop client of the same API (shop, basket, checkout with Stripe, orders) |
 | `WeShopAlot.Testing.*` | Tests; `Testing.WebApis` runs the whole API in memory with WebApplicationFactory |
 | `Deployment`, `docker-compose.yml` | ARM templates for Azure; Redis for local development |
 
