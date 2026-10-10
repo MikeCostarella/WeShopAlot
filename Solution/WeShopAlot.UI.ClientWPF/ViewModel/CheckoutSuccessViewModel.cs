@@ -6,6 +6,10 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// <summary>"Thank you" page after payment (Angular's CheckoutSuccessComponent).</summary>
     public class CheckoutSuccessViewModel : ViewModelBase
     {
+        public override string? PageTitle => "Success";
+
+        public override string Breadcrumb => "Home  /  Checkout  /  Success";
+
         public CheckoutSuccessViewModel(int orderId, IShell shell)
         {
             OrderId = orderId;

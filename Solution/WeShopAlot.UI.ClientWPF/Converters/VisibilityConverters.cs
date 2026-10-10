@@ -35,4 +35,24 @@ namespace WeShopAlot.UI.ClientWPF.Converters
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
             Binding.DoNothing;
     }
+
+    /// <summary>Visible when the bound number is greater than zero (the basket count badge).</summary>
+    public class PositiveToVisibilityConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
+            value is int count && count > 0 ? Visibility.Visible : Visibility.Collapsed;
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
+            Binding.DoNothing;
+    }
+
+    /// <summary>Upper-cases text for caps labels (CSS text-transform: uppercase in the Angular client).</summary>
+    public class UpperCaseConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) =>
+            value?.ToString()?.ToUpper(culture) ?? "";
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) =>
+            Binding.DoNothing;
+    }
 }

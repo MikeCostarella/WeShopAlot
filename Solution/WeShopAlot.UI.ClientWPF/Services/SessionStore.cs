@@ -22,12 +22,15 @@ namespace WeShopAlot.UI.ClientWPF.Services
 
         public string? BasketId { get; set; }
 
+        /// <summary>"cards" or "list" on the shop page (Angular keeps it in localStorage "shop_view").</summary>
+        public string? ShopView { get; set; }
+
         public void Save()
         {
             try
             {
                 Directory.CreateDirectory(Path.GetDirectoryName(path)!);
-                File.WriteAllText(path, JsonSerializer.Serialize(new SessionData(Token, BasketId)));
+                File.WriteAllText(path, JsonSerializer.Serialize(new SessionData(Token, BasketId, ShopView)));
             }
             catch (IOException)
             {
@@ -46,12 +49,13 @@ namespace WeShopAlot.UI.ClientWPF.Services
                 var data = JsonSerializer.Deserialize<SessionData>(File.ReadAllText(path));
                 Token = data?.Token;
                 BasketId = data?.BasketId;
+                ShopView = data?.ShopView;
             }
             catch (Exception ex) when (ex is IOException or JsonException or UnauthorizedAccessException)
             {
             }
         }
 
-        private record SessionData(string? Token, string? BasketId);
+        private record SessionData(string? Token, string? BasketId, string? ShopView);
     }
 }

@@ -5,18 +5,23 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
-    <StackPanel Width="380" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Sign in" Style="{StaticResource PageTitleStyle}" HorizontalAlignment="Center"/>
-        <TextBlock Text="Email address" Style="{StaticResource FieldLabelStyle}"/>
-        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBlock Text="Password" Style="{StaticResource FieldLabelStyle}"/>
-        <!-- WPF can't bind a PasswordBox; the code-behind copies it to the view model -->
-        <PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged"/>
-        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" Margin="0 10 0 0"
-                   Visibility="{Binding ErrorMessage, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
-        <Button Content="Sign in" Style="{StaticResource PrimaryButtonStyle}" Margin="0 20 0 0" IsDefault="True"
-                Command="{Binding LoginCommand}"/>
-        <Button Content="Don't have an account? Sign up" Style="{StaticResource NavButtonStyle}" FontSize="14" Margin="0 10 0 0"
-                Command="{Binding RegisterCommand}"/>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Style="{StaticResource CardStyle}" Width="420" Padding="32 28" Margin="0 40" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel>
+                <Image Source="{StaticResource PickMark}" Width="44" Height="48" Margin="0 0 0 10"/>
+                <TextBlock Text="Login" Style="{StaticResource SectionTitleStyle}" FontSize="30" HorizontalAlignment="Center" Margin="0 0 0 6"/>
+                <TextBlock Text="Email address" Style="{StaticResource FieldLabelStyle}"/>
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="Email address"/>
+                <TextBlock Text="Password" Style="{StaticResource FieldLabelStyle}"/>
+                <!-- WPF can't bind a PasswordBox; the code-behind copies it to the view model -->
+                <PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged" AutomationProperties.Name="Password"/>
+                <TextBlock Text="{Binding ErrorMessage}" Foreground="{StaticResource DangerBrush}" TextWrapping="Wrap" Margin="0 10 0 0"
+                           Visibility="{Binding ErrorMessage, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
+                <Button Content="Sign in" Style="{StaticResource PrimaryButtonStyle}" FontSize="17" MinHeight="50" Margin="0 22 0 0"
+                        IsDefault="True" Command="{Binding LoginCommand}"/>
+                <Button Content="Don't have an account? Sign up" Style="{StaticResource LinkButtonStyle}" MinHeight="0"
+                        HorizontalAlignment="Center" Margin="0 14 0 0" Command="{Binding RegisterCommand}"/>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
 </UserControl>

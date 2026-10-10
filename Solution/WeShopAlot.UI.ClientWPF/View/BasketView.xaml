@@ -5,16 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
-    <Grid Margin="20">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid MaxWidth="{StaticResource MaxWidth}" Margin="32 24 32 32">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Your basket" Style="{StaticResource PageTitleStyle}"/>
 
         <!-- Empty basket -->
         <StackPanel Grid.Row="1" Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConv}}">
-            <TextBlock Text="There are no items in your basket." FontSize="16"/>
+            <TextBlock Text="There are no items in your basket."/>
             <Button Content="Go shopping" Style="{StaticResource PrimaryButtonStyle}" HorizontalAlignment="Left" Margin="0 15 0 0"
                     Command="{Binding ShopCommand}"/>
         </StackPanel>
@@ -24,17 +24,18 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
-            <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False"
-                      HeadersVisibility="Column" RowHeight="64" GridLinesVisibility="Horizontal" SelectionMode="Single">
+            <DataGrid ItemsSource="{Binding Items}" CanUserSortColumns="False" RowHeight="72" VerticalAlignment="Top">
                 <DataGrid.Columns>
-                    <DataGridTemplateColumn Header="Product" Width="*">
+                    <DataGridTemplateColumn Header="PRODUCT" Width="*">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal">
-                                    <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Width="56" Height="56" Margin="0 0 10 0"/>
+                                    <Border Background="{StaticResource MapleBrush}" CornerRadius="6" Width="64" Height="52" Margin="0 0 12 0">
+                                        <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Stretch="Uniform" Margin="4"/>
+                                    </Border>
                                     <StackPanel VerticalAlignment="Center">
-                                        <TextBlock Text="{Binding ProductName}" FontWeight="SemiBold"/>
-                                        <TextBlock Foreground="{StaticResource MutedBrush}">
+                                        <TextBlock Text="{Binding ProductName}" FontFamily="{StaticResource HeadingFont}" FontWeight="Bold" FontSize="19"/>
+                                        <TextBlock Foreground="{StaticResource SlateBrush}" FontSize="{StaticResource FontSizeSmall}">
                                             <Run Text="{Binding Brand, Mode=OneWay}"/><Run Text=" · "/><Run Text="{Binding Type, Mode=OneWay}"/>
                                         </TextBlock>
                                     </StackPanel>
@@ -42,23 +43,23 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="90"/>
-                    <DataGridTemplateColumn Header="Quantity" Width="130">
+                    <DataGridTextColumn Header="PRICE" Binding="{Binding Price, StringFormat=C}" Width="90"/>
+                    <DataGridTemplateColumn Header="QUANTITY" Width="130">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <Button Content="−" Style="{StaticResource SmallButtonStyle}"
+                                    <Button Content="−" Style="{StaticResource SmallSecondaryButtonStyle}" Padding="0" Width="36"
                                             Command="{Binding DataContext.DecrementCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}"/>
                                     <TextBlock Text="{Binding Quantity}" Width="36" TextAlignment="Center" VerticalAlignment="Center"/>
-                                    <Button Content="+" Style="{StaticResource SmallButtonStyle}"
+                                    <Button Content="+" Style="{StaticResource SmallSecondaryButtonStyle}" Padding="0" Width="36"
                                             Command="{Binding DataContext.IncrementCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
                                             CommandParameter="{Binding}"/>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTextColumn Header="Total" Binding="{Binding LineTotal, Mode=OneWay, StringFormat=C}" Width="100"/>
+                    <DataGridTextColumn Header="TOTAL" Binding="{Binding LineTotal, Mode=OneWay, StringFormat=C}" Width="100"/>
                     <DataGridTemplateColumn Header="" Width="90">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
@@ -71,18 +72,19 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Border Grid.Column="1" Background="{StaticResource PanelBrush}" Padding="15" Margin="20 0 0 0" VerticalAlignment="Top">
+            <Border Grid.Column="1" Style="{StaticResource PanelStyle}" Margin="24 0 0 0" VerticalAlignment="Top">
                 <StackPanel>
-                    <TextBlock Text="Order summary" Style="{StaticResource SectionTitleStyle}" Margin="0 0 0 10"/>
+                    <TextBlock Text="ORDER SUMMARY" Style="{StaticResource CapsLabelStyle}" FontSize="17" Margin="0 0 0 10"/>
                     <TextBlock Text="Shipping costs will be calculated based on choices made during checkout" TextWrapping="Wrap"
-                               FontStyle="Italic" Foreground="{StaticResource MutedBrush}" Margin="0 0 0 10"/>
+                               FontStyle="Italic" Foreground="{StaticResource SlateBrush}" FontSize="{StaticResource FontSizeSmall}" Margin="0 0 0 10"/>
                     <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Subtotal, StringFormat=C}" DockPanel.Dock="Right"/><TextBlock Text="Order subtotal"/></DockPanel>
                     <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Shipping, StringFormat=C}" DockPanel.Dock="Right"/><TextBlock Text="Shipping and handling"/></DockPanel>
-                    <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Total, StringFormat=C}" DockPanel.Dock="Right" FontWeight="Bold"/><TextBlock Text="Total" FontWeight="Bold"/></DockPanel>
-                    <Button Content="Proceed to checkout" Style="{StaticResource PrimaryButtonStyle}" Margin="0 15 0 0"
+                    <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Total, StringFormat=C}" DockPanel.Dock="Right" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"/><TextBlock Text="Total" FontWeight="Bold"/></DockPanel>
+                    <Button Content="Proceed to checkout" Style="{StaticResource PrimaryButtonStyle}" Margin="0 18 0 0" MinHeight="48"
                             Command="{Binding CheckoutCommand}"/>
                 </StackPanel>
             </Border>
         </Grid>
     </Grid>
+    </ScrollViewer>
 </UserControl>

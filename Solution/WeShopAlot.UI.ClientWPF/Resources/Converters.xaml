@@ -5,4 +5,6 @@
     <conv:InverseBooleanToVisibilityConverter x:Key="InverseBooleanToVisibilityConv"/>
     <conv:EqualsToVisibilityConverter x:Key="EqualsToVisibilityConv"/>
     <conv:NotEmptyToVisibilityConverter x:Key="NotEmptyToVisibilityConv"/>
+    <conv:PositiveToVisibilityConverter x:Key="PositiveToVisibilityConv"/>
+    <conv:UpperCaseConverter x:Key="UpperCaseConv"/>
 </ResourceDictionary>

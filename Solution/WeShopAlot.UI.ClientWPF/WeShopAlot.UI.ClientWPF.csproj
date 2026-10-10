@@ -6,7 +6,17 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+    <!-- The pick mark as the .exe and taskbar icon (DesignSystem/logo) -->
+    <ApplicationIcon>Images\app.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Stamps the build time into the app; Services/BuildInfo.cs reads it for the status bar and the menu -->
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>BuildTime</_Parameter1>
+      <_Parameter2>$([System.DateTime]::UtcNow.ToString("o"))</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
 
   <ItemGroup>
     <!-- Hosts Stripe's card form (Stripe.js) for the checkout's Payment step -->
@@ -14,8 +24,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Pictures used as /Images/... in XAML must be compiled in as resources -->
-    <Resource Include="Images\*.png" />
+    <!-- Pictures and fonts used from XAML (/Images/..., /Fonts/#...) must be compiled in as resources -->
+    <Resource Include="Images\*.png;Images\*.jpg;Images\*.ico" />
+    <!-- Barlow and Barlow Condensed, SIL Open Font License (Fonts/OFL.txt) -->
+    <Resource Include="Fonts\*.ttf" />
   </ItemGroup>
 
   <ItemGroup>

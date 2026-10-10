@@ -39,14 +39,14 @@
               <div class="d-flex align-items-center"
                 [class.justify-content-center]="!isBasket" >
                 @if (isBasket) {
-                  <i class="fa fa-minus-circle text-warning me-2"
+                  <i class="fa fa-minus-circle text-primary me-2"
                     style="cursor: pointer; font-size: 2em;"
                     (click)="removeBasketItem(item.id, 1)"
                   ></i>
                 }
                 <strong style="font-size: 1.2em;">{{item.quantity}}</strong>
                 @if (isBasket) {
-                  <i class="fa fa-plus-circle text-warning mx-2"
+                  <i class="fa fa-plus-circle text-primary mx-2"
                     style="cursor: pointer; font-size: 2em;"
                     (click)="addBasketItem(item)"
                   ></i>

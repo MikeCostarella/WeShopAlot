@@ -1,11 +1,21 @@
+@import 'tokens';
+
+// Checkout steps: maple pills, the current one in the brand color (the WPF checkout matches).
 button.nav-link {
-    background: #e9ecef;
+    background: $ws-color-maple;
     border-radius: 0;
     border: none;
-    color: #333;
+    color: $ws-color-ink;
+    font-family: $ws-font-heading;
+    letter-spacing: 1.5px;
+
+    &.active {
+        background: $ws-color-primary;
+        color: $ws-color-white;
+    }
 
     &:disabled:not(.active) {
-        color: #333;
-        background: #e9ecef;
+        color: $ws-color-ink;
+        background: $ws-color-maple;
     }
 }

@@ -1,56 +1,94 @@
-<div class="container">
+<div class="ws-container">
   @if (types.length > 0 && brands.length > 0) {
-    <div class="row">
-      <section class="col-3">
-        <h5 class="text-warning ms-3">Sort</h5>
-        <select class="form-select mb-4" (change)="onSortSelected($event)">
-          @for (sort of sortOptions; track sort) {
-            <option
-              [selected]="shopParams.sort === sort.value"
-              [value]="sort.value">
-              {{sort.name}}
-            </option>
+    <div class="row g-4">
+      <aside class="col-lg-3 col-md-4">
+        <label for="sortSelect" class="ws-filter-title">Sort</label>
+        <select id="sortSelect" class="form-select mb-4" (change)="onSortSelected($event)">
+          @for (sort of sortOptions; track sort.value) {
+            <option [selected]="shopParams.sort === sort.value" [value]="sort.value">{{sort.name}}</option>
           }
         </select>
-        <h5 class="text-warning ms-3">Brands</h5>
-        <ul class="list-group my-3">
-          @for (brand of brands; track brand) {
-            <li class="list-group-item"
-              [class.active]="brand.id === shopParams.brandId"
-              [value]="brand.id"
-            (click)="onBrandSelected(brand.id)">{{brand.name}}</li>
+
+        <h2 class="ws-filter-title">Brands</h2>
+        <ul class="ws-filter-list">
+          @for (brand of brands; track brand.id) {
+            <li>
+              <button type="button" [attr.aria-pressed]="brand.id === shopParams.brandId"
+                (click)="onBrandSelected(brand.id)">{{brand.name}}</button>
+            </li>
           }
         </ul>
-        <h5 class="text-warning ms-3">Types</h5>
-        <ul class="list-group my-3">
-          @for (type of types; track type) {
-            <li class="list-group-item"
-              [class.active]="type.id === shopParams.typeId"
-              [value]="type.id"
-            (click)="onTypeSelected(type.id)">{{type.name}}</li>
+
+        <h2 class="ws-filter-title">Types</h2>
+        <ul class="ws-filter-list">
+          @for (type of types; track type.id) {
+            <li>
+              <button type="button" [attr.aria-pressed]="type.id === shopParams.typeId"
+                (click)="onTypeSelected(type.id)">{{type.name}}</button>
+            </li>
           }
         </ul>
-      </section>
-      <section class="col-9">
-        <div class="d-flex justify-content-between align-items-center pb-2">
+      </aside>
+
+      <section class="col-lg-9 col-md-8">
+        <div class="ws-toolbar">
           <app-paging-header
             [totalCount]="totalCount"
             [pageNumber]="shopParams.pageNumber"
             [pageSize]="shopParams.pageSize"
           ></app-paging-header>
-          <div class="d-flex mt-2">
-            <input (keyup.enter)="onSearch()" type="text" placeholder="Search" class="form-control me-2" #search>
-            <button (click)="onSearch()" class="btn btn-outline-primary mx-2">Search</button>
-            <button (click)="onReset()" class="btn btn-outline-success">Reset</button>
+          <div class="ws-toolbar-end">
+            <label for="searchInput" class="visually-hidden">Search products</label>
+            <input id="searchInput" (keyup.enter)="onSearch()" type="search" placeholder="Search" class="form-control" style="width: 200px" #search>
+            <button type="button" (click)="onSearch()" class="btn btn-outline-primary">Search</button>
+            <button type="button" (click)="onReset()" class="btn btn-outline-secondary">Reset</button>
+            <div class="ws-view-switch" role="group" aria-label="Show products as">
+              <button type="button" [attr.aria-pressed]="viewMode.mode() === 'cards'" (click)="viewMode.set('cards')">Cards</button>
+              <button type="button" [attr.aria-pressed]="viewMode.mode() === 'list'" (click)="viewMode.set('list')">List</button>
+            </div>
           </div>
         </div>
-        <div class="row row-cols-3 g-3 mb-4">
-          @for (product of products; track product) {
-            <div class="col">
+
+        @if (viewMode.mode() === 'cards') {
+          <div class="ws-card-grid">
+            @for (product of products; track product.id) {
               <app-product-item [product]="product"></app-product-item>
-            </div>
-          }
-        </div>
+            }
+          </div>
+        } @else {
+          <div class="ws-list">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col"><span class="visually-hidden">Photo</span></th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Brand</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Price</th>
+                  <th scope="col"><span class="visually-hidden">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody>
+                @for (product of products; track product.id) {
+                  <tr>
+                    <td><img class="ws-thumb" [src]="product.pictureUrl" alt=""></td>
+                    <td><a class="ws-list-name" routerLink="/shop/{{product.id}}">{{product.name}}</a></td>
+                    <td>{{product.productBrand}}</td>
+                    <td>{{product.productType}}</td>
+                    <td class="ws-price">{{product.price | currency}}</td>
+                    <td>
+                      <div class="ws-list-actions">
+                        <a routerLink="/shop/{{product.id}}" class="btn btn-outline-primary btn-sm">Details</a>
+                        <button type="button" class="btn btn-primary btn-sm" (click)="addToBasket(product)">Add to basket</button>
+                      </div>
+                    </td>
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+
         @if (totalCount > 0) {
           <div class="d-flex justify-content-center">
             <app-pager

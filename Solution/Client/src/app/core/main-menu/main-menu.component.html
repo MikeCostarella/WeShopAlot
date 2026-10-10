@@ -1,0 +1,102 @@
+@if (menu.isOpen()) {
+  <div class="ws-menu-backdrop" (click)="menu.close()"></div>
+  <nav class="ws-menu" aria-label="Main menu" (keydown.escape)="menu.close()">
+    <div class="ws-menu-top">
+      <img src="assets/images/logo-mark.svg" alt="" width="30" height="32">
+      <span class="ws-wordmark">WeShop<span>Alot</span></span>
+      <button type="button" class="ws-icon-button" aria-label="Close menu" (click)="menu.close()" #closeButton>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+
+    <div class="ws-menu-body">
+      <!-- Shop -->
+      <button type="button" class="ws-menu-section" [attr.aria-expanded]="isOpen('shop')" (click)="toggle('shop')">
+        Shop
+        <svg class="ws-chevron ms-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      @if (isOpen('shop')) {
+        <div class="ws-menu-items">
+          <button type="button" (click)="showType(0)">All products</button>
+          @for (type of types; track type.id) {
+            <button type="button" (click)="showType(type.id)">{{type.name}}</button>
+          }
+        </div>
+      }
+
+      <!-- My account -->
+      <button type="button" class="ws-menu-section" [attr.aria-expanded]="isOpen('account')" (click)="toggle('account')">
+        My account
+        <svg class="ws-chevron ms-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      @if (isOpen('account')) {
+        @let user = accountService.currentUser$ | async;
+        <div class="ws-menu-items">
+          @if (user) {
+            <div class="ws-menu-note">Signed in as {{user.displayName}}</div>
+          }
+          <a routerLink="/basket" (click)="menu.close()">Basket
+            @if (basketCount() > 0) {
+              <span class="ws-badge">{{basketCount()}}</span>
+            }
+          </a>
+          @if (user) {
+            <a routerLink="/orders" (click)="menu.close()">My orders</a>
+            <button type="button" (click)="logout()">Sign out</button>
+          } @else {
+            <a routerLink="/account/login" (click)="menu.close()">Login</a>
+            <a routerLink="/account/register" (click)="menu.close()">Sign up</a>
+          }
+        </div>
+      }
+
+      <!-- View -->
+      <button type="button" class="ws-menu-section" [attr.aria-expanded]="isOpen('view')" (click)="toggle('view')">
+        View
+        <span class="ws-menu-hint">{{viewMode.mode() === 'cards' ? 'Cards' : 'List'}}</span>
+        <svg class="ws-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      @if (isOpen('view')) {
+        <div class="ws-menu-items">
+          <button type="button" [attr.aria-pressed]="viewMode.mode() === 'cards'" (click)="viewMode.set('cards')">Products as cards</button>
+          <button type="button" [attr.aria-pressed]="viewMode.mode() === 'list'" (click)="viewMode.set('list')">Products as a list</button>
+        </div>
+      }
+
+      <!-- Links -->
+      <button type="button" class="ws-menu-section" [attr.aria-expanded]="isOpen('links')" (click)="toggle('links')">
+        Links
+        <span class="ws-menu-hint">API · Course · GitHub</span>
+        <svg class="ws-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      @if (isOpen('links')) {
+        <div class="ws-menu-items">
+          <a [href]="swaggerUrl" target="_blank" rel="noopener">API reference (Swagger)</a>
+          <a href="https://mikecostarella.github.io/CS_AngularAndDotNetAPI/" target="_blank" rel="noopener">Course site</a>
+          <a href="https://github.com/MikeCostarella/WeShopAlot" target="_blank" rel="noopener">Source on GitHub</a>
+        </div>
+      }
+
+      <!-- About -->
+      <button type="button" class="ws-menu-section" [attr.aria-expanded]="isOpen('about')" (click)="toggle('about')">
+        About
+        <svg class="ws-chevron ms-auto" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+      @if (isOpen('about')) {
+        <div class="ws-menu-items">
+          <div class="ws-menu-note">WeShopAlot, Angular client. The WPF desktop client uses the same REST API.</div>
+          <div class="ws-menu-note">API: {{apiUrl}}</div>
+          <div class="ws-menu-note">{{buildText}}</div>
+        </div>
+      }
+    </div>
+
+    <div class="ws-menu-foot">Angular client · {{buildText}}</div>
+  </nav>
+}

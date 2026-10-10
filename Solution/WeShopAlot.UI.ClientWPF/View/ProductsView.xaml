@@ -4,87 +4,213 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="450" d:DesignWidth="900">
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <UserControl.Resources>
+        <!-- A product card, like Angular's app-product-item -->
+        <Style x:Key="ProductCardStyle" TargetType="Border" BasedOn="{StaticResource CardStyle}">
+            <Setter Property="Margin" Value="0 0 20 20"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <DropShadowEffect BlurRadius="18" ShadowDepth="6" Direction="270" Opacity="0.1"
+                                              Color="{StaticResource InkColor}"/>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
 
-        <TextBlock Text="Shop" Style="{StaticResource PageTitleStyle}"/>
+        <Style x:Key="ProductMetaStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource HeadingFont}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="{StaticResource FontSizeCaption}"/>
+            <Setter Property="Foreground" Value="{StaticResource SlateBrush}"/>
+        </Style>
 
-        <!-- Filters: each one becomes a query-string parameter on GET /api/product -->
-        <WrapPanel Grid.Row="1" Margin="0 0 0 10">
-            <TextBlock Text="Brand" VerticalAlignment="Center" Margin="0 0 5 0"/>
-            <ComboBox Width="150" Margin="0 0 15 5"
-                      ItemsSource="{Binding Brands}" DisplayMemberPath="Name"
-                      SelectedItem="{Binding SelectedBrand}"/>
+        <Style x:Key="ProductNameStyle" TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="{StaticResource HeadingFont}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="{StaticResource FontSizeCardTitle}"/>
+            <Setter Property="Foreground" Value="{StaticResource InkBrush}"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+    </UserControl.Resources>
 
-            <TextBlock Text="Type" VerticalAlignment="Center" Margin="0 0 5 0"/>
-            <ComboBox Width="150" Margin="0 0 15 5"
-                      ItemsSource="{Binding Types}" DisplayMemberPath="Name"
-                      SelectedItem="{Binding SelectedType}"/>
+    <ScrollViewer x:Name="PageScroll" VerticalScrollBarVisibility="Auto" PreviewMouseWheel="PageScroll_PreviewMouseWheel">
+        <Grid MaxWidth="{StaticResource MaxWidth}" Margin="32 24 12 32">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
 
-            <TextBlock Text="Sort" VerticalAlignment="Center" Margin="0 0 5 0"/>
-            <ComboBox Width="160" Margin="0 0 15 5"
-                      ItemsSource="{Binding SortOptions}" DisplayMemberPath="Label"
-                      SelectedItem="{Binding SelectedSort}"/>
+            <!-- ============ Sidebar: each filter becomes a query-string parameter on GET /api/product ============ -->
+            <StackPanel Margin="0 0 28 0">
+                <TextBlock Text="SORT" Style="{StaticResource CapsLabelStyle}"/>
+                <ComboBox ItemsSource="{Binding SortOptions}" DisplayMemberPath="Label" SelectedItem="{Binding SelectedSort}"
+                          Margin="0 0 0 24" AutomationProperties.Name="Sort"/>
 
-            <TextBox Width="180" Margin="0 0 5 5" ToolTip="Search by name, then press Enter"
-                     Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}">
-                <TextBox.InputBindings>
-                    <KeyBinding Key="Enter" Command="{Binding SearchCommand}"/>
-                </TextBox.InputBindings>
-            </TextBox>
-            <Button Content="Search" Padding="10 3" Margin="0 0 5 5" Command="{Binding SearchCommand}"/>
-            <Button Content="Reset" Padding="10 3" Margin="0 0 5 5" Command="{Binding ResetCommand}"/>
-            <Button Content="Refresh" Padding="10 3" Margin="0 0 5 5" Command="{Binding RefreshCommand}"/>
-        </WrapPanel>
+                <TextBlock Text="BRANDS" Style="{StaticResource CapsLabelStyle}"/>
+                <ListBox Style="{StaticResource FilterListStyle}" ItemsSource="{Binding Brands}" DisplayMemberPath="Name"
+                         SelectedItem="{Binding SelectedBrand}" AutomationProperties.Name="Brands"/>
 
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Products}"
-                  AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False"
-                  HeadersVisibility="Column" RowHeight="60" GridLinesVisibility="Horizontal">
-            <DataGrid.Columns>
-                <DataGridTemplateColumn Header="" Width="70">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <!-- PictureUrl is a full https URL served by the API -->
-                            <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Height="50" Stretch="Uniform"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn Header="Name" Binding="{Binding Name}" Width="2*"/>
-                <DataGridTextColumn Header="Brand" Binding="{Binding ProductBrand}" Width="*"/>
-                <DataGridTextColumn Header="Type" Binding="{Binding ProductType}" Width="*"/>
-                <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="90"/>
-                <DataGridTemplateColumn Header="" Width="190">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                <Button Content="Details" Style="{StaticResource SmallButtonStyle}" Margin="0 0 6 0"
-                                        Command="{Binding DataContext.DetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                        CommandParameter="{Binding}"/>
-                                <Button Content="Add to basket" Style="{StaticResource SmallButtonStyle}"
-                                        Command="{Binding DataContext.AddToBasketCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
-                                        CommandParameter="{Binding}"/>
+                <TextBlock Text="TYPES" Style="{StaticResource CapsLabelStyle}"/>
+                <ListBox Style="{StaticResource FilterListStyle}" ItemsSource="{Binding Types}" DisplayMemberPath="Name"
+                         SelectedItem="{Binding SelectedType}" AutomationProperties.Name="Types"/>
+            </StackPanel>
+
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- ============ Toolbar: paging header, search, Cards | List ============ -->
+                <DockPanel Margin="0 0 20 20">
+                    <StackPanel DockPanel.Dock="Right" Orientation="Horizontal">
+                        <TextBox Width="200" Text="{Binding Search, UpdateSourceTrigger=PropertyChanged}"
+                                 AutomationProperties.Name="Search products" ToolTip="Search by name, then press Enter">
+                            <TextBox.InputBindings>
+                                <KeyBinding Key="Enter" Command="{Binding SearchCommand}"/>
+                            </TextBox.InputBindings>
+                        </TextBox>
+                        <Button Content="Search" Style="{StaticResource SecondaryButtonStyle}" Margin="10 0 0 0" Command="{Binding SearchCommand}"/>
+                        <Button Content="Reset" Margin="10 0 0 0" Command="{Binding ResetCommand}"/>
+                        <Border BorderBrush="{StaticResource FretBrush}" BorderThickness="1.5" CornerRadius="{StaticResource RadiusControl}"
+                                Margin="10 0 0 0" AutomationProperties.Name="Show products as">
+                            <StackPanel Orientation="Horizontal">
+                                <RadioButton Content="Cards" Style="{StaticResource SegmentStyle}" GroupName="ShopView" Tag="6 0 0 6"
+                                             IsChecked="{Binding View.ShowCards}"/>
+                                <RadioButton Content="List" Style="{StaticResource SegmentStyle}" GroupName="ShopView" Tag="0 6 6 0"
+                                             IsChecked="{Binding View.ShowList}"/>
                             </StackPanel>
+                        </Border>
+                    </StackPanel>
+                    <TextBlock Text="{Binding ShowingText}" VerticalAlignment="Center" Margin="0 0 12 0" TextWrapping="Wrap"/>
+                </DockPanel>
+
+                <!-- ============ Cards ============ -->
+                <ItemsControl Grid.Row="1" ItemsSource="{Binding Products}" Focusable="False"
+                              Visibility="{Binding View.ShowCards, Converter={StaticResource BooleanToVisibilityConv}}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <UniformGrid Columns="3"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Style="{StaticResource ProductCardStyle}">
+                                <DockPanel>
+                                    <!-- Photo (click for details) -->
+                                    <Button DockPanel.Dock="Top" Style="{StaticResource LinkButtonStyle}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
+                                            Focusable="False" AutomationProperties.Name="{Binding Name}"
+                                            Command="{Binding DataContext.DetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                        <Border Background="{StaticResource MapleBrush}" CornerRadius="11 11 0 0" Height="190">
+                                            <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Margin="12" Stretch="Uniform"/>
+                                        </Border>
+                                    </Button>
+
+                                    <StackPanel Margin="16">
+                                        <TextBlock Style="{StaticResource ProductMetaStyle}">
+                                            <Run Text="{Binding ProductBrand, Mode=OneWay, Converter={StaticResource UpperCaseConv}}"/>
+                                            <Run Text=" · "/>
+                                            <Run Text="{Binding ProductType, Mode=OneWay, Converter={StaticResource UpperCaseConv}}"/>
+                                        </TextBlock>
+                                        <Button Style="{StaticResource LinkButtonStyle}" MinHeight="0" Margin="0 4 0 2"
+                                                Command="{Binding DataContext.DetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}">
+                                            <TextBlock Text="{Binding Name}" Style="{StaticResource ProductNameStyle}"/>
+                                        </Button>
+                                        <TextBlock Text="{Binding Price, StringFormat=C}" Style="{StaticResource PriceStyle}"/>
+                                        <Grid Margin="0 12 0 0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Button Content="Add to basket" Style="{StaticResource PrimaryButtonStyle}" Padding="8 0"
+                                                    Command="{Binding DataContext.AddToBasketCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                    CommandParameter="{Binding}"/>
+                                            <Button Grid.Column="1" Content="Details" Style="{StaticResource SecondaryButtonStyle}" Margin="8 0 0 0"
+                                                    Command="{Binding DataContext.DetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                    CommandParameter="{Binding}"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </DockPanel>
+                            </Border>
                         </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
 
-        <TextBlock Grid.Row="2" Text="Loading…" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConv}}"/>
+                <!-- ============ List ============ -->
+                <DataGrid Grid.Row="1" ItemsSource="{Binding Products}" Margin="0 0 20 20" RowHeight="72"
+                          CanUserSortColumns="False" VerticalScrollBarVisibility="Disabled"
+                          Visibility="{Binding View.ShowList, Converter={StaticResource BooleanToVisibilityConv}}">
+                    <DataGrid.Columns>
+                        <DataGridTemplateColumn Header="" Width="90">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <!-- PictureUrl is a full https URL served by the API -->
+                                    <Border Background="{StaticResource MapleBrush}" CornerRadius="6" Width="64" Height="52">
+                                        <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Stretch="Uniform" Margin="4"/>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="NAME" Width="2*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Style="{StaticResource LinkButtonStyle}" MinHeight="0"
+                                            Command="{Binding DataContext.DetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                            CommandParameter="{Binding}">
+                                        <TextBlock Text="{Binding Name}" Style="{StaticResource ProductNameStyle}" FontSize="20"/>
+                                    </Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTextColumn Header="BRAND" Binding="{Binding ProductBrand}" Width="*"/>
+                        <DataGridTextColumn Header="TYPE" Binding="{Binding ProductType}" Width="*"/>
+                        <DataGridTemplateColumn Header="PRICE" Width="100">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Price, StringFormat=C}" Style="{StaticResource PriceStyle}" FontSize="16"/>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                        <DataGridTemplateColumn Header="" Width="210">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                        <Button Content="Details" Style="{StaticResource SmallSecondaryButtonStyle}" Margin="0 0 8 0"
+                                                Command="{Binding DataContext.DetailsCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"/>
+                                        <Button Content="Add to basket" Style="{StaticResource SmallPrimaryButtonStyle}"
+                                                Command="{Binding DataContext.AddToBasketCommand, RelativeSource={RelativeSource AncestorType=UserControl}}"
+                                                CommandParameter="{Binding}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
 
-        <DockPanel Grid.Row="3" Margin="0 10 0 0" LastChildFill="True">
-            <Button DockPanel.Dock="Right" Content="Next ›" Padding="10 3" Command="{Binding NextPageCommand}"/>
-            <TextBlock DockPanel.Dock="Right" Text="{Binding PageSummary}" Margin="10 0" VerticalAlignment="Center"/>
-            <Button DockPanel.Dock="Right" Content="‹ Previous" Padding="10 3" Command="{Binding PreviousPageCommand}"/>
-            <TextBlock Text="{Binding Status}" VerticalAlignment="Center" TextWrapping="Wrap" Foreground="#555555"
-                       FontFamily="Consolas"/>
-        </DockPanel>
-    </Grid>
+                <TextBlock Grid.Row="1" Text="Loading…" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 60 0 0"
+                           Foreground="{StaticResource SlateBrush}"
+                           Visibility="{Binding IsLoading, Converter={StaticResource BooleanToVisibilityConv}}"/>
+
+                <!-- ============ Pager ============ -->
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 4 20 0">
+                    <Button Content="‹ Previous" Command="{Binding PreviousPageCommand}"/>
+                    <TextBlock Text="{Binding PageSummary}" Margin="16 0" VerticalAlignment="Center"/>
+                    <Button Content="Next ›" Command="{Binding NextPageCommand}"/>
+                </StackPanel>
+
+                <!-- Teaching aid: the REST call behind this page (or what went wrong) -->
+                <TextBlock Grid.Row="3" Text="{Binding Status}" Margin="0 18 20 0" TextWrapping="Wrap" FontFamily="Consolas"
+                           FontSize="13" Foreground="{StaticResource SlateBrush}" HorizontalAlignment="Center"/>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
 </UserControl>

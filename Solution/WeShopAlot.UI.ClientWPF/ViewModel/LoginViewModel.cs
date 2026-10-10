@@ -8,6 +8,10 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// <summary>Sign in (Angular's LoginComponent): POST /api/account/login, keep the returned token.</summary>
     public class LoginViewModel : ValidatingViewModelBase
     {
+        public override string? PageTitle => "Login";
+
+        public override string Breadcrumb => "Home  /  Account  /  Login";
+
         private readonly AccountService account;
         private readonly Action afterSignIn;
 

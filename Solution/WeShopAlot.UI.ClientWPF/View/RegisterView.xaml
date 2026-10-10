@@ -5,21 +5,26 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
-    <StackPanel Width="420" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Sign up" Style="{StaticResource PageTitleStyle}" HorizontalAlignment="Center"/>
-        <TextBlock Text="Display name" Style="{StaticResource FieldLabelStyle}"/>
-        <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBlock Text="Email address" Style="{StaticResource FieldLabelStyle}"/>
-        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBlock Text="Password" Style="{StaticResource FieldLabelStyle}"/>
-        <PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged"/>
-        <TextBlock Text="{Binding PasswordError}" Foreground="Red" TextWrapping="Wrap" Margin="3 3 0 0"
-                   Visibility="{Binding PasswordError, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
-        <TextBlock Text="{Binding ErrorMessage}" Foreground="Red" TextWrapping="Wrap" Margin="0 10 0 0"
-                   Visibility="{Binding ErrorMessage, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
-        <Button Content="Sign up" Style="{StaticResource PrimaryButtonStyle}" Margin="0 20 0 0" IsDefault="True"
-                Command="{Binding RegisterCommand}"/>
-        <Button Content="Already have an account? Sign in" Style="{StaticResource NavButtonStyle}" FontSize="14" Margin="0 10 0 0"
-                Command="{Binding LoginCommand}"/>
-    </StackPanel>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Style="{StaticResource CardStyle}" Width="440" Padding="32 28" Margin="0 40" HorizontalAlignment="Center" VerticalAlignment="Top">
+            <StackPanel>
+                <Image Source="{StaticResource PickMark}" Width="44" Height="48" Margin="0 0 0 10"/>
+                <TextBlock Text="Sign up" Style="{StaticResource SectionTitleStyle}" FontSize="30" HorizontalAlignment="Center" Margin="0 0 0 6"/>
+                <TextBlock Text="Display name" Style="{StaticResource FieldLabelStyle}"/>
+                <TextBox Text="{Binding DisplayName, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="Display name"/>
+                <TextBlock Text="Email address" Style="{StaticResource FieldLabelStyle}"/>
+                <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}" AutomationProperties.Name="Email address"/>
+                <TextBlock Text="Password" Style="{StaticResource FieldLabelStyle}"/>
+                <PasswordBox x:Name="PasswordInput" PasswordChanged="PasswordInput_PasswordChanged" AutomationProperties.Name="Password"/>
+                <TextBlock Text="{Binding PasswordError}" Foreground="{StaticResource DangerBrush}" FontSize="13" TextWrapping="Wrap" Margin="2 3 0 0"
+                           Visibility="{Binding PasswordError, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
+                <TextBlock Text="{Binding ErrorMessage}" Foreground="{StaticResource DangerBrush}" TextWrapping="Wrap" Margin="0 10 0 0"
+                           Visibility="{Binding ErrorMessage, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
+                <Button Content="Sign up" Style="{StaticResource PrimaryButtonStyle}" FontSize="17" MinHeight="50" Margin="0 22 0 0"
+                        IsDefault="True" Command="{Binding RegisterCommand}"/>
+                <Button Content="Already have an account? Login" Style="{StaticResource LinkButtonStyle}" MinHeight="0"
+                        HorizontalAlignment="Center" Margin="0 14 0 0" Command="{Binding LoginCommand}"/>
+            </StackPanel>
+        </Border>
+    </ScrollViewer>
 </UserControl>

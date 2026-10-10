@@ -7,27 +7,30 @@
              mc:Ignorable="d"
              d:DesignHeight="650" d:DesignWidth="1000">
     <UserControl.Resources>
+        <!-- Step pills, like Angular's stepper: maple, the current step in the brand color -->
         <Style x:Key="StepHeaderStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="16"/>
-            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="{StaticResource HeadingFont}"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="{StaticResource FontSizeNav}"/>
+            <Setter Property="Foreground" Value="{StaticResource InkBrush}"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-            <Setter Property="Margin" Value="0 8"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
-        <Style x:Key="StepBarStyle" TargetType="Border">
-            <Setter Property="Height" Value="4"/>
-            <Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+        <Style x:Key="StepActiveStyle" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+            <Setter Property="TextElement.Foreground" Value="{StaticResource WhiteBrush}"/>
         </Style>
         <Style x:Key="FieldStyle" TargetType="StackPanel">
             <Setter Property="Margin" Value="0 0 12 6"/>
         </Style>
     </UserControl.Resources>
 
-    <Grid Margin="20">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+    <Grid MaxWidth="{StaticResource MaxWidth}" Margin="32 24 32 32">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Text="Checkout" Style="{StaticResource PageTitleStyle}"/>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -37,26 +40,38 @@
 
             <DockPanel>
                 <!-- Step headers: Address / Delivery / Review / Payment -->
-                <UniformGrid DockPanel.Dock="Top" Rows="1" Columns="4" Background="{StaticResource PanelBrush}" Margin="0 0 0 15">
-                    <StackPanel>
-                        <TextBlock Text="1  Address" Style="{StaticResource StepHeaderStyle}"/>
-                        <Border Style="{StaticResource StepBarStyle}" Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=0}"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="2  Delivery" Style="{StaticResource StepHeaderStyle}"/>
-                        <Border Style="{StaticResource StepBarStyle}" Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=1}"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="3  Review" Style="{StaticResource StepHeaderStyle}"/>
-                        <Border Style="{StaticResource StepBarStyle}" Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=2}"/>
-                    </StackPanel>
-                    <StackPanel>
-                        <TextBlock Text="4  Payment" Style="{StaticResource StepHeaderStyle}"/>
-                        <Border Style="{StaticResource StepBarStyle}" Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=3}"/>
-                    </StackPanel>
+                <UniformGrid DockPanel.Dock="Top" Rows="1" Columns="4" Height="52" Margin="0 0 0 20">
+                    <Grid Background="{StaticResource MapleBrush}">
+                        <TextBlock Text="1 · ADDRESS" Style="{StaticResource StepHeaderStyle}"/>
+                        <Border Style="{StaticResource StepActiveStyle}"
+                                Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=0}">
+                            <TextBlock Text="1 · ADDRESS" Style="{StaticResource StepHeaderStyle}" Foreground="{StaticResource WhiteBrush}"/>
+                        </Border>
+                    </Grid>
+                    <Grid Background="{StaticResource MapleBrush}">
+                        <TextBlock Text="2 · DELIVERY" Style="{StaticResource StepHeaderStyle}"/>
+                        <Border Style="{StaticResource StepActiveStyle}"
+                                Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=1}">
+                            <TextBlock Text="2 · DELIVERY" Style="{StaticResource StepHeaderStyle}" Foreground="{StaticResource WhiteBrush}"/>
+                        </Border>
+                    </Grid>
+                    <Grid Background="{StaticResource MapleBrush}">
+                        <TextBlock Text="3 · REVIEW" Style="{StaticResource StepHeaderStyle}"/>
+                        <Border Style="{StaticResource StepActiveStyle}"
+                                Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=2}">
+                            <TextBlock Text="3 · REVIEW" Style="{StaticResource StepHeaderStyle}" Foreground="{StaticResource WhiteBrush}"/>
+                        </Border>
+                    </Grid>
+                    <Grid Background="{StaticResource MapleBrush}">
+                        <TextBlock Text="4 · PAYMENT" Style="{StaticResource StepHeaderStyle}"/>
+                        <Border Style="{StaticResource StepActiveStyle}"
+                                Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=3}">
+                            <TextBlock Text="4 · PAYMENT" Style="{StaticResource StepHeaderStyle}" Foreground="{StaticResource WhiteBrush}"/>
+                        </Border>
+                    </Grid>
                 </UniformGrid>
 
-                <TextBlock DockPanel.Dock="Bottom" Text="Working…" Foreground="{StaticResource MutedBrush}" Margin="0 10 0 0"
+                <TextBlock DockPanel.Dock="Bottom" Text="Working…" Foreground="{StaticResource SlateBrush}" Margin="0 10 0 0"
                            Visibility="{Binding IsBusy, Converter={StaticResource BooleanToVisibilityConv}}"/>
 
                 <Grid>
@@ -104,7 +119,7 @@
                     <!-- ================= Step 2: Delivery ================= -->
                     <StackPanel Visibility="{Binding StepIndex, Converter={StaticResource EqualsToVisibilityConv}, ConverterParameter=1}">
                         <TextBlock Text="Choose a delivery method" Style="{StaticResource SectionTitleStyle}"/>
-                        <ListBox ItemsSource="{Binding DeliveryMethods}" SelectedItem="{Binding SelectedDeliveryMethod}" BorderThickness="0">
+                        <ListBox ItemsSource="{Binding DeliveryMethods}" SelectedItem="{Binding SelectedDeliveryMethod}" BorderThickness="0" Background="Transparent">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <RadioButton GroupName="DeliveryMethod" Margin="0 6" Focusable="False"
@@ -113,7 +128,7 @@
                                             <TextBlock FontWeight="SemiBold" FontSize="15">
                                                 <Run Text="{Binding ShortName, Mode=OneWay}"/><Run Text=" – "/><Run Text="{Binding Price, Mode=OneWay, StringFormat=C}"/>
                                             </TextBlock>
-                                            <TextBlock Foreground="{StaticResource MutedBrush}">
+                                            <TextBlock Foreground="{StaticResource SlateBrush}" FontSize="{StaticResource FontSizeSmall}">
                                                 <Run Text="{Binding Description, Mode=OneWay}"/><Run Text=" ("/><Run Text="{Binding DeliveryTime, Mode=OneWay}"/><Run Text=")"/>
                                             </TextBlock>
                                         </StackPanel>
@@ -138,22 +153,23 @@
                             <Button Content="‹ Back to delivery" Style="{StaticResource SecondaryButtonStyle}" HorizontalAlignment="Left"
                                     Command="{Binding BackCommand}"/>
                         </DockPanel>
-                        <DataGrid ItemsSource="{Binding Items}" AutoGenerateColumns="False" IsReadOnly="True" CanUserSortColumns="False"
-                                  HeadersVisibility="Column" RowHeight="56" GridLinesVisibility="Horizontal">
+                        <DataGrid ItemsSource="{Binding Items}" CanUserSortColumns="False" RowHeight="64" VerticalAlignment="Top">
                             <DataGrid.Columns>
-                                <DataGridTemplateColumn Header="Product" Width="*">
+                                <DataGridTemplateColumn Header="PRODUCT" Width="*">
                                     <DataGridTemplateColumn.CellTemplate>
                                         <DataTemplate>
                                             <StackPanel Orientation="Horizontal">
-                                                <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Width="48" Height="48" Margin="0 0 10 0"/>
-                                                <TextBlock Text="{Binding ProductName}" VerticalAlignment="Center"/>
+                                                <Border Background="{StaticResource MapleBrush}" CornerRadius="6" Width="56" Height="46" Margin="0 0 12 0">
+                                                    <Image Source="{Binding PictureUrl, TargetNullValue={x:Null}}" Stretch="Uniform" Margin="4"/>
+                                                </Border>
+                                                <TextBlock Text="{Binding ProductName}" VerticalAlignment="Center" FontFamily="{StaticResource HeadingFont}" FontWeight="Bold" FontSize="18"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </DataGridTemplateColumn.CellTemplate>
                                 </DataGridTemplateColumn>
-                                <DataGridTextColumn Header="Price" Binding="{Binding Price, StringFormat=C}" Width="90"/>
-                                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}" Width="80"/>
-                                <DataGridTextColumn Header="Total" Binding="{Binding LineTotal, Mode=OneWay, StringFormat=C}" Width="100"/>
+                                <DataGridTextColumn Header="PRICE" Binding="{Binding Price, StringFormat=C}" Width="90"/>
+                                <DataGridTextColumn Header="QUANTITY" Binding="{Binding Quantity}" Width="80"/>
+                                <DataGridTextColumn Header="TOTAL" Binding="{Binding LineTotal, Mode=OneWay, StringFormat=C}" Width="100"/>
                             </DataGrid.Columns>
                         </DataGrid>
                     </DockPanel>
@@ -164,7 +180,7 @@
                         <TextBlock Text="Name on card" Style="{StaticResource FieldLabelStyle}"/>
                         <TextBox Text="{Binding NameOnCard, UpdateSourceTrigger=PropertyChanged}" Margin="0 0 0 10"/>
                         <view:StripeCardControl/>
-                        <TextBlock Text="{Binding CardError}" Foreground="Red" Margin="0 4 0 0"
+                        <TextBlock Text="{Binding CardError}" Foreground="{StaticResource DangerBrush}" Margin="0 4 0 0"
                                    Visibility="{Binding CardError, Converter={StaticResource NotEmptyToVisibilityConv}}"/>
                         <DockPanel Margin="0 20 0 0">
                             <Button DockPanel.Dock="Right" Content="Submit order" Style="{StaticResource PrimaryButtonStyle}"
@@ -177,14 +193,15 @@
             </DockPanel>
 
             <!-- Order summary, beside every step (Angular's app-basket-summary / order totals) -->
-            <Border Grid.Column="1" Background="{StaticResource PanelBrush}" Padding="15" Margin="20 0 0 0" VerticalAlignment="Top">
+            <Border Grid.Column="1" Style="{StaticResource PanelStyle}" Margin="24 0 0 0" VerticalAlignment="Top">
                 <StackPanel>
-                    <TextBlock Text="Order summary" Style="{StaticResource SectionTitleStyle}" Margin="0 0 0 10"/>
+                    <TextBlock Text="ORDER SUMMARY" Style="{StaticResource CapsLabelStyle}" FontSize="17" Margin="0 0 0 10"/>
                     <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Subtotal, StringFormat=C}" DockPanel.Dock="Right"/><TextBlock Text="Order subtotal"/></DockPanel>
                     <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Shipping, StringFormat=C}" DockPanel.Dock="Right"/><TextBlock Text="Shipping and handling"/></DockPanel>
-                    <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Total, StringFormat=C}" DockPanel.Dock="Right" FontWeight="Bold"/><TextBlock Text="Total" FontWeight="Bold"/></DockPanel>
+                    <DockPanel Margin="0 4"><TextBlock Text="{Binding Totals.Total, StringFormat=C}" DockPanel.Dock="Right" FontWeight="Bold" Foreground="{StaticResource PrimaryBrush}"/><TextBlock Text="Total" FontWeight="Bold"/></DockPanel>
                 </StackPanel>
             </Border>
         </Grid>
     </Grid>
+    </ScrollViewer>
 </UserControl>

@@ -5,36 +5,38 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
-        <Button Content="‹ Back to shop" Style="{StaticResource NavButtonStyle}" HorizontalAlignment="Left" Command="{Binding BackCommand}"/>
-        <Grid Grid.Row="1" Margin="0 10 0 0" DataContext="{Binding}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Border BorderBrush="#DDDDDD" BorderThickness="1" Padding="10" VerticalAlignment="Top">
-                <Image Source="{Binding Product.PictureUrl, TargetNullValue={x:Null}}" Width="320" Height="320" Stretch="Uniform"/>
-            </Border>
-            <StackPanel Grid.Column="1" Margin="30 0 0 0">
-                <TextBlock Text="{Binding Product.Name}" Style="{StaticResource PageTitleStyle}" TextWrapping="Wrap"/>
-                <TextBlock Foreground="{StaticResource MutedBrush}" FontSize="15">
-                    <Run Text="{Binding Product.ProductBrand, Mode=OneWay}"/><Run Text="  ·  "/><Run Text="{Binding Product.ProductType, Mode=OneWay}"/>
-                </TextBlock>
-                <TextBlock Text="{Binding Product.Price, StringFormat=C}" FontSize="26" Foreground="{StaticResource AccentDarkBrush}" Margin="0 15"/>
-                <StackPanel Orientation="Horizontal" Margin="0 0 0 20">
-                    <Button Content="−" Style="{StaticResource SmallButtonStyle}" FontSize="18" Command="{Binding DecrementCommand}"/>
-                    <TextBlock Text="{Binding Quantity}" FontSize="22" Width="50" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <Button Content="+" Style="{StaticResource SmallButtonStyle}" FontSize="18" Command="{Binding IncrementCommand}"/>
-                    <Button Content="{Binding ButtonText}" Style="{StaticResource PrimaryButtonStyle}" Margin="20 0 0 0"
-                            Command="{Binding UpdateBasketCommand}"/>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel MaxWidth="{StaticResource MaxWidth}" Margin="32 20 32 32">
+            <Button Content="‹ Back to shop" Style="{StaticResource LinkButtonStyle}" MinHeight="0" Margin="0 0 0 16"
+                    Command="{Binding BackCommand}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border Style="{StaticResource CardStyle}" Background="{StaticResource MapleBrush}" Padding="16" VerticalAlignment="Top">
+                    <Image Source="{Binding Product.PictureUrl, TargetNullValue={x:Null}}" MaxHeight="440" Stretch="Uniform"
+                           AutomationProperties.Name="{Binding Product.Name}"/>
+                </Border>
+                <StackPanel Grid.Column="1" Margin="40 24 0 0">
+                    <TextBlock FontFamily="{StaticResource HeadingFont}" FontWeight="SemiBold" FontSize="15" Foreground="{StaticResource SlateBrush}">
+                        <Run Text="{Binding Product.ProductBrand, Mode=OneWay, Converter={StaticResource UpperCaseConv}}"/><Run Text="  ·  "/><Run Text="{Binding Product.ProductType, Mode=OneWay, Converter={StaticResource UpperCaseConv}}"/>
+                    </TextBlock>
+                    <TextBlock Text="{Binding Product.Name}" Style="{StaticResource PageTitleStyle}" FontSize="36" TextWrapping="Wrap" Margin="0 4 0 0"/>
+                    <TextBlock Text="{Binding Product.Price, StringFormat=C}" Style="{StaticResource PriceStyle}" FontSize="30" Margin="0 10 0 18"/>
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 24">
+                        <Button Content="−" Style="{StaticResource SmallSecondaryButtonStyle}" FontSize="20" Width="40" Height="40"
+                                Padding="0" Command="{Binding DecrementCommand}" AutomationProperties.Name="One fewer"/>
+                        <TextBlock Text="{Binding Quantity}" FontSize="24" FontWeight="SemiBold" Width="56" TextAlignment="Center" VerticalAlignment="Center"/>
+                        <Button Content="+" Style="{StaticResource SmallSecondaryButtonStyle}" FontSize="20" Width="40" Height="40"
+                                Padding="0" Command="{Binding IncrementCommand}" AutomationProperties.Name="One more"/>
+                        <Button Content="{Binding ButtonText}" Style="{StaticResource PrimaryButtonStyle}" Margin="24 0 0 0"
+                                Command="{Binding UpdateBasketCommand}"/>
+                    </StackPanel>
+                    <TextBlock Text="Description" Style="{StaticResource SectionTitleStyle}"/>
+                    <TextBlock Text="{Binding Product.Description}" TextWrapping="Wrap" LineHeight="24"/>
                 </StackPanel>
-                <TextBlock Text="Description" Style="{StaticResource SectionTitleStyle}"/>
-                <TextBlock Text="{Binding Product.Description}" TextWrapping="Wrap" FontSize="15" LineHeight="22"/>
-            </StackPanel>
-        </Grid>
-    </Grid>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

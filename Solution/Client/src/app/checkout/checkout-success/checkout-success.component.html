@@ -1,15 +1,15 @@
 <div class="container mt-5">
-  <div><i class="fa fa-check-circle fa-5x" style="color: green;"></i></div>
+  <div><i class="fa fa-check-circle fa-5x text-success"></i></div>
   <h2>Thank you. Your order is confirmed</h2>
   <p class="mb-4">Your order has not shipped yet, but this is to be expected as we are not a real store!</p>
   @if (order) {
-    <button routerLink="/orders/{{order.id}}" class="btn btn-outline-success">
+    <button routerLink="/orders/{{order.id}}" class="btn btn-outline-primary">
       View your order
     </button>
   }
   @if (!order) {
-    <button routerLink="/orders" class="btn btn-outline-success">
+    <button routerLink="/orders" class="btn btn-outline-primary">
       View your orders
     </button>
   }
-</div>
+</div>

@@ -10,6 +10,10 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// </summary>
     public class RegisterViewModel : ValidatingViewModelBase
     {
+        public override string? PageTitle => "Register";
+
+        public override string Breadcrumb => "Home  /  Account  /  Register";
+
         private readonly AccountService account;
         private readonly Action afterSignIn;
 

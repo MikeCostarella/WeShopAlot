@@ -1,4 +1,7 @@
-import { Component, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, DestroyRef, ElementRef, OnInit, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { BasketService } from '../basket/basket.service';
+import { ViewModeService } from '../core/services/view-mode.service';
 import { Brand } from '../shared/models/brand';
 import { Product } from '../shared/models/product';
 import { ShopParams } from '../shared/models/shopParams';
@@ -8,7 +11,6 @@ import { ShopService } from './shop.service';
 @Component({
     selector: 'app-shop',
     templateUrl: './shop.component.html',
-    styleUrls: ['./shop.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })
@@ -24,8 +26,10 @@ export class ShopComponent implements OnInit {
     {name: 'Price: High to low', value: 'priceDesc'},
   ];
   totalCount = 0;
+  private destroyRef = inject(DestroyRef);
 
-  constructor(private shopService: ShopService) {
+  constructor(private shopService: ShopService, private basketService: BasketService,
+    public viewMode: ViewModeService) {
     this.shopParams = shopService.getShopParams();
   }
 
@@ -33,6 +37,16 @@ export class ShopComponent implements OnInit {
     this.getProducts();
     this.getBrands();
     this.getTypes();
+    // The hamburger menu's Shop links change the filters while this page may already be open.
+    this.shopService.filtersChanged$.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => {
+      this.shopParams = this.shopService.getShopParams();
+      if (this.searchTerm) this.searchTerm.nativeElement.value = '';
+      this.getProducts();
+    });
+  }
+
+  addToBasket(product: Product) {
+    this.basketService.addItemToBasket(product);
   }
 
   getProducts() {

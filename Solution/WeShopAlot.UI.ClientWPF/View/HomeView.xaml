@@ -4,14 +4,21 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
-             d:DesignHeight="600" d:DesignWidth="1000"
-             xmlns:controls="clr-namespace:WeShopAlot.UI.ClientWPF.Controls">
-    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" MaxWidth="700">
-        <controls:HeaderControl Height="130"/>
-        <TextBlock Text="Welcome to WeShopAlot" FontSize="32" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0 30 0 10"/>
-        <TextBlock TextWrapping="Wrap" TextAlignment="Center" FontSize="16" Foreground="{StaticResource MutedBrush}"
-                   Text="This desktop app and the Angular site are two clients of the same ASP.NET Core REST API: the same products, basket, sign-in, checkout and orders."/>
-        <Button Content="Shop now" Style="{StaticResource PrimaryButtonStyle}" HorizontalAlignment="Center" Margin="0 25 0 0"
-                Command="{Binding ShopCommand}"/>
-    </StackPanel>
+             d:DesignHeight="700" d:DesignWidth="1200">
+    <!-- Angular's home page: the photo carousel, then the headline and Shop now -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel>
+            <Image Source="/Images/home-hero.jpg" Height="440" Stretch="UniformToFill" StretchDirection="Both"
+                   AutomationProperties.Name="Guitars in the shop"/>
+            <StackPanel HorizontalAlignment="Center" Margin="32 44 32 48" MaxWidth="{StaticResource MaxWidth}">
+                <TextBlock Text="Check out our axes and so much more!" Style="{StaticResource PageTitleStyle}" FontSize="48"
+                           TextWrapping="Wrap" TextAlignment="Center"/>
+                <TextBlock Style="{StaticResource MutedTextStyle}" FontSize="{StaticResource FontSizeBody}" TextWrapping="Wrap"
+                           TextAlignment="Center" MaxWidth="680" Margin="0 12 0 0"
+                           Text="This desktop app and the Angular site are two clients of the same ASP.NET Core REST API: the same products, basket, sign-in, checkout and orders."/>
+                <Button Content="Shop now" Style="{StaticResource PrimaryButtonStyle}" HorizontalAlignment="Center"
+                        FontSize="18" MinHeight="52" Padding="28 0" Margin="0 24 0 0" Command="{Binding ShopCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </ScrollViewer>
 </UserControl>

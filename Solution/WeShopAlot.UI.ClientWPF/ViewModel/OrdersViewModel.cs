@@ -8,6 +8,8 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// <summary>The signed-in user's orders (Angular's OrdersComponent): GET /api/order.</summary>
     public class OrdersViewModel : ViewModelBase
     {
+        public override string? PageTitle => "Orders";
+
         private readonly ApiClient api;
         private bool isLoading;
 

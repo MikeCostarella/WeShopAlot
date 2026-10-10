@@ -2,7 +2,7 @@
   <div class="mt-4" [formGroup]="checkoutForm">
     <div class="d-flex justify-content-between align-items-center">
       <h4>Shipping address</h4>
-      <button class="btn btn-outline-success mb-3"
+      <button class="btn btn-outline-primary mb-3"
         (click)="saveUserAddress()"
             [disabled]="!checkoutForm.get('addressForm')?.valid || 
                 !checkoutForm.get('addressForm')?.dirty"
@@ -41,4 +41,4 @@
   <button [disabled]="$safeNavigationMigration(checkoutForm?.get('addressForm')?.invalid)" class="btn btn-primary" cdkStepperNext>
     Go to Delivery <i class="fa fa-angle-right"></i>
   </button>
-</div>
+</div>

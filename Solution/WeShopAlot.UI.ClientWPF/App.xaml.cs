@@ -26,7 +26,8 @@ namespace WeShopAlot.UI.ClientWPF
             var session = new SessionStore();
             var account = new AccountService(api, session);
             var basket = new BasketService(api, session);
-            var mainViewModel = new MainViewModel(api, account, basket, settings.StripePublishableKey);
+            var view = new ViewSettings(session);
+            var mainViewModel = new MainViewModel(api, account, basket, view, settings.StripePublishableKey);
 
             new MainWindow(mainViewModel).Show();
         }

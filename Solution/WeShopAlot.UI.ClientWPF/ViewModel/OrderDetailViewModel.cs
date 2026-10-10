@@ -7,6 +7,10 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// <summary>One order (Angular's OrderDetailedComponent): GET /api/order/{id}.</summary>
     public class OrderDetailViewModel : ViewModelBase
     {
+        public override string? PageTitle => $"Order #{orderId}";
+
+        public override string Breadcrumb => $"Home  /  Orders  /  Order #{orderId}";
+
         private readonly int orderId;
         private readonly ApiClient api;
         private readonly IShell shell;

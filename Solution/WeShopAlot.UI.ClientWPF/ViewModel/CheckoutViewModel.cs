@@ -14,6 +14,8 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// </summary>
     public class CheckoutViewModel : ValidatingViewModelBase
     {
+        public override string? PageTitle => "Checkout";
+
         public const int AddressStep = 0;
         public const int DeliveryStep = 1;
         public const int ReviewStep = 2;

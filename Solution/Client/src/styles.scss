@@ -1,5 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+// Global styles. Colors, fonts and sizes come from the shared design tokens:
+// Solution/DesignSystem/tokens.json -> build-tokens.mjs -> src/styles/_tokens.scss (generated).
+@import 'tokens';
 
-label.xng-breadcrumb-trail {
-    color: orange;
+// ------------------------------------------------------------------ Bootstrap, themed from the tokens
+
+$primary: $ws-color-primary;
+$secondary: $ws-color-slate;
+$success: $ws-color-success;
+$danger: $ws-color-danger;
+$warning: $ws-color-accent;
+$light: $ws-color-maple;
+$dark: $ws-color-ink;
+
+$body-color: $ws-color-ink;
+$body-bg: $ws-color-white;
+$font-family-sans-serif: $ws-font-body;
+$font-size-base: 1rem;
+$headings-font-family: $ws-font-heading;
+$headings-font-weight: 700;
+$link-color: $ws-color-primary;
+$link-hover-color: $ws-color-primary-hover;
+$link-decoration: none;
+
+$border-color: $ws-color-fret;
+$border-radius: $ws-radius-control;
+$border-radius-sm: 6px;
+$border-radius-lg: $ws-radius-card;
+$card-border-color: $ws-color-fret;
+$card-border-radius: $ws-radius-card;
+
+$btn-font-weight: 600;
+$input-btn-padding-y: 0.55rem;
+$input-btn-padding-x: 1.1rem;
+$input-border-color: $ws-color-fret;
+$input-focus-border-color: $ws-color-primary;
+$enable-shadows: false;
+$min-contrast-ratio: 4.5;
+
+$list-group-active-bg: $ws-color-ink;
+$list-group-active-border-color: $ws-color-ink;
+$pagination-active-bg: $ws-color-ink;
+$pagination-active-border-color: $ws-color-ink;
+$pagination-color: $ws-color-ink;
+$dropdown-link-active-bg: $ws-color-maple;
+$dropdown-link-active-color: $ws-color-ink;
+
+$container-max-widths: (sm: 540px, md: 720px, lg: 960px, xl: 1140px, xxl: $ws-layout-max-width);
+
+@import 'bootstrap/scss/bootstrap';
+
+:root {
+  @include ws-root-properties;
 }
+
+// ------------------------------------------------------------------ The shared layout
+
+@import 'layout';
+@import 'shop';

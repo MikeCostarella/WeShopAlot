@@ -5,7 +5,6 @@ import { Product } from '../../shared/models/product';
 @Component({
     selector: 'app-product-item',
     templateUrl: './product-item.component.html',
-    styleUrls: ['./product-item.component.scss'],
     changeDetection: ChangeDetectionStrategy.Eager,
     standalone: false
 })

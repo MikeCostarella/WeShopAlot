@@ -5,10 +5,13 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              mc:Ignorable="d"
              d:DesignHeight="600" d:DesignWidth="1000">
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="✓" FontSize="64" Foreground="Green" HorizontalAlignment="Center"/>
-        <TextBlock Text="{Binding Heading}" Style="{StaticResource PageTitleStyle}" HorizontalAlignment="Center"/>
-        <TextBlock Text="Your payment went through and your order is being processed." FontSize="16" HorizontalAlignment="Center"/>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="32 56 32 32">
+        <Border Background="{StaticResource SuccessBgBrush}" Width="96" Height="96" CornerRadius="48" HorizontalAlignment="Center">
+            <Path Data="M0 12 L9 21 L26 2" Stroke="{StaticResource SuccessBrush}" StrokeThickness="5" StrokeStartLineCap="Round"
+                  StrokeEndLineCap="Round" StrokeLineJoin="Round" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+        <TextBlock Text="{Binding Heading}" Style="{StaticResource PageTitleStyle}" FontSize="34" HorizontalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0 20 0 8"/>
+        <TextBlock Text="Your payment went through and your order is being processed." Foreground="{StaticResource SlateBrush}" HorizontalAlignment="Center"/>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 25 0 0">
             <Button Content="View your order" Style="{StaticResource PrimaryButtonStyle}" Command="{Binding ViewOrderCommand}"/>
             <Button Content="Continue shopping" Style="{StaticResource SecondaryButtonStyle}" Margin="10 0 0 0" Command="{Binding ShopCommand}"/>

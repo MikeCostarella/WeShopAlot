@@ -1,54 +1,48 @@
-<header class="d-flex flex-row align-items-center justify-content-between p-3 px-4 mb-3 
-    bg-white border-bottom fixed-top shadow-sm">
-  <img src="/assets/images/logo.png" alt="logo" class="logo" style="max-height: 70px;" routerLink="/">
-  <nav class="my-2 text-uppercase fs-4">
-    <a class="p-2"
-      routerLink="/"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{exact: true}"
-    >Home</a>
-    <a class="p-2" routerLink="/shop" routerLinkActive="active">Shop</a>
+<header class="ws-header">
+  <button type="button" class="ws-icon-button" aria-label="Open menu" [attr.aria-expanded]="menu.isOpen()"
+    (click)="menu.open()">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+      stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+  </button>
+
+  <a routerLink="/" class="ws-brand" aria-label="WeShopAlot home">
+    <img src="assets/images/logo-mark.svg" alt="" width="34" height="36">
+    <span class="ws-wordmark">WeShop<span>Alot</span></span>
+  </a>
+
+  <nav class="ws-nav" aria-label="Primary">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+    <a routerLink="/shop" routerLinkActive="active">Shop</a>
   </nav>
-  <div class="d-flex align-items-center">
-    <a routerLink="/basket" class="position-relative">
-      <i class="fa fa-shopping-cart fa-2x me-5 text-dark"></i>
-      @if ((basketService.basketSource$ | async); as basket) {
-        <div class="cart-no">
-          {{getCount(basket.items)}}
-        </div>
+
+  <div class="ws-header-end">
+    @let count = getCount((basketService.basketSource$ | async)?.items ?? []);
+    <a routerLink="/basket" class="ws-basket" [attr.aria-label]="'Basket, ' + count + ' items'">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"></path>
+        <circle cx="10" cy="20" r="1.4"></circle><circle cx="17" cy="20" r="1.4"></circle>
+      </svg>
+      @if (count > 0) {
+        <span class="ws-badge">{{count}}</span>
       }
     </a>
-    @if ((accountService.currentUser$ | async) === null) {
-      <a routerLink="/account/login" class="btn btn-outline-secondary me-2">Login</a>
-      <a routerLink="/account/register" class="btn btn-outline-secondary me-3">Sign up</a>
-    }
 
     @if (accountService.currentUser$ | async; as user) {
-      <div class="dropdown ms-3 me-5" style="cursor: pointer;" dropdown>
-        <a dropdownToggle class="dropdown-toggle">
-          <strong>Welcome {{user.displayName}}</strong>
-        </a>
-        <ul *dropdownMenu class="dropdown-menu dropdown-menu-right">
-          <li class="py-1">
-            <a routerLink="/basket" class="dropdown-item">
-              <i class="fa fa-shopping-cart me-3"></i> View basket
-            </a>
-          </li>
-          <li class="py-1">
-            <a routerLink="/orders" class="dropdown-item">
-              <i class="fa fa-history me-3"></i> View orders
-            </a>
-          </li>
-          <div class="dropdown-divider"></div>
-          <li class="py-1">
-            <a (click)="accountService.logout()" class="dropdown-item">
-              <i class="fa fa-sign-out me-3"></i> Logout
-            </a>
-          </li>
+      <div class="dropdown" dropdown>
+        <button type="button" class="ws-user-toggle dropdown-toggle" dropdownToggle>Welcome {{user.displayName}}</button>
+        <ul *dropdownMenu class="dropdown-menu dropdown-menu-end">
+          <li><a routerLink="/basket" class="dropdown-item py-2"><i class="fa fa-shopping-cart me-3"></i>View basket</a></li>
+          <li><a routerLink="/orders" class="dropdown-item py-2"><i class="fa fa-history me-3"></i>View orders</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><button type="button" (click)="accountService.logout()" class="dropdown-item py-2"><i class="fa fa-sign-out me-3"></i>Logout</button></li>
         </ul>
       </div>
+    } @else {
+      <div class="ws-auth-buttons d-flex gap-2">
+        <a routerLink="/account/login" class="btn btn-outline-primary">Login</a>
+        <a routerLink="/account/register" class="btn btn-primary">Sign up</a>
+      </div>
     }
-
   </div>
-
 </header>

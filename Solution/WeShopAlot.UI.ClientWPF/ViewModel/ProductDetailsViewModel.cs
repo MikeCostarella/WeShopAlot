@@ -7,6 +7,10 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// <summary>One product (Angular's ProductDetailsComponent): GET /api/product/{id}, pick a quantity, add or update.</summary>
     public class ProductDetailsViewModel : ViewModelBase
     {
+        public override string? PageTitle => Product?.Name ?? "Product";
+
+        public override string Breadcrumb => $"Home  /  Shop  /  {PageTitle}";
+
         private readonly int productId;
         private readonly ApiClient api;
         private readonly BasketService basket;
@@ -40,7 +44,9 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
             get => product;
             private set
             {
-                if (SetProperty(ref product, value)) UpdateBasketCommand.RaiseCanExecuteChanged();
+                if (!SetProperty(ref product, value)) return;
+                UpdateBasketCommand.RaiseCanExecuteChanged();
+                RaisePropertyChanged(nameof(PageTitle));
             }
         }
 

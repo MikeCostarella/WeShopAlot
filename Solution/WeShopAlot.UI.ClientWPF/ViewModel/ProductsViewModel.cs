@@ -12,7 +12,7 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// </summary>
     public class ProductsViewModel : ViewModelBase
     {
-        private const int PageSize = 10;
+        private const int PageSize = 6; // as in the Angular shop
         private const int StartupAttempts = 15;
         private static readonly TimeSpan StartupRetryDelay = TimeSpan.FromSeconds(2);
         private static readonly NamedItem All = new(0, "All");
@@ -20,6 +20,7 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
         private readonly IProductApiClient api;
         private readonly BasketService basket;
         private readonly IShell shell;
+        private readonly int? initialTypeId;
         private bool lookupsLoaded;
         private bool suppressReload;
         private int requestVersion;
@@ -33,11 +34,15 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
         private bool isLoading;
         private string status = "";
 
-        public ProductsViewModel(IProductApiClient api, BasketService basket, IShell shell)
+        /// <param name="initialTypeId">Open filtered to one product type (the hamburger menu's Shop links).</param>
+        public ProductsViewModel(IProductApiClient api, BasketService basket, IShell shell, ViewSettings view,
+            int? initialTypeId = null)
         {
             this.api = api;
             this.basket = basket;
             this.shell = shell;
+            View = view;
+            this.initialTypeId = initialTypeId;
             SortOptions = new[]
             {
                 new SortOption("Name", null),
@@ -54,6 +59,11 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
             AddToBasketCommand = new DelegateCommand(async p => await AddToBasketAsync(p as Product));
             DetailsCommand = new DelegateCommand(p => { if (p is Product product) shell.GoProduct(product.Id); });
         }
+
+        public override string? PageTitle => "Shop";
+
+        /// <summary>Cards or List (shared with the menu's View section).</summary>
+        public ViewSettings View { get; }
 
         public ObservableCollection<Product> Products { get; } = new();
         public ObservableCollection<NamedItem> Brands { get; } = new() { All };
@@ -99,10 +109,16 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
             private set
             {
                 if (SetProperty(ref totalCount, value)) RaisePropertyChanged(nameof(PageSummary));
+                RaisePropertyChanged(nameof(ShowingText));
             }
         }
 
         public int PageCount => Math.Max(1, (int)Math.Ceiling(totalCount / (double)PageSize));
+
+        /// <summary>"Showing 1 - 6 of 16 results", like Angular's paging header.</summary>
+        public string ShowingText => totalCount == 0
+            ? "There are 0 results for this filter"
+            : $"Showing {(pageIndex - 1) * PageSize + 1} - {Math.Min(pageIndex * PageSize, totalCount)} of {totalCount} results";
 
         public string PageSummary => totalCount == 0
             ? "No products"
@@ -147,7 +163,7 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
                     Replace(Brands, brands);
                     Replace(Types, types);
                     SelectedBrand = All;
-                    SelectedType = All;
+                    SelectedType = Types.FirstOrDefault(t => t.Id == initialTypeId) ?? All;
                     suppressReload = false;
 
                     lookupsLoaded = true;
@@ -184,6 +200,7 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
                 Replace(Products, page.Data ?? Array.Empty<Product>());
                 TotalCount = page.Count;
                 RaisePropertyChanged(nameof(PageSummary));
+                RaisePropertyChanged(nameof(ShowingText));
                 Status = $"GET {api.BaseAddress}product?pageIndex={pageIndex}&pageSize={PageSize}"
                     + (query.BrandId is int b ? $"&brandId={b}" : "")
                     + (query.TypeId is int t ? $"&typeId={t}" : "")

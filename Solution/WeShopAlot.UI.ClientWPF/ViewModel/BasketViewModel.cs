@@ -9,6 +9,8 @@ namespace WeShopAlot.UI.ClientWPF.ViewModel
     /// <summary>The basket page (Angular's BasketComponent): change quantities, remove lines, see totals, check out.</summary>
     public class BasketViewModel : ViewModelBase
     {
+        public override string? PageTitle => "Basket";
+
         private readonly BasketService basket;
         private readonly IShell shell;
         private bool isBusy;

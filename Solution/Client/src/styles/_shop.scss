@@ -1,0 +1,212 @@
+// Shop page: filter sidebar, toolbar with the Cards/List switch, product cards and the list table.
+
+.ws-filter-title {
+  font-family: $ws-font-heading;
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $ws-color-slate;
+  margin: 0 0 6px;
+}
+
+.ws-filter-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px;
+
+  button {
+    width: 100%;
+    text-align: left;
+    padding: 8px 12px;
+    border: 0;
+    border-radius: $ws-radius-control;
+    background: transparent;
+    color: $ws-color-ink;
+    font-size: 15px;
+
+    &:hover {
+      background: $ws-color-maple;
+    }
+
+    &[aria-pressed='true'] {
+      background: $ws-color-ink;
+      color: $ws-color-white;
+      font-weight: 600;
+    }
+  }
+}
+
+.ws-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+
+  .ws-toolbar-end {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+.ws-view-switch {
+  display: inline-flex;
+  border: 1.5px solid $ws-color-fret;
+  border-radius: $ws-radius-control;
+  overflow: hidden;
+
+  button {
+    min-height: $ws-layout-control-height;
+    padding: 0 16px;
+    border: 0;
+    background: $ws-color-white;
+    color: $ws-color-ink;
+    font-weight: 600;
+
+    &[aria-pressed='true'] {
+      background: $ws-color-ink;
+      color: $ws-color-white;
+    }
+  }
+}
+
+.ws-card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.ws-product-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $ws-color-fret;
+  border-radius: $ws-radius-card;
+  overflow: hidden;
+  background: $ws-color-white;
+  transition: box-shadow 0.15s;
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba($ws-color-ink, $ws-effect-card-shadow-opacity);
+  }
+
+  .ws-product-photo {
+    height: 200px;
+    background: $ws-color-maple;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  .ws-product-body {
+    padding: $ws-space-md;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+  }
+
+  .ws-product-meta {
+    font-family: $ws-font-heading;
+    font-weight: 600;
+    font-size: $ws-font-size-caption;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $ws-color-slate;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: $ws-font-size-card-title;
+
+    a {
+      color: $ws-color-ink;
+    }
+  }
+
+  .ws-price {
+    font-size: 20px;
+  }
+
+  .ws-product-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 10px;
+
+    .btn-primary {
+      flex: 1;
+    }
+  }
+}
+
+.ws-price {
+  font-weight: 600;
+  color: $ws-color-primary;
+}
+
+.ws-list {
+  border: 1px solid $ws-color-fret;
+  border-radius: $ws-radius-card;
+  overflow-x: auto;
+  margin-bottom: 24px;
+
+  table {
+    width: 100%;
+    margin: 0;
+  }
+
+  th {
+    background: $ws-color-maple;
+    font-family: $ws-font-heading;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $ws-color-slate;
+    white-space: nowrap;
+  }
+
+  td,
+  th {
+    padding: 10px 14px;
+    vertical-align: middle;
+  }
+
+  .ws-thumb {
+    width: 64px;
+    height: 52px;
+    object-fit: contain;
+    background: $ws-color-maple;
+    border-radius: 6px;
+  }
+
+  td.ws-price {
+    color: $ws-color-primary;
+  }
+
+  .ws-list-name {
+    font-family: $ws-font-heading;
+    font-weight: 700;
+    font-size: 20px;
+    color: $ws-color-ink;
+  }
+
+  .ws-list-actions {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
+    white-space: nowrap;
+  }
+}

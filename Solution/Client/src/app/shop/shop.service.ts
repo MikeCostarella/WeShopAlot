@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable, of } from 'rxjs';
+import { map, Observable, of, Subject } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Brand } from '../shared/models/brand';
 import { Pagination } from '../shared/models/pagination';
@@ -57,6 +57,18 @@ export class ShopService {
 
   getShopParams() {
     return this.shopParams;
+  }
+
+  // The hamburger menu can change the filters while the shop page is already open.
+  private filtersChangedSource = new Subject<void>();
+  filtersChanged$ = this.filtersChangedSource.asObservable();
+
+  /** Shows one product type (0 = everything), starting from page 1 with the other filters cleared. */
+  showType(typeId: number) {
+    const params = new ShopParams();
+    params.typeId = typeId;
+    this.setShopParams(params);
+    this.filtersChangedSource.next();
   }
 
   getProduct(id: number) {

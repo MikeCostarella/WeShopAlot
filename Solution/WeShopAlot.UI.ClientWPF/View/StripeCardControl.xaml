@@ -8,7 +8,7 @@
              d:DesignHeight="80" d:DesignWidth="500">
     <!-- A small browser running Payment/stripe-card.html (Stripe.js), as in the Angular checkout -->
     <StackPanel>
-        <TextBlock x:Name="StatusText" Text="Loading the Stripe card form…" Foreground="{StaticResource MutedBrush}" Margin="0 0 0 4"/>
+        <TextBlock x:Name="StatusText" Text="Loading the Stripe card form…" Foreground="{StaticResource SlateBrush}" FontSize="{StaticResource FontSizeSmall}" Margin="0 0 0 4"/>
         <wv2:WebView2 x:Name="CardBrowser" Height="64"/>
     </StackPanel>
 </UserControl>
