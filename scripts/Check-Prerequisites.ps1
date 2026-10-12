@@ -202,6 +202,17 @@ Write-Host 'WeShopAlot prerequisite check' -ForegroundColor White
 Write-Host "Solution: $SolutionPath"
 Write-Host ("PowerShell {0} on {1}" -f $PSVersionTable.PSVersion, [Environment]::OSVersion.VersionString)
 
+# Probe Redis up front: Docker is only needed when nothing else is serving it.
+$redisHost = 'localhost'; $redisPort = 6379
+$redisConnEarly = Get-Setting (Read-UserSecrets $ApiProject).Values 'ConnectionStrings:Redis'
+if ($redisConnEarly) {
+    $first = ($redisConnEarly -split ',')[0].Trim()
+    if ($first -match '^\[?([^\]]+?)\]?:(\d+)$') { $redisHost = $Matches[1]; $redisPort = [int]$Matches[2] }
+    elseif ($first -and $first -notmatch '=') { $redisHost = $first }
+}
+$pong = Invoke-RedisPing $redisHost $redisPort
+$redisUp = ($pong -eq '+PONG') -or ($pong -match 'NOAUTH|WRONGPASS')
+
 # ---------------------------------------------------------------- tools
 
 Write-Section 'Tools'
@@ -289,12 +300,15 @@ else { Add-Result 'Tools' 'Git' 'WARN' 'not on PATH; only needed to clone and co
 $docker = Get-CommandPath 'docker'
 $dockerRunning = $false
 if (-not $docker) {
-    Add-Result 'Tools' 'Docker' 'WARN' 'not installed; needed for Redis unless you run Redis some other way' 'winget install Docker.DockerDesktop   (then start Docker Desktop)'
+    if ($redisUp) { Add-Result 'Tools' 'Docker' 'OK' "not installed, and not needed: Redis is already answering on ${redisHost}:$redisPort" }
+    else { Add-Result 'Tools' 'Docker' 'WARN' 'not installed; needed for Redis unless you run Redis some other way' 'winget install Docker.DockerDesktop   (then start Docker Desktop)' }
 } else {
     $server = Invoke-Quiet $docker @('version', '--format', '{{.Server.Version}}')
     if ($server.Code -eq 0 -and $server.Out -match '^\d') {
         $dockerRunning = $true
         Add-Result 'Tools' 'Docker' 'OK' "engine $($server.Out) is running"
+    } elseif ($redisUp) {
+        Add-Result 'Tools' 'Docker' 'OK' "installed, engine not running; not needed while Redis is answering on ${redisHost}:$redisPort"
     } else {
         Add-Result 'Tools' 'Docker' 'TODO' 'installed, but the engine is not running' 'Start Docker Desktop and wait for "Engine running".'
     }
@@ -321,7 +335,7 @@ else { Add-Result 'Tools' 'Stripe CLI (optional)' 'WARN' 'not installed; only ne
 if ($onWindows) {
     $vswhere = Join-Path ${env:ProgramFiles(x86)} 'Microsoft Visual Studio\Installer\vswhere.exe'
     $vs = $null
-    if (Test-Path $vswhere) { $vs = (Invoke-Quiet $vswhere @('-latest', '-products', '*', '-property', 'displayName')).Out }
+    if (Test-Path $vswhere) { $vs = (Invoke-Quiet $vswhere @('-latest', '-products', 'Microsoft.VisualStudio.Product.Community', 'Microsoft.VisualStudio.Product.Professional', 'Microsoft.VisualStudio.Product.Enterprise', '-property', 'displayName')).Out }
     if ($vs) { Add-Result 'Tools' 'Visual Studio (optional)' 'OK' $vs }
     else { Add-Result 'Tools' 'Visual Studio (optional)' 'WARN' 'not found; the command line and VS Code are enough' 'Optional: Visual Studio 2026 with "ASP.NET and web development" and ".NET desktop development".' }
 }
@@ -511,14 +525,7 @@ if ($dbType -eq 'PostgresSql') {
     }
 }
 
-# Redis
-$redisHost = 'localhost'; $redisPort = 6379
-if ($redisConn) {
-    $first = ($redisConn -split ',')[0].Trim()
-    if ($first -match '^\[?([^\]]+?)\]?:(\d+)$') { $redisHost = $Matches[1]; $redisPort = [int]$Matches[2] }
-    elseif ($first -and $first -notmatch '=') { $redisHost = $first }
-}
-$pong = Invoke-RedisPing $redisHost $redisPort
+# Redis (probed before the Tools section)
 if ($pong -eq '+PONG') {
     Add-Result 'Services' 'Redis' 'OK' "answering on ${redisHost}:$redisPort"
 } elseif ($pong -match 'NOAUTH|WRONGPASS') {
