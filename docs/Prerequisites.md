@@ -157,7 +157,7 @@ Run the checker again. When it says **Ready**, follow **Run it** in the [README]
 | The shop or basket returns 500 with a `RedisConnectionException` in the log | Redis is not running | `docker compose up -d` in `Solution` |
 | Sign-in returns 500 with `IDX10720` in the log | `Token:Key` is shorter than 64 bytes | Generate a longer one (step 3) |
 | The browser shows "Your connection is not private" on localhost | The dev certificate isn't trusted | `dotnet dev-certs https --trust`, then restart the browser |
-| The shop page is empty, or the API logs "Invalid object name 'Product'" | The database was never seeded, or the seeder used a different connection string | Run the seeder; check that both projects have the same connection string |
+| The shop page is empty, or the API logs "Invalid object name 'WSA.Product'" | The database was never seeded, or the seeder used a different connection string | Run the seeder; check that both projects have the same connection string |
 | Go to Payment fails | No `StripeSettings:SecretKey`, or it is from a different account than the publishable key | Step 2 |
 | Orders stay *Pending* after payment | No webhook forwarding | `stripe listen` and `StripeSettings:WhSecret` (step 4) |
 | `npm install` or `ng` refuses the Node version | Node.js is outside Angular's range | `winget upgrade OpenJS.NodeJS.LTS` |

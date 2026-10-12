@@ -484,9 +484,17 @@ if ($dbType -eq 'PostgresSql') {
                     Add-Result 'Services' "Database '$dbName'" 'TODO' 'does not exist yet' 'cd Solution ; dotnet run --project WeShopAlot.Data.ConsoleApp'
                 } else {
                     $conn.ChangeDatabase($dbName)
+                    # The tables live in the WSA schema (see the Initial migration). Find Product in
+                    # whatever schema it is in, preferring WSA, rather than assuming dbo.
                     $cmd = $conn.CreateCommand()
-                    $cmd.CommandText = "SELECT CASE WHEN OBJECT_ID('dbo.Product') IS NULL THEN -1 ELSE (SELECT COUNT(*) FROM dbo.Product) END"
-                    $count = [int]$cmd.ExecuteScalar()
+                    $cmd.CommandText = "SELECT TOP 1 QUOTENAME(s.name) + '.' + QUOTENAME(t.name) FROM sys.tables t JOIN sys.schemas s ON s.schema_id = t.schema_id WHERE t.name = 'Product' ORDER BY CASE s.name WHEN 'WSA' THEN 0 ELSE 1 END"
+                    $productTable = $cmd.ExecuteScalar()
+                    $count = -1
+                    if ($productTable -and -not ($productTable -is [DBNull])) {
+                        $cmd = $conn.CreateCommand()
+                        $cmd.CommandText = "SELECT COUNT(*) FROM $productTable"
+                        $count = [int]$cmd.ExecuteScalar()
+                    }
                     if ($count -gt 0) { Add-Result 'Services' "Database '$dbName'" 'OK' "$count products" }
                     elseif ($count -eq 0) { Add-Result 'Services' "Database '$dbName'" 'TODO' 'exists but has no products' 'cd Solution ; dotnet run --project WeShopAlot.Data.ConsoleApp' }
                     else { Add-Result 'Services' "Database '$dbName'" 'TODO' 'exists but has no tables (migrations not applied)' 'cd Solution ; dotnet run --project WeShopAlot.Data.ConsoleApp' }
