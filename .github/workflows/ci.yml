@@ -1,0 +1,58 @@
+# CI: the gate every pull request must pass before review can merge it.
+#
+# Two jobs, one per half of the app:
+#   api    - builds the Web API and runs the in-memory API tests
+#            (WebApplicationFactory: no database, Redis or secrets needed)
+#   client - installs, builds and unit-tests the Angular client
+#
+# The WPF client is not built here: it needs Windows, and these runners are Linux.
+#
+# Make the checks required: Settings -> Rules -> Rulesets -> require
+# "CI / api", "CI / client" and "Secret scan / scan" on the dev and main branches.
+
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main, dev]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: Solution
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet build "WeShopAlot..WebAPI/WeShopAlot.WebAPI.csproj" --configuration Release
+      - run: dotnet test WeShopAlot.Testing.WebApis/WeShopAlot.Testing.WebApis.csproj --configuration Release
+
+  client:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: Solution/Client
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: Solution/Client/package-lock.json
+      - run: npm ci
+      - run: npx ng build
+      - run: npx ng test --watch=false

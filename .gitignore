@@ -1,2 +1,13 @@
 # Visual Studio cache (including Copilot snapshots) when the repo root is opened
 .vs/
+
+# Environment files hold real keys and connection strings: never commit them.
+# Commit a .env.example with placeholder values instead. (The API itself uses
+# dotnet user-secrets, which live outside the repo; see README "Secrets".)
+.env
+.env.*
+!.env.example
+
+# Certificates and private keys
+*.pfx
+*.p12

@@ -1,0 +1,62 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+#
+# CodeRabbit review settings for WeShopAlot.
+# CodeRabbit is a GitHub App installed on the organization; without this file it
+# reviews every pull request with its defaults. This file adds our own rules.
+# Docs: https://docs.coderabbit.ai/getting-started/configure-coderabbit
+
+language: en-US
+
+reviews:
+  profile: chill              # "assertive" gives more (and pickier) comments
+  high_level_summary: true
+  poem: false
+  review_status: true
+
+  auto_review:
+    enabled: true
+    drafts: false             # review when the PR is marked "Ready for review"
+    base_branches:            # the default branch is always reviewed; also review these
+      - dev
+      - "release/.*"
+
+  # Generated or vendored files: not worth a reviewer's time.
+  path_filters:
+    - "!**/wwwroot/**"
+    - "!**/bin/**"
+    - "!**/obj/**"
+    - "!**/package-lock.json"
+    - "!**/Migrations/*.Designer.cs"
+    - "!**/Migrations/*ModelSnapshot.cs"
+
+  path_instructions:
+    - path: "**/.env*"
+      instructions: >-
+        Environment files must never be committed (only .env.example with placeholder
+        values). Flag any .env file as a blocking problem and tell the author that the
+        values in it must be rotated, because deleting the file does not remove it from
+        git history.
+    - path: "**/appsettings*.json"
+      instructions: >-
+        Secrets belong in dotnet user-secrets, not in appsettings files. Flag any value
+        for Token:Key, StripeSettings:SecretKey, StripeSettings:WhSecret, AutoMapper:LicenseKey,
+        or any connection string that contains a password. The Stripe publishable key
+        (pk_test_...) is public by design and is fine.
+    - path: "Solution/Client/src/environments/**"
+      instructions: >-
+        Angular environment files ship to the browser, so everyone can read them. Only
+        public values (API URLs, the Stripe publishable key) may appear here. Flag any
+        secret key, token or password.
+    - path: "**/*.md"
+      instructions: >-
+        Flag leftover template placeholders such as [insert ...], [link to ...], TODO or
+        TBD, and links to files that do not exist in the repository.
+    - path: "Solution/**/*.cs"
+      instructions: >-
+        This is a teaching codebase. Explain the reason behind each suggestion in a
+        sentence a student can follow. Watch for secrets in code, missing [Authorize]
+        on endpoints that change data, and SQL built by string concatenation.
+
+  tools:
+    gitleaks:
+      enabled: true           # secret detection on every reviewed change
