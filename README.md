@@ -96,6 +96,10 @@ So that orders move from *Pending* to *Payment Received*, forward Stripe's webho
 stripe listen --forward-to https://localhost:7244/api/payment/webhook
 ```
 
+## Deploy it
+
+One shared copy for a class runs on a Windows server with IIS: build a package on your PC with `scripts\Publish-WeShopAlot.ps1`, copy it over, and the server only runs it. **[docs/Deployment.md](docs/Deployment.md)** has what to ask IT for, the install, the settings (environment variables, no secrets in files), the IIS site, seeding, updates, and troubleshooting.
+
 ## Test it
 
 PowerShell:

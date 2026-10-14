@@ -11,3 +11,6 @@
 # Certificates and private keys
 *.pfx
 *.p12
+
+# Packages built by scripts/Publish-WeShopAlot.ps1
+publish/
