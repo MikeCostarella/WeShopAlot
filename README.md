@@ -16,7 +16,7 @@ A complete e-commerce reference application: an **ASP.NET Core Web API (.NET 10)
 | `WeShopAlot.Testing.*` | Tests; `Testing.WebApis` runs the whole API in memory with WebApplicationFactory |
 | `Deployment`, `docker-compose.yml` | ARM templates for Azure; Redis for local development |
 
-Outside `Solution/`: `scripts/` holds the prerequisite checker, and `docs/` holds the setup guide.
+Outside `Solution/`: `scripts/` holds the prerequisite checker, and `docs/` holds the setup guide and the build-gate guide. `.github/workflows/` and `.coderabbit.yaml` are the pull-request checks.
 
 ## Prerequisites
 
@@ -96,6 +96,10 @@ So that orders move from *Pending* to *Payment Received*, forward Stripe's webho
 stripe listen --forward-to https://localhost:7244/api/payment/webhook
 ```
 
+## Deploy it
+
+One shared copy for a class runs on a Windows server with IIS: build a package on your PC with `scripts\Publish-WeShopAlot.ps1`, copy it over, and the server only runs it. **[docs/Deployment.md](docs/Deployment.md)** has what to ask IT for, the install, the settings (environment variables, no secrets in files), the IIS site, seeding, updates, and troubleshooting.
+
 ## Test it
 
 PowerShell:
@@ -106,6 +110,10 @@ dotnet test                       # API integration tests: no database or Redis 
 cd Client
 npx ng test --watch=false         # Angular unit tests (Vitest)
 ```
+
+## Pull requests
+
+Every pull request runs three checks on a clean Linux machine: **api** (build the Web API and run its in-memory tests), **client** (build and test the Angular client) and **scan** (no `.env` files, no secrets), plus a CodeRabbit review. The class fork's `master` branch only merges green pull requests. **[docs/BuildGate.md](docs/BuildGate.md)** explains each check, what to do when one is red, and what to do if you pushed a secret (rotate it; deleting the file is not enough).
 
 ## History
 
