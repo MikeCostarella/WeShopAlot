@@ -19,7 +19,7 @@
         public string Search
         {
             get => _search;
-            set => _search = value.ToLower();
+            set => _search = value?.ToLower(); // null-safe: see ProductSpecParamsTests.Search_Null_IsAllowed
         }
     }
 }

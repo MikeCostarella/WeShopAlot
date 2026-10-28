@@ -2,8 +2,6 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text.Json;
-using WeShopAlot.Data.Models;
-using WeShopAlot.Data.Shared.Enumerations;
 using WeShopAlot.Shared.Dtos;
 
 namespace WeShopAlot.Testing.WebApis
@@ -258,13 +256,8 @@ namespace WeShopAlot.Testing.WebApis
             Assert.AreEqual(1, (await ReadAsync(allResponse)).GetArrayLength());
         }
 
-        [TestMethod]
-        public void NewOrder_StartsPending()
-        {
-            // The in-memory test database does not enforce foreign keys, so the checkout test above cannot
-            // catch a StatusId of 0; SQL Server rejected it because OrderStatus Ids start at 1.
-            Assert.AreEqual((int)OrderStatusEnum.Pending, new Order().StatusId);
-        }
+        // NewOrder_StartsPending moved to WeShopAlot.Testing.Unit/Models/OrderTests.cs: it needs no HTTP,
+        // and the in-memory database here cannot catch the StatusId foreign-key bug it guards.
 
         [TestMethod]
         public async Task PaymentIntent_UnknownBasket_Returns400()
