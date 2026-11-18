@@ -16,6 +16,11 @@ Server test tier (`WeShopAlotSqlApiFactory` + `SqlApiTests`, a throw-away LocalD
 database per run), and `SeedDataTests` on the JSON. `docs/Database.md` explains it.
 Stories 9–11 build on that tier and are on the board as #31, #32 and #33 (under epics #29 and #27); `scripts/Create-Sprint3-Issues.ps1` is what put them there, and can add stories 1–8 with `-IncludeStories1To8`.
 
+Added Nov 18, after the Monday lecture on in-memory integration tests: `WeShopAlot.Testing.Services`
+(`ServiceTestDatabase` + `OrderServiceTests`) runs a service with its real repositories on an
+in-memory database and no HTTP, and CI runs it. Story 12 grows that tier; add it to the board by
+hand (title and body below) or extend the script.
+
 ---
 
 ## 1. PageIndex below 1 produces a negative Skip
@@ -102,14 +107,15 @@ risk guard applies: pull the arithmetic out.
 
 **Branch:** `chore/empty-test-projects` · **Size:** S · **Label:** housekeeping
 
-`WeShopAlot.Testing.Services`, `WeShopAlot.Testing.Repositories` (namespace
-`OurGovRepositoryTests`) and `WeShopAlot.Testing.XSLT` each hold one `TestMethod1`
-that asserts nothing. `WeShopAlot.Testing.Shared` carries `OurGov.*` namespaces and a
+`WeShopAlot.Testing.Repositories` (namespace `OurGovRepositoryTests`) and
+`WeShopAlot.Testing.XSLT` each hold one `TestMethod1` that asserts nothing.
+(`WeShopAlot.Testing.Services` used to as well; it now holds `OrderServiceTests`, the
+service tier that story 12 grows.) `WeShopAlot.Testing.Shared` carries `OurGov.*` namespaces and a
 `Dispose()` that throws `NotImplementedException`; its `BaseIntegrationTestsClass` was
 an early sketch of what `WeShopAlotSqlApiFactory` now does, so nothing is lost.
 
 **Acceptance**
-- [ ] Either delete the three projects and `Testing.Shared` from the solution, or give each a first real test — decide in the PR description, not silently.
+- [ ] Either delete the two projects and `Testing.Shared` from the solution, or give each a first real test — decide in the PR description, not silently.
 - [ ] No `OurGov` namespace remains in the repo (`git grep OurGov` is empty).
 - [ ] Solution builds; CI green.
 
@@ -196,4 +202,45 @@ no two people take the same one.
       for at least one assertion.
 - [ ] The PR description says in one sentence why the in-memory tier could not have
       caught this.
+
+## 12. One service test on the in-memory database
+
+**Branch:** `test/service-tier-<service>` · **Size:** S · **Label:** testing
+
+`WeShopAlot.Testing.Services` is the newest tier: `ServiceTestDatabase` puts
+`WeShopAlotContext` on the EF Core in-memory provider, seeds it with the real catalog
+through `DatabaseSeeder.SeedAsync`, and `OrderServiceTests` constructs `OrderService`
+with its real `UnitOfWork` and a dictionary basket. No controller, no token, no HTTP;
+the test calls the service the way the controller does and reads the rows back
+through `database.CreateContext()`. Read `OrderServiceTests` first, then pick one of
+these and write it the same way. One story per developer; coordinate in standup.
+
+- `OrderService.CreateOrderAsync` with a basket that names a product id that is not in
+  the catalog. Today `GetByIdAsync` returns null and the next line throws
+  `NullReferenceException`. Decide what the service *should* do (skip the line? throw
+  something meaningful?), pin it with a test, and make the smallest change.
+- `OrderService.CreateOrderAsync` with a `deliveryMethodId` that does not exist. The
+  in-memory provider saves the order with `DeliveryMethodId = 0`; SQL Server would
+  refuse it (foreign key). Write the service test for what the service should do
+  *before* the database gets a say, and note in the PR that `SqlApiTests` is where the
+  foreign-key half of this story lives (story 11).
+- `OrderService.CreateOrderAsync` for a basket item whose `IsDeleted` product is still in
+  the basket. `GenericRepository.GetByIdAsync` filters `IsDeleted`, so the product comes
+  back null. Same question as the first bullet, different cause.
+- `OrderService.GetOrderByIdAsync` loads `OrderItems.ItemOrdered`, `ShipToAddress`,
+  `DeliveryMethod` and `Status` (the specification's string and lambda includes). Assert
+  each is non-null on a saved order; the comment in
+  `OrdersWithItemsAndOrderingSpecification` explains the bug that motivates it.
+- A second service. `PaymentService` needs Stripe, so not that one; `TokenService` has no
+  database, so it is a unit test (story 4). If you find another service worth a database
+  but not HTTP, say so in standup.
+
+**Acceptance**
+- [ ] The test lives in `WeShopAlot.Testing.Services`, uses `ServiceTestDatabase`, and
+      asserts on a fresh context (`database.CreateContext()`) for at least one check,
+      not only on the service's return value.
+- [ ] If the test needed a production change, it is the smallest one, and `ApiTests`
+      still passes (`dotnet test WeShopAlot.Testing.WebApis --filter TestCategory!=SqlServer`).
+- [ ] The PR description says in one sentence what this tier proved and what it could
+      not (hint: anything a foreign key, a column size or `ORDER BY` would decide).
 

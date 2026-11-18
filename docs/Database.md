@@ -77,14 +77,17 @@ Prices are `decimal(5,2)`: at most 999.99 for a product, a delivery method, a ba
 
 `WeShopAlot.Testing.WebApis` has two tiers. Both run the whole API (controllers, authentication, AutoMapper, middleware) in memory with `WebApplicationFactory` and send it real HTTP requests. They differ in the database.
 
-| | Fast tier: `WeShopAlotApiFactory` + `ApiTests` | SQL Server tier: `WeShopAlotSqlApiFactory` + `SqlApiTests` |
-|---|---|---|
-| Database | EF Core in-memory provider, `EnsureCreated` | A real SQL Server database, created for this run by `DatabaseSeeder.RecreateAsync` |
-| Data | A tiny hand-made catalog (3 products) in `SeedAsync` | The shipped catalog, loaded by `DatabaseSeeder.SeedAsync` |
-| Needs | Nothing | SQL Server LocalDB (or any SQL Server; see below) |
-| Catches | Routes, status codes, DTO shapes, auth, service logic | Everything the fast tier does, plus what only SQL enforces: migrations that match the model, foreign keys, column sizes, `ORDER BY` and `OFFSET` semantics, the real data |
-| Time | A few seconds | Plus ~10 s to build and drop the database |
-| In CI | Every pull request | Not yet (the runners have no SQL Server); see the Sprint 3 stories |
+Below them sits a third use of the in-memory provider, `WeShopAlot.Testing.Services`, which skips HTTP altogether: `ServiceTestDatabase` builds a `WeShopAlotContext` on `UseInMemoryDatabase`, runs `EnsureCreated` (which applies the `HasData` rows) and then the same `DatabaseSeeder.SeedAsync` the console app uses, and `OrderServiceTests` constructs `OrderService` with its real `UnitOfWork` and a dictionary-backed basket. A test calls the service the way the controller would and reads the rows back through a fresh context. It is the cheapest place to pin a service rule (`CreateOrderAsync_UsesTheCatalogPrices_NotTheBaskets` is the model), and when it fails the stack trace names the service rather than a 500 response. The same caveats as the fast API tier apply: no migrations, no foreign keys, no SQL semantics.
+
+| | Service tier: `ServiceTestDatabase` + `OrderServiceTests` | Fast tier: `WeShopAlotApiFactory` + `ApiTests` | SQL Server tier: `WeShopAlotSqlApiFactory` + `SqlApiTests` |
+|---|---|---|---|
+| Runs | One service with its real `UnitOfWork` and repositories; no HTTP | The whole API through `WebApplicationFactory` | The whole API through `WebApplicationFactory` |
+| Database | EF Core in-memory provider, `EnsureCreated` | EF Core in-memory provider, `EnsureCreated` | A real SQL Server database, created for this run by `DatabaseSeeder.RecreateAsync` |
+| Data | The shipped catalog, loaded by `DatabaseSeeder.SeedAsync` | A tiny hand-made catalog (3 products) in `SeedAsync` | The shipped catalog, loaded by `DatabaseSeeder.SeedAsync` |
+| Needs | Nothing | Nothing | SQL Server LocalDB (or any SQL Server; see below) |
+| Catches | Service logic: which rows a service reads, what it computes, what it hands to `SaveChanges` | Routes, status codes, DTO shapes, auth, service logic | Everything the fast tier does, plus what only SQL enforces: migrations that match the model, foreign keys, column sizes, `ORDER BY` and `OFFSET` semantics, the real data |
+| Time | Milliseconds per test | A few seconds | Plus ~10 s to build and drop the database |
+| In CI | Every pull request | Every pull request | Not yet (the runners have no SQL Server); see the Sprint 3 stories |
 
 ### How the SQL Server tier works
 
@@ -127,7 +130,7 @@ Put it in `SqlApiTests` (or a new class with `[TestCategory("SqlServer")]` and t
 - **Ask what only a database can answer.** `Checkout_WritesAnOrder_ThatSatisfiesTheForeignKeys` reads the `Order` row back and follows `StatusId` to the seeded `Pending` row. The in-memory provider would have accepted any `StatusId`; SQL Server would have refused the insert. That is the bug `OrderTests.NewOrder_StartsPending` in the unit project guards against, proved end to end.
 - **Make each test self-contained.** Register your own user, look up product and delivery-method ids by name (identity values are not promised), and never rely on another test having run first. `RecreateAsync_ThenSeed_StartsFromAKnownState` rebuilds the database in the middle of the class; the others still pass in any order.
 
-The rule behind `WeShopAlot.Testing.Unit` still applies: if a test needs no HTTP and no database, it belongs there. This tier is for the questions the other two cannot ask.
+The rule behind `WeShopAlot.Testing.Unit` still applies: if a test needs no HTTP and no database, it belongs there; if it needs a database but no HTTP, `WeShopAlot.Testing.Services` is next. This tier is for the questions the other three cannot ask.
 
 ## 5. When something fails
 

@@ -13,7 +13,7 @@ A complete e-commerce reference application: an **ASP.NET Core Web API (.NET 10)
 | `WeShopAlot.Data.ConsoleApp` | The command that rebuilds the database: runs `DatabaseSeeder` and exits. Also the startup project for `dotnet ef` |
 | `Client` | The Angular client |
 | `WeShopAlot.UI.ClientWPF` | A WPF desktop client of the same API (shop, basket, checkout with Stripe, orders) |
-| `WeShopAlot.Testing.*` | Tests; `Testing.Unit` is pure functions, `Testing.WebApis` runs the whole API with WebApplicationFactory in two tiers: an in-memory database, and a real SQL Server database rebuilt per run by `DatabaseSeeder` |
+| `WeShopAlot.Testing.*` | Tests; `Testing.Unit` is pure functions, `Testing.Services` runs the application services on an in-memory database with no HTTP, `Testing.WebApis` runs the whole API with WebApplicationFactory in two tiers: an in-memory database, and a real SQL Server database rebuilt per run by `DatabaseSeeder` |
 | `Deployment`, `docker-compose.yml` | ARM templates for Azure; Redis for local development |
 
 Outside `Solution/`: `scripts/` holds the prerequisite checker, and `docs/` holds the setup guide, the database guide, the deployment guide, and the build-gate guide. `.github/workflows/` and `.coderabbit.yaml` are the pull-request checks.
@@ -108,12 +108,12 @@ PowerShell:
 
 ```powershell
 cd C:\projects\WeShopAlot\Solution
-dotnet test                       # unit tests, in-memory API tests, and (with LocalDB) the SQL Server API tests
+dotnet test                       # unit, service, in-memory API, and (with LocalDB) SQL Server API tests
 cd Client
 npx ng test --watch=false         # Angular unit tests (Vitest)
 ```
 
-Three .NET tiers: `WeShopAlot.Testing.Unit` (pure functions, no I/O), the in-memory `ApiTests` (the whole API, no database or Redis), and `SqlApiTests` (the whole API against a SQL Server database built for the run from the migrations and the shipped seed data, then dropped). The last tier is `TestCategory=SqlServer`; without a reachable SQL Server it reports Inconclusive rather than failing, and CI leaves it out. [docs/Database.md](docs/Database.md), section 4, explains how it works and how to write a test in it.
+Four .NET tiers: `WeShopAlot.Testing.Unit` (pure functions, no I/O), `WeShopAlot.Testing.Services` (a service with its real repositories on an in-memory database, no HTTP), the in-memory `ApiTests` (the whole API, no database or Redis), and `SqlApiTests` (the whole API against a SQL Server database built for the run from the migrations and the shipped seed data, then dropped). The last tier is `TestCategory=SqlServer`; without a reachable SQL Server it reports Inconclusive rather than failing, and CI leaves it out. [docs/Database.md](docs/Database.md), section 4, explains how it works and how to write a test in it.
 
 ## Pull requests
 

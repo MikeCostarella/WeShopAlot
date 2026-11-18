@@ -6,7 +6,7 @@ What happens to a pull request on this repository, what each check means, and wh
 
 | Check | Comes from | What it does | Typical time |
 |---|---|---|---|
-| **api** | `.github/workflows/ci.yml` | Builds the Web API and runs `WeShopAlot.Testing.WebApis` on a clean Ubuntu machine. The tests run the whole API in memory, so no database, Redis or secrets are needed. | under a minute |
+| **api** | `.github/workflows/ci.yml` | Builds the Web API and runs `WeShopAlot.Testing.Unit`, `WeShopAlot.Testing.Services` and the in-memory tier of `WeShopAlot.Testing.WebApis` on a clean Ubuntu machine. The tests run the services and the whole API in memory, so no database, Redis or secrets are needed. | under a minute |
 | **client** | `.github/workflows/ci.yml` | `npm ci`, `ng build`, `ng test` for the Angular client in `Solution/Client`. | under a minute |
 | **scan** | `.github/workflows/secret-scan.yml` | Fails if the pull request adds or changes any `.env` file (except `.env.example`), then runs [TruffleHog](https://github.com/trufflesecurity/trufflehog) over the pull request's commits looking for API keys, tokens and connection strings. | seconds |
 | **CodeRabbit** | `.coderabbit.yaml` + the CodeRabbit GitHub App | An AI review: a summary of the change and line comments. Its rules for this repo: no secrets in `appsettings*.json` or Angular `environments/`, no `.env` files, no leftover `[insert …]` placeholders in docs, and plain-language explanations because this is a teaching codebase. | a few minutes |
@@ -82,7 +82,9 @@ PowerShell:
 ```powershell
 cd C:\projects\WeShopAlot\Solution
 dotnet build "WeShopAlot..WebAPI\WeShopAlot.WebAPI.csproj" --configuration Release
-dotnet test WeShopAlot.Testing.WebApis\WeShopAlot.Testing.WebApis.csproj --configuration Release
+dotnet test WeShopAlot.Testing.Unit\WeShopAlot.Testing.Unit.csproj --configuration Release
+dotnet test WeShopAlot.Testing.Services\WeShopAlot.Testing.Services.csproj --configuration Release
+dotnet test WeShopAlot.Testing.WebApis\WeShopAlot.Testing.WebApis.csproj --configuration Release --filter "TestCategory!=SqlServer"
 cd Client
 npm ci
 npx ng build

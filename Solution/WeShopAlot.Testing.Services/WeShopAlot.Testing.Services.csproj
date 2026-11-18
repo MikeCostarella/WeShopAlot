@@ -1,5 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!--
+    Service tests: the application services (OrderService, ...) with their real
+    repositories and unit of work on an EF Core in-memory database, and no HTTP.
+    This sits between WeShopAlot.Testing.Unit (pure functions, no provider) and
+    WeShopAlot.Testing.WebApis (the whole API through WebApplicationFactory).
+    See docs/Database.md for what the in-memory provider does and does not check.
+  -->
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -7,11 +14,16 @@
 
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
-    <UserSecretsId>b33a158e-afee-49b8-ac18-4204e62cfd88</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.12" />
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.12" />
+    <!-- Pins the patched version of a transitive dependency (CVE-2026-84008, NU1903 below 10.0.13). -->
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.10.1" />
     <PackageReference Include="MSTest.TestAdapter" Version="4.5.1" />
     <PackageReference Include="MSTest.TestFramework" Version="4.5.1" />
@@ -19,6 +31,11 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\WeShopAlot.Data\WeShopAlot.Data.csproj" />
+    <ProjectReference Include="..\WeShopAlot.Infrastructure.Services\WeShopAlot.Infrastructure.Services.csproj" />
   </ItemGroup>
 
 </Project>

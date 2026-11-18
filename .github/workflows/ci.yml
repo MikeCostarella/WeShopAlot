@@ -42,6 +42,7 @@ jobs:
           dotnet-version: 10.0.x
       - run: dotnet build "WeShopAlot..WebAPI/WeShopAlot.WebAPI.csproj" --configuration Release
       - run: dotnet test WeShopAlot.Testing.Unit/WeShopAlot.Testing.Unit.csproj --configuration Release
+      - run: dotnet test WeShopAlot.Testing.Services/WeShopAlot.Testing.Services.csproj --configuration Release
       - run: dotnet test WeShopAlot.Testing.WebApis/WeShopAlot.Testing.WebApis.csproj --configuration Release --filter "TestCategory!=SqlServer"
 
   client:
